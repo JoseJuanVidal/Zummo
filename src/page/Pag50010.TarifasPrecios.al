@@ -25,6 +25,7 @@ page 50010 "Tarifas Precios"
             }
             repeater(General)
             {
+                Editable = Lineseditable;
                 field("Item No."; Rec."Item No.")
                 {
                     ApplicationArea = All;
@@ -410,7 +411,8 @@ page 50010 "Tarifas Precios"
     }
     trigger OnOpenPage()
     begin
-        CurrPage.Editable := GetUSerPermissions();
+        // CurrPage.Editable
+        Lineseditable := GetUSerPermissions();
         CDSIntegrationEnabled := CRMIntegrationManagement.IsCRMIntegrationEnabled();
     end;
 
@@ -428,6 +430,7 @@ page 50010 "Tarifas Precios"
 
     var
         Item: Record Item;
+        Lineseditable: Boolean;
         ItemUnitOfMeasure: Record "Item Unit of Measure";
         ExcelBuffer: Record "Excel Buffer" temporary;
         CRMIntegrationManagement: Codeunit "CRM Integration Management";

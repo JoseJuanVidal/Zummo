@@ -801,6 +801,28 @@ codeunit 50101 "Eventos_btc"
         IF DimensionValue.Insert() THEN;
     end;
 
+    local procedure CreateDimensionLineaNegocio(Customer: Record Customer)
+    var
+        Dimension: record Dimension;
+        DimensionValue: Record "Dimension Value";
+        DefaultDimension: Record "Default Dimension";
+    begin
+        if Dimension.Get() then begin
+
+        end;
+        DefaultDimension.SetRange("Table ID", Database::Customer);
+        DefaultDimension.SetRange("No.", Customer."No.");
+        DefaultDimension.SetRange("Dimension Code", 'LINEANEGOCIO');
+        if not DefaultDimension.FindFirst() then begin
+            DefaultDimension.Init();
+            DefaultDimension."Table ID" := Database::Customer;
+            DefaultDimension."No." := Customer."No.";
+            DefaultDimension.Validate("Dimension Code", 'LINEANEGOCIO');
+            DefaultDimension.Validate("Dimension Value Code", 'ZUMMO');
+            DefaultDimension.Insert();
+        end;
+    end;
+
     [EventSubscriber(ObjectType::Table, database::Customer, 'OnAfterValidateEvent', 'Name', false, false)]
     local procedure OnAfterModifyEventcUSTOMER(rec: Record Customer)
     var

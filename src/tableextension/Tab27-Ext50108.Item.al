@@ -345,6 +345,11 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'CMMF Type', comment = 'ESP="CMMF Type"';
         }
+        field(50086; "material antiguo code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Nª Material antiguo', comment = 'ESP="Nª Material antiguo"';
+        }
         field(50090; "Price Type"; Enum "Price Type")
         {
             DataClassification = CustomerContent;

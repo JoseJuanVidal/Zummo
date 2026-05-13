@@ -232,6 +232,7 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
     }
 
     var
+        recItem: Record Item;
         Funciones: Codeunit SalesEvents;
         ExistSalesPrice: Boolean;
         EnStock: Decimal;
@@ -244,9 +245,10 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
 
     trigger OnAfterGetRecord()
     var
-        recItem: Record Item;
+
         cduSalesEvents: Codeunit SalesEvents;
     begin
+        RecItem.Reset();
         txtBloqueado := '';
         txtStyleExprUnitPrice := '';
         StyleExpBloqueado := '';
@@ -325,6 +327,9 @@ pageextension 50152 "SalesOrderSubform" extends "Sales Order Subform"
         ExistSalesPrice := false;
         if not (Rec.Type in [Rec.Type::Item]) then
             exit;
-        ExistSalesPrice := Funciones.CheckSalesPriceItemNo(Rec);
+        recItem.Reset();
+        if Recitem.Get(Rec."No.") then
+            if recItem.Type in [recItem.Type::Inventory] then
+                ExistSalesPrice := Funciones.CheckSalesPriceItemNo(Rec);
     end;
 }

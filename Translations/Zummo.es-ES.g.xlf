@@ -14417,8 +14417,19 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - NamedType DataSourceTok</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3825223250 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT *  FROM [CLIENTS$] WHERE clientes_stg is not null ORDER BY [Cliente]</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GerItems - NamedType lblSQLDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3825223250 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Cliente #1##########\Registro #2#########</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GerItems - NamedType lblWindow</note>
+          <target>Nº Cliente #1##########\Registro #2#########</target>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
-          <source>select TOP 100 *  FROM [CLIENTS$]</source>
+          <source>SELECT *  FROM [CLIENTS$] WHERE clientes_stg is not null ORDER BY [Cliente]</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblSQLDelete</note>
         </trans-unit>
@@ -14427,6 +14438,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblWindow</note>
           <target>Nº Cliente #1##########\Registro #2#########</target>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 989638972 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
+          <source>UPDATE [ZUMMOREM].[dbo].[clientes_stg] SET %1 WHERE [Cliente] ='%2'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UpdateSQLCodigNAV - NamedType lblSQLCount</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 989638972 - NamedType 1354654220" size-unit="char" translate="yes" xml:space="preserve">
+          <source>[CodigoNAV]='%1',[Estado]='%2'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UpdateSQLCodigNAV - NamedType lblSET</note>
         </trans-unit>
         <trans-unit id="Codeunit 267050289 - Method 3222099277 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select file</source>
@@ -35523,12 +35544,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Method FinMultiSelectAseguradora - NamedType lblConfirm</note>
           <target>¿Desea eliminar el credito a %1 %2 seleccionados?</target>
         </trans-unit>
-        <trans-unit id="PageExtension 363045002 - Action 3041128825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
-          <source>Clientes SEB PRO</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Clientes SEB PRO"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension CustomerList - Action clientes - Property Caption</note>
-          <target>Clientes SEB PRO</target>
-        </trans-unit>
         <trans-unit id="PageExtension 363045002 - Action 3024434233 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 2901867346">
           <source>View or add comments for the record</source>
           <note from="Developer" annotates="general" priority="2">ESP="Permite ver o agregar comentarios para el registro."</note>
@@ -35863,6 +35878,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mapeo ZUMMO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action MapeoZummo - Property Caption</note>
           <target>Mapeo ZUMMO</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 3041128825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Clientes SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clientes SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action clientes - Property Caption</note>
+          <target>Clientes SEB PRO</target>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 1639326268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Conexión SQL ABERTIA</source>
@@ -43774,6 +43795,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ultimo Fecha Compra/Producción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastPurchaseDate - Property Caption</note>
           <target>Ultimo Fecha Compra/Producción</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 764548961 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Ultimo Nº Doc. Compra/Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ultimo Nº Doc. Compra/Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastPurchaseDocumentNo - Property Caption</note>
+          <target>Ultimo Nº Doc. Compra/Producción</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 429385547 - Field 169584098 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
+          <source>Ultimo Tipo Doc. Compra/Producción</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ultimo Tipo Doc. Compra/Producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH StandardCostWorksheet - Field LastPurchaseDocumentType - Property Caption</note>
+          <target>Ultimo Tipo Doc. Compra/Producción</target>
         </trans-unit>
         <trans-unit id="TableExtension 429385547 - Field 2906604184 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2630330130">
           <source>Ultimo coste Compra/Producción</source>

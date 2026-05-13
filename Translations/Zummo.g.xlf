@@ -13248,8 +13248,33 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - NamedType DataSourceTok</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 157973711 - NamedType 1426404922" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CREATE TABLE CLIENTES (%2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CreateTableClientes - NamedType lblCreate</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 157973711 - NamedType 3139146508" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 varchar(%2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CreateTableClientes - NamedType lblField</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 2811366912 - NamedType 2275064652" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CreateTableFromtxt - NamedType Dialogtitle</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 993012352 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT *  FROM [CLIENTS$] WHERE clientes_stg is not null ORDER BY [Cliente]</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GerProveedores - NamedType lblSQLDelete</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 993012352 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Cliente #1##########\Registro #2#########</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GerProveedores - NamedType lblWindow</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SELECT *  FROM [CLIENTS$] WHERE Cliente is not null ORDER BY [Cliente]</source>
+          <source>SELECT *  FROM [CLIENTS$] WHERE cliente is not null ORDER BY [Cliente]</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblSQLDelete</note>
         </trans-unit>
@@ -13258,8 +13283,28 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblWindow</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3074005780 - NamedType 3491503912" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT [materiales_stg].*,materialestextos_stg.*  FROM [MATERIALES_STG] %1 WHERE %2 and idioma = 'S' ORDER BY [materiales_stg].Material</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GeTItems - NamedType lblSQLSelect</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3074005780 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº Producto #1##########\Registro #2#########</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GeTItems - NamedType lblWindow</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 2381791731 - NamedType 1426404922" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CREATE TABLE CLIENTES (%2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method LenFieldsClientes - NamedType lblCreate</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 2381791731 - NamedType 3139146508" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 varchar(%2)</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method LenFieldsClientes - NamedType lblField</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 989638972 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
-          <source>UPDATE [ZUMMOREM].[dbo].[CLIENTS$] SET %1 WHERE [Cliente] ='%2'</source>
+          <source>UPDATE [ZUMMOREM].[dbo].[clientes_stg] SET %1 WHERE [Cliente] ='%2'</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UpdateSQLCodigNAV - NamedType lblSQLCount</note>
         </trans-unit>
@@ -32778,10 +32823,20 @@
           <note from="Developer" annotates="general" priority="2">ESP="Mapeo ZUMMO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action MapeoZummo - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 2280452714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Fichero SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fichero SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaTxt - Property Caption</note>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 3041128825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Clientes SEB PRO</source>
           <note from="Developer" annotates="general" priority="2">ESP="Clientes SEB PRO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action clientes - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 2867993921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Productos SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action Productos - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 1639326268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Conexión SQL ABERTIA</source>
@@ -36312,6 +36367,11 @@
           <source>Material</source>
           <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Material - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1796589795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Nª Material antiguo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª Material antiguo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field material antiguo code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2621064865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Material Embalaje Excluido</source>

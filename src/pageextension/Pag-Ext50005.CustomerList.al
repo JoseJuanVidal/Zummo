@@ -2,6 +2,13 @@ pageextension 50005 "CustomerList" extends "Customer List"
 {
     layout
     {
+        addafter("No.")
+        {
+            field("Codigo Anterior"; "Codigo Anterior")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter(Name)
         {
             field("VAT Registration No."; "VAT Registration No.")

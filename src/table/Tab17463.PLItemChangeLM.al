@@ -27,6 +27,7 @@ table 17463 "PL Item Change LM"
             DataClassification = CustomerContent;
             Caption = 'Item No.', comment = 'ESP="Cód. producto"';
             TableRelation = Item;
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
@@ -36,9 +37,9 @@ table 17463 "PL Item Change LM"
         field(5; Description; Text[100])
         {
             Caption = 'Description', comment = 'ESP="Descripción"';
-            Editable = false;
-            FieldClass = FlowField;
-            CalcFormula = lookup(item.Description where("No." = field("Item No.")));
+            // Editable = false;
+            // FieldClass = FlowField;
+            // CalcFormula = lookup(item.Description where("No." = field("Item No.")));
         }
         field(6; "Production BOM Name"; text[100])
         {

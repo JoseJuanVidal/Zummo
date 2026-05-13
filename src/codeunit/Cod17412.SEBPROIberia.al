@@ -30,11 +30,35 @@ codeunit 17412 "SEB PRO Iberia"
             exit(SQLReader.GetString(IndexField));
     end;
 
+    local procedure SQLRGetStringFieldName(SQLReader: DotNet SqlDataReader; IndexFieldName: Text): Text
+    var
+        IndexField: Integer;
+    begin
+        IndexField := SQLReader.GetOrdinal(IndexFieldName);
+        if not SQLReader.IsDBNull(IndexField) then
+            exit(SQLReader.GetString(IndexField));
+    end;
+
     local procedure SQLRGetStringDate(SQLReader: DotNet SqlDataReader; IndexField: Integer): date
     var
         Fecha: text;
         Result: date;
     begin
+        if not SQLReader.IsDBNull(IndexField) then begin
+            Fecha := SQLReader.GetString(IndexField);
+            Fecha := StrSubstNo('%1/%2/%3', copystr(Fecha, 1, 2), copystr(Fecha, 3, 2), copystr(Fecha, 7, 4));
+            if Evaluate(Result, Fecha) then
+                exit(Result);
+        end;
+    end;
+
+    local procedure SQLRGetStringDateFieldName(SQLReader: DotNet SqlDataReader; IndexFieldName: Text): date
+    var
+        IndexField: Integer;
+        Fecha: text;
+        Result: date;
+    begin
+        IndexField := SQLReader.GetOrdinal(IndexFieldName);
         if not SQLReader.IsDBNull(IndexField) then begin
             Fecha := SQLReader.GetString(IndexField);
             Fecha := StrSubstNo('%1/%2/%3', copystr(Fecha, 1, 2), copystr(Fecha, 3, 2), copystr(Fecha, 7, 4));
@@ -61,6 +85,15 @@ codeunit 17412 "SEB PRO Iberia"
             exit(SQLReader.GetDouble((IndexField)));
     end;
 
+    local procedure SQLRGetDecimalFieldName(SQLReader: DotNet SqlDataReader; IndexFieldName: text): Decimal
+    var
+        IndexField: Integer;
+    begin
+        IndexField := SQLReader.GetOrdinal(IndexFieldName);
+        if not SQLReader.IsDBNull(IndexField) then
+            exit(SQLReader.GetDouble((IndexField)));
+    end;
+
     procedure GetClients()
     var
         Customer: Record Customer;
@@ -74,7 +107,7 @@ codeunit 17412 "SEB PRO Iberia"
         VatNoSeb: code[50];
         UpdateCustomer: Boolean;
         Windows: Dialog;
-        lblSQLDelete: Label 'SELECT *  FROM [CLIENTS$] WHERE Cliente is not null ORDER BY [Cliente]';
+        lblSQLDelete: Label 'SELECT *  FROM [CLIENTS$] WHERE cliente is not null ORDER BY [Cliente]';
         lblWindow: Label 'Nº Cliente #1##########\Registro #2#########', comment = 'ESP="Nº Cliente #1##########\Registro #2#########"';
     begin
         windows.Open(lblWindow);
@@ -103,13 +136,14 @@ codeunit 17412 "SEB PRO Iberia"
                     Customer."No." := '';
                     // aplicar plantilla
                     UpdateCustomerFromTemplate(Customer);
+
                     windows.update(2, Customer."No.");
+                    UpdateCustomer := true
                     //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
                     // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
                 end;
                 if UpdateCustomer then begin
                     GetFieldsCustomerSQLReader(tmpCustomer, SQLReader);
-                    Windows.Update(1, tmpCustomer."No.");
                     //actualizamos datos si es cliente de SEB y no de Zummo
                     Customer."Codigo Anterior" := tmpCustomer."Codigo Anterior";
                     Customer."Country/Region Code" := tmpCustomer."Country/Region Code";
@@ -127,6 +161,7 @@ codeunit 17412 "SEB PRO Iberia"
                     Customer."VAT Registration No." := tmpCustomer."VAT Registration No.";
 
                     UpdateCustomerAuxiliares(Customer);
+
                     Customer.Modify();
                     UpdateSQLCodigNAV(Customer."Codigo Anterior", Customer."No.", 'ALTA NUEVA');
                 end;
@@ -134,8 +169,7 @@ codeunit 17412 "SEB PRO Iberia"
         //     exit(false);
         windows.close;
         // exit(true);
-        Page.Run(0, Customer);
-
+        //Page.Run(0, Customer);
     end;
 
     local procedure GetFieldsCustomerSQLReader(var tmpCustomer: Record Customer; var SQLReader: DotNet SqlDataReader)
@@ -322,7 +356,7 @@ codeunit 17412 "SEB PRO Iberia"
         // Customer. := CopyStr(SQLRGetSTring(SQLReader,169), 1, MaxStrLen(Customer.)); //   ,[CodigoNAV]
 
         // Customer. := CopyStr(SQLRGetSTring(SQLReader,), 1, MaxStrLen(Customer.)); //   
-        tmpCustomer.Modify();
+        tmpCustomer.Insert();
     end;
 
     local procedure CheckCustomerSEBExist(CustomerNoSEB: code[20]; var Customer: Record Customer): Boolean
@@ -356,15 +390,15 @@ codeunit 17412 "SEB PRO Iberia"
             UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF sin pais ZUMMO');
             exit(true);
         end;
-        // solo dejamos los numeros y comprobamos
-        VatNoSeb := VATOnlyNumbers(VatNoSeb);
-        Customer.SetFilter("VAT Registration No.", '%1', StrSubstNo('*%1*', VatNoSeb));
-        if Customer.FindSet() then begin
-            Customer."Codigo Anterior" := CustomerNoSEB;
-            Customer.Modify();
-            UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF sin pais ZUMMO');
-            exit(true);
-        end;
+        // // solo dejamos los numeros y comprobamos
+        // VatNoSeb := VATOnlyNumbers(VatNoSeb);
+        // Customer.SetFilter("VAT Registration No.", '%1', StrSubstNo('*%1*', VatNoSeb));
+        // if Customer.FindSet() then begin
+        //     Customer."Codigo Anterior" := CustomerNoSEB;
+        //     Customer.Modify();
+        //     UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF sin pais ZUMMO');
+        //     exit(true);
+        // end;
     end;
 
     local procedure VATOnlyNumbers(VatRegistration: text) NewVAT: text;
@@ -390,9 +424,10 @@ codeunit 17412 "SEB PRO Iberia"
         SQLReader: DotNet SqlDataReader;
         txtCommand: text;
         txtSET: text;
-        lblSQLCount: Label 'UPDATE [ZUMMOREM].[dbo].[CLIENTS$] SET %1 WHERE [Cliente] =''%2''';
+        lblSQLCount: Label 'UPDATE [ZUMMOREM].[dbo].[clientes_stg] SET %1 WHERE [Cliente] =''%2''';
         lblSET: Label '[CodigoNAV]=''%1'',[Estado]=''%2''';
     begin
+        exit; // TODO
         if IsNull(SQLConnection) then
             SQLConnect(SQLConnection);
         Clear(SQLCommand);
@@ -464,4 +499,538 @@ codeunit 17412 "SEB PRO Iberia"
         end;
     end;
 
+    procedure GerProveedores()
+    var
+        Item: Record Item;
+        tmpItem: Record Item temporary;
+        SQLConnection: DotNet SqlConnection;
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+        texto: text;
+        CustomerNoSEB: code[20];
+        VatNoSeb: code[50];
+        UpdateCustomer: Boolean;
+        Windows: Dialog;
+        lblSQLDelete: Label 'SELECT *  FROM [CLIENTS$] WHERE clientes_stg is not null ORDER BY [Cliente]';
+        lblWindow: Label 'Nº Cliente #1##########\Registro #2#########', comment = 'ESP="Nº Cliente #1##########\Registro #2#########"';
+    begin
+        windows.Open(lblWindow);
+        if IsNull(SQLConnection) then
+            SQLConnect(SQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := SQLConnection.CreateCommand();
+        // SQLCommand.CommandText := 'select * From ItemCompleto';
+        SQLCommand.CommandText := StrSubstNo(lblSQLDelete);
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            while SQLReader.Read() do begin
+                windows.update(1, SQLRGetSTring(SQLReader, 0));
+                CustomerNoSEB := SQLRGetSTring(SQLReader, 0);
+                VatNoSeb := SQLRGetSTring(SQLReader, 62);
+                if VatNoSeb = '' then
+                    VatNoSeb := SQLRGetSTring(SQLReader, 51);
+
+                // if CheckCustomerSEBExist(CustomerNoSEB, Customer) then
+                //     UpdateCustomer := true
+                // else if CheckCustomerVatExist(CustomerNoSEB, VatNoSeb) then
+                //     UpdateCustomer := false
+                // else begin
+                //     Customer.Init();
+                //     Customer."No." := '';
+                //     // aplicar plantilla
+                //     UpdateCustomerFromTemplate(Customer);
+                //     windows.update(2, Customer."No.");
+                //     //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
+                //     // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
+                // end;
+                // if UpdateCustomer then begin
+                //     GetFieldsCustomerSQLReader(tmpCustomer, SQLReader);
+                //     Windows.Update(1, tmpCustomer."No.");
+                //     //actualizamos datos si es cliente de SEB y no de Zummo
+                //     Customer."Codigo Anterior" := tmpCustomer."Codigo Anterior";
+                //     Customer."Country/Region Code" := tmpCustomer."Country/Region Code";
+                //     Customer.validate(Name, tmpCustomer.Name);
+                //     Customer."Name 2" := tmpCustomer."Name 2";
+                //     Customer.validate("Post Code", tmpCustomer."Post Code");
+                //     Customer.City := tmpCustomer.City;
+                //     Customer.Address := tmpCustomer.Address;
+                //     Customer."Phone No." := tmpCustomer."Phone No.";
+                //     Customer."Fax No." := tmpCustomer."Fax No.";
+                //     Customer.Address := tmpCustomer.Address;
+                //     Customer."Phone No." := tmpCustomer."Phone No.";
+                //     Customer."Fax No." := tmpCustomer."Fax No.";
+                //     Customer.FechaAlta := tmpCustomer.FechaAlta;
+                //     Customer."VAT Registration No." := tmpCustomer."VAT Registration No.";
+
+                //     UpdateCustomerAuxiliares(Customer);
+
+                //     Customer.Modify();
+                //     UpdateSQLCodigNAV(Customer."Codigo Anterior", Customer."No.", 'ALTA NUEVA');
+                // end;
+            end;
+        //     exit(false);
+        windows.close;
+        // exit(true);
+        //Page.Run(0, Customer);
+    end;
+
+    procedure GeTItems()
+    var
+        Item: Record Item;
+        tmpItem: Record Item temporary;
+        SQLConnection: DotNet SqlConnection;
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+        ItemNo: Code[20];
+        txtJoin: text;
+        txtWhere: text;
+        Windows: Dialog;
+        lblSQLSelect: Label 'SELECT [materiales_stg].*,materialestextos_stg.*  FROM [MATERIALES_STG] %1 WHERE %2 and idioma = ''S'' ORDER BY [materiales_stg].Material';
+        lblWindow: Label 'Nº Producto #1##########\Registro #2#########', comment = 'ESP="Nº Cliente #1##########\Registro #2#########"';
+    begin
+        tmpItem.DeleteAll();
+        windows.Open(lblWindow);
+        if IsNull(SQLConnection) then
+            SQLConnect(SQLConnection);
+        Clear(SQLCommand);
+        SQLCommand := SQLConnection.CreateCommand();
+        txtWhere := StrSubstNo('([Grupo_art] = ''%1'' or [Grupo_art] = ''%2'' or [Grupo_art] = ''%3'' or [Grupo_art] = ''%4'' or [Grupo_art] = ''%5'' or [Grupo_art] = ''%6'')',
+                '033', '043', '313', '333', '503', '991');
+        txtJoin := 'left join materialestextos_stg on [materiales_stg].material = materialestextos_stg.material';
+        SQLCommand.CommandText := StrSubstNo(lblSQLSelect, txtJoin, txtWhere);
+        // ** EXEC READER **
+        SQLReader := SQLCommand.ExecuteReader;
+        IF SQLReader.HasRows then
+            while SQLReader.Read() do begin
+                ItemNo := CheckItemNoSEB(SQLRGetStringFieldName(SQLReader, 'Material'));
+                windows.update(1, ItemNo);
+                GetFieldsItemSQLReader(tmpItem, SQLReader, ItemNo);
+
+            end;
+        //     exit(false);
+        windows.close;
+        // exit(true);
+        Page.Run(0, tmpItem);
+    end;
+
+    local procedure CheckItemNoSEB(ItemNo: text) NewItemNo: Text
+    var
+        i: Integer;
+        NumChar: Integer;
+    begin
+        if StrLen(ItemNo) < 10 then
+            ItemNo := PadStr('', 10 - StrLen(ItemNo), '0') + ItemNo;
+        for i := StrLen(ItemNo) downto 1 do begin
+            NumChar += 1;
+            NewItemNo := ItemNo[i] + NewItemNo;
+            case NumChar of
+                4, 8:
+                    NewItemNo := '.' + NewItemNo;
+            end;
+        end;
+    end;
+
+    local procedure GetFieldsItemSQLReader(var tmpItem: Record Item; var SQLReader: DotNet SqlDataReader; ItemNo: code[20])
+    var
+        SEBITemNo: code[20];
+        ValorCampo: text;
+        Longitud: Decimal;
+        unLongitud: text;
+        Ancho: Decimal;
+        unAncho: Text;
+        Altura: Decimal;
+        unAltura: text;
+    begin
+        if not tmpItem.IsTemporary then
+            Error('%1 debe ser temporal', tmpItem.TableName);
+        SEBITemNo := SQLRGetSTring(SQLReader, 0);
+
+        tmpItem.Init();
+        tmpItem."No." := ItemNo;
+        tmpItem.Description := CopyStr(SQLRGetStringFieldName(SQLReader, 'texto_breve_de_material'), 1, MaxStrLen(tmpItem.Description));
+        // tmpItem. := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(tmpItem.       ); // [Material]
+        // tmpItem. := CopyStr(SQLRGetSTring(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Creado]
+        // tmpItem. := CopyStr(SQLRGetSTring(SQLReader, 2), 1, MaxStrLen(tmpItem.       ); //,[Creado_por]
+        tmpItem."Last Date Modified" := SQLRGetStringDateFieldName(SQLReader, 'lt_mod');
+        //  tmpItem."Last Time Modified" := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[lt_mod]
+        //  tmpItem."Last DateTime Modified" := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[lt_mod]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Modif_por]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Stat_act_comp]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Stat_actual]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Mat]
+        ValorCampo := SQLRGetStringFieldName(SQLReader, 'TpMt'); //,[TpMt]
+        case ValorCampo of
+            'NLAG':
+                tmpItem.Type := tmpItem.Type::Service;
+            else
+                tmpItem.Type := tmpItem.Type::Inventory;
+        end;
+
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[R]
+
+        tmpItem.selClasVtas_btc := GetClasificacionVentas(SQLRGetStringFieldName(SQLReader, 'Grupo_art'));
+        tmpItem."material antiguo code" := CopyStr(SQLRGetStringFieldName(SQLReader, 'N_Material_antiguo'), 1, MaxStrLen(tmpItem."material antiguo code")); //,[N_Material_antiguo]
+        ValorCampo := SQLRGetStringFieldName(SQLReader, 'UMB');   //,[UMB] ST - M unidad de medida
+        case ValorCampo of
+            'M':
+                tmpItem.Validate("Base Unit of Measure", 'METRO');
+            else
+                tmpItem.Validate("Base Unit of Measure", 'UDS');
+        end;
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[UMP]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Documento]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[CDoc]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Vers]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[DIN1]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[N_ModD]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[N_H]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Ctd]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Info_fabr_insp]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[DIN]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Tama_Dimens]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Materia]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Denom_est_dar]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[L_O]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[CvValCp]
+        tmpItem."Gross Weight" := SQLRGetDecimalFieldName(SQLReader, 'Peso_bruto');
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Un] todos son kilos, parece unidad de medida del peso bruto y neto
+        tmpItem."Net Weight" := SQLRGetDecimalFieldName(SQLReader, 'Peso_neto'); //,[Peso_neto]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Un_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Un_3]
+        tmpItem."Unit Volume" := SQLRGetDecimalFieldName(SQLReader, 'Volumen');
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[UV]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[UV_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[PE]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[CA]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Temp]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[NvP]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[GrTran]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[N_sust_peligrosa]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Se]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Competenc]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[N_ero_EAN]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Cant_para_el_n_ero_de_vales]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[UMB_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[N]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[F]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Temp_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[CE]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[FE]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Cpo_desactiv]
+        tmpItem.GTIN := CopyStr(SQLRGetStringFieldName(SQLReader, 'C_igo_EAN_UPC'), 1, MaxStrLen(tmpItem.GTIN)); //,[C_igo_EAN_UPC] 
+                                                                                                                 // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Tp]
+        Longitud := SQLRGetDecimalFieldName(SQLReader, 'Longitud'); //,[Longitud]
+        unLongitud := SQLRGetStringFieldName(SQLReader, 'Unidad_dimensi'); //,[Unidad_dimensi]
+        Ancho := SQLRGetDecimalFieldName(SQLReader, 'Ancho'); //,[Ancho]
+        unAncho := SQLRGetStringFieldName(SQLReader, 'Unidad_dimensi_2'); //,[Unidad_dimensi_2]
+        Altura := SQLRGetDecimalFieldName(SQLReader, 'Altura'); //,[Altura]
+        unAltura := SQLRGetStringFieldName(SQLReader, 'Unidad_dimensi_3'); //,[Unidad_dimensi_3]
+        CreateItemUnitOfMeasure(tmpItem, Longitud, unLongitud, Ancho, unAncho, Altura, unAltura);
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Unidad_dimensi_4]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Jqu_productos]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Traslado_c_culo_del_coste_Net]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[CAD]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[QM]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Peso_perm_emb]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Un_4]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Un_5]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Volum_perm]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[UnV]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[UnV_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[TSP]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[TEV]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[V]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[R_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Conf]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[SjL]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[ClMAE]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[CLl]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[FApil]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[GrME]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[GrpA]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[V_ido_de]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Validez_a]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[A_E]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[TpP]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[LS]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Grupo_art_ext]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Mat_gral_conf]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Tp_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Co]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[R_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[Material_precio]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[SM]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[St]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[V_ido_de_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[V_ido_de_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[ClFis]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[PerfCat]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[DurRe]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Cnsrv]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[PrcAl]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[UMC]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Conten_neto]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[UMC_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[por]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Gr_mat_etiquetado]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Conten_bruto]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //      ,[UMC_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[MCC]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[N_objeto]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[R_4]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[EsquemaContingente]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[PP]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[SuBonEs]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[N_Fb]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Fabricante]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Mat_gestion_stock]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[PerfPF]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[U]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Colecci]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Perf]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[ViscosElev]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[A_granel_l_uido]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[NS]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[C]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[LA]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[ValVal]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[NF]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Ind_per]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Regla_red]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Comp_prod]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[MTPOS]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Var_log]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[El_material_est_fijado]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Indicador_para_relevancia_en_C]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[C_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Fecha_de_caducidad_Fecha_de_ex]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Variante_EAN]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Material_gen_ico]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Material_refer]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Relevante_para_GDS]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[AP]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Tp_un_manip_std]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Con_riesgo_de_robo]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[CondAlm]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[GrMatAlm]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Ind_man]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Rel_sust_peligrosa]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Tp_unidad_manip]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[V_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Capacidad_m_ima]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[TSC]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Long_permitida]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Un_medida]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Ancho_perm_embalaje]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Un_medida_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Altura_perm]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Un_medida_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Un_medida_4]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Orig]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[GrpPortM]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[PerC]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_tiempo_cuarentena]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_tiempo_cuarentena_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Grupo_control_calidad]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Perfil_n_ero_serie]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Nombre]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_medida_log_tica]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Material_es_un_material_CW]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Perfil_CW_para_cantidad_de_val]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Grupo_tolerancia_catch_weight]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Un_carga]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Gr_unidad_carga]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[C_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[AgrDSD]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Volcar]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[NoApil]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Inf]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Sup]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[FApil_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Sin_ME]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Exceso_profund]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_dimensi_5]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Exceso_ancho]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_dimensi_6]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Altura_m_ima]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_dimensi_7]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Altura_m_ima_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_dimensi_8]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Exceso_alt_emb]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Unidad_dimensi_9]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Mat_MEm]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[UM_OAC]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[ME_cerrado]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Gesti_estado_material]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[C_Ret]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[ANivLog]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[ID_OTAN]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Clase_FFF]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[N_ero_cadena_reemplazo]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[SC]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[CaractInt]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[CaractInt_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[CaractInt_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Color]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Tam_1]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Tam_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Valor]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[C_cuid]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Marca]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Componente_1]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Col_1]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Componente_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Col_2]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Componente_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Col_3]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Componente_4]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Col_4]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Componente_5]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[Col_5]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[GrMo]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[KWG]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[CMMF_code]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[idioma]
+        // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       );  //,[texto_breve_de_material]
+        tmpItem.Insert();
+    end;
+
+    local procedure GetClasificacionVentas(CodClasif: code[20]): code[20]
+    var
+        TextosAuxiliares: Record TextosAuxiliares;
+    begin
+        //TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClasificacionVentas"), TipoRegistro = const(Tabla));
+        // 033	MAQUINAS CAFE 043	RENTING  313	#N/A 333	REP. MAQUINAS CAFE
+        // 503	S.A.T  991	Seguro/Portes/Desc.
+        TextosAuxiliares.SetRange(TipoRegistro, TextosAuxiliares.TipoRegistro::Tabla);
+        TextosAuxiliares.SetRange(TipoTabla, TextosAuxiliares.TipoTabla::ClasificacionVentas);
+        TextosAuxiliares.SetRange(NumReg, CodClasif);
+        if not TextosAuxiliares.FindFirst() then begin
+            TextosAuxiliares.Init();
+            TextosAuxiliares.TipoRegistro := TextosAuxiliares.TipoRegistro::Tabla;
+            TextosAuxiliares.TipoTabla := TextosAuxiliares.TipoTabla::ClasificacionVentas;
+            TextosAuxiliares.NumReg := CodClasif;
+            TextosAuxiliares.Descripcion := 'PCM no name';
+            TextosAuxiliares.Insert()
+        end;
+        exit(CodClasif);
+    end;
+
+    local procedure CreateItemUnitOfMeasure(Item: Record Item; Longitud: Decimal; unLongitud: text; Ancho: Decimal; unAncho: Text; Altura: Decimal; unAltura: text)
+    var
+        ItemUnitOfMeasure: Record "Item Unit of Measure";
+        Multiplicador: Decimal;
+    begin
+        case unLongitud of
+            'MM':
+                Multiplicador := 1000;
+            'CM':
+                Multiplicador := 100;
+            else
+                Multiplicador := 1;
+        end;
+        Longitud := Longitud * Multiplicador;
+        case unAncho of
+            'MM':
+                Multiplicador := 1000;
+            'CM':
+                Multiplicador := 100;
+            else
+                Multiplicador := 1;
+        end;
+        Ancho := Ancho * Multiplicador;
+        case unAltura of
+            'MM':
+                Multiplicador := 1000;
+            'CM':
+                Multiplicador := 100;
+            else
+                Multiplicador := 1;
+        end;
+        Altura := Altura * Multiplicador;
+        if not ItemUnitOfMeasure.Get(Item."No.", Item."Base Unit of Measure") then begin
+            ItemUnitOfMeasure.Init();
+            ItemUnitOfMeasure."Item No." := Item."No.";
+            ItemUnitOfMeasure.Code := Item."Base Unit of Measure";
+            ItemUnitOfMeasure."Qty. per Unit of Measure" := 1;
+            ItemUnitOfMeasure.Insert();
+        end;
+        ItemUnitOfMeasure.Cubage := Item."Unit Volume";
+        ItemUnitOfMeasure.Height := Altura;
+        ItemUnitOfMeasure.Weight := Ancho;
+        ItemUnitOfMeasure.Length := Longitud;
+        ItemUnitOfMeasure.Modify();
+    end;
+
+
+    procedure CreateTableFromtxt()
+    var
+        Customer: record Customer;
+        NVInStream: InStream;
+        FileName: text;
+        FileContent: Text;
+        Window: Dialog;
+        linea: Integer;
+        LenMax: list of [integer];
+        Dialogtitle: label 'Cargar Fichero';
+    begin
+
+        if not UploadIntoStream(Dialogtitle, '', 'Todos (*.*)|*.*', FileName, NVInStream) then
+            exit;
+
+        if (FileName = '') then
+            exit;
+        Window.Open('Linea: #1###############');
+
+        while not NVInStream.EOS do begin
+            NVInStream.ReadText(FileContent);
+            linea += 1;
+            Window.Update(1, CopyStr(FileContent, 1, 10));
+            LenFieldsClientes(LenMax, FileContent);
+        end;
+        Window.Close();
+        CreateTableClientes(LenMax, FileContent);
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
+
+    local procedure LenFieldsClientes(LenMax: list of [integer]; FileContent: Text)
+    var
+        FieldValue: text;
+        PosTab: Integer;
+        tab: char;
+        Count: Integer;
+        lblCreate: Label 'CREATE TABLE CLIENTES (%2)';
+        lblField: Label '%1 varchar(%2)';
+    begin
+        tab := 9;
+        repeat
+            Count += 1;
+            PosTab := StrPos(FileContent, tab);
+            FieldValue := CopyStr(FileContent, 1, PosTab);
+            // miramos el largo y si existe
+
+
+            FileContent := CopyStr(FileContent, PosTab + 1);
+        until PosTab = 0;
+    end;
+
+    local procedure CreateTableClientes(LenMax: list of [integer]; FileContent: Text) Field: text
+    var
+        PosTab: Integer;
+        tab: char;
+        lblCreate: Label 'CREATE TABLE CLIENTES (%2)';
+        lblField: Label '%1 varchar(%2)';
+    begin
+        tab := 9;
+        PosTab := StrPos(FileContent, tab);
+        while PosTab > 0 do begin
+
+
+            FileContent := CopyStr(FileContent, PosTab + 1);
+            PosTab := StrPos(FileContent, tab);
+        end;
+    end;
 }

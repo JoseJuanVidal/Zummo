@@ -83,10 +83,10 @@ tableextension 50182 "STH StandardCostWorksheet" extends "Standard Cost Workshee
 
         // primero buscamos si existe linea de compra del proveedor de ficha
         PurchaseLine.Reset();
+        PurchaseLine.SetRange("Document Type", PurchaseLine."Document Type"::Order);
         PurchaseLine.SetRange("Buy-from Vendor No.", Item."Vendor No.");
         PurchaseLine.SetRange(Type, PurchaseLine.Type::Item);
         PurchaseLine.SetRange("No.", Rec."No.");
-        PurchaseLine.SetFilter(Quantity, '>0');
         if PurchaseLine.FindLast() then begin
             if PurchaseLine.Quantity > 0 then
                 Rec.LastPurchaseUnitCost := round(PurchaseLine."Line Amount" / PurchaseLine.Quantity, 0.00001);
