@@ -1234,8 +1234,9 @@ codeunit 50101 "Eventos_btc"
         PurchaseLine.SetRange(Type, PurchLine.Type);
         PurchaseLine.SetRange("No.", PurchLine."No.");
         // si que tenemos que revisar el precio por la suma de cantidades y 
-        if GetPuruchaseLineDirectCoste(PurchLine, PurchaseLine, DirectCost) then
-            PurchLine.Validate("Direct Unit Cost");
+        if PurchaseLine.count > 0 then
+            if GetPuruchaseLineDirectCoste(PurchLine, PurchaseLine, DirectCost) then
+                PurchLine.Validate("Direct Unit Cost");
     end;
 
     local procedure GetPuruchaseLineDirectCoste(var PurchaseLine: Record "Purchase Line"; var AllPurchaseLine: Record "Purchase Line"; var DirectCost: Decimal) FindPrice: Boolean
@@ -1243,6 +1244,8 @@ codeunit 50101 "Eventos_btc"
         PurchasePrice: Record "Purchase Price";
         TotalQty: Decimal;
         UnitPrice: Decimal;
+        qtyprice: decimal;
+        dateprice: date;
     begin
         if AllPurchaseLine.FindFirst() then
             repeat
@@ -1258,21 +1261,20 @@ codeunit 50101 "Eventos_btc"
         PurchasePrice.SetFilter("Ending Date", '%1|>=%2', 0D, PurchaseLine."Order Date");
         PurchasePrice.SetRange("Starting Date", 0D, PurchaseLine."Order Date");
         PurchasePrice.SetFilter("Variant Code", '%1|%2', PurchaseLine."Variant Code", '');
+        PurchasePrice.SetFilter("Minimum Quantity", '..%1', TotalQty);
         if PurchasePrice.FindFirst() then
             repeat
-                if PurchasePrice."Minimum Quantity" <= TotalQty then begin
-                    //si el precio es mayor obtenemos este
-                    if UnitPrice = 0 then begin
-                        UnitPrice := PurchasePrice."Direct Unit Cost";
-                        FindPrice := true;
-                    end;
-                    if UnitPrice > PurchasePrice."Direct Unit Cost" then begin
-                        UnitPrice := PurchasePrice."Direct Unit Cost";
-                        FindPrice := true;
-                    end;
-                end;
+                // IF PurchasePrice."Minimum Quantity" <= TotalQty THEN BEGIN
+                //si el precio es mayor obtenemos este
+                IF (dateprice < PurchasePrice."Starting Date") THEN
+                    UnitPrice := 0;
+                IF UnitPrice = 0 THEN BEGIN
+                    UnitPrice := PurchasePrice."Direct Unit Cost";
+                    qtyprice := PurchasePrice."Minimum Quantity";
+                    dateprice := PurchasePrice."Starting Date";
+                    FindPrice := true;
+                END;
             Until PurchasePrice.next() = 0;
-
         if not FindPrice then
             exit;
         // ahora comparamos con el precio y actualizamos los datos en todas las lineas        

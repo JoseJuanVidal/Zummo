@@ -13248,20 +13248,10 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - NamedType DataSourceTok</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3724173479 - Method 157973711 - NamedType 1426404922" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CREATE TABLE CLIENTES (%2)</source>
+        <trans-unit id="Codeunit 3724173479 - Method 2811366912 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CreateTableClientes - NamedType lblCreate</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3724173479 - Method 157973711 - NamedType 3139146508" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1 varchar(%2)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CreateTableClientes - NamedType lblField</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3724173479 - Method 2811366912 - NamedType 2275064652" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Cargar Fichero</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CreateTableFromtxt - NamedType Dialogtitle</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CreateTableFromtxt - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 993012352 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
           <source>SELECT *  FROM [CLIENTS$] WHERE clientes_stg is not null ORDER BY [Cliente]</source>
@@ -13292,16 +13282,6 @@
           <source>Nº Producto #1##########\Registro #2#########</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GeTItems - NamedType lblWindow</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3724173479 - Method 2381791731 - NamedType 1426404922" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CREATE TABLE CLIENTES (%2)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method LenFieldsClientes - NamedType lblCreate</note>
-        </trans-unit>
-        <trans-unit id="Codeunit 3724173479 - Method 2381791731 - NamedType 3139146508" size-unit="char" translate="yes" xml:space="preserve">
-          <source>%1 varchar(%2)</source>
-          <note from="Developer" annotates="general" priority="2"></note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method LenFieldsClientes - NamedType lblField</note>
         </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 989638972 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
           <source>UPDATE [ZUMMOREM].[dbo].[clientes_stg] SET %1 WHERE [Cliente] ='%2'</source>
@@ -34057,6 +34037,11 @@
           <source>Asignar Contrato</source>
           <note from="Developer" annotates="general" priority="2">ESP="Asignar Contrato"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Action AssignContract - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3099940785 - Action 3610084682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 526152577">
+          <source>Lista precios</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista precios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension PurchaseOrderSubform - Action PruchasePrice - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 10447370 - Control 4169173244 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4042331808">
           <source>Normativa Plástico</source>

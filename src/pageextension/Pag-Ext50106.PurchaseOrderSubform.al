@@ -141,6 +141,18 @@ pageextension 50106 "PurchaseOrderSubform" extends "Purchase Order Subform"
                 end;
             }
         }
+        addafter(DocAttach)
+        {
+            action(PruchasePrice)
+            {
+                ApplicationArea = all;
+                Caption = 'Lista precios', comment = 'ESP="Lista precios"';
+                Image = JobPrice;
+                RunObject = page "Purchase Prices";
+                RunPageLink = "Item No." = field("No."), "Vendor No." = field("Buy-from Vendor No.");
+                RunPageMode = View;
+            }
+        }
     }
 
     trigger OnAfterGetCurrRecord()

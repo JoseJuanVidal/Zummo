@@ -264,13 +264,13 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 Promoted = true;
                 PromotedCategory = Report;
                 PromotedIsBig = true;
-                Image = CustomerContact;
+                Image = Excel;
 
                 trigger OnAction()
                 var
                     SEBPRO: Codeunit "SEB PRO Iberia";
                 begin
-                    if Confirm(('Desea Crear productos SEB PRO?')) then
+                    if Confirm(('Desea Crear Clientes SEB PRO?')) then
                         SEBPRO.CreateTableFromtxt();
                 end;
             }

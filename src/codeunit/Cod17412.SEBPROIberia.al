@@ -969,68 +969,140 @@ codeunit 17412 "SEB PRO Iberia"
     procedure CreateTableFromtxt()
     var
         Customer: record Customer;
+        ExcelBuffer: Record "Excel Buffer" temporary;
         NVInStream: InStream;
         FileName: text;
-        FileContent: Text;
+        Sheetname: text;
+        CustomerNoSEB: text;
+        VATCustomerNo: text;
+        Borrado: text;
         Window: Dialog;
+        Rows: Integer;
         linea: Integer;
-        LenMax: list of [integer];
-        Dialogtitle: label 'Cargar Fichero';
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel';
     begin
-
-        if not UploadIntoStream(Dialogtitle, '', 'Todos (*.*)|*.*', FileName, NVInStream) then
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+        ;
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
             exit;
 
-        if (FileName = '') then
-            exit;
-        Window.Open('Linea: #1###############');
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
 
-        while not NVInStream.EOS do begin
-            NVInStream.ReadText(FileContent);
-            linea += 1;
-            Window.Update(1, CopyStr(FileContent, 1, 10));
-            LenFieldsClientes(LenMax, FileContent);
+        ExcelBuffer.SetRange("Column No.", 1);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Customer SEB: #1###############\Cliente: #2###############');
+
+        for linea := 2 to Rows do begin
+            CustomerNoSEB := '';
+            VATCustomerNo := '';
+            Borrado := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 1);  // cliente
+            if ExcelBuffer.FindSet() then
+                CustomerNoSEB := ExcelBuffer."Cell Value as Text";
+            ExcelBuffer.SetRange("Column No.", 40);  // pBor borrado
+            if ExcelBuffer.FindSet() then
+                Borrado := ExcelBuffer."Cell Value as Text";
+            if Borrado = '' then begin
+                ExcelBuffer.SetRange("Column No.", 63);  // N.I.F. comunitario
+                if ExcelBuffer.FindSet() then
+                    VATCustomerNo := ExcelBuffer."Cell Value as Text";
+                window.update(1, CustomerNoSEB);
+                if CustomerNoSEB <> '' then begin
+                    if CheckCustomerSEBExist(CustomerNoSEB, Customer) then
+                        UpdateCustomer := true
+                    else if CheckCustomerVatExist(CustomerNoSEB, VATCustomerNo) then
+                        UpdateCustomer := false
+                    else begin
+                        Customer.Init();
+                        Customer."No." := '';
+                        // aplicar plantilla
+                        UpdateCustomerFromTemplate(Customer);
+
+                        window.update(2, Customer."No.");
+                        UpdateCustomer := true
+                        //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
+                        // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
+                    end;
+                    if UpdateCustomer then begin
+                        GetFieldsCustomerExcel(ExcelBuffer, Customer);
+
+                        UpdateCustomerAuxiliares(Customer);
+
+                        Customer.Modify();
+                    end;
+                end;
+            end;
         end;
         Window.Close();
-        CreateTableClientes(LenMax, FileContent);
         Message('File %1 uploaded successfully. Content: %2', FileName, linea);
     end;
 
-    local procedure LenFieldsClientes(LenMax: list of [integer]; FileContent: Text)
+    local procedure GetFieldsCustomerExcel(var ExcelBuffer: Record "Excel Buffer" temporary; var Customer: Record Customer)
     var
-        FieldValue: text;
-        PosTab: Integer;
-        tab: char;
-        Count: Integer;
-        lblCreate: Label 'CREATE TABLE CLIENTES (%2)';
-        lblField: Label '%1 varchar(%2)';
+        DatoExcel: text;
+        DatoFecha: date;
     begin
-        tab := 9;
-        repeat
-            Count += 1;
-            PosTab := StrPos(FileContent, tab);
-            FieldValue := CopyStr(FileContent, 1, PosTab);
-            // miramos el largo y si existe
-
-
-            FileContent := CopyStr(FileContent, PosTab + 1);
-        until PosTab = 0;
-    end;
-
-    local procedure CreateTableClientes(LenMax: list of [integer]; FileContent: Text) Field: text
-    var
-        PosTab: Integer;
-        tab: char;
-        lblCreate: Label 'CREATE TABLE CLIENTES (%2)';
-        lblField: Label '%1 varchar(%2)';
-    begin
-        tab := 9;
-        PosTab := StrPos(FileContent, tab);
-        while PosTab > 0 do begin
-
-
-            FileContent := CopyStr(FileContent, PosTab + 1);
-            PosTab := StrPos(FileContent, tab);
+        ExcelBuffer.SetRange("Column No.", 1);  // cliente
+        if ExcelBuffer.FindSet() then
+            Customer."Codigo Anterior" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 2);  // PS
+        if ExcelBuffer.FindSet() then
+            Customer."Country/Region Code" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 3);  // Nombre 1
+        if ExcelBuffer.FindSet() then
+            Customer.validate(Name, ExcelBuffer."Cell Value as Text");
+        ExcelBuffer.SetRange("Column No.", 4);  // Nombre 2
+        if ExcelBuffer.FindSet() then
+            Customer."Name 2" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 5);  // Poblaci
+        if ExcelBuffer.FindSet() then
+            Customer.City := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 6);  // CP
+        if ExcelBuffer.FindSet() then
+            Customer."Post Code" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 9);  // Calle
+        if ExcelBuffer.FindSet() then
+            Customer.Address := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 10);  // Tel馭ono 1
+        if ExcelBuffer.FindSet() then
+            Customer."Phone No." := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 11);  // Nｺ telefax
+        if ExcelBuffer.FindSet() then
+            Customer."Fax No." := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 27);  // Fecha
+        if ExcelBuffer.FindSet() then
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        DatoExcel := StrSubstNo('%1/%2/%3', copystr(DatoExcel, 1, 2), copystr(DatoExcel, 3, 2), copystr(DatoExcel, 7, 4));        //            19.09.2000
+        if Evaluate(DatoFecha, DatoExcel) then
+            Customer.FechaAlta := DatoFecha;
+        ExcelBuffer.SetRange("Column No.", 51);  // Idioma
+        if ExcelBuffer.FindSet() then
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        case DatoExcel of
+            'F':
+                Customer."Language Code" := 'FRA';
+            'P':
+                Customer."Language Code" := 'PTG';
+            'D', 'N', 'I':
+                Customer."Language Code" := 'ENG';
+            else
+                Customer."Language Code" := 'ESP';
         end;
+        ExcelBuffer.SetRange("Column No.", 63);  // N.I.F. comunitario
+        if ExcelBuffer.FindSet() then
+            Customer."VAT Registration No." := ExcelBuffer."Cell Value as Text";
     end;
 }

@@ -2610,6 +2610,7 @@ table 17462 "ZM PL Items Temporary"
         Rec."Assembly BOM" := tmpItemRequested."Assembly BOM";
         Rec."Net Weight" := tmpItemRequested."Net Weight";
         Rec."Gross Weight" := tmpItemRequested."Gross Weight";
+        Rec."Unit Cost" := tmpItemRequested."Unit Cost";
         Rec.Modify();
     end;
 
