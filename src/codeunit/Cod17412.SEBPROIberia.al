@@ -997,53 +997,58 @@ codeunit 17412 "SEB PRO Iberia"
         Commit();
         ExcelBuffer.Reset();
 
-        ExcelBuffer.SetRange("Column No.", 1);
+        ExcelBuffer.SetRange("Column No.", 2);
 
         If ExcelBuffer.FindLast() then
             Rows := ExcelBuffer."Row No.";
 
         Window.Open('Customer SEB: #1###############\Cliente: #2###############');
 
-        for linea := 2 to Rows do begin
+        for linea := 7 to Rows do begin
             CustomerNoSEB := '';
             VATCustomerNo := '';
             Borrado := '';
             ExcelBuffer.SetRange("Row No.", linea);
-            ExcelBuffer.SetRange("Column No.", 1);  // cliente
+            ExcelBuffer.SetRange("Column No.", 2);  // cliente
             if ExcelBuffer.FindSet() then
                 CustomerNoSEB := ExcelBuffer."Cell Value as Text";
-            ExcelBuffer.SetRange("Column No.", 40);  // pBor borrado
+            // ExcelBuffer.SetRange("Column No.", 40);  // pBor borrado
+            // if ExcelBuffer.FindSet() then
+            //     Borrado := ExcelBuffer."Cell Value as Text";
+            // if Borrado = '' then begin
+            ExcelBuffer.SetRange("Column No.", 20);  // N.I.F. 
             if ExcelBuffer.FindSet() then
-                Borrado := ExcelBuffer."Cell Value as Text";
-            if Borrado = '' then begin
-                ExcelBuffer.SetRange("Column No.", 63);  // N.I.F. comunitario
-                if ExcelBuffer.FindSet() then
-                    VATCustomerNo := ExcelBuffer."Cell Value as Text";
-                window.update(1, CustomerNoSEB);
-                if CustomerNoSEB <> '' then begin
-                    if CheckCustomerSEBExist(CustomerNoSEB, Customer) then
-                        UpdateCustomer := true
-                    else if CheckCustomerVatExist(CustomerNoSEB, VATCustomerNo) then
-                        UpdateCustomer := false
-                    else begin
-                        Customer.Init();
-                        Customer."No." := '';
-                        // aplicar plantilla
-                        UpdateCustomerFromTemplate(Customer);
-
-                        window.update(2, Customer."No.");
-                        UpdateCustomer := true
-                        //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
-                        // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
-                    end;
-                    if UpdateCustomer then begin
-                        GetFieldsCustomerExcel(ExcelBuffer, Customer);
-
-                        UpdateCustomerAuxiliares(Customer);
-
+                VATCustomerNo := ExcelBuffer."Cell Value as Text";
+            window.update(1, CustomerNoSEB);
+            if CustomerNoSEB <> '' then begin
+                if CheckCustomerSEBExist(CustomerNoSEB, Customer) then begin
+                    UpdateCustomer := true;
+                end else if CheckCustomerVatExist(CustomerNoSEB, VATCustomerNo) then begin
+                    UpdateCustomer := false;
+                    if Customer."Codigo Anterior" = '' then begin
+                        Customer."Codigo Anterior" := CustomerNoSEB;
                         Customer.Modify();
                     end;
+                end else begin
+                    Customer.Init();
+                    Customer."No." := '';
+                    // aplicar plantilla
+                    UpdateCustomerFromTemplate(Customer);
+
+                    window.update(2, Customer."No.");
+                    UpdateCustomer := true
+                    //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
+                    // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
                 end;
+                if UpdateCustomer then begin
+                    GetFieldsCustomerExcel(ExcelBuffer, Customer);
+
+                    UpdateCustomerAuxiliares(Customer);
+
+                    Customer.Modify();
+                end;
+                CustomerShipAddress(ExcelBuffer, Customer, CustomerNoSEB);
+                // end;
             end;
         end;
         Window.Close();
@@ -1053,41 +1058,79 @@ codeunit 17412 "SEB PRO Iberia"
     local procedure GetFieldsCustomerExcel(var ExcelBuffer: Record "Excel Buffer" temporary; var Customer: Record Customer)
     var
         DatoExcel: text;
+        DatoExceldesc: text;
         DatoFecha: date;
     begin
-        ExcelBuffer.SetRange("Column No.", 1);  // cliente
+        ExcelBuffer.SetRange("Column No.", 2);  // cliente 1
         if ExcelBuffer.FindSet() then
             Customer."Codigo Anterior" := ExcelBuffer."Cell Value as Text";
         ExcelBuffer.SetRange("Column No.", 2);  // PS
         if ExcelBuffer.FindSet() then
             Customer."Country/Region Code" := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 3);  // Nombre 1
+        ExcelBuffer.SetRange("Column No.", 6);  // Nombre 1
         if ExcelBuffer.FindSet() then
             Customer.validate(Name, ExcelBuffer."Cell Value as Text");
-        ExcelBuffer.SetRange("Column No.", 4);  // Nombre 2
+        ExcelBuffer.SetRange("Column No.", 7);  // Nombre 2
         if ExcelBuffer.FindSet() then
             Customer."Name 2" := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 5);  // Poblaci
+        ExcelBuffer.SetRange("Column No.", 9);  // Poblaci
         if ExcelBuffer.FindSet() then
-            Customer.City := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 6);  // CP
+            Customer.City := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Customer.City));
+        ExcelBuffer.SetRange("Column No.", 10);  // CP
         if ExcelBuffer.FindSet() then
             Customer."Post Code" := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 9);  // Calle
+        ExcelBuffer.SetRange("Column No.", 11);  // Calle
         if ExcelBuffer.FindSet() then
             Customer.Address := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 10);  // Tel馭ono 1
+        ExcelBuffer.SetRange("Column No.", 12);  // Tel馭ono 1
         if ExcelBuffer.FindSet() then
             Customer."Phone No." := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 11);  // Nｺ telefax
+        ExcelBuffer.SetRange("Column No.", 13);  // Nｺ telefax
         if ExcelBuffer.FindSet() then
             Customer."Fax No." := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 27);  // Fecha
+        ExcelBuffer.SetRange("Column No.", 22);  // Telefono 2
+        if ExcelBuffer.FindSet() then
+            Customer."Telex No." := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 24);  // Email
+        if ExcelBuffer.FindSet() then
+            Customer."E-Mail" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 28);  // Responsable-Area Manager PDTE RELACION TABLA AUXILIAR
+        if ExcelBuffer.FindSet() then
+            Customer.AreaManager_btc := ExcelBuffer."Cell Value as Text";
+        DatoExcel := '';
+        ExcelBuffer.SetRange("Column No.", 31);  //  MLA Code
         if ExcelBuffer.FindSet() then
             DatoExcel := ExcelBuffer."Cell Value as Text";
-        DatoExcel := StrSubstNo('%1/%2/%3', copystr(DatoExcel, 1, 2), copystr(DatoExcel, 3, 2), copystr(DatoExcel, 7, 4));        //            19.09.2000
-        if Evaluate(DatoFecha, DatoExcel) then
-            Customer.FechaAlta := DatoFecha;
+        ExcelBuffer.SetRange("Column No.", 32);  // MLA Name - Cliente corporativo
+        if ExcelBuffer.FindSet() then
+            Customer.ClienteCorporativo_btc := AddClienteCorporativo_btc(ExcelBuffer."Cell Value as Text", DatoExcel);
+        DatoExcel := '';
+        ExcelBuffer.SetRange("Column No.", 35);  //  Precio Cliente
+        if ExcelBuffer.FindSet() then
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        DatoExceldesc := '';
+        ExcelBuffer.SetRange("Column No.", 36);  //  Nombre Tarifa
+        if ExcelBuffer.FindSet() then
+            DatoExceldesc := ExcelBuffer."Cell Value as Text";
+        addCustomerGroupPrice(Customer, DatoExcel, DatoExceldesc);
+        ExcelBuffer.SetRange("Column No.", 37);  //  Termino de pago
+        if ExcelBuffer.FindSet() then
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 39);  //  Forma de pago
+        if ExcelBuffer.FindSet() then
+            DatoExceldesc := ExcelBuffer."Cell Value as Text";
+        AddCustomerPayments(Customer, DatoExcel, DatoExceldesc);
+
+        // ExcelBuffer.SetRange("Column No.", 27);  // Fecha
+        // if ExcelBuffer.FindSet() then
+        //     DatoExcel := ExcelBuffer."Cell Value as Text";
+        // DatoExcel := StrSubstNo('%1/%2/%3', copystr(DatoExcel, 1, 2), copystr(DatoExcel, 3, 2), copystr(DatoExcel, 7, 4));        //            19.09.2000
+        // if Evaluate(DatoFecha, DatoExcel) then
+        //     Customer.FechaAlta := DatoFecha;        
+        ExcelBuffer.SetRange("Column No.", 20);  // N.I.F. comunitario
+        if ExcelBuffer.FindSet() then
+            Customer."VAT Registration No." := ExcelBuffer."Cell Value as Text";
+
         ExcelBuffer.SetRange("Column No.", 51);  // Idioma
         if ExcelBuffer.FindSet() then
             DatoExcel := ExcelBuffer."Cell Value as Text";
@@ -1101,8 +1144,283 @@ codeunit 17412 "SEB PRO Iberia"
             else
                 Customer."Language Code" := 'ESP';
         end;
-        ExcelBuffer.SetRange("Column No.", 63);  // N.I.F. comunitario
-        if ExcelBuffer.FindSet() then
-            Customer."VAT Registration No." := ExcelBuffer."Cell Value as Text";
+    end;
+
+    local procedure AddClienteCorporativo_btc(Value: text; Code: Text): Text
+    var
+        TextoAuxiliares: record TextosAuxiliares;
+        ValueCode: code[20];
+    begin
+        ValueCode := CopyStr(Value, 1, MaxStrLen(TextoAuxiliares.NumReg));
+        TextoAuxiliares.SetRange(TipoRegistro, TextoAuxiliares.TipoRegistro::Tabla);
+        TextoAuxiliares.SetRange(TipoTabla, TextoAuxiliares.TipoTabla::"Cliente Corporativo");
+        TextoAuxiliares.setrange("Sales Manager", Code);
+        if not TextoAuxiliares.FindFirst() then begin
+            TextoAuxiliares.Init();
+            TextoAuxiliares.TipoRegistro := TextoAuxiliares.TipoRegistro::Tabla;
+            TextoAuxiliares.TipoTabla := TextoAuxiliares.TipoTabla::"Cliente Corporativo";
+            TextoAuxiliares.NumReg := ValueCode;
+            TextoAuxiliares.Descripcion := Value;
+            TextoAuxiliares.Description := Code;
+            TextoAuxiliares."Sales Manager" := Code;
+            TextoAuxiliares.Insert();
+        end;
+        exit(TextoAuxiliares.NumReg);
+    end;
+
+    local procedure addCustomerGroupPrice(var Customer: Record Customer; DatoExcel: text; DatoExceldesc: text);
+    var
+        CustPriceGroup: Record "Customer Price Group";
+        CustDiscountGroup: Record "Customer Discount Group";
+        Code: code[20];
+    begin
+        Code := copystr(DatoExceldesc, 1, MaxStrLen(CustPriceGroup.Code));
+        CustPriceGroup.Reset();
+        if not CustPriceGroup.Get(Code) then begin
+            CustPriceGroup.Init();
+            CustPriceGroup.Code := code;
+            CustPriceGroup.Description := DatoExceldesc;
+            CustPriceGroup."Allow Invoice Disc." := true;
+            CustPriceGroup."Allow Line Disc." := true;
+            CustPriceGroup.Insert();
+        end else if CustPriceGroup.Description <> DatoExceldesc then begin
+            if not CustPriceGroup.Get(DatoExcel) then begin
+                CustPriceGroup.Init();
+                CustPriceGroup.Code := DatoExcel;
+                CustPriceGroup.Description := DatoExceldesc;
+                CustPriceGroup."Allow Invoice Disc." := true;
+                CustPriceGroup."Allow Line Disc." := true;
+                CustPriceGroup.Insert();
+            end;
+        end;
+        Customer."Customer Price Group" := CustPriceGroup.Code;
+        Code := copystr(DatoExceldesc, 1, MaxStrLen(CustDiscountGroup.Code));
+        CustDiscountGroup.Reset();
+        if not CustDiscountGroup.Get(Code) then begin
+            CustDiscountGroup.Init();
+            CustDiscountGroup.Code := Code;
+            CustDiscountGroup.Description := DatoExceldesc;
+            CustDiscountGroup.Insert();
+        end else if CustDiscountGroup.Description <> DatoExceldesc then begin
+            if not CustDiscountGroup.Get(DatoExcel) then begin
+                CustDiscountGroup.Init();
+                CustDiscountGroup.Code := DatoExcel;
+                CustDiscountGroup.Description := DatoExceldesc;
+                CustDiscountGroup.Insert();
+            end;
+        end;
+        Customer."Customer Disc. Group" := CustDiscountGroup.Code;
+    end;
+
+    local procedure AddCustomerPayments(var Customer: record Customer; Termino: Text; Metodo: text)
+    var
+        myInt: Integer;
+    begin
+        case Metodo of
+            'B', 'IT', 'T':
+                Customer."Payment Method Code" := 'TRANSF';
+            'I':
+                Customer."Payment Method Code" := 'GIRO';
+            'S':
+                Customer."Payment Method Code" := 'PAGARE';
+            else
+                Customer."Payment Method Code" := 'CONTADO';
+        end;
+        case Termino of
+            '01':    //	Pagadero inmediatamente
+                Customer."Payment Terms Code" := 'CONTADO';
+            '02':    //	Contra reembolso
+                begin
+                    Customer."Payment Terms Code" := 'CONTADO';
+                    Customer."Payment Method Code" := 'REEMBOLSO;'
+                end;
+            '03':    //	Pago Anticipado
+                Customer."Payment Terms Code" := '';
+            '05':    //	dentro de los 45 días sin DPP
+                Customer."Payment Terms Code" := '45 DÍAS';
+            '10':    //	dentro de los 30 días sin DPP
+                Customer."Payment Terms Code" := '30 DÍAS';
+            '11':    //	para facturación hasta 05 del mes al 5 del mes siguiente sin DPP Fecha base a 5. del mes
+                Customer."Payment Terms Code" := '';
+            '12':    //	para facturación hasta 10 del mes al 10 del mes siguiente sin DPP Fecha base a 10. del mes
+                Customer."Payment Terms Code" := '';
+            '13':    //	para facturación hasta 25 del mes al 25 del mes siguiente sin DPP Fecha base a 25. del mes
+                Customer."Payment Terms Code" := '';
+            '14':    //	para facturación hasta 28 del mes al 28 del mes siguiente sin DPP Fecha base a 28. del mes
+                Customer."Payment Terms Code" := '';
+            '15':    //	dentro de los 30 días sin DPP Fecha base a 30. del mes
+                Customer."Payment Terms Code" := '';
+            '16':    //	para facturación hasta 15 del mes al 15 del mes siguiente sin DPP Fecha base a 15. del mes
+                Customer."Payment Terms Code" := '';
+            '17':    //	para facturación hasta 20 del mes al 20 del mes siguiente sin DPP Fecha base a 20. del mes
+                Customer."Payment Terms Code" := '';
+            '20':    //	dentro de los 60 días sin DPP
+                Customer."Payment Terms Code" := '60 DÍAS';
+            '21':    //	para facturación hasta 15 del mes hasta el 15. en el mes 2 sin DPP Fecha base a 15. del mes
+                Customer."Payment Terms Code" := '';
+            '22':    //	para facturación hasta 20 del mes hasta el 20. en el mes 2 sin DPP Fecha base a 20. del mes
+                Customer."Payment Terms Code" := '';
+            '23':    //	para facturación hasta 25 del mes hasta el 25. en el mes 2 sin DPP Fecha base a 25. del mes
+                Customer."Payment Terms Code" := '';
+            '24':    //	hasta el 30. en el mes 2 sin DPP Fecha base a 30. del mes
+                Customer."Payment Terms Code" := '';
+            '25':    //	para facturación hasta 10 del mes hasta el 10. en el mes 2 sin DPP Fecha base a 10. del mes
+                Customer."Payment Terms Code" := '';
+            '30':    //	dentro de los 90 días sin DPP
+                Customer."Payment Terms Code" := '90 DIAS';
+            '31':    //	para facturación hasta 05 del mes hasta el 5. en el mes 3 sin DPP Fecha base a 5. del mes
+                Customer."Payment Terms Code" := '';
+            '32':    //	para facturación hasta 10 del mes
+                Customer."Payment Terms Code" := '';
+            '33':    //	para facturación hasta 15 del mes hasta el 15. en el mes 3 sin DPP Fecha base a 15. del mes
+                Customer."Payment Terms Code" := '';
+            '36':    //	para facturación hasta 20 del mes hasta el 20. en el mes 3 sin DPP Fecha base a 20. del mes
+                Customer."Payment Terms Code" := '';
+            '37':    //	para facturación hasta 25 del mes hasta el 25. en el mes 3 sin DPP Fecha base a 25. del mes
+                Customer."Payment Terms Code" := '';
+            '39':    //	dentro de los 90 días sin DPP
+                Customer."Payment Terms Code" := '90 DIAS';
+            '40':    //	pagable en 2 importes parciales
+                Customer."Payment Terms Code" := '30-60';
+            '50':    //	pagable en 2 importes parciales
+                Customer."Payment Terms Code" := '30-60';
+            '51':    //	pagable en 2 importes parciales
+                Customer."Payment Terms Code" := '30-60';
+            '53':    //	pagable en 2 importes parciales
+                Customer."Payment Terms Code" := '30-60';
+            '60':    //	pagable en 3 importes parciales
+                Customer."Payment Terms Code" := '30-60-90';
+            '70':    //	pagable en 3 importes parciales
+                Customer."Payment Terms Code" := '30-60-90';
+            '90':    //	pagable en 4 importes parciales
+                Customer."Payment Terms Code" := '30-60-90';
+        end;
+    end;
+
+    local procedure CustomerShipAddress(var ExcelBuffer: Record "Excel Buffer" temporary; Customer: Record Customer; CustSEBNo: code[20])
+    var
+        tmpCustomer: Record Customer temporary;
+        ShiptoAddress: record "Ship-to Address";
+    begin
+        tmpCustomer := Customer;
+        if Customer."Codigo Anterior" <> CustSEBNo then
+            GetFieldsCustomerExcel(ExcelBuffer, tmpCustomer);
+        ShiptoAddress.Reset();
+        ShiptoAddress.SetRange("Customer No.", Customer."No.");
+        ShiptoAddress.SetRange("Codigo Anterior", CustSEBNo);
+        if not ShiptoAddress.FindFirst() then begin
+            ShiptoAddress.Init();
+            ShiptoAddress."Customer No." := tmpCustomer."No.";
+            ShiptoAddress.Code := CustSEBNo;
+            ShiptoAddress.Name := tmpCustomer.Name;
+            ShiptoAddress."Name 2" := tmpCustomer."Name 2";
+            ShiptoAddress.Address := tmpCustomer.Address;
+            ShiptoAddress."Address 2" := tmpCustomer."Address 2";
+            ShiptoAddress.City := tmpCustomer.City;
+            ShiptoAddress."Post Code" := tmpCustomer."Post Code";
+            ShiptoAddress."Phone No." := tmpCustomer."Phone No.";
+            ShiptoAddress."Telex No." := tmpCustomer."Telex No.";
+            ShiptoAddress."Fax No." := tmpCustomer."Fax No.";
+            ShiptoAddress."Country/Region Code" := tmpCustomer."Country/Region Code";
+            ShiptoAddress."E-Mail" := tmpCustomer."E-Mail";
+            ShiptoAddress."Codigo Anterior" := CustSEBNo;
+            ShiptoAddress.Insert();
+            exit;
+        end;
+
+    end;
+
+    // =============     PRODUCTOS SEB          ====================
+    // ==  
+    // ==  Importar excel de productos 
+    // ==  
+    // ======================================================================================================
+
+    procedure UploadSEBItemExcel()
+    var
+        Item: record Item;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        ItemNoSEB: text;
+        VATCustomerNo: text;
+        Borrado: text;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+        ;
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Producto SEB: #1###############');
+
+        for linea := 7 to Rows do begin
+            /*    CustomerNoSEB := '';
+                VATCustomerNo := '';
+                Borrado := '';
+                ExcelBuffer.SetRange("Row No.", linea);
+                ExcelBuffer.SetRange("Column No.", 2);  // cliente
+                if ExcelBuffer.FindSet() then
+                    CustomerNoSEB := ExcelBuffer."Cell Value as Text";
+                // ExcelBuffer.SetRange("Column No.", 40);  // pBor borrado
+                // if ExcelBuffer.FindSet() then
+                //     Borrado := ExcelBuffer."Cell Value as Text";
+                // if Borrado = '' then begin
+                ExcelBuffer.SetRange("Column No.", 20);  // N.I.F. 
+                if ExcelBuffer.FindSet() then
+                    VATCustomerNo := ExcelBuffer."Cell Value as Text";
+                window.update(1, CustomerNoSEB);
+                if CustomerNoSEB <> '' then begin
+                    if CheckCustomerSEBExist(CustomerNoSEB, Customer) then begin
+                        UpdateCustomer := true;
+                    end else if CheckCustomerVatExist(CustomerNoSEB, VATCustomerNo) then begin
+                        UpdateCustomer := false;
+                        if Customer."Codigo Anterior" = '' then begin
+                            Customer."Codigo Anterior" := CustomerNoSEB;
+                            Customer.Modify();
+                        end;
+                    end else begin
+                        Customer.Init();
+                        Customer."No." := '';
+                        // aplicar plantilla
+                        UpdateCustomerFromTemplate(Customer);
+
+                        UpdateCustomer := true
+                        //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
+                        // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
+                    end;
+                    if UpdateCustomer then begin
+                        GetFieldsCustomerExcel(ExcelBuffer, Customer);
+
+                        UpdateCustomerAuxiliares(Customer);
+
+                        Customer.Modify();
+                    end;
+                    CustomerShipAddress(ExcelBuffer, Customer, CustomerNoSEB);
+                    // end;
+        end;*/
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
     end;
 }

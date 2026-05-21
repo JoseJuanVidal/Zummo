@@ -83,6 +83,16 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         exit(true);
     end;
 
+    procedure CheckUserPriceListOwner(): Boolean
+    var
+        UserAUTSetup: Record "User AUT Setup";
+    begin
+        if UserAUTSetup.get(UserId) then
+            exit(UserAUTSetup."Restringir Compras precios" in [UserAUTSetup."Restringir Compras precios"::" "])
+        else
+            exit(true);
+    end;
+
     procedure CheckUserItemPurchasePriceApproval(): Boolean
     var
         SetupItemregistration: Record "ZM PL Setup Item registration";
@@ -272,23 +282,18 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         filePathPurchaseHeader: text;
         lblSinDestino: Label 'There are no users configured for approval %1.', comment = 'ESP="No existen usuarios configurados para aprobación %1."';
     begin
-        // EnviaEmail(txtAsunto, txtCuerpo, recEmployee."Company E-Mail", recPurchaseHeader, recTemp."Item No.");
-        ItemSetupApproval.Reset();
-        ItemSetupApproval.SetRange("Table No.", Database::"Purchase Price");
-        ItemSetupApproval.SetRange("Field No.", 0);  // permisos a la tabla para aprobación
-        ItemSetupApproval.SetFilter(Rol, '%1|%2', ItemSetupApproval.Rol::Owner, ItemSetupApproval.Rol::Both);
-        if ItemSetupApproval.FindFirst() then
+        ItemSetupDepartment.SetRange("Notification Purchase Prices", true);
+        if ItemSetupDepartment.FindFirst() then
             repeat
-                if ItemSetupDepartment.Get(ItemSetupApproval.Department) then begin
-                    AddEmail(Destino, ItemSetupDepartment.Email);
-                    Employee.Reset();
-                    Employee.SetRange("Approval User Id", ItemSetupDepartment."User Id");
-                    if Employee.FindFirst() then
-                        repeat
-                            AddEmail(Destino, Employee."Company E-Mail");
-                        Until Employee.next() = 0;
-                end;
-            Until ItemSetupApproval.next() = 0;
+                AddEmail(Destino, ItemSetupDepartment.Email);
+                Employee.Reset();
+                Employee.SetRange("Approval User Id", ItemSetupDepartment."User Id");
+                if Employee.FindFirst() then
+                    repeat
+                        AddEmail(Destino, Employee."Company E-Mail");
+                    Until Employee.next() = 0;
+
+            Until ItemSetupDepartment.next() = 0;
 
         if Destino = '' then
             Error(lblSinDestino, Database::"Purchase Price");
@@ -312,6 +317,8 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         Item: Record Item;
         Vendor: Record Vendor;
         Color: text;
+        lblHeader: Label '<td style="color:white;font-size:15px;font-weight:700;font-style:normal;text-decoration:none;font-family:Calibri, sans-serif;text-align:center;vertical-align:bottom;border:none;border-top:.5pt solid windowtext;border-right:.5pt solid windowtext;border-bottom:none;border-left:.5pt solid windowtext;background:gray;height:14.4pt;width:98pt;">%1</td>';
+        lblLine: Label '<td style="color:black;font-size:15px;font-weight:700;font-style:normal;text-decoration:none;font-family:Aptos, sans-serif;text-align:center;vertical-align:bottom;border:.5pt solid windowtext;height:15.6pt;">%1</td>';
     begin
         Companyinfo.Get();
         ItemPurchasePrices.FindFirst();
@@ -319,29 +326,30 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         Body := '<p>&nbsp;</p>';
         Body += '<h1 style="color: #5e9ca0;">' + Companyinfo.Name + '</h1>';
         Body += '<h2 style="color: #2e6c80;">Cambios de precios Producto</h2>';
-        Body += '<p><strong>Cód. producto:</strong> ' + ItemPurchasePrices."Item No." + '</p>';
-        Body += '<p><strong>Descripción</strong> ' + Item.Description + '</p>';
         Body += '<p><strong>Fecha:</strong> ' + format(WorkDate()) + '</p>';
         // Body += '<p><strong>Solicitante</strong>:&nbsp; &nbsp; &nbsp; ' + Solitante;
+        Body += '<p>&nbsp;</p>';
         Body += '<h2 style="color: #2e6c80;">L&iacute;neas:</h2>';
-        Body += '<table class="editorDemoTable" style="width: 980px; height: 18px;">';
+        Body += '<table style="border: none;border-collapse: collapse;width:1026pt;">';
         Body += '<thead>';
-        Body += '<tr style="height: 15px;">';
-        Body += '<td style="width: 115.141px; height: 18px;"><strong>Proveedor</strong></td>';
-        Body += '<td style="width: 277.078px; height: 18px;"><strong>Nombre</strong></td>';
-        Body += '<td style="width: 115.078px; height: 18px;"><strong>Código</strong></td>';
-        Body += '<td style="width: 277.078px; height: 18px;"><strong>Descripción</strong></td>';
-        Body += '<td style="width: 80.75px; height: 18px;text-align: right;"><strong>C&oacute;d. Divisa</strong></td>';
-        Body += '<td style="width: 57.25px; height: 18px;text-align: right;"><strong>Fecha Inicial</strong></td>';
-        Body += '<td style="width: 57.25px; height: 18px;text-align: right;"><strong>Cantidad M&iacute;nima</strong></td>';
-        Body += '<td style="width: 43.9688px; height: 18pxtext-align: right;;"><strong>Coste Unit. Directo</strong>.&nbsp;</td>';
-        Body += '<td style="width: 43.9688px; height: 18px;text-align: right;"><strong>Fecha Final</strong>.&nbsp;</td>';
-        Body += '<td style="width: 64.8125px; height: 18px;text-align: right;"><strong>C&oacute;d. Unidad Medida</strong></td>';
-        Body += '<td style="width: 64.8125px; height: 18px;text-align: right;"><strong>Acci&oacute;n</strong></td>';
+        Body += '<tr>';
+        Body += StrSubstNo(lblHeader, 'Referencia');
+        Body += StrSubstNo(lblHeader, 'Descripción');
+        Body += StrSubstNo(lblHeader, 'Nº Proveedor');
+        Body += StrSubstNo(lblHeader, 'Nombre');
+        Body += StrSubstNo(lblHeader, 'Plazo');
+        Body += StrSubstNo(lblHeader, 'Cod. prod. proveedor');
+        Body += StrSubstNo(lblHeader, 'Cdad. pedido min.');
+        Body += StrSubstNo(lblHeader, 'Multiplo pedido');
+        Body += StrSubstNo(lblHeader, 'Fecha inicio');
+        Body += StrSubstNo(lblHeader, 'Lote');
+        Body += StrSubstNo(lblHeader, 'Precio');
+        Body += StrSubstNo(lblHeader, ItemPurchasePrices.FieldCaption("Unit of Measure Code"));
+        Body += StrSubstNo(lblHeader, ItemPurchasePrices.FieldCaption("Action Approval"));
         Body += '</tr>';
         Body += '</thead>';
         Body += '<tbody>';
-
+        ItemPurchasePrices.SetCurrentKey("Item No.");
         if ItemPurchasePrices.findset() then
             repeat
                 // if PurchLinesRequest."Line Amount" = PurchLinesRequest."New Line Amount" then
@@ -350,18 +358,21 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
                 //     Color := '#ff0000';
                 Vendor.Get(ItemPurchasePrices."Vendor No.");
                 ItemPurchasePrices.CalcFields("Item Name");
-                Body += '<tr style="height: 20px;">';
-                Body += '<td style="color:' + Color + ';width: 115.141px; height: 10px;"><p>' + ItemPurchasePrices."Vendor No." + '</p></td>';
-                Body += '<td style="color:' + Color + ';width: 277.078px; height: 10px;">' + Vendor.Name + '</td>';
-                Body += '<td style="color:' + Color + ';width: 115.078px; height: 10px;">' + ItemPurchasePrices."Item No." + '</td>';
-                Body += '<td style="color:' + Color + ';width: 277.078px; height: 10px;">' + ItemPurchasePrices."Item Name" + '</td>';
-                Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Currency Code") + '</td>';
-                Body += '<td style="width: 57.25px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Starting Date") + '</td>';
-                Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Minimum Quantity") + '</td>';
-                Body += '<td style="width: 43.9688px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Direct Unit Cost") + ' &euro;</td>';
-                Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Ending Date") + '</td>';
-                Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + ItemPurchasePrices."Unit of Measure Code" + '</td>';
-                Body += '<td style="width: 64.8125px; height: 10px;text-align: right;">' + format(ItemPurchasePrices."Action Approval") + '</td>';
+                Body += '<tr>';
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Item No.");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Item Name");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Vendor No.");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Vendor Name");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Lead Time Calculation");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Vendor Item No.");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Minimum Order Quantity");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Order Multiple");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Starting Date");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Minimum Quantity");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Direct Unit Cost");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Unit of Measure Code");
+                Body += StrSubstNo(lblLine, ItemPurchasePrices."Action Approval");
+                Body += '</tr>';
             Until ItemPurchasePrices.next() = 0;
         Body += '</tbody>';
         Body += '</table>';

@@ -25,6 +25,10 @@ page 17411 "ZM PL Item Setup Depart. List"
                 {
                     ApplicationArea = all;
                 }
+                field("Notification Purchase Prices"; "Notification Purchase Prices")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

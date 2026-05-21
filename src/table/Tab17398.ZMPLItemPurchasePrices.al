@@ -13,12 +13,22 @@ table 17398 "ZM PL Item Purchase Prices"
             Caption = 'Item No.', comment = 'ESP="Nº producto"';
             TableRelation = "ZM PL Items temporary";
             ValidateTableRelation = false;
+
+            trigger OnValidate()
+            begin
+                OnValidate_ItemNo();
+            end;
         }
         field(2; "Vendor No."; code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'Vendor No.', comment = 'ESP="Nº proveedor"';
             TableRelation = Vendor;
+
+            trigger OnValidate()
+            begin
+                OnValidate_VendorNo();
+            end;
         }
         field(3; "Currency Code"; code[20])
         {
@@ -91,6 +101,37 @@ table 17398 "ZM PL Item Purchase Prices"
         {
             DataClassification = CustomerContent;
             Caption = 'Date/Time Creation', comment = 'ESP="Fecha/Hora Creación"';
+        }
+        field(50040; "Vendor Item No."; text[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Item No.', comment = 'ESP="Cód. producto proveedor"';
+        }
+        field(50050; "Lead Time Calculation"; DateFormula)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Lead Time Calculation', comment = 'ESP="Plazo entrega (días)"';
+        }
+        field(50060; "Minimum Order Quantity"; Decimal)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Minimum Order Quantity', comment = 'ESP="Cantidad mínima pedido"';
+        }
+        field(50070; "Order Multiple"; DateTime)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Order Multiple', comment = 'ESP="Múltiplos de pedido"';
+        }
+        field(50080; "Vendor Name"; text[100])
+        {
+            Caption = 'Vendor Name', comment = 'ESP="Nombre proveedor"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Vendor.Name where("No." = field("Vendor No.")));
+            Editable = false;
+        }
+        field(50090; Selected; Boolean)
+        {
+            Caption = 'Selected', comment = 'ESP="Seleccion"';
         }
     }
 
@@ -215,29 +256,36 @@ table 17398 "ZM PL Item Purchase Prices"
             Rec."Action Approval" := Rec."Action Approval"::Modify;
     end;
 
-    procedure ImportExcel()
+    procedure ImportExcel(var tempPurchasePrice: Record "ZM PL Item Purchase Prices")
     var
         Item: Record Item;
         Vendor: Record Vendor;
-        tempPurchasePrice: Record "ZM PL Item Purchase Prices";
+
         ExcelBuffer: Record "Excel Buffer" temporary;
         TempNameValueBufferOut: Record "Name/Value Buffer" temporary;
         FileManagement: Codeunit "File Management";
         Text000: label 'Cargar Fichero de Excel';
         FileName: text;
         Sheetname: text;
+        ItemNo: text;
+        VendorNo: text;
+        Plazo: Text;
+        PRODUCTOPROVEEDOR: Text;
+        CANTIDADMINPEDIDO: Decimal;
+        PEDIDOMULTIPLO: Decimal;
         txtFechaFra: text;
         Fecha: date;
         Cantidad: Decimal;
         Lote: Decimal;
         Precio: Decimal;
         i: Integer;
+        ColLote: Integer;
         Rows: Integer;
         NVInStream: InStream;
     begin
         ExcelBuffer.DeleteAll();
         if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
-            exit;
+            Error(StrSubstNo('No se ha podido abrir %1', FileName));
         // if ExcelBuffer.GetSheetsNameListFromStream(NVInStream, TempNameValueBufferOut) then
         // if TempNameValueBufferOut.Count > 1 then begin
         Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream);
@@ -251,81 +299,105 @@ table 17398 "ZM PL Item Purchase Prices"
 
         for i := 2 to Rows do begin
             ExcelBuffer.SetRange("Row No.", i);
-            ExcelBuffer.SetRange("Column No.", 2); // Nº proveedor
-            if ExcelBuffer.FindSet() then begin
-                if Vendor.Get(ExcelBuffer."Cell Value as Text") then begin
-                    ExcelBuffer.SetRange("Column No.", 3); // Cod. producto
+            ExcelBuffer.SetRange("Column No.", 1); // Cod. producto
+            if ExcelBuffer.FindSet() then
+                ItemNo := ExcelBuffer."Cell Value as Text";
+            if ItemNo <> '' then begin
+                Item.Get(ItemNo);
+                ExcelBuffer.SetRange("Column No.", 3); // Nº proveedor
+                if ExcelBuffer.FindSet() then
+                    VendorNo := ExcelBuffer."Cell Value as Text";
+                Vendor.Get(VendorNo);
+                // ahora buscamos los datos de ficha principal
+                ExcelBuffer.SetRange("Column No.", 4); // Plazo
+                if ExcelBuffer.FindSet() then
+                    Plazo := ExcelBuffer."Cell Value as Text";
+
+                ExcelBuffer.SetRange("Column No.", 5); // Cod proveedor
+                if ExcelBuffer.FindSet() then
+                    PRODUCTOPROVEEDOR := ExcelBuffer."Cell Value as Text";
+                ExcelBuffer.SetRange("Column No.", 6); // Cantidad minima pedido
+                if ExcelBuffer.FindSet() then
+                    if not Evaluate(CANTIDADMINPEDIDO, ExcelBuffer."Cell Value as Text") then
+                        CANTIDADMINPEDIDO := 0;
+                ExcelBuffer.SetRange("Column No.", 7); // pedido multiplo
+                if ExcelBuffer.FindSet() then
+                    if not Evaluate(PEDIDOMULTIPLO, ExcelBuffer."Cell Value as Text") then
+                        PEDIDOMULTIPLO := 0;
+
+                // bucle de posible lotes
+
+                ColLote := 8;
+                Lote := 0;
+                Precio := 0;
+                ExcelBuffer.SetRange("Column No.", ColLote); // Lote
+                if ExcelBuffer.FindSet() then
+                    if not Evaluate(Lote, ExcelBuffer."Cell Value as Text") then
+                        Lote := 0;
+                ExcelBuffer.SetRange("Column No.", ColLote + 1); // precio
+                if ExcelBuffer.FindSet() then
+                    if not Evaluate(Precio, ExcelBuffer."Cell Value as Text") then
+                        Precio := 0;
+                repeat
+                    if (lote > 0) and (Precio > 0) then begin
+                        tempPurchasePrice.Init();
+                        tempPurchasePrice."Record ID" := CreateGuid();
+                        tempPurchasePrice."Vendor No." := Vendor."No.";
+                        tempPurchasePrice.Validate("Item No.", Item."No.");
+                        tempPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
+                        tempPurchasePrice."Starting Date" := WorkDate();
+                        tempPurchasePrice."Minimum Quantity" := Lote;
+                        tempPurchasePrice."Direct Unit Cost" := Precio;
+                        tempPurchasePrice."Unit of Measure Code" := Item."Base Unit of Measure";
+                        tempPurchasePrice."Action Approval" := tempPurchasePrice."Action Approval"::New;
+                        tempPurchasePrice."Status Approval" := tempPurchasePrice."Status Approval"::Pending;
+                        tempPurchasePrice.Insert();
+                    end;
+                    ColLote += 2;
+                    Lote := 0;
+                    Precio := 0;
+                    ExcelBuffer.SetRange("Column No.", ColLote); // Lote
                     if ExcelBuffer.FindSet() then
-                        if Item.Get(ExcelBuffer."Cell Value as Text") then begin
-                            ExcelBuffer.SetRange("Column No.", 5); // Cantidad
-                            if ExcelBuffer.FindSet() then
-                                if not Evaluate(Cantidad, ExcelBuffer."Cell Value as Text") then
-                                    Cantidad := 0;
-                            ExcelBuffer.SetRange("Column No.", 6); // Precio
-                            if ExcelBuffer.FindSet() then
-                                if not Evaluate(Precio, ExcelBuffer."Cell Value as Text") then
-                                    Precio := 0;
-                            ExcelBuffer.SetRange("Column No.", 7); // Fecha inicial
-                            if ExcelBuffer.FindSet() then
-                                txtFechaFra := ExcelBuffer."Cell Value as Text";
-                            Evaluate(Fecha, txtFechaFra);
-                            ExcelBuffer.SetRange("Column No.", 9); // Lote
-                            if ExcelBuffer.FindSet() then
-                                if not Evaluate(Lote, ExcelBuffer."Cell Value as Text") then
-                                    Lote := 0;
+                        if not Evaluate(Lote, ExcelBuffer."Cell Value as Text") then
+                            Lote := 0;
+                    ExcelBuffer.SetRange("Column No.", ColLote + 1); // precio
+                    if ExcelBuffer.FindSet() then
+                        if not Evaluate(Precio, ExcelBuffer."Cell Value as Text") then
+                            Precio := 0;
+                until lote = 0;
+                // buscamos si existe el movimiento pendiente y actual con unidad 1
+                CheckandAddPurchasePriceBase(tempPurchasePrice);
 
-                            tempPurchasePrice.SetRange("Vendor No.", Vendor."No.");
-                            tempPurchasePrice.SetRange("Item No.", Item."No.");
-                            tempPurchasePrice.SetFilter("Starting Date", '%1..', Fecha);
-                            if tempPurchasePrice.FindFirst() then
-                                repeat
-                                    if tempPurchasePrice."Status Approval" in [tempPurchasePrice."Status Approval"::" ", tempPurchasePrice."Status Approval"::Pending] then
-                                        tempPurchasePrice.Delete();
-                                Until tempPurchasePrice.next() = 0;
-                            tempPurchasePrice.Init();
-                            tempPurchasePrice."Record ID" := CreateGuid();
-                            tempPurchasePrice."Vendor No." := Vendor."No.";
-                            tempPurchasePrice.Validate("Item No.", Item."No.");
-                            tempPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
-                            tempPurchasePrice."Starting Date" := Fecha;
-                            tempPurchasePrice."Minimum Quantity" := Lote;
-                            tempPurchasePrice."Direct Unit Cost" := Precio;
-                            tempPurchasePrice."Unit of Measure Code" := Item."Base Unit of Measure";
-                            tempPurchasePrice."Action Approval" := tempPurchasePrice."Action Approval"::New;
-                            tempPurchasePrice."Status Approval" := tempPurchasePrice."Status Approval"::Pending;
-                            tempPurchasePrice.Insert();
-
-                            // buscamos si existe el movimiento pendiente y actual con unidad 1
-                            CheckandAddPurchasePriceBase(tempPurchasePrice);
-                        end;
-                end;
             end;
         end;
     end;
 
-    local procedure CheckandAddPurchasePriceBase(tempPurchasePrice: Record "ZM PL Item Purchase Prices")
+
+    local procedure CheckandAddPurchasePriceBase(var tempPurchasePrice: Record "ZM PL Item Purchase Prices")
     var
-        ItemPurchasePrice: Record "ZM PL Item Purchase Prices";
+        OrigItemPurchasePrice: Record "ZM PL Item Purchase Prices" temporary;
     begin
-        ItemPurchasePrice.SetRange("Vendor No.", tempPurchasePrice."Vendor No.");
-        ItemPurchasePrice.SetRange("Item No.", tempPurchasePrice."Item No.");
-        ItemPurchasePrice.setRange("Starting Date", tempPurchasePrice."Starting Date");
-        ItemPurchasePrice.SetRange("Status Approval", tempPurchasePrice."Status Approval"::Pending);
-        ItemPurchasePrice.SetRange("Minimum Quantity", 1);
-        if not ItemPurchasePrice.FindFirst() then begin
-            ItemPurchasePrice.Init();
-            ItemPurchasePrice."Record ID" := CreateGuid();
-            ItemPurchasePrice."Vendor No." := tempPurchasePrice."Vendor No.";
-            ItemPurchasePrice.Validate("Item No.", tempPurchasePrice."Item No.");
-            ItemPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
-            ItemPurchasePrice."Starting Date" := tempPurchasePrice."Starting Date";
-            ItemPurchasePrice."Minimum Quantity" := 1;
-            ItemPurchasePrice."Direct Unit Cost" := tempPurchasePrice."Direct Unit Cost";
-            ItemPurchasePrice."Unit of Measure Code" := tempPurchasePrice."Unit of Measure Code";
-            ItemPurchasePrice."Action Approval" := ItemPurchasePrice."Action Approval"::New;
-            ItemPurchasePrice."Status Approval" := ItemPurchasePrice."Status Approval"::Pending;
-            ItemPurchasePrice.Insert()
-        end
+        OrigItemPurchasePrice := tempPurchasePrice;
+        tempPurchasePrice.SetRange("Vendor No.", OrigItemPurchasePrice."Vendor No.");
+        tempPurchasePrice.SetRange("Item No.", OrigItemPurchasePrice."Item No.");
+        tempPurchasePrice.setRange("Starting Date", OrigItemPurchasePrice."Starting Date");
+        tempPurchasePrice.SetRange("Status Approval", OrigItemPurchasePrice."Status Approval"::Pending);
+        tempPurchasePrice.SetRange("Minimum Quantity", 1);
+        if not tempPurchasePrice.FindFirst() then begin
+            tempPurchasePrice.Init();
+            tempPurchasePrice."Record ID" := CreateGuid();
+            tempPurchasePrice."Vendor No." := OrigItemPurchasePrice."Vendor No.";
+            tempPurchasePrice.Validate("Item No.", OrigItemPurchasePrice."Item No.");
+            tempPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
+            tempPurchasePrice."Starting Date" := OrigItemPurchasePrice."Starting Date";
+            tempPurchasePrice."Minimum Quantity" := 1;
+            tempPurchasePrice."Direct Unit Cost" := OrigItemPurchasePrice."Direct Unit Cost";
+            tempPurchasePrice."Unit of Measure Code" := OrigItemPurchasePrice."Unit of Measure Code";
+            tempPurchasePrice."Action Approval" := OrigItemPurchasePrice."Action Approval"::New;
+            tempPurchasePrice."Status Approval" := OrigItemPurchasePrice."Status Approval"::Pending;
+            tempPurchasePrice.Insert()
+        end;
+        tempPurchasePrice.Reset();
     end;
 
     local procedure UpdateUnitOfMeasure()
@@ -340,5 +412,20 @@ table 17398 "ZM PL Item Purchase Prices"
             if ItemsTemporary.FindLast() then
                 Rec."Unit of Measure Code" := ItemsTemporary."Base Unit of Measure";
         end;
+    end;
+
+    local procedure OnValidate_VendorNo()
+    var
+        Vendor: Record Vendor;
+    begin
+        if Vendor.get(Rec."Vendor No.") then
+            Rec."Currency Code" := Vendor."Currency Code";
+    end;
+
+    local procedure OnValidate_ItemNo()
+    var
+        myInt: Integer;
+    begin
+
     end;
 }

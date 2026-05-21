@@ -11128,15 +11128,35 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Item No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 1009775796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Lead Time Calculation</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plazo entrega (días)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Lead Time Calculation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 3392414557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Minimum Order Quantity</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Minimum Order Quantity - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Field 67248183 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Minimum Quantity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cantidad mínima"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Minimum Quantity - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 3674469202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Order Multiple</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Múltiplos de pedido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Order Multiple - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 1378230549 - Field 2897660500 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Record ID</source>
           <note from="Developer" annotates="general" priority="2">ESP="ID Registro"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Record ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 90423963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Selected</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccion"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Selected - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1378230549 - Field 460889064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Starting Date</source>
@@ -11157,6 +11177,16 @@
           <source>Variant Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. variante"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Variant Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 2903269170 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Vendor Item No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1378230549 - Field 3119688693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Purchase Prices - Field Vendor Name - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 1378230549 - Field 1527594213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Vendor No.</source>
@@ -11237,6 +11267,11 @@
           <source>Email</source>
           <note from="Developer" annotates="general" priority="2">ESP="Email"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Department - Field Email - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2836394759 - Field 4214826044 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notification Purchase Prices</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Notificación Precios compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Item Setup Department - Field Notification Purchase Prices - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2836394759 - Field 3776794752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>User Id</source>
@@ -13293,6 +13328,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UpdateSQLCodigNAV - NamedType lblSET</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3098270319 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UploadSEBItemExcel - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 267050289 - Method 3222099277 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select file</source>
           <note from="Developer" annotates="general" priority="2">ESP="Seleccione fichero"</note>
@@ -13342,6 +13382,16 @@
           <source>There are no users configured for approval %1.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No existen usuarios configurados para aprobación %1."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method RequestEmaiApprobalItemPurchasePrices - NamedType lblSinDestino</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3770991987 - Method 1537022207 - NamedType 1213137831" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td style="color:white;font-size:15px;font-weight:700;font-style:normal;text-decoration:none;font-family:Calibri, sans-serif;text-align:center;vertical-align:bottom;border:none;border-top:.5pt solid windowtext;border-right:.5pt solid windowtext;border-bottom:none;border-left:.5pt solid windowtext;background:gray;height:14.4pt;width:98pt;"&gt;%1&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method RequestEmailItemPruchasePricesBody - NamedType lblHeader</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3770991987 - Method 1537022207 - NamedType 3835651392" size-unit="char" translate="yes" xml:space="preserve">
+          <source>&lt;td style="color:black;font-size:15px;font-weight:700;font-style:normal;text-decoration:none;font-family:Aptos, sans-serif;text-align:center;vertical-align:bottom;border:.5pt solid windowtext;height:15.6pt;"&gt;%1&lt;/td&gt;</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PL Items Regist. aprovals - Method RequestEmailItemPruchasePricesBody - NamedType lblLine</note>
         </trans-unit>
         <trans-unit id="Codeunit 3770991987 - Method 4022973641 - NamedType 3098449012" size-unit="char" translate="yes" xml:space="preserve">
           <source>There are no users configured for approval %1.</source>
@@ -20609,13 +20659,13 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action ListUsed - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 894273850 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Approve</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Aprobar"</note>
+          <source>Approve Purchase Price</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobar precios"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action Approve - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 894273850 - Action 1147532894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Import Excel</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Importar Excel"</note>
+          <source>Import Precios compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Importar Precios compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action ImportExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3826509382 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -41292,6 +41342,11 @@
           <source>Solucionado primera visista</source>
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Service Order Type - Field Solucionado primera visista - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 4039087919 - Field 3680762443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1187003046">
+          <source>Codigo Anterior</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo Anterior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ship-to Address - Field Codigo Anterior - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3602268299 - Field 3298499930 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>Date Fin. Amort</source>

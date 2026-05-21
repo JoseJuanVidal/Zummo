@@ -37,6 +37,11 @@ table 17411 "ZM PL Item Setup Department"
                 User.FindFirst();
             end;
         }
+        field(20; "Notification Purchase Prices"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Notification Purchase Prices', comment = 'ESP="Notificación Precios compra"';
+        }
     }
 
     keys

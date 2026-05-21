@@ -5,9 +5,10 @@ page 17397 "ZM Item Purchases Prices List"
     UsageCategory = Lists;
     ApplicationArea = all;
     SourceTable = "ZM PL Item Purchase Prices";
+    SourceTableTemporary = true;
+    SourceTableView = sorting("Item No.", "Vendor No.", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity");
     // Editable = false;
-    InsertAllowed = false;
-    ModifyAllowed = false;
+
 
     layout
     {
@@ -18,6 +19,8 @@ page 17397 "ZM Item Purchases Prices List"
                 field("Date/Time Creation"; "Date/Time Creation")
                 {
                     ApplicationArea = all;
+                    Editable = false;
+                    Visible = false;
                 }
                 field("Item No."; "Item No.")
                 {
@@ -28,6 +31,26 @@ page 17397 "ZM Item Purchases Prices List"
                     ApplicationArea = all;
                 }
                 field("Vendor No."; "Vendor No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Vendor Name"; "Vendor Name")
+                {
+                    ApplicationArea = all;
+                }
+                field("Vendor Item No."; "Vendor Item No.")
+                {
+                    ApplicationArea = all;
+                }
+                field("Lead Time Calculation"; "Lead Time Calculation")
+                {
+                    ApplicationArea = all;
+                }
+                field("Minimum Order Quantity"; "Minimum Order Quantity")
+                {
+                    ApplicationArea = all;
+                }
+                field("Order Multiple"; "Order Multiple")
                 {
                     ApplicationArea = all;
                 }
@@ -86,7 +109,7 @@ page 17397 "ZM Item Purchases Prices List"
             action(ImportExcel)
             {
                 ApplicationArea = all;
-                Caption = 'Import Excel', comment = 'ESP="Importar Excel"';
+                Caption = 'Import Precios compra', comment = 'ESP="Importar Precios compra"';
                 Image = ImportExcel;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -95,13 +118,14 @@ page 17397 "ZM Item Purchases Prices List"
 
                 trigger OnAction()
                 begin
-                    Rec.ImportExcel();
+                    Rec.ImportExcel(Rec);
+                    if Rec.FindFirst() then;
                 end;
             }
             action(Approve)
             {
                 ApplicationArea = All;
-                Caption = 'Approve', comment = 'ESP="Aprobar"';
+                Caption = 'Approve Purchase Price', comment = 'ESP="Aprobar precios"';
                 Image = Approve;
                 Promoted = true;
                 PromotedIsBig = true;
@@ -140,8 +164,8 @@ page 17397 "ZM Item Purchases Prices List"
 
     trigger OnOpenPage()
     begin
-        UserApproval := ItemsRegistaprovals.CheckUserItemPurchasePriceApproval;
-        CurrPage.Editable := EditableFields;
+        UserApproval := ItemsRegistaprovals.CheckUserPriceListOwner;
+        CurrPage.Editable := UserApproval;
     end;
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
@@ -169,13 +193,6 @@ page 17397 "ZM Item Purchases Prices List"
         lblApprove: Label 'Approve', comment = 'ESP="Aprobar"';
         lblRejecte: Label 'Rejects', comment = 'ESP="Rechazar"';
 
-    procedure SetItemNo(Value: code[20])
-    var
-        myInt: Integer;
-    begin
-        ItemNo := Value;
-        EditableFields := true;
-    end;
 
     local procedure OnAction_SendApproval()
     var
@@ -211,12 +228,22 @@ page 17397 "ZM Item Purchases Prices List"
             else
                 Action := lblRejecte
         end;
-        CurrPage.SetSelectionFilter(ItemPurchasePrices);
-        ItemPurchasePrices.SetRange("Status Approval", ItemPurchasePrices."Status Approval"::Pending);
-        if not Confirm(lblConfirmApprove, false, Action, ItemPurchasePrices.Count) then
+        // CurrPage.SetSelectionFilter(ItemPurchasePrices);
+        // ItemPurchasePrices.SetRange("Status Approval", ItemPurchasePrices."Status Approval"::Pending);
+        if not Confirm(lblConfirmApprove, false, Action, Rec.Count) then
             exit;
+        // creamos peticion temporal
+        ItemPurchasePrices.ModifyAll(Selected, false);
+        if Rec.FindFirst() then
+            repeat
+                ItemPurchasePrices.Init();
+                ItemPurchasePrices := Rec;
+                ItemPurchasePrices.Selected := true;
+                ItemPurchasePrices.Insert();
+            Until Rec.next() = 0;
+        ItemPurchasePrices.SetRange(Selected, true);
         ItemPurchasePrices.ItemPurchasePricesApproval(ItemPurchasePrices, Approve);
-
+        Rec.DeleteAll();
     end;
 
     procedure SetItemApproval(Value: Boolean)
