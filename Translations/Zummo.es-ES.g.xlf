@@ -22689,6 +22689,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action ListUsed - Property Caption</note>
           <target>Puntos de uso (Nivel superior)</target>
         </trans-unit>
+        <trans-unit id="Page 894273850 - Action 2679800335 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Precios Compra</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Item Purchases Prices List - Action PurchasesPrice - Property Caption</note>
+          <target>Precios Compra</target>
+        </trans-unit>
         <trans-unit id="Page 894273850 - Action 803889193 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Approve Purchase Price</source>
           <note from="Developer" annotates="general" priority="2">ESP="Aprobar precios"</note>

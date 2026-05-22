@@ -18,6 +18,11 @@ table 17398 "ZM PL Item Purchase Prices"
             begin
                 OnValidate_ItemNo();
             end;
+
+            trigger OnLookup()
+            begin
+                OnLookup_ItemNo();
+            end;
         }
         field(2; "Vendor No."; code[20])
         {
@@ -224,13 +229,26 @@ table 17398 "ZM PL Item Purchase Prices"
         if SelectItemPurchasePrices.FindFirst() then
             repeat
                 if Item.Get(SelectItemPurchasePrices."Item No.") then begin
+                    // primero marcamos como fecha final todos los anteriores.
+                    ItemPuchasePriceFinishDate(SelectItemPurchasePrices);
+
                     AddItemPurchasePrice(ItemPurchasePrices, SelectItemPurchasePrices);
                     SelectItemPurchasePrices.ItemPurchasePriceApproval(Approve);
                 end;
             Until SelectItemPurchasePrices.next() = 0;
-        // si el usuario es el aprobador, se envia email a los propietarios de table
-        Item.Get(Rec."Item No.");
-        ItemsRegistaprovals.RequestEmaiApprobalItemPurchasePrices(Item, ItemPurchasePrices);
+        // si el usuario es el aprobador, se envia email a los propietarios de table        
+        ItemsRegistaprovals.RequestEmaiApprobalItemPurchasePrices(ItemPurchasePrices);
+    end;
+
+    local procedure ItemPuchasePriceFinishDate(SelectItemPurchasePrices: Record "ZM PL Item Purchase Prices")
+    var
+        PurchasePrices: Record "Purchase Price";
+    begin
+        PurchasePrices.Reset();
+        PurchasePrices.SetRange("Item No.", SelectItemPurchasePrices."Item No.");
+        PurchasePrices.SetRange("Ending Date", 0D);
+        PurchasePrices.SetFilter("Starting Date", '<%1', SelectItemPurchasePrices."Starting Date");
+        PurchasePrices.ModifyAll("Ending Date", SelectItemPurchasePrices."Starting Date" - 1);
     end;
 
     local procedure AddItemPurchasePrice(var ItemPurchasePrices: Record "ZM PL Item Purchase Prices"; SelectItemPurchasePrices: Record "ZM PL Item Purchase Prices")
@@ -427,5 +445,18 @@ table 17398 "ZM PL Item Purchase Prices"
         myInt: Integer;
     begin
 
+    end;
+
+    local procedure OnLookup_ItemNo()
+    var
+        Item: Record Item;
+        Itemstemporary: Record "ZM PL Items temporary";
+    begin
+        if Item.Get(Rec."Item No.") then
+            Page.Run(0, Item)
+        else begin
+            if Itemstemporary.Get(Rec."Item No.") then;
+            Page.Run(0, Itemstemporary);
+        end;
     end;
 }

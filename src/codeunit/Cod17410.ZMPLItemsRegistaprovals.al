@@ -267,7 +267,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
 
     end;
 
-    procedure RequestEmaiApprobalItemPurchasePrices(Item: Record Item; var ItemPurchasePrices: record "ZM PL Item Purchase Prices")
+    procedure RequestEmaiApprobalItemPurchasePrices(var ItemPurchasePrices: record "ZM PL Item Purchase Prices")
     var
         UserSetup: Record "User Setup";
         ItemSetupApproval: Record "ZM PL Item Setup Approval";
@@ -302,7 +302,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         recSMTPSetup.TestField("User ID");
         Clear(cduSmtp);
         body := RequestEmailItemPruchasePricesBody(ItemPurchasePrices);
-        cduSmtp.CreateMessage(CompanyName(), recSMTPSetup."User ID", Destino, StrSubstNo('Cambios de precios Producto %1 %2', Item."No.", Item.Description), body, TRUE); //pDireccion, pAsunto, pCuerpo, TRUE);
+        cduSmtp.CreateMessage(CompanyName(), recSMTPSetup."User ID", Destino, 'Cambios de precios Producto', body, TRUE); //pDireccion, pAsunto, pCuerpo, TRUE);
         // filePathPurchaseHeader := GetDocAttachment(PurchLinesRequest."Document No.", FileName);
         // if filePathPurchaseHeader <> '' then
         //     if Exists(filePathPurchaseHeader) then

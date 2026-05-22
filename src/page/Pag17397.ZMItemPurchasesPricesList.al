@@ -140,6 +140,14 @@ page 17397 "ZM Item Purchases Prices List"
         }
         area(Navigation)
         {
+            action(PurchasesPrice)
+            {
+                ApplicationArea = all;
+                Caption = 'Precios Compra', comment = 'ESP="Precios Compra"';
+                Image = Price;
+                RunObject = page "Purchase Prices";
+                RunPageLink = "Item No." = field("Item No.");
+            }
             action(ListUsed)
             {
                 ApplicationArea = All;
