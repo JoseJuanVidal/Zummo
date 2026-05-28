@@ -225,22 +225,22 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
         }
         addafter("Change Payment &Tolerance")
         {
-            action(clientes)
-            {
-                Caption = 'Clientes SEB PRO', comment = 'ESP="Clientes SEB PRO"';
-                Promoted = true;
-                PromotedCategory = Report;
-                PromotedIsBig = true;
-                Image = CustomerContact;
+            // action(clientes)
+            // {
+            //     Caption = 'Clientes SEB PRO', comment = 'ESP="Clientes SEB PRO"';
+            //     Promoted = true;
+            //     PromotedCategory = Report;
+            //     PromotedIsBig = true;
+            //     Image = CustomerContact;
 
-                trigger OnAction()
-                var
-                    SEBPRO: Codeunit "SEB PRO Iberia";
-                begin
-                    if Confirm(('Desea Crear clientes SEB PRO?')) then
-                        SEBPRO.GetClients();
-                end;
-            }
+            //     trigger OnAction()
+            //     var
+            //         SEBPRO: Codeunit "SEB PRO Iberia";
+            //     begin
+            //         if Confirm(('Desea Crear clientes SEB PRO?')) then
+            //             SEBPRO.GetClients();
+            //     end;
+            // }
             action(Productos)
             {
                 Caption = 'Productos SEB PRO', comment = 'ESP="Productos SEB PRO"';
@@ -260,7 +260,7 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
 
             action(CargaTxt)
             {
-                Caption = 'Fichero SEB PRO', comment = 'ESP="Fichero SEB PRO"';
+                Caption = 'Clientes SEB PRO', comment = 'ESP="Clientes SEB PRO"';
                 Promoted = true;
                 PromotedCategory = Report;
                 PromotedIsBig = true;
@@ -274,6 +274,72 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                         SEBPRO.CreateTableFromtxt();
                 end;
             }
+            action(CargaVendorls)
+            {
+                Caption = 'Proveedores SEB PRO', comment = 'ESP="Proveedores SEB PRO"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea Crear Proveedores SEB PRO?')) then
+                        SEBPRO.CargaVendorfromExcel();
+                end;
+            }
+
+            action(CargaVendorBankfromExcel)
+            {
+                Caption = 'Bancos Prov. SEB PRO', comment = 'ESP="Bancos Prov. SEB PRO"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea Crear Bancos Proveedores SEB PRO?')) then
+                        SEBPRO.CargaVendorBankfromExcel();
+                end;
+            }
+            action(CargaCustomerBankfromExcel)
+            {
+                Caption = 'Bancos Cust. SEB PRO', comment = 'ESP="Bancos Cust. SEB PRO"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea Crear Bancos Proveedores SEB PRO?')) then
+                        SEBPRO.CargaCustomerBankfromExcel();
+                end;
+            }
+            action(CargaItemxls)
+            {
+                Caption = 'Productos SEB PRO', comment = 'ESP="Productos SEB PRO"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea Crear Productos SEB PRO?')) then
+                        SEBPRO.UploadSEBItemExcel();
+                end;
+            }
+
         }
     }
     trigger OnOpenPage()

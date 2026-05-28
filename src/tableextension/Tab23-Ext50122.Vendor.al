@@ -32,5 +32,13 @@ tableextension 50122 "Vendor" extends Vendor //23
             FieldClass = FlowField;
             CalcFormula = max("Vendor Ledger Entry"."Document Date" where("Vendor No." = field("No."), "Document Type" = filter(Invoice | "Credit Memo")));
         }
+        field(50120; "Codigo Anterior"; code[20])
+        {
+            Caption = 'Codigo Anterior', comment = 'ESP="Codigo Anterior"';
+        }
+        field(50121; NuevoSEB; Boolean)
+        {
+            Caption = 'Nuevo SEB', comment = 'ESP="Nuevo SEB"';
+        }
     }
 }

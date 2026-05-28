@@ -426,6 +426,10 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             Caption = 'Codigo Anterior', comment = 'ESP="Codigo Anterior"';
         }
+        field(50121; NuevoSEB; Boolean)
+        {
+            Caption = 'Nuevo SEB', comment = 'ESP="Nuevo SEB"';
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var

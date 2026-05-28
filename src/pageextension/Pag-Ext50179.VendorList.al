@@ -22,6 +22,15 @@ pageextension 50179 "VendorList" extends "Vendor List"
             {
                 ApplicationArea = all;
             }
+            field("Codigo Anterior"; "Codigo Anterior")
+            {
+                ApplicationArea = all;
+            }
+            field(NuevoSEB; NuevoSEB)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
     actions

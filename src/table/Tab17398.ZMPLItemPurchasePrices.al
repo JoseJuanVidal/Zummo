@@ -248,7 +248,12 @@ table 17398 "ZM PL Item Purchase Prices"
         PurchasePrices.SetRange("Item No.", SelectItemPurchasePrices."Item No.");
         PurchasePrices.SetRange("Ending Date", 0D);
         PurchasePrices.SetFilter("Starting Date", '<%1', SelectItemPurchasePrices."Starting Date");
-        PurchasePrices.ModifyAll("Ending Date", SelectItemPurchasePrices."Starting Date" - 1);
+        if PurchasePrices.FindFirst() then
+            repeat
+                PurchasePrices."Ending Date" := SelectItemPurchasePrices."Starting Date" - 1;
+                PurchasePrices.Modify(false);
+            Until PurchasePrices.next() = 0;
+
     end;
 
     local procedure AddItemPurchasePrice(var ItemPurchasePrices: Record "ZM PL Item Purchase Prices"; SelectItemPurchasePrices: Record "ZM PL Item Purchase Prices")
@@ -288,6 +293,7 @@ table 17398 "ZM PL Item Purchase Prices"
         ItemNo: text;
         VendorNo: text;
         Plazo: Text;
+        PlazoFormula: DateFormula;
         PRODUCTOPROVEEDOR: Text;
         CANTIDADMINPEDIDO: Decimal;
         PEDIDOMULTIPLO: Decimal;
@@ -299,6 +305,8 @@ table 17398 "ZM PL Item Purchase Prices"
         i: Integer;
         ColLote: Integer;
         Rows: Integer;
+        QtyMax: Decimal;
+        PriceMax: Decimal;
         NVInStream: InStream;
     begin
         ExcelBuffer.DeleteAll();
@@ -326,25 +334,42 @@ table 17398 "ZM PL Item Purchase Prices"
                 if ExcelBuffer.FindSet() then
                     VendorNo := ExcelBuffer."Cell Value as Text";
                 Vendor.Get(VendorNo);
+
                 // ahora buscamos los datos de ficha principal
                 ExcelBuffer.SetRange("Column No.", 4); // Plazo
                 if ExcelBuffer.FindSet() then
-                    Plazo := ExcelBuffer."Cell Value as Text";
+                    if ExcelBuffer."Cell Value as Text" <> '' then begin
+                        Plazo := ExcelBuffer."Cell Value as Text";
+                        if Evaluate(PlazoFormula, Plazo) then
+                            item.validate("Lead Time Calculation", PlazoFormula);
+                    end;
 
-                ExcelBuffer.SetRange("Column No.", 5); // Cod proveedor
+                ExcelBuffer.SetRange("Column No.", 5); // Codido producto proveedor
                 if ExcelBuffer.FindSet() then
-                    PRODUCTOPROVEEDOR := ExcelBuffer."Cell Value as Text";
+                    if ExcelBuffer."Cell Value as Text" <> '' then begin
+                        PRODUCTOPROVEEDOR := ExcelBuffer."Cell Value as Text";
+                        if PRODUCTOPROVEEDOR <> '' then
+                            Item."Vendor Item No." := PRODUCTOPROVEEDOR;
+                    end;
                 ExcelBuffer.SetRange("Column No.", 6); // Cantidad minima pedido
                 if ExcelBuffer.FindSet() then
-                    if not Evaluate(CANTIDADMINPEDIDO, ExcelBuffer."Cell Value as Text") then
-                        CANTIDADMINPEDIDO := 0;
+                    if ExcelBuffer."Cell Value as Text" <> '' then begin
+                        if not Evaluate(CANTIDADMINPEDIDO, ExcelBuffer."Cell Value as Text") then
+                            CANTIDADMINPEDIDO := 0;
+                        if CANTIDADMINPEDIDO > 0 then
+                            Item."Minimum Order Quantity" := CANTIDADMINPEDIDO;
+                    end;
                 ExcelBuffer.SetRange("Column No.", 7); // pedido multiplo
                 if ExcelBuffer.FindSet() then
-                    if not Evaluate(PEDIDOMULTIPLO, ExcelBuffer."Cell Value as Text") then
-                        PEDIDOMULTIPLO := 0;
+                    if ExcelBuffer."Cell Value as Text" <> '' then begin
+                        if not Evaluate(PEDIDOMULTIPLO, ExcelBuffer."Cell Value as Text") then
+                            PEDIDOMULTIPLO := 0;
+                        if PEDIDOMULTIPLO > 0 then
+                            Item."Order Multiple" := PEDIDOMULTIPLO;
+                    end;
+                Item.Modify();
 
                 // bucle de posible lotes
-
                 ColLote := 8;
                 Lote := 0;
                 Precio := 0;
@@ -356,7 +381,13 @@ table 17398 "ZM PL Item Purchase Prices"
                 if ExcelBuffer.FindSet() then
                     if not Evaluate(Precio, ExcelBuffer."Cell Value as Text") then
                         Precio := 0;
+                PriceMax := precio;
+                QtyMax := Lote;
                 repeat
+                    if lote < QtyMax then begin
+                        QtyMax := lote;
+                        PriceMax := Precio;
+                    end;
                     if (lote > 0) and (Precio > 0) then begin
                         tempPurchasePrice.Init();
                         tempPurchasePrice."Record ID" := CreateGuid();
@@ -384,14 +415,14 @@ table 17398 "ZM PL Item Purchase Prices"
                             Precio := 0;
                 until lote = 0;
                 // buscamos si existe el movimiento pendiente y actual con unidad 1
-                CheckandAddPurchasePriceBase(tempPurchasePrice);
+                CheckandAddPurchasePriceBase(tempPurchasePrice, PriceMax);
 
             end;
         end;
     end;
 
 
-    local procedure CheckandAddPurchasePriceBase(var tempPurchasePrice: Record "ZM PL Item Purchase Prices")
+    local procedure CheckandAddPurchasePriceBase(var tempPurchasePrice: Record "ZM PL Item Purchase Prices"; PriceMax: Decimal)
     var
         OrigItemPurchasePrice: Record "ZM PL Item Purchase Prices" temporary;
     begin
@@ -409,7 +440,7 @@ table 17398 "ZM PL Item Purchase Prices"
             tempPurchasePrice."Date/Time Creation" := CreateDateTime(WorkDate(), time());
             tempPurchasePrice."Starting Date" := OrigItemPurchasePrice."Starting Date";
             tempPurchasePrice."Minimum Quantity" := 1;
-            tempPurchasePrice."Direct Unit Cost" := OrigItemPurchasePrice."Direct Unit Cost";
+            tempPurchasePrice."Direct Unit Cost" := PriceMax;
             tempPurchasePrice."Unit of Measure Code" := OrigItemPurchasePrice."Unit of Measure Code";
             tempPurchasePrice."Action Approval" := OrigItemPurchasePrice."Action Approval"::New;
             tempPurchasePrice."Status Approval" := OrigItemPurchasePrice."Status Approval"::Pending;

@@ -693,6 +693,9 @@ report 50106 "Pedido Compra"
                                 If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", format(optIdioma)) then
                                     "Purchase Line".Description := ItemTranslation.Description;
                         end;
+                        // control del Vendor Item No.
+                        if "Purchase Line"."Vendor Item No." = '' then
+                            "Purchase Line"."Vendor Item No." := GetVendorItemNo("Purchase Line");
                     end;
                     if "Purchase Line"."Expected Receipt Date" = 0D then
                         "Purchase Line"."Expected Receipt Date" := WorkDate();
@@ -1289,6 +1292,15 @@ report 50106 "Pedido Compra"
             exit;
 
         if TMPPurchaseLine.Count < veces then;
+    end;
+
+    local procedure GetVendorItemNo(PurchaseLine: Record "Purchase Line"): text[20];
+    var
+        Item: Record item;
+    begin
+        if Item.Get(PurchaseLine."No.") then
+            if item."Vendor No." = PurchaseLine."Buy-from Vendor No." then
+                exit(Item."Vendor Item No.");
     end;
 }
 

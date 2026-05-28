@@ -47,5 +47,11 @@ tableextension 50190 "ZM Ext Country/Region" extends "Country/Region"
             Caption = 'Customer Posting Group', comment = 'ESP="Grupo registro cliente"';
             TableRelation = "Customer Posting Group";
         }
+        field(50116; "Vendor Posting Group"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vendor Posting Group', comment = 'ESP="Grupo registro proveedor"';
+            TableRelation = "Vendor Posting Group";
+        }
     }
 }

@@ -14459,6 +14459,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - NamedType DataSourceTok</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 627050885 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CargaVendorfromExcel - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 2811366912 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -14475,16 +14480,21 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GerProveedores - NamedType lblWindow</note>
           <target>Nº Cliente #1##########\Registro #2#########</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3569251041 - NamedType 3813091312" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PCM %1</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClasificacionVentas - NamedType lblPCM</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
           <source>SELECT *  FROM [CLIENTS$] WHERE cliente is not null ORDER BY [Cliente]</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblSQLDelete</note>
         </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nº Cliente #1##########\Registro #2#########</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########"</note>
+          <source>Nº Cliente #1##########\Registro #2#########\#3####### de #4########</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Cliente #1##########\Registro #2#########\#3####### de #4########"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblWindow</note>
-          <target>Nº Cliente #1##########\Registro #2#########</target>
+          <target>Nº Cliente #1##########\Registro #2#########\#3####### de #4########</target>
         </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 3074005780 - NamedType 3491503912" size-unit="char" translate="yes" xml:space="preserve">
           <source>SELECT [materiales_stg].*,materialestextos_stg.*  FROM [MATERIALES_STG] %1 WHERE %2 and idioma = 'S' ORDER BY [materiales_stg].Material</source>
@@ -35958,11 +35968,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action MapeoZummo - Property Caption</note>
           <target>Mapeo ZUMMO</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 731758872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Productos SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaItemxls - Property Caption</note>
+          <target>Productos SEB PRO</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 2280452714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
-          <source>Fichero SEB PRO</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Fichero SEB PRO"</note>
+          <source>Clientes SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clientes SEB PRO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaTxt - Property Caption</note>
-          <target>Fichero SEB PRO</target>
+          <target>Clientes SEB PRO</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 3394731263 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Proveedores SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Proveedores SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaVendorls - Property Caption</note>
+          <target>Proveedores SEB PRO</target>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 3041128825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Clientes SEB PRO</source>
@@ -45094,6 +45116,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field ClasProveedor_btc - Property Caption</note>
           <target>Clasificación proveedor</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1936001480 - Field 3680762443 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Codigo Anterior</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Codigo Anterior"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Codigo Anterior - Property Caption</note>
+          <target>Codigo Anterior</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 3035610829 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Blocking Motives</source>
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Bloqueo"</note>
@@ -45105,6 +45133,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Último movimiento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field Last date ledger Entry - Property Caption</note>
           <target>Último movimiento</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1936001480 - Field 799655957 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
+          <source>Nuevo SEB</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nuevo SEB"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Vendor - Field NuevoSEB - Property Caption</note>
+          <target>Nuevo SEB</target>
         </trans-unit>
         <trans-unit id="TableExtension 1936001480 - Field 2669281276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1936001480">
           <source>Purch. Order email</source>
@@ -45298,6 +45332,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Grupo registro IVA neg."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field VAT Bus. Posting Group - Property Caption</note>
           <target>Grupo registro IVA neg.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 709731099 - Field 3194161445 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
+          <source>Vendor Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Country/Region - Field Vendor Posting Group - Property Caption</note>
+          <target>Grupo registro proveedor</target>
         </trans-unit>
         <trans-unit id="TableExtension 709731099 - Field 467010782 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4148176377">
           <source>Zona</source>

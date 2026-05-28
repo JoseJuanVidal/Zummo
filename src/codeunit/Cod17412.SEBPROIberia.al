@@ -108,7 +108,7 @@ codeunit 17412 "SEB PRO Iberia"
         UpdateCustomer: Boolean;
         Windows: Dialog;
         lblSQLDelete: Label 'SELECT *  FROM [CLIENTS$] WHERE cliente is not null ORDER BY [Cliente]';
-        lblWindow: Label 'Nº Cliente #1##########\Registro #2#########', comment = 'ESP="Nº Cliente #1##########\Registro #2#########"';
+        lblWindow: Label 'Nº Cliente #1##########\Registro #2#########\#3####### de #4########', comment = 'ESP="Nº Cliente #1##########\Registro #2#########\#3####### de #4########"';
     begin
         windows.Open(lblWindow);
         if IsNull(SQLConnection) then
@@ -129,7 +129,7 @@ codeunit 17412 "SEB PRO Iberia"
 
                 if CheckCustomerSEBExist(CustomerNoSEB, Customer) then
                     UpdateCustomer := true
-                else if CheckCustomerVatExist(CustomerNoSEB, VatNoSeb) then
+                else if CheckCustomerVatExist(CustomerNoSEB, VatNoSeb, Customer) then
                     UpdateCustomer := false
                 else begin
                     Customer.Init();
@@ -362,32 +362,38 @@ codeunit 17412 "SEB PRO Iberia"
     local procedure CheckCustomerSEBExist(CustomerNoSEB: code[20]; var Customer: Record Customer): Boolean
 
     begin
+        Customer.Reset();
         Customer.SetRange("Codigo Anterior", CustomerNoSEB);
         if Customer.FindFirst() then
             exit(True);
     end;
 
-    local procedure CheckCustomerVatExist(CustomerNoSEB: code[20]; VatNoSeb: code[50]): Boolean
+    local procedure CheckCustomerVatExist(CustomerNoSEB: code[20]; VatNoSeb: code[50]; var Customer: Record Customer): Boolean
     var
-        Customer: Record Customer;
+        SearchCustomer: Record Customer;
     begin
+        Customer.Reset();
         if VatNoSeb = '' then
             exit;
         // primero filtramos por el nif del clientes, completo
         Customer.SetFilter("VAT Registration No.", '%1', StrSubstNo('*%1*', VatNoSeb));
         if Customer.FindSet() then begin
-            Customer."Codigo Anterior" := CustomerNoSEB;
-            Customer.Modify();
-            UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF completo ZUMMO');
+            if Customer."Codigo Anterior" = '' then begin
+                Customer."Codigo Anterior" := CustomerNoSEB;
+                Customer.Modify();
+            end;
+            //UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF completo ZUMMO');
             exit(true);
         end;
         // ahora quitamos los dos primeros caracteres del pais.
         VatNoSeb := CopyStr(VatNoSeb, 3);
         Customer.SetFilter("VAT Registration No.", '%1', StrSubstNo('*%1*', VatNoSeb));
         if Customer.FindSet() then begin
-            Customer."Codigo Anterior" := CustomerNoSEB;
-            Customer.Modify();
-            UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF sin pais ZUMMO');
+            if Customer."Codigo Anterior" = '' then begin
+                Customer."Codigo Anterior" := CustomerNoSEB;
+                Customer.Modify();
+            end;
+            //UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF sin pais ZUMMO');
             exit(true);
         end;
         // // solo dejamos los numeros y comprobamos
@@ -447,6 +453,7 @@ codeunit 17412 "SEB PRO Iberia"
         MiniCustomerTemplate: Record "Mini Customer Template" temporary;
         CustomerRecRef: RecordRef;
     begin
+        ConfigTemplateHeader.SetRange("Table ID", Database::Customer);
         ConfigTemplateHeader.SetRange(Description, 'CUSTSEBPRO');
         if not ConfigTemplateHeader.FindFirst() then
             exit;
@@ -473,12 +480,12 @@ codeunit 17412 "SEB PRO Iberia"
     begin
         DefaultDimension.SetRange("Table ID", Database::Customer);
         DefaultDimension.SetRange("No.", Customer."No.");
-        DefaultDimension.SetRange("Dimension Code", 'LINEANEGOCIO');
+        DefaultDimension.SetRange("Dimension Code", 'DIVISION');
         if not DefaultDimension.FindFirst() then begin
             DefaultDimension.Init();
             DefaultDimension."Table ID" := Database::Customer;
             DefaultDimension."No." := Customer."No.";
-            DefaultDimension.Validate("Dimension Code", 'LINEANEGOCIO');
+            DefaultDimension.Validate("Dimension Code", 'DIVISION');
             DefaultDimension.Validate("Dimension Value Code", 'PCM');
             DefaultDimension.Insert();
         end;
@@ -671,7 +678,7 @@ codeunit 17412 "SEB PRO Iberia"
 
         // tmpItem. := CopyStr(SQLRGetStringFieldName(SQLReader, 1), 1, MaxStrLen(tmpItem.       ); //,[R]
 
-        tmpItem.selClasVtas_btc := GetClasificacionVentas(SQLRGetStringFieldName(SQLReader, 'Grupo_art'));
+        tmpItem.selClasVtas_btc := GetClasificacionVentas(SQLRGetStringFieldName(SQLReader, 'Grupo_art'), SQLRGetStringFieldName(SQLReader, 'Grupo_art'));
         tmpItem."material antiguo code" := CopyStr(SQLRGetStringFieldName(SQLReader, 'N_Material_antiguo'), 1, MaxStrLen(tmpItem."material antiguo code")); //,[N_Material_antiguo]
         ValorCampo := SQLRGetStringFieldName(SQLReader, 'UMB');   //,[UMB] ST - M unidad de medida
         case ValorCampo of
@@ -898,10 +905,12 @@ codeunit 17412 "SEB PRO Iberia"
         tmpItem.Insert();
     end;
 
-    local procedure GetClasificacionVentas(CodClasif: code[20]): code[20]
+    local procedure GetClasificacionVentas(CodClasif: code[20]; Name: Text): code[20]
     var
         TextosAuxiliares: Record TextosAuxiliares;
+        lblPCM: Label 'PCM %1';
     begin
+        CodClasif := StrSubstNo(lblPCM, CodClasif);
         //TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const("ClasificacionVentas"), TipoRegistro = const(Tabla));
         // 033	MAQUINAS CAFE 043	RENTING  313	#N/A 333	REP. MAQUINAS CAFE
         // 503	S.A.T  991	Seguro/Portes/Desc.
@@ -913,7 +922,7 @@ codeunit 17412 "SEB PRO Iberia"
             TextosAuxiliares.TipoRegistro := TextosAuxiliares.TipoRegistro::Tabla;
             TextosAuxiliares.TipoTabla := TextosAuxiliares.TipoTabla::ClasificacionVentas;
             TextosAuxiliares.NumReg := CodClasif;
-            TextosAuxiliares.Descripcion := 'PCM no name';
+            TextosAuxiliares.Descripcion := copystr(Name, 1, MaxStrLen(TextosAuxiliares.Descripcion));
             TextosAuxiliares.Insert()
         end;
         exit(CodClasif);
@@ -1002,9 +1011,10 @@ codeunit 17412 "SEB PRO Iberia"
         If ExcelBuffer.FindLast() then
             Rows := ExcelBuffer."Row No.";
 
-        Window.Open('Customer SEB: #1###############\Cliente: #2###############');
-
+        Window.Open('Customer SEB: #1###############\Cliente: #2###############\#3####### de #4########');
+        Window.Update(4, Rows);
         for linea := 7 to Rows do begin
+            Window.Update(3, linea);
             CustomerNoSEB := '';
             VATCustomerNo := '';
             Borrado := '';
@@ -1022,19 +1032,19 @@ codeunit 17412 "SEB PRO Iberia"
             window.update(1, CustomerNoSEB);
             if CustomerNoSEB <> '' then begin
                 if CheckCustomerSEBExist(CustomerNoSEB, Customer) then begin
-                    UpdateCustomer := true;
-                end else if CheckCustomerVatExist(CustomerNoSEB, VATCustomerNo) then begin
+                    if customer.NuevoSEB then
+                        UpdateCustomer := true
+                    else
+                        UpdateCustomer := false;
+                end else if CheckCustomerVatExist(CustomerNoSEB, VATCustomerNo, Customer) then begin
                     UpdateCustomer := false;
-                    if Customer."Codigo Anterior" = '' then begin
-                        Customer."Codigo Anterior" := CustomerNoSEB;
-                        Customer.Modify();
-                    end;
                 end else begin
                     Customer.Init();
                     Customer."No." := '';
                     // aplicar plantilla
                     UpdateCustomerFromTemplate(Customer);
-
+                    Customer."Codigo Anterior" := CustomerNoSEB;
+                    Customer.NuevoSEB := true;
                     window.update(2, Customer."No.");
                     UpdateCustomer := true
                     //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
@@ -1064,7 +1074,7 @@ codeunit 17412 "SEB PRO Iberia"
         ExcelBuffer.SetRange("Column No.", 2);  // cliente 1
         if ExcelBuffer.FindSet() then
             Customer."Codigo Anterior" := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 2);  // PS
+        ExcelBuffer.SetRange("Column No.", 5);  // PS  Pais
         if ExcelBuffer.FindSet() then
             Customer."Country/Region Code" := ExcelBuffer."Cell Value as Text";
         ExcelBuffer.SetRange("Column No.", 6);  // Nombre 1
@@ -1312,22 +1322,21 @@ codeunit 17412 "SEB PRO Iberia"
             ShiptoAddress.Init();
             ShiptoAddress."Customer No." := tmpCustomer."No.";
             ShiptoAddress.Code := CustSEBNo;
-            ShiptoAddress.Name := tmpCustomer.Name;
-            ShiptoAddress."Name 2" := tmpCustomer."Name 2";
-            ShiptoAddress.Address := tmpCustomer.Address;
-            ShiptoAddress."Address 2" := tmpCustomer."Address 2";
-            ShiptoAddress.City := tmpCustomer.City;
-            ShiptoAddress."Post Code" := tmpCustomer."Post Code";
-            ShiptoAddress."Phone No." := tmpCustomer."Phone No.";
-            ShiptoAddress."Telex No." := tmpCustomer."Telex No.";
-            ShiptoAddress."Fax No." := tmpCustomer."Fax No.";
-            ShiptoAddress."Country/Region Code" := tmpCustomer."Country/Region Code";
-            ShiptoAddress."E-Mail" := tmpCustomer."E-Mail";
-            ShiptoAddress."Codigo Anterior" := CustSEBNo;
             ShiptoAddress.Insert();
-            exit;
         end;
-
+        ShiptoAddress.Name := tmpCustomer.Name;
+        ShiptoAddress."Name 2" := tmpCustomer."Name 2";
+        ShiptoAddress.Address := tmpCustomer.Address;
+        ShiptoAddress."Address 2" := tmpCustomer."Address 2";
+        ShiptoAddress.City := tmpCustomer.City;
+        ShiptoAddress."Post Code" := tmpCustomer."Post Code";
+        ShiptoAddress."Phone No." := tmpCustomer."Phone No.";
+        ShiptoAddress."Telex No." := tmpCustomer."Telex No.";
+        ShiptoAddress."Fax No." := tmpCustomer."Fax No.";
+        ShiptoAddress."Country/Region Code" := tmpCustomer."Country/Region Code";
+        ShiptoAddress."E-Mail" := tmpCustomer."E-Mail";
+        ShiptoAddress."Codigo Anterior" := CustSEBNo;
+        ShiptoAddress.Modify();
     end;
 
     // =============     PRODUCTOS SEB          ====================
@@ -1344,12 +1353,9 @@ codeunit 17412 "SEB PRO Iberia"
         FileName: text;
         Sheetname: text;
         ItemNoSEB: text;
-        VATCustomerNo: text;
-        Borrado: text;
         Window: Dialog;
         Rows: Integer;
         linea: Integer;
-        UpdateCustomer: Boolean;
         Text000: label 'Cargar Fichero de Excel';
     begin
         ExcelBuffer.DeleteAll();
@@ -1372,55 +1378,621 @@ codeunit 17412 "SEB PRO Iberia"
         If ExcelBuffer.FindLast() then
             Rows := ExcelBuffer."Row No.";
 
-        Window.Open('Producto SEB: #1###############');
+        Window.Open('Linea #3####### de #4#######\Producto SEB: #1###############\Producto NAV: #2################');
 
-        for linea := 7 to Rows do begin
-            /*    CustomerNoSEB := '';
-                VATCustomerNo := '';
-                Borrado := '';
-                ExcelBuffer.SetRange("Row No.", linea);
-                ExcelBuffer.SetRange("Column No.", 2);  // cliente
+        for linea := 2 to Rows do begin
+            ItemNoSEB := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 2);  // cliente
+            if ExcelBuffer.FindSet() then
+                ItemNoSEB := ExcelBuffer."Cell Value as Text";
+            Window.Update(1, ItemNoSEB);
+            if ItemNoSEB <> '' then begin
+                ExcelBuffer.SetRange("Column No.", 1);  //  SERVICIOS - KM - HOTEL
                 if ExcelBuffer.FindSet() then
-                    CustomerNoSEB := ExcelBuffer."Cell Value as Text";
-                // ExcelBuffer.SetRange("Column No.", 40);  // pBor borrado
-                // if ExcelBuffer.FindSet() then
-                //     Borrado := ExcelBuffer."Cell Value as Text";
-                // if Borrado = '' then begin
-                ExcelBuffer.SetRange("Column No.", 20);  // N.I.F. 
-                if ExcelBuffer.FindSet() then
-                    VATCustomerNo := ExcelBuffer."Cell Value as Text";
-                window.update(1, CustomerNoSEB);
-                if CustomerNoSEB <> '' then begin
-                    if CheckCustomerSEBExist(CustomerNoSEB, Customer) then begin
-                        UpdateCustomer := true;
-                    end else if CheckCustomerVatExist(CustomerNoSEB, VATCustomerNo) then begin
-                        UpdateCustomer := false;
-                        if Customer."Codigo Anterior" = '' then begin
-                            Customer."Codigo Anterior" := CustomerNoSEB;
-                            Customer.Modify();
+                    if ExcelBuffer."Cell Value as Text" in ['SERVICES', 'KM'] then begin
+                        window.update(3, linea);
+                        window.update(4, Rows);
+                        Window.Update(2, ItemNoSEB);
+                        if not Item.Get(ItemNoSEB) then begin
+                            Item.Init();
+                            Item."No." := ItemNoSEB;
+                            item.Insert();
+                            // aplicar plantilla
+                            UpdateItemFromTemplate(Item);
                         end;
-                    end else begin
-                        Customer.Init();
-                        Customer."No." := '';
-                        // aplicar plantilla
-                        UpdateCustomerFromTemplate(Customer);
 
-                        UpdateCustomer := true
-                        //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
-                        // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
+                        GetFieldsItemExcel(ExcelBuffer, Item);
+                        item.validate("Base Unit of Measure", 'UDS');
+
+                        Item.Modify();
                     end;
-                    if UpdateCustomer then begin
-                        GetFieldsCustomerExcel(ExcelBuffer, Customer);
 
-                        UpdateCustomerAuxiliares(Customer);
-
-                        Customer.Modify();
-                    end;
-                    CustomerShipAddress(ExcelBuffer, Customer, CustomerNoSEB);
-                    // end;
-        end;*/
+            end;
         end;
         Window.Close();
         Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
+
+    local procedure UpdateItemFromTemplate(var Item: Record Item);
+    var
+        ConfigTemplateHeader: Record "Config. Template Header";
+        ItemTemplate: Record "Item Template";
+        ConfigTemplateManagement: Codeunit "Config. Template Management";
+        DimensionsTemplate: Record "Dimensions Template";
+        ItemRecRef: RecordRef;
+    begin
+        ItemRecRef.GetTable(Item);
+        ConfigTemplateHeader.SetRange("Table ID", Database::Item);
+        ConfigTemplateHeader.SetRange(Description, 'SEBPRO');
+        if not ConfigTemplateHeader.FindFirst() then
+            exit;
+        ConfigTemplateManagement.UpdateRecord(ConfigTemplateHeader, ItemRecRef);
+        DimensionsTemplate.InsertDimensionsFromTemplates(ConfigTemplateHeader, Item."No.", DATABASE::Item);
+
+        //NewCustomerFromTemplate(Customer);
+    end;
+
+    local procedure GetFieldsItemExcel(var ExcelBuffer: Record "Excel Buffer" temporary; var Item: Record Item)
+    var
+        DatoExcel: text;
+        DatoExceldesc: text;
+        DatoFecha: date;
+    begin
+
+
+        Item."Item Category Code" := DatoExcel;
+
+        ExcelBuffer.SetRange("Column No.", 2);  // Material
+        if ExcelBuffer.FindSet() then
+            Item."No." := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 3);  // Nombre 1
+        if ExcelBuffer.FindSet() then
+            Item.validate(Description, ExcelBuffer."Cell Value as Text");
+        DatoExcel := '';
+        // ExcelBuffer.SetRange("Column No.", 8);  //  [TpMt]
+        // if ExcelBuffer.FindSet() then
+        //     DatoExcel := ExcelBuffer."Cell Value as Text";
+        // case DatoExcel of
+        //     'NLAG':
+        //         Item.Type := Item.Type::Service;
+        //     else
+        //         Item.Type := Item.Type::Inventory;
+        // end;
+        ExcelBuffer.SetRange("Column No.", 10);  //  Grupo art.
+        DatoExcel := '';
+        if ExcelBuffer.FindSet() then
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        DatoExceldesc := '';
+        ExcelBuffer.SetRange("Column No.", 11);  //  Name of Group
+        if ExcelBuffer.FindSet() then
+            DatoExceldesc := ExcelBuffer."Cell Value as Text";
+        Item.selClasVtas_btc := GetClasificacionVentas(DatoExcel, DatoExceldesc);
+        // GRUPO ART para grupo Registro de Ventas
+        case DatoExcel of
+            '033': //MAQUINAS CAFE  -> Producto Terminados SEB (mercaderias) 7002005  Ventas Productos Terminados, SEB
+                begin
+                    Item.Type := Item.Type::Inventory;
+                    item.Validate("Gen. Prod. Posting Group", 'TERMINADOS SEB');
+                    item.Validate("Inventory Posting Group", 'TERMINADO');
+                end;
+            '043': //RENTING
+                begin
+                    Item.Type := Item.Type::Service;
+                    item.Validate("Gen. Prod. Posting Group", 'ALQUILERPRODUCTO');
+                end;
+            '313',  // REPUESTOS  -> Repuestos SEB  7001005
+            '333':  //REP. MAQUINAS CAFE  -> Repuestos SEB  7001005
+                begin
+                    Item.Type := Item.Type::Inventory;
+                    item.Validate("Gen. Prod. Posting Group", 'REPUESTOS SEB');
+                    item.Validate("Inventory Posting Group", 'MERCADERIA');
+                end;
+            '503':  //S.A.T  ->  7050000  Prestación servicios Nacional
+                begin
+                    Item.Type := Item.Type::Service;
+                    item.Validate("Gen. Prod. Posting Group", 'SERVICIOS SEB');
+                end;
+            '991':  //Seguro/Portes/Desc.       DESPLAZAMIENTO 7592000 Prestación servicios Nacional
+                begin
+                    Item.Type := Item.Type::Service;
+                    item.Validate("Gen. Prod. Posting Group", 'SERVICIOS SEB');
+                end;
+        end;
+        ExcelBuffer.SetRange("Column No.", 12);  //  Denom.estándar
+        if ExcelBuffer.FindSet() then
+            Item."material antiguo code" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."material antiguo code"));
+        ExcelBuffer.SetRange("Column No.", 14);  //  Código EAN/UPC
+        if ExcelBuffer.FindSet() then
+            Item.GTIN := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item.GTIN));
+        ExcelBuffer.SetRange("Column No.", 16);  //  CMMF Code
+        if ExcelBuffer.FindSet() then
+            Item."CMMF Code" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."CMMF Code"));
+        ExcelBuffer.SetRange("Column No.", 21);  //  Stock Seguridad
+        if ExcelBuffer.FindSet() then
+            if Evaluate(Item."Safety Stock Quantity", ExcelBuffer."Cell Value as Text") then
+                item."Safety Stock Quantity" := 0;
+        ExcelBuffer.SetRange("Column No.", 24);  //  Nª Codigo
+        if ExcelBuffer.FindSet() then
+            item."Vendor Item No." := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(item."material antiguo code"));
+        ExcelBuffer.SetRange("Column No.", 25);  //  Origen
+        if ExcelBuffer.FindSet() then
+            item."Shelf No." := ExcelBuffer."Cell Value as Text";
+    end;
+
+    // =============     PROVEEDORES          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    procedure CargaVendorfromExcel()
+    var
+        Vendor: record Vendor;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        CustomerNoSEB: text;
+        VATCustomerNo: text;
+        Borrado: text;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Vendor SEB: #1###############\Proveedor: #2###############\#3##### de #4#####');
+        Window.Update(4, Rows);
+        for linea := 6 to Rows do begin
+            Window.Update(3, linea);
+            CustomerNoSEB := '';
+            VATCustomerNo := '';
+            Borrado := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 2);  // codigo
+            if ExcelBuffer.FindSet() then
+                CustomerNoSEB := ExcelBuffer."Cell Value as Text";
+            // ExcelBuffer.SetRange("Column No.", 40);  // pBor borrado
+            // if ExcelBuffer.FindSet() then
+            //     Borrado := ExcelBuffer."Cell Value as Text";
+            // if Borrado = '' then begin
+            ExcelBuffer.SetRange("Column No.", 18);  // N.I.F. 
+            if ExcelBuffer.FindSet() then
+                VATCustomerNo := ExcelBuffer."Cell Value as Text";
+            window.update(1, CustomerNoSEB);
+            if CustomerNoSEB <> '' then begin
+                if CheckVendorSEBExist(CustomerNoSEB, Vendor) then begin
+                    if Vendor.NuevoSEB then
+                        UpdateCustomer := true
+                    else
+                        UpdateCustomer := false;
+                end else if CheckVendorVatExist(CustomerNoSEB, VATCustomerNo) then begin
+                    UpdateCustomer := false;
+                    if Vendor."Codigo Anterior" = '' then begin
+                        Vendor."Codigo Anterior" := CustomerNoSEB;
+                        Vendor.NuevoSEB := true;
+                        Vendor.Modify();
+                    end;
+                end else begin
+                    Vendor.Init();
+                    Vendor."No." := '';
+
+                    // aplicar plantilla
+                    UpdateVendorFromTemplate(Vendor);
+                    Vendor."Codigo Anterior" := CustomerNoSEB;
+                    Vendor.NuevoSEB := true;
+                    window.update(2, Vendor."No.");
+                    UpdateCustomer := true
+                    //Customer."No." := CopyStr(SQLRGetSTring(SQLReader, 0), 1, MaxStrLen(Customer."No."));     //   [Cliente]
+                    // Customer."No." := NoSeriesMgt.GetNextNo(Customer."No. Series", WorkDate(), true);
+                end;
+                if UpdateCustomer then begin
+                    GetFieldsVendorExcel(ExcelBuffer, Vendor);
+                    UpdateVendorPostingSetup(Vendor);
+                    Vendor.Modify();
+                end;
+                // end;
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
+
+    local procedure GetFieldsVendorExcel(var ExcelBuffer: Record "Excel Buffer" temporary; var Vendor: Record Vendor)
+    var
+        DatoExcel: text;
+        DatoExceldesc: text;
+        DatoFecha: date;
+    begin
+        ExcelBuffer.SetRange("Column No.", 2);  // codig
+        if ExcelBuffer.FindSet() then
+            Vendor."Codigo Anterior" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 11);  // NOMBRFE PAIS
+        if ExcelBuffer.FindSet() then
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        vendor."Country/Region Code" := GetPAISVendor(DatoExcel);
+
+        ExcelBuffer.SetRange("Column No.", 4);  // Nombre 1
+        if ExcelBuffer.FindSet() then
+            Vendor.validate(Name, ExcelBuffer."Cell Value as Text");
+        ExcelBuffer.SetRange("Column No.", 5);  // Nombre 2
+        if ExcelBuffer.FindSet() then
+            Vendor."Name 2" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 7);  // Poblaci
+        if ExcelBuffer.FindSet() then
+            Vendor.City := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Vendor.City));
+        ExcelBuffer.SetRange("Column No.", 10);  // CP
+        if ExcelBuffer.FindSet() then
+            Vendor."Post Code" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 12);  // Calle
+        if ExcelBuffer.FindSet() then
+            Vendor.Address := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 20);  // Tel馭ono 1
+        if ExcelBuffer.FindSet() then
+            Vendor."Phone No." := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 21);  // Telefono 2
+        if ExcelBuffer.FindSet() then
+            Vendor."Fax No." := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 22);  // Nｺ telefax
+        if ExcelBuffer.FindSet() then
+            Vendor."Telex No." := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Vendor."Telex No."));
+
+        Vendor."Payment Terms Code" := 'CONTADO';
+        vendor."Payment Method Code" := 'TRANSF';
+
+    end;
+
+    local procedure GetPAISVendor(Pais: text): text
+    var
+        myInt: Integer;
+    begin
+        case Pais of
+            'Alemania':
+                exit('DE');
+            'Andorra':
+                exit('AD');
+            'Bélgica':
+                exit('BE');
+            'China':
+                exit('CN');
+            'Corea del Sur':
+                exit('KR');
+            'Dinamarca':
+                exit('DK');
+            'EEUU':
+                exit('US');
+            'Eslovenia':
+                exit('SI');
+            'España':
+                exit('ES');
+            'Estonia':
+                exit('EE');
+            'Francia':
+                exit('FR');
+            'Gibraltar':
+                exit('GI');
+            'Hong Kong':
+                exit('GB');
+            'Hungría':
+                exit('HU');
+            'Indonesia':
+                exit('ID');
+            'Irlanda':
+                exit('IE');
+            'Italia':
+                exit('IT');
+            'Luxemburgo':
+                exit('LU');
+            'Portugal':
+                exit('PT');
+            'Reino Unido':
+                exit('GB');
+            'República Checa':
+                exit('CZ');
+            'Singapur':
+                exit('SG');
+            'Suecia':
+                exit('SE');
+            'Suiza':
+                exit('CH');
+            'Vietnam':
+                exit('VN');
+            else
+                exit(Pais);
+        end;
+    end;
+
+    local procedure CheckVendorSEBExist(CustomerNoSEB: code[20]; var Vendor: Record Vendor): Boolean
+    begin
+        Vendor.SetRange("Codigo Anterior", CustomerNoSEB);
+        if Vendor.FindFirst() then
+            if Vendor.NuevoSEB then
+                exit(True);
+    end;
+
+    local procedure CheckVendorVatExist(CustomerNoSEB: code[20]; VatNoSeb: code[50]): Boolean
+    var
+        Vendor: Record Vendor;
+    begin
+        if VatNoSeb = '' then
+            exit;
+        // primero filtramos por el nif del clientes, completo
+        Vendor.SetFilter("VAT Registration No.", '%1', StrSubstNo('*%1*', VatNoSeb));
+        if Vendor.FindSet() then begin
+            Vendor."Codigo Anterior" := CustomerNoSEB;
+            Vendor.Modify();
+            exit(true);
+        end;
+        // ahora quitamos los dos primeros caracteres del pais.
+        VatNoSeb := CopyStr(VatNoSeb, 3);
+        Vendor.SetFilter("VAT Registration No.", '%1', StrSubstNo('*%1*', VatNoSeb));
+        if Vendor.FindSet() then begin
+            Vendor."Codigo Anterior" := CustomerNoSEB;
+            Vendor.Modify();
+            exit(true);
+        end;
+        // // solo dejamos los numeros y comprobamos
+        // VatNoSeb := VATOnlyNumbers(VatNoSeb);
+        // Customer.SetFilter("VAT Registration No.", '%1', StrSubstNo('*%1*', VatNoSeb));
+        // if Customer.FindSet() then begin
+        //     Customer."Codigo Anterior" := CustomerNoSEB;
+        //     Customer.Modify();
+        //     UpdateSQLCodigNAV(CustomerNoSEB, Customer."No.", 'Encontrado CIF sin pais ZUMMO');
+        //     exit(true);
+        // end;
+    end;
+
+    local procedure UpdateVendorFromTemplate(var Vendor: Record Vendor)
+    var
+        ConfigTemplateHeader: Record "Config. Template Header";
+        MiniVendorTemplate: Record "Mini Vendor Template" temporary;
+        CustomerRecRef: RecordRef;
+    begin
+        ConfigTemplateHeader.SetRange("Table ID", Database::Vendor);
+        ConfigTemplateHeader.SetRange(Description, 'VENDSEBPRO');
+        if not ConfigTemplateHeader.FindFirst() then
+            exit;
+        MiniVendorTemplate.InitializeTempRecordFromConfigTemplate(MiniVendorTemplate, ConfigTemplateHeader);
+        MiniVendorTemplate.InsertVendorFromTemplate(ConfigTemplateHeader, Vendor);
+
+    end;
+
+    local procedure UpdateVendorPostingSetup(var Vendor: Record Vendor)
+    var
+        CountryRegion: record "Country/Region";
+    begin
+        if CountryRegion.Get(Vendor."Country/Region Code") then begin
+            Vendor."Gen. Bus. Posting Group" := CountryRegion."Gen. Bus. Posting Group";
+            Vendor."VAT Bus. Posting Group" := CountryRegion."VAT Bus. Posting Group";
+            Vendor."Vendor Posting Group" := CountryRegion."Vendor Posting Group";
+        end else begin
+            CountryRegion.Init();
+            CountryRegion.Validate(Code, Vendor."Country/Region Code");
+            CountryRegion.Insert();
+        end;
+    end;
+
+    procedure CargaVendorBankfromExcel()
+    var
+        Vendor: record Vendor;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        VendorNoSEB: text;
+        Borrado: text;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel banco proveedores';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Vendor SEB: #1###############\Proveedor: #2###############\#3##### de #4#####');
+        Window.Update(4, Rows);
+        for linea := 6 to Rows do begin
+            Window.Update(3, linea);
+            VendorNoSEB := '';
+            Borrado := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 1);  // codigo proveedor
+            if ExcelBuffer.FindSet() then
+                VendorNoSEB := ExcelBuffer."Cell Value as Text";
+            VendorNoSEB := KillLeftCERO(VendorNoSEB);
+            window.update(1, VendorNoSEB);
+            if VendorNoSEB <> '' then begin
+                Vendor.SetRange("Codigo Anterior", VendorNoSEB);
+                if Vendor.FindFirst() then begin
+                    AddVendorBank(ExcelBuffer, Vendor, VendorNoSEB);
+
+                end;
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
+
+    local procedure AddVendorBank(var ExcelBuffer: Record "Excel Buffer" temporary; Vendor: Record Vendor; VendorSebNo: text)
+    var
+        VendorBankAccount: Record "Vendor Bank Account";
+    begin
+        VendorBankAccount.Reset();
+        VendorBankAccount.SetRange("Vendor No.", Vendor."No.");
+        if VendorBankAccount.findset() then
+            exit;
+        VendorBankAccount.Reset();
+        clear(VendorBankAccount);
+        VendorBankAccount.Init();
+        VendorBankAccount."Vendor No." := vendor."No.";
+        VendorBankAccount.Code := VendorSebNo;
+        ExcelBuffer.SetRange("Column No.", 2);  // IBAN
+        if ExcelBuffer.FindSet() then
+            VendorBankAccount.IBAN := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 12);  // codigo bancario
+        if ExcelBuffer.FindSet() then begin
+            VendorBankAccount."CCC Bank No." := copystr(ExcelBuffer."Cell Value as Text", 1, 4);
+            VendorBankAccount."CCC Bank Branch No." := copystr(ExcelBuffer."Cell Value as Text", 5, 4);
+        end;
+        ExcelBuffer.SetRange("Column No.", 4);  // cuenta bancaria
+        if ExcelBuffer.FindSet() then
+            VendorBankAccount."CCC Bank Account No." := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(VendorBankAccount."CCC Bank Account No."));
+        ExcelBuffer.SetRange("Column No.", 5);  // Nombre
+        if ExcelBuffer.FindSet() then
+            VendorBankAccount.Name := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(VendorBankAccount.Name));
+        ExcelBuffer.SetRange("Column No.", 9);  // SWIFT
+        if ExcelBuffer.FindSet() then
+            VendorBankAccount."SWIFT Code" := ExcelBuffer."Cell Value as Text";
+        VendorBankAccount.Insert();
+    end;
+
+    local procedure KillLeftCERO(VendorNoSEB: text): text
+    begin
+        repeat
+            if COPYSTR(VendorNoSEB, 1, 1) = '0' then
+                VendorNoSEB := COPYSTR(VendorNoSEB, 2);
+        until COPYSTR(VendorNoSEB, 1, 1) <> '0';
+        exit(VendorNoSEB);
+    end;
+
+    procedure CargaCustomerBankfromExcel()
+    var
+        ShiptoAddress: record "Ship-to Address";
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        CustNoSEB: text;
+        IBAN: text;
+        Borrado: text;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel banco clientes';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Vendor SEB: #1###############\Proveedor: #2###############\#3##### de #4#####');
+        Window.Update(4, Rows);
+        for linea := 6 to Rows do begin
+            Window.Update(3, linea);
+            CustNoSEB := '';
+            IBAN := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 1);  // codigo proveedor
+            if ExcelBuffer.FindSet() then
+                CustNoSEB := ExcelBuffer."Cell Value as Text";
+            CustNoSEB := KillLeftCERO(CustNoSEB);
+            window.update(1, CustNoSEB);
+            if CustNoSEB <> '' then begin
+                ShiptoAddress.SetRange("Codigo Anterior", CustNoSEB);
+                if ShiptoAddress.FindFirst() then begin
+                    ExcelBuffer.SetRange("Column No.", 4);  // IBAN
+                    if ExcelBuffer.FindSet() then
+                        IBAN := ExcelBuffer."Cell Value as Text";
+                    if IBAN <> '' then begin
+                        AddCustBank(ExcelBuffer, ShiptoAddress, CustNoSEB);
+                        window.update(2, CustNoSEB);
+                    end;
+                end;
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
+
+    local procedure AddCustBank(var ExcelBuffer: Record "Excel Buffer" temporary; ShiptoAddress: record "Ship-to Address"; CustSebNo: text)
+    var
+        CustomerBankAccount: Record "Customer Bank Account";
+    begin
+        CustomerBankAccount.Reset();
+        if CustomerBankAccount.Get(ShiptoAddress."Customer No.", CustSebNo) then
+            exit;
+        clear(CustomerBankAccount);
+        CustomerBankAccount.Init();
+        CustomerBankAccount."Customer No." := ShiptoAddress."Customer No.";
+        CustomerBankAccount.Code := CustSebNo;
+        ExcelBuffer.SetRange("Column No.", 2);  // Nombre clientes
+        if ExcelBuffer.FindSet() then
+            CustomerBankAccount."Name 2" := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(CustomerBankAccount."Name 2"));
+        ExcelBuffer.SetRange("Column No.", 3);  // Nombre
+        if ExcelBuffer.FindSet() then
+            CustomerBankAccount.Name := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(CustomerBankAccount.Name));
+        ExcelBuffer.SetRange("Column No.", 4);  // IBAN
+        if ExcelBuffer.FindSet() then
+            CustomerBankAccount.IBAN := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 5);  // SWIFT
+        if ExcelBuffer.FindSet() then
+            CustomerBankAccount."SWIFT Code" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 7);  // codigo bancario
+        if ExcelBuffer.FindSet() then begin
+            CustomerBankAccount."CCC Bank No." := copystr(ExcelBuffer."Cell Value as Text", 1, 4);
+            CustomerBankAccount."CCC Bank Branch No." := copystr(ExcelBuffer."Cell Value as Text", 5, 4);
+        end;
+        ExcelBuffer.SetRange("Column No.", 6);  // cuenta bancaria
+        if ExcelBuffer.FindSet() then
+            CustomerBankAccount."CCC Bank Account No." := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(CustomerBankAccount."CCC Bank Account No."));
+        ExcelBuffer.SetRange("Column No.", 10);  // DC
+        if ExcelBuffer.FindSet() then
+            CustomerBankAccount."CCC Control Digits" := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(CustomerBankAccount."CCC Control Digits"));
+
+        CustomerBankAccount.Insert();
     end;
 }

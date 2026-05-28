@@ -17,6 +17,10 @@ pageextension 50168 "ZM Ext Countries/Regions" extends "Countries/Regions"
             {
                 ApplicationArea = all;
             }
+            field("Vendor Posting Group"; "Vendor Posting Group")
+            {
+                ApplicationArea = all;
+            }
             field(Zona; Zona)
             {
                 ApplicationArea = all;
