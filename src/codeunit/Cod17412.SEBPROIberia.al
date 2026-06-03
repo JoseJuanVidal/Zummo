@@ -88,10 +88,15 @@ codeunit 17412 "SEB PRO Iberia"
     local procedure SQLRGetDecimalFieldName(SQLReader: DotNet SqlDataReader; IndexFieldName: text): Decimal
     var
         IndexField: Integer;
+        txtValue: text;
+        Value: decimal;
     begin
         IndexField := SQLReader.GetOrdinal(IndexFieldName);
-        if not SQLReader.IsDBNull(IndexField) then
-            exit(SQLReader.GetDouble((IndexField)));
+        if not SQLReader.IsDBNull(IndexField) then begin
+            txtValue := SQLReader.GetString(IndexField);
+            if Evaluate(Value, txtValue) then
+                exit(Value);
+        end;
     end;
 
     procedure GetClients()
@@ -615,12 +620,23 @@ codeunit 17412 "SEB PRO Iberia"
                 ItemNo := CheckItemNoSEB(SQLRGetStringFieldName(SQLReader, 'Material'));
                 windows.update(1, ItemNo);
                 GetFieldsItemSQLReader(tmpItem, SQLReader, ItemNo);
-
+                if not Item.Get(tmpItem."No.") then begin
+                    Item.Init();
+                    Item.TransferFields(tmpItem);
+                    Item.Insert()
+                end;
+                Item."Last Date Modified" := tmpItem."Last Date Modified";
+                Item.selClasVtas_btc := tmpItem.selClasVtas_btc;
+                Item."material antiguo code" := tmpItem."material antiguo code";
+                Item."Gross Weight" := tmpItem."Gross Weight";
+                Item."Net Weight" := tmpItem."Net Weight";
+                Item."Unit Volume" := tmpItem."Unit Volume";
+                Item.GTIN := tmpItem.GTIN;
+                Item.Modify();
             end;
         //     exit(false);
         windows.close;
         // exit(true);
-        Page.Run(0, tmpItem);
     end;
 
     local procedure CheckItemNoSEB(ItemNo: text) NewItemNo: Text
@@ -653,6 +669,8 @@ codeunit 17412 "SEB PRO Iberia"
     begin
         if not tmpItem.IsTemporary then
             Error('%1 debe ser temporal', tmpItem.TableName);
+
+        tmpItem.DeleteAll();
         SEBITemNo := SQLRGetSTring(SQLReader, 0);
 
         tmpItem.Init();
@@ -1388,9 +1406,9 @@ codeunit 17412 "SEB PRO Iberia"
                 ItemNoSEB := ExcelBuffer."Cell Value as Text";
             Window.Update(1, ItemNoSEB);
             if ItemNoSEB <> '' then begin
-                ExcelBuffer.SetRange("Column No.", 1);  //  SERVICIOS - KM - HOTEL
+                ExcelBuffer.SetRange("Column No.", 10);  //  GRUPOART
                 if ExcelBuffer.FindSet() then
-                    if ExcelBuffer."Cell Value as Text" in ['SERVICES', 'KM'] then begin
+                    if ExcelBuffer."Cell Value as Text" in ['033', '043', '313', '333', '503', '991'] then begin
                         window.update(3, linea);
                         window.update(4, Rows);
                         Window.Update(2, ItemNoSEB);
@@ -1440,7 +1458,7 @@ codeunit 17412 "SEB PRO Iberia"
         DatoFecha: date;
     begin
 
-
+        Item.Blocked := false;
         Item."Item Category Code" := DatoExcel;
 
         ExcelBuffer.SetRange("Column No.", 2);  // Material
@@ -1995,4 +2013,113 @@ codeunit 17412 "SEB PRO Iberia"
 
         CustomerBankAccount.Insert();
     end;
+
+
+
+    procedure CargaSaldosClientesfromExcel()
+    var
+        GLJnlLine: record "Gen. Journal Line";
+        Customer: record Customer;
+        ShiptoAddres: Record "Ship-to Address";
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        CustNoSEB: text;
+        IBAN: text;
+        Dato: text;
+        Fecha: date;
+        Importe: Decimal;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel saldos clientes';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 1);
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        GLJnlLine.SetRange("Journal Template Name", 'APERTURA');
+        GLJnlLine.SetRange("Journal Batch Name", 'APERTURA');
+        GLJnlLine.DeleteAll();
+
+        Window.Open('Cliente SEB: #1###############\Fecha: #2###############\#3##### de #4#####');
+        Window.Update(4, Rows);
+        for linea := 2 to Rows do begin
+            Window.Update(3, linea);
+            CustNoSEB := '';
+            IBAN := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 1);  // codigo Cliente
+            if ExcelBuffer.FindSet() then
+                CustNoSEB := ExcelBuffer."Cell Value as Text";
+            CustNoSEB := copystr(CustNoSEB, 9);  //Account 
+            window.update(1, CustNoSEB);
+            if CustNoSEB <> '' then begin
+                ShiptoAddres.SetRange("Codigo Anterior", CustNoSEB);
+                if ShiptoAddres.FindFirst() then;
+                if Customer.Get(ShiptoAddres."Customer No.") then
+                    if Customer."Payment Terms Code" = '' then begin
+                        Customer."Payment Terms Code" := 'CONTADO';
+                    end;
+                GLJnlLine.Init();
+                clear(GLJnlLine);
+                GLJnlLine."Journal Template Name" := 'APERTURA';
+                GLJnlLine."Journal Batch Name" := 'APERTURA';
+                GLJnlLine."Line No." := 10000 * linea;
+                GLJnlLine.Validate("Posting Date", WorkDate());
+                fecha := 0D;
+                ExcelBuffer.SetRange("Column No.", 6);  // Fecha
+                if ExcelBuffer.FindSet() then
+                    if Evaluate(fecha, ExcelBuffer."Cell Value as Text") then
+                        GLJnlLine.validate("Document Date", Fecha);
+                GLJnlLine.validate("Document Type");
+                dato := '';
+                ExcelBuffer.SetRange("Column No.", 5);  // Tipo Documento
+                if ExcelBuffer.FindSet() then
+                    Dato := ExcelBuffer."Cell Value as Text";
+                ExcelBuffer.SetRange("Column No.", 4);  // Documento
+                if ExcelBuffer.FindSet() then
+                    GLJnlLine.validate("Document No.", StrSubstNo('%1 %2', dato, ExcelBuffer."Cell Value as Text"));
+                GLJnlLine.validate("Account Type", GLJnlLine."Source Type"::Customer);
+                GLJnlLine.validate("Account No.", Customer."No.");
+                ExcelBuffer.SetRange("Column No.", 11);  // descripcion
+                if ExcelBuffer.FindSet() then
+                    GLJnlLine.validate(Description, ExcelBuffer."Cell Value as Text");
+                fecha := 0D;
+                ExcelBuffer.SetRange("Column No.", 10);  // Fecha
+                if ExcelBuffer.FindSet() then
+                    if Evaluate(fecha, ExcelBuffer."Cell Value as Text") then
+                        GLJnlLine.validate("Due Date", Fecha);
+                ExcelBuffer.SetRange("Column No.", 8);  // importe
+                if ExcelBuffer.FindSet() then
+                    if Evaluate(Importe, ExcelBuffer."Cell Value as Text") then
+                        GLJnlLine.validate(Amount, Importe);
+                GLJnlLine."Payment Method Code" := 'CONTADO';
+                GLJnlLine."Payment Terms Code" := 'CONTADO';
+                GLJnlLine.validate("Bal. Account Type", GLJnlLine."Bal. Account Type"::"G/L Account");
+                GLJnlLine.validate("Bal. Account No.", '4300998');
+                GLJnlLine.Insert();
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
+
 }

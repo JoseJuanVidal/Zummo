@@ -13288,6 +13288,11 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CargaCustomerBankfromExcel - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 2742540154 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel saldos clientes</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CargaSaldosClientesfromExcel - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 3658314415 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel banco proveedores</source>
           <note from="Developer" annotates="general" priority="2"></note>
@@ -32887,6 +32892,11 @@
           <source>Productos SEB PRO</source>
           <note from="Developer" annotates="general" priority="2">ESP="Productos SEB PRO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaItemxls - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 2742540154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Saldos Clientes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Saldos Clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaSaldosClientesfromExcel - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 2280452714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Clientes SEB PRO</source>

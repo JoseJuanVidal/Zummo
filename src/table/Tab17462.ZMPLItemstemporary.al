@@ -2152,7 +2152,7 @@ table 17462 "ZM PL Items Temporary"
                     ItemApprovalDepartment.Insert();
                     Pending := true;
                 end else
-                    if not (ItemApprovalDepartment.Department <> SetupPreItemReg."Last Department") then
+                    if ItemApprovalDepartment.Department <> SetupPreItemReg."Last Department" then
                         if ItemApprovalDepartment."Request Date" = 0D then
                             Pending := true;
             until ItemSetupApproval.Next() = 0;

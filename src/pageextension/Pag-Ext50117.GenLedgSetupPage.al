@@ -340,6 +340,23 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 end;
             }
 
+
+            action(CargaSaldosClientesfromExcel)
+            {
+                Caption = 'Saldos Clientes', comment = 'ESP="Saldos Clientes"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea cargar Saldos clientes?')) then
+                        SEBPRO.CargaSaldosClientesfromExcel();
+                end;
+            }
         }
     }
     trigger OnOpenPage()

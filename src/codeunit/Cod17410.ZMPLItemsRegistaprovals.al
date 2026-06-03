@@ -48,7 +48,8 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
         end;
         if SetupItemregistration.Get() then
             if SetupItemregistration."Enabled Approval Price List" then
-                Error(lblError);
+                if not CheckUserItemPurchasePriceApproval() then
+                    Error(lblError);
 
     end;
 
@@ -101,7 +102,7 @@ codeunit 17410 "ZM PL Items Regist. aprovals"
     begin
         if SetupItemregistration.Get() then
             if not SetupItemregistration."Enabled Approval Price List" then
-                exit(false);
+                exit(true);
         ItemSetupApproval.Reset();
         ItemSetupApproval.SetRange("Table No.", Database::"Purchase Price");
         ItemSetupApproval.SetRange("Field No.", 0);  // permisos a la tabla para aprobación
