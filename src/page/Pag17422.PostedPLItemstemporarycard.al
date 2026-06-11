@@ -19,28 +19,36 @@ page 17422 "Posted PL Items temporary card"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Nº identificador del producto', comment = 'ESP="Nº identificador del producto"';
+                    ToolTip = 'Nº Identificador del producto', comment = 'ESP="Nº Identificador del producto"';
+                }
+                field("Request Type"; "Request Type")
+                {
+                    ApplicationArea = all;
                 }
                 field("Item No."; "Item No.")
                 {
                     ApplicationArea = all;
+                    // Editable = IsItemNew;
+
                 }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    // Editable = boolEditDescription;
+
                 }
-                field(EnglishDescription; Rec.EnglishDescription)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Descripción en Ingles', comment = 'ESP="Descripción en Ingles"';
-                }
+                // field(EnglishDescription; Rec.EnglishDescription)
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Descripción en Ingles', comment = 'ESP="Descripción en Ingles"';
+                // }
                 field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas.'
                         , comment = 'ESP="Especifica la unidad base que se usa para medir el producto, como pieza, caja o palé. La unidad de medida base también sirve como base de conversión para las unidades de medida alternativas."';
                 }
-                field(Type; Type)
+                field("Clasification Type"; "Clasification Type")
                 {
                     ApplicationArea = all;
                     ToolTip = 'Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).'
@@ -75,12 +83,19 @@ page 17422 "Posted PL Items temporary card"
                 {
                     ApplicationArea = all;
                     ToolTip = 'Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.'
-                    , comment = 'ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."';
+                        , comment = 'ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."';
+                }
+                field("Requires Final Artwork"; "Requires Final Artwork")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indica que se realizará seguimiento y aviso por parte de Marketing'
+                        , comment = 'ESP="Indica que se realizará seguimiento y aviso por parte de Marketing"';
                 }
             }
-            group(Applicant)
+            group(Requester)
             {
-                Caption = 'Applicant', comment = 'ESP="Solicitante"';
+                Caption = 'Requester', comment = 'ESP="Solicitante"';
+
                 field("User ID"; "User ID")
                 {
                     ApplicationArea = all;
@@ -101,16 +116,7 @@ page 17422 "Posted PL Items temporary card"
                 {
                     ApplicationArea = all;
                 }
-                group(Motivo)
-                {
-                    field(WorkDescription; WorkDescription)
-                    {
-                        ApplicationArea = all;
-                        Caption = 'Reason', comment = 'ESP="Motivo"';
-                        ShowCaption = false;
-                        MultiLine = true;
-                    }
-                }
+
                 field(Activity; Activity)
                 {
                     ApplicationArea = all;
@@ -123,10 +129,102 @@ page 17422 "Posted PL Items temporary card"
                 {
                     ApplicationArea = all;
                 }
+                field("Tipo de Cambio"; "Tipo de Cambio")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Indicar si existe un cambio o sustitución en las Listas de Materiales.'
+                        , comment = 'ESP="Indicar si existe un cambio o sustitución en las Listas de Materiales."';
+                }
+                field("Replaces Item No."; "Replaces Item No.")
+                {
+                    ApplicationArea = all;
+                    // Visible = ShowChangesLM;
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update();
+                    end;
+                }
+                field("Replaces Name"; "Replaces Name")
+                {
+                    ApplicationArea = all;
+                    // Visible = ShowChangesLM;
+                }
+                field("Tipo aprovisionamiento"; "Tipo aprovisionamiento")
+                {
+                    ApplicationArea = all;
+                }
+                group(Motivo)
+                {
+                    field(WorkDescription; WorkDescription)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Reason', comment = 'ESP="Motivo"';
+                        ShowCaption = false;
+                        MultiLine = true;
+
+
+                        trigger OnValidate()
+                        begin
+                            SetWorkDescription(WorkDescription);
+                        end;
+                    }
+                }
+
+            }
+            group(changesLMItems)
+            {
+                Caption = 'Sustituye a productos', comment = 'ESP="Sustituye a productos"';
+                ShowCaption = false;
+                part("PL Item Change LM"; "PL Item Change LM")
+                {
+                    SubPageLink = "Request No." = field("No.");
+                }
+            }
+            group(Quality)
+            {
+                Caption = 'Quality', comment = 'ESP="Calidad"';
+                // Visible = ShowSections;
+
+                field("Sujeto a Control de Calidad"; "Sujeto a Control de Calidad")
+                {
+                    ApplicationArea = all;
+                }
+                field("Control Certificado proveedor"; "Control Certificado proveedor")
+                {
+                    ApplicationArea = all;
+                }
             }
             group(Additional)
             {
                 Caption = 'Additional', comment = 'ESP="Adicionales"';
+                // Visible = ShowSections;
+                Group(SEBCodes)
+                {
+                    Caption = 'SEB Codes', comment = 'ESP="SEB Codes"';
+
+                    field(GTIN; GTIN)
+                    {
+                        ApplicationArea = all;
+
+                    }
+                    field("CMMF Code"; "CMMF Code")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB PI2 Code"; "SEB PI2 Code")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB PI2 Description"; "SEB PI2 Description")
+                    {
+                        ApplicationArea = all;
+                    }
+                    field("SEB PI2 Description English"; "SEB PI2 Description English")
+                    {
+                        ApplicationArea = all;
+                    }
+
+                }
                 field(Color; Rec.Color)
                 {
                     ApplicationArea = All;
@@ -147,6 +245,10 @@ page 17422 "Posted PL Items temporary card"
                 {
                     ApplicationArea = All;
                 }
+                field("Gross Weight"; "Gross Weight")
+                {
+                    ApplicationArea = all;
+                }
                 field(Material; Rec.Material)
                 {
                     ApplicationArea = All;
@@ -156,6 +258,155 @@ page 17422 "Posted PL Items temporary card"
                     ApplicationArea = All;
                 }
             }
+            group(Clasification)
+            {
+                Caption = 'Clasification', comment = 'ESP="Clasificación"';
+                // Visible = ShowSections;
+
+                Grid(Clasif)
+                {
+                    Caption = 'Clasificación Ventas', comment = 'ESP="Clasificación Ventas"';
+                    GridLayout = Rows;
+                    group(SelClas)
+                    {
+                        ShowCaption = false;
+                        field(selClasVtas_btc; selClasVtas_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desClasVtas_btc; desClasVtas_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(SelFam)
+                    {
+                        ShowCaption = false;
+                        field(selFamilia_btc; selFamilia_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desFamilia_btc; desFamilia_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+
+                    }
+                    group(SelGamma)
+                    {
+                        ShowCaption = false;
+                        field(selGama_btc; selGama_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desGama_btc; desGama_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(SelLinea)
+                    {
+                        ShowCaption = false;
+                        field(selLineaEconomica_btc; selLineaEconomica_btc)
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field(desLineaEconomica_btc; desLineaEconomica_btc)
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(SelCanal)
+                    {
+                        ShowCaption = false;
+                        field(Canal; Canal)
+                        {
+                            ApplicationArea = all;
+                        }
+                    }
+                }
+
+                Grid(ClasifPurch)
+                {
+                    Caption = 'Clasificación Compras', comment = 'ESP="Clasificación Compras"';
+                    GridLayout = Rows;
+                    // Caption = 'Compras - Plataforma ITBID', comment = 'ESP="Compras - Plataforma ITBID"';
+                    group(PurcFam)
+                    {
+                        ShowCaption = false;
+                        field("Purch. Family"; "Purch. Family")
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field("Desc. Purch. Family"; "Desc. Purch. Family")
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(PurcCat)
+                    {
+                        ShowCaption = false;
+                        field("Purch. Category"; "Purch. Category")
+                        {
+                            ApplicationArea = all;
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field("Desc. Purch. Category"; "Desc. Purch. Category")
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                    group(PurcSubCat)
+                    {
+                        ShowCaption = false;
+                        field("Purch. SubCategory"; "Purch. SubCategory")
+                        {
+                            ApplicationArea = all;
+
+                            trigger OnValidate()
+                            begin
+                                CurrPage.Update();
+                            end;
+                        }
+                        field("Desc. Purch. SubCategory"; "Desc. Purch. SubCategory")
+                        {
+                            ApplicationArea = all;
+                            ShowCaption = false;
+                        }
+                    }
+                }
+
+            }
+
             group("Costs & Posting")
             {
                 Caption = 'Costs & Posting', comment = 'ESP="Costes y registro"';
@@ -219,6 +470,14 @@ page 17422 "Posted PL Items temporary card"
                 {
                     ApplicationArea = all;
                 }
+                field("Vendor No."; "Vendor No.")
+                {
+                    ApplicationArea = all;
+                }
+                field(Manufacturer; Manufacturer)
+                {
+                    ApplicationArea = all;
+                }
                 field("Lead Time Calculation"; "Lead Time Calculation")
                 {
                     ApplicationArea = all;
@@ -236,6 +495,11 @@ page 17422 "Posted PL Items temporary card"
                     field("Production BOM No."; "Production BOM No.")
                     {
                         ApplicationArea = all;
+                    }
+                    field("Production BOM Lines"; "Production BOM Lines")
+                    {
+                        ApplicationArea = all;
+                        Editable = false;
                     }
                     field("Rounding Precision"; "Rounding Precision")
                     {
@@ -326,16 +590,34 @@ page 17422 "Posted PL Items temporary card"
                     field("Serial Nos."; "Serial Nos.")
                     {
                         ApplicationArea = all;
+
                     }
                     field("Lot Nos."; "Lot Nos.")
                     {
                         ApplicationArea = all;
+
                     }
                     field("Expiration Calculation"; "Expiration Calculation")
                     {
                         ApplicationArea = all;
+
                     }
                 }
+            }
+        }
+        area(factboxes)
+        {
+            part("ZM SH Record Link Sharep. list"; "ZM SH Record Link Sharep. list")
+            {
+                SubPageLink = "Document No." = field("No.");
+            }
+            // systempart(Links; Links)
+            // {
+            //     ApplicationArea = RecordLinks;
+            // }
+            systempart(Notes; Notes)
+            {
+                ApplicationArea = Notes;
             }
         }
     }

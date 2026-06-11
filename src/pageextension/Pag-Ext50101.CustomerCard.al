@@ -152,6 +152,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
             {
                 ApplicationArea = all;
             }
+            field("Codigo Anterior"; "Codigo Anterior")
+            {
+                ApplicationArea = all;
+            }
         }
         //S20/00375
         addafter("E-Mail")

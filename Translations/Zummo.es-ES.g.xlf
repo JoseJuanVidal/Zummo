@@ -6238,6 +6238,18 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Method SendMailItemTemporaryFinalize - NamedType SubjectLbl</note>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 4067082012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>ABC</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ABC"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field ABC - Property Caption</note>
+          <target>ABC</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 4067082012 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,A,B,C,D</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,A,B,C,D"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field ABC - Property OptionCaption</note>
+          <target> ,A,B,C,D</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 659317815 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Activity</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actividad"</note>
@@ -6292,6 +6304,42 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Blocked - Property Caption</note>
           <target>Bloqueado</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 699648579 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Canal</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Canal - Property Caption</note>
+          <target>Canal</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 699648579 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Retail,Food Service</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Retail,Food Service"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Canal - Property OptionCaption</note>
+          <target>Retail,Food Service</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1321055271 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Carton Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cartón Embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Carton - Property Caption</note>
+          <target>Cartón Embalaje (kg)</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2028197887 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasification Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Clasification Type - Property Caption</note>
+          <target>Clasificación</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2028197887 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Raw Material/Item,Service,Item Out of stock</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Materia Prima/Productos,Servicio,Productos sin Stock"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Clasification Type - Property OptionCaption</note>
+          <target> ,Materia Prima/Productos,Servicio,Productos sin Stock</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CMMF Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field CMMF Code - Property Caption</note>
+          <target>CMMF Code</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 430424374 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Codigo Empleado</source>
           <note from="Developer" annotates="general" priority="2">ESP="Codigo Empleado"</note>
@@ -6327,11 +6375,53 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Department - Property Caption</note>
           <target>Departamento</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3810656663 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc. Purch. Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Categoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Desc. Purch. Category - Property Caption</note>
+          <target>Nombre Categoria compra</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 4149251189 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc. Purch. Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Familia compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Desc. Purch. Family - Property Caption</note>
+          <target>Nombre Familia compra</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3948819587 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc. Purch. SubCategory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre SubCategoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Desc. Purch. SubCategory - Property Caption</note>
+          <target>Nombre SubCategoria compra</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2163727191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc. Sales Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field desClasVtas_btc - Property Caption</note>
+          <target>Desc. Clasificación Ventas</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Description</source>
           <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Description - Property Caption</note>
           <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 304493673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc. Familia</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field desFamilia_btc - Property Caption</note>
+          <target>Desc. Familia</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3555758206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc. Gamma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field desGama_btc - Property Caption</note>
+          <target>Desc. Gama</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1382123467 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Desc. Linea Economica</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field desLineaEconomica_btc - Property Caption</note>
+          <target>Desc. Linea Economica</target>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 3811440715 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Durability</source>
@@ -6447,6 +6537,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Item No. - Property Caption</note>
           <target>Cód. producto</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3205592447 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No. Manufacturer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Fabricante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Item No. Manufacturer - Property Caption</note>
+          <target>Cód. Fabricante</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 65514489 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Tracking Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. seguim. prod."</note>
@@ -6471,6 +6567,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Lot Nos. - Property Caption</note>
           <target>Nº serie lote</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3647128553 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Manufacturer</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fabricante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Manufacturer - Property Caption</note>
+          <target>Fabricante</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 2585418950 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Manufacturer Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. fabricante"</note>
@@ -6494,6 +6596,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Material"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Material - Property Caption</note>
           <target>Material</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2621064865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Material Embalaje Excluido</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Material Embalaje Excluido"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Material Embalaje Excluido - Property Caption</note>
+          <target>Material Embalaje Excluido</target>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 1356249118 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Maximum Inventory</source>
@@ -6555,11 +6663,41 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Packaging - Property Caption</note>
           <target>Embalaje</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2021783656 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Packaging product</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto de bulto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Packaging product - Property Caption</note>
+          <target>Producto de bulto</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2055232018 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Package Plastic (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico Bulto (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Packing Plastic Qty. (kg) - Property Caption</note>
+          <target>Plástico Bulto (kg)</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2491103169 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Package Plastic %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado Bulto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Packing Recycled plastic % - Property Caption</note>
+          <target>% Plástico reciclado Bulto</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 167378473 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Package Recycled Plastic (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado Bulto (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Packing Recycled plastic (kg) - Property Caption</note>
+          <target>Plástico reciclado Bulto (kg)</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Picture</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Picture - Property Caption</note>
           <target>Imagen</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3531207521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plastic packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Plastic Qty. (kg) - Property Caption</note>
+          <target>Plástico embalaje (kg)</target>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 3710982960 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Posting Date</source>
@@ -6573,6 +6711,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Product manager - Property Caption</note>
           <target>Responsable</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2070474202 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Líneas L.M. producción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Production BOM Lines - Property Caption</note>
+          <target>Líneas L.M. producción</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 2287818464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Production BOM No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº L.M. producción"</note>
@@ -6584,6 +6728,24 @@
           <note from="Developer" annotates="general" priority="2">ESP="Prototipo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Prototype - Property Caption</note>
           <target>Prototipo</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2267820446 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Category</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Categoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Purch. Category - Property Caption</note>
+          <target>Categoria compra</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3319401488 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Purch. Family - Property Caption</note>
+          <target>Familia compra</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 4086937370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Purch. SubCategory</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SubCategoria compra"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Purch. SubCategory - Property Caption</note>
+          <target>SubCategoria compra</target>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 1660815199 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Unit of Measure</source>
@@ -6609,6 +6771,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Reason Blocked - Property Caption</note>
           <target>Motivo Bloqueo/Desbloqueo</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 898817722 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plastic Recycled packing %</source>
+          <note from="Developer" annotates="general" priority="2">ESP="% Plástico reciclado embalaje"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Recycled plastic % - Property Caption</note>
+          <target>% Plástico reciclado embalaje</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2171523688 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Plastic Recycled packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado embalaje(kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Recycled plastic Qty. (kg) - Property Caption</note>
+          <target>Plástico reciclado embalaje(kg)</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 3345871191 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reorder Point</source>
           <note from="Developer" annotates="general" priority="2">ESP="Punto pedido"</note>
@@ -6632,6 +6806,18 @@
           <note from="Developer" annotates="general" priority="2">ESP=" ,Cant. fija reaprov.,Cant. máxima,Pedido,Lote a lote"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Reordering Policy - Property OptionCaption</note>
           <target> ,Cant. fija reaprov.,Cant. máxima,Pedido,Lote a lote</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 120033807 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Replaces Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a cód."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Replaces Item No. - Property Caption</note>
+          <target>Sustituye a cód.</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 480286868 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Replaces Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Replaces Name - Property Caption</note>
+          <target>Sustituye a nombre</target>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 3500504311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Replenishment System</source>
@@ -6716,6 +6902,48 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Sales Unit of Measure - Property Caption</note>
           <target>Unidad medida venta</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 582183558 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field SEB PI2 Code - Property Caption</note>
+          <target>PI2 Code</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2233502939 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 Description"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field SEB PI2 Description - Property Caption</note>
+          <target>PI2 Description</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 758668661 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PI2 Description English</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PI2 Description English"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field SEB PI2 Description English - Property Caption</note>
+          <target>PI2 Description English</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2057754319 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sales Classification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field selClasVtas_btc - Property Caption</note>
+          <target>Clasificación Ventas</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2448458993 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field selFamilia_btc - Property Caption</note>
+          <target>Familia</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1300314486 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gamma</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Gama"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field selGama_btc - Property Caption</note>
+          <target>Gama</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2853709011 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Linea Economica</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Linea Economica"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field selLineaEconomica_btc - Property Caption</note>
+          <target>Linea Economica</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 289578952 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Serial Nos.</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -6727,11 +6955,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Service Item Group - Property Caption</note>
           <target>Grupo prod. servicio</target>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 4172308441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show detailed documents</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar en detalle documentos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Show detailed documents - Property Caption</note>
+          <target>Mostrar en detalle documentos</target>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 2378972714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>State Creation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado Alta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field State Creation - Property Caption</note>
           <target>Estado Alta</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3459458485 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Steel Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acero Embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Steel - Property Caption</note>
+          <target>Acero Embalaje (kg)</target>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 223923525 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Sujeto a Control de Calidad</source>
@@ -6750,6 +6990,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ciclo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Time Bucket - Property Caption</note>
           <target>Ciclo</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 932762057 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo aprovisionamiento</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo aprovisionamiento"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Tipo aprovisionamiento - Property Caption</note>
+          <target>Tipo aprovisionamiento</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2102708812 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Tipo de Cambio L.M.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo de Cambio L.M."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Tipo de Cambio - Property Caption</note>
+          <target>Tipo de Cambio L.M.</target>
         </trans-unit>
         <trans-unit id="Table 1358451628 - Field 1878130204 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type</source>
@@ -6816,6 +7068,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº proveedor"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Vendor No. - Property Caption</note>
           <target>Nº proveedor</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 4177096042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Carton Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cartón Embalaje proveedor (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Vendor Packaging Carton - Property Caption</note>
+          <target>Cartón Embalaje proveedor (kg)</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1075816576 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Plastic packing (kg/ud)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plástico embalaje proveedor (kg/ud)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Vendor Packaging product KG - Property Caption</note>
+          <target>Plástico embalaje proveedor (kg/ud)</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3741809292 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Steel Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acero Embalaje proveedor(kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Vendor Packaging Steel - Property Caption</note>
+          <target>Acero Embalaje proveedor(kg)</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1917189804 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vendor Wood Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Madera Embalaje proveedor (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Vendor Packaging Wood - Property Caption</note>
+          <target>Madera Embalaje proveedor (kg)</target>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 469769693 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Wood Packing (kg)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Madera Embalaje (kg)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Wood - Property Caption</note>
+          <target>Madera Embalaje (kg)</target>
         </trans-unit>
         <trans-unit id="Table 3365585894 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purchase Requests less 200</source>
@@ -14500,10 +14782,10 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClasificacionVentas - NamedType lblPCM</note>
         </trans-unit>
-        <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 579370895" size-unit="char" translate="yes" xml:space="preserve">
-          <source>SELECT *  FROM [CLIENTS$] WHERE cliente is not null ORDER BY [Cliente]</source>
+        <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 3491503912" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT *  FROM [CLIENTS$] WHERE cliente is not null and cliente ='%1' ORDER BY [Cliente]</source>
           <note from="Developer" annotates="general" priority="2"/>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblSQLDelete</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetClients - NamedType lblSQLSelect</note>
         </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 4075147288 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nº Cliente #1##########\Registro #2#########\#3####### de #4########</source>
@@ -18891,17 +19173,35 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Additional - Property Caption</note>
           <target>Adicionales</target>
         </trans-unit>
-        <trans-unit id="Page 4165822776 - Control 4257449176 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Applicant</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Solicitante"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Applicant - Property Caption</note>
-          <target>Solicitante</target>
+        <trans-unit id="Page 4165822776 - Control 1791073462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SEB Codes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="SEB Codes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control SEBCodes - Property Caption</note>
+          <target>SEB Codes</target>
         </trans-unit>
-        <trans-unit id="Page 4165822776 - Control 512684737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Reason</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control WorkDescription - Property Caption</note>
-          <target>Motivo</target>
+        <trans-unit id="Page 4165822776 - Control 3485227430 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sustituye a productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sustituye a productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control changesLMItems - Property Caption</note>
+          <target>Sustituye a productos</target>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 3188276999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasification</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Clasification - Property Caption</note>
+          <target>Clasificación</target>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 3441625278 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasificación Ventas</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Ventas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Clasif - Property Caption</note>
+          <target>Clasificación Ventas</target>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 4143460506 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Clasificación Compras</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clasificación Compras"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control ClasifPurch - Property Caption</note>
+          <target>Clasificación Compras</target>
         </trans-unit>
         <trans-unit id="Page 4165822776 - Control 823844234 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Costs &amp; Posting</source>
@@ -18933,11 +19233,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Blocked - Property ToolTip</note>
           <target>Especifica que se ha bloqueado el registro relacionado para que no se registre en transacciones, por ejemplo, en el caso de un cliente que ha sido declarado insolvente o de un elemento que se encuentra en cuarentena.</target>
         </trans-unit>
-        <trans-unit id="Page 4165822776 - Control 1295952376 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Descripción en Ingles</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Descripción en Ingles"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control EnglishDescription - Property ToolTip</note>
-          <target>Descripción en Ingles</target>
+        <trans-unit id="Page 4165822776 - Control 2028197887 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Clasification Type - Property ToolTip</note>
+          <target>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</target>
         </trans-unit>
         <trans-unit id="Page 4165822776 - Control 3520847126 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Plataforma ITBID</source>
@@ -18952,10 +19252,10 @@
           <target>Indica si se ha creado el producto en la plataforma ITBID.</target>
         </trans-unit>
         <trans-unit id="Page 4165822776 - Control 4200184881 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Nº identificador del producto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nº identificador del producto"</note>
+          <source>Nº Identificador del producto</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Identificador del producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control No. - Property ToolTip</note>
-          <target>Nº identificador del producto</target>
+          <target>Nº Identificador del producto</target>
         </trans-unit>
         <trans-unit id="Page 4165822776 - Control 4042672808 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.</source>
@@ -18963,23 +19263,47 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Reason Blocked - Property ToolTip</note>
           <target>Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado.</target>
         </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 549843888 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indica que se realizará seguimiento y aviso por parte de Marketing</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indica que se realizará seguimiento y aviso por parte de Marketing"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Requires Final Artwork - Property ToolTip</note>
+          <target>Indica que se realizará seguimiento y aviso por parte de Marketing</target>
+        </trans-unit>
         <trans-unit id="Page 4165822776 - Control 2378972714 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indica el estado de la solicitud de datos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control State Creation - Property ToolTip</note>
           <target>Indica el estado de la solicitud de datos.</target>
         </trans-unit>
-        <trans-unit id="Page 4165822776 - Control 1878130204 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario)."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Type - Property ToolTip</note>
-          <target>Especifica si la ficha de producto representa una unidad de inventario físico (Inventario), una unidad de tiempo de mano de obra (Servicio) o una unidad física sin seguimiento en el inventario (Fuera de inventario).</target>
-        </trans-unit>
         <trans-unit id="Page 4165822776 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prices &amp; Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precios y ventas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Prices &amp; Sales - Property Caption</note>
           <target>Precios y ventas</target>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 1483341903 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quality</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Calidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Quality - Property Caption</note>
+          <target>Calidad</target>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 4078940458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Requester</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Solicitante"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Requester - Property Caption</note>
+          <target>Solicitante</target>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 512684737 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reason</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control WorkDescription - Property Caption</note>
+          <target>Motivo</target>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 2102708812 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicar si existe un cambio o sustitución en las Listas de Materiales.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar si existe un cambio o sustitución en las Listas de Materiales."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control Tipo de Cambio - Property ToolTip</note>
+          <target>Indicar si existe un cambio o sustitución en las Listas de Materiales.</target>
         </trans-unit>
         <trans-unit id="Page 4165822776 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producción</source>

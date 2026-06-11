@@ -1238,14 +1238,6 @@ table 17462 "ZM PL Items Temporary"
             OptionMembers = " ",New,Change,Blocked,Unlocking,Delete;
             OptionCaption = ' ,New,Change,Blocked,Unlocking,Delete', Comment = 'ESP=" ,Nuevo,Cambio,Bloqueo,Desbloqueo,Eliminación"';
         }
-        field(65100; "Sujeto a Control de Calidad"; Boolean)
-        {
-            Caption = 'Sujeto a Control de Calidad', comment = 'ESP="Sujeto a Control de Calidad"';  // 65100
-            trigger OnValidate()
-            begin
-                ChangeFieldNo(Rec.FieldNo("Sujeto a Control de Calidad"));
-            end;
-        }
         field(50871; "Control Certificado proveedor"; Boolean)
         {
             Caption = 'Control Certificado proveedor', comment = 'ESP="Control Certificado proveedor"';  // 65110
@@ -1305,6 +1297,15 @@ table 17462 "ZM PL Items Temporary"
         field(50951; "Tipo aprovisionamiento"; Enum "Tipo de Aprovisionamiento")
         {
             Caption = 'Tipo aprovisionamiento', comment = 'ESP="Tipo aprovisionamiento"';
+        }
+
+        field(65100; "Sujeto a Control de Calidad"; Boolean)
+        {
+            Caption = 'Sujeto a Control de Calidad', comment = 'ESP="Sujeto a Control de Calidad"';  // 65100
+            trigger OnValidate()
+            begin
+                ChangeFieldNo(Rec.FieldNo("Sujeto a Control de Calidad"));
+            end;
         }
         field(99000750; "Routing No."; Code[20])
         {

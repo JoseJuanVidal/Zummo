@@ -254,7 +254,7 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                     SEBPRO: Codeunit "SEB PRO Iberia";
                 begin
                     if Confirm(('Desea Crear productos SEB PRO?')) then
-                        SEBPRO.GeTItems();
+                        SEBPRO.GeTItems('');
                 end;
             }
 
@@ -336,10 +336,25 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                     SEBPRO: Codeunit "SEB PRO Iberia";
                 begin
                     if Confirm(('Desea Crear Productos SEB PRO?')) then
-                        SEBPRO.UploadSEBItemExcel();
+                        SEBPRO.UploadSEBItemPriceExcel();
                 end;
             }
+            action(CargaItemPrice)
+            {
+                Caption = 'Tarifas XLS SEB PRO', comment = 'ESP="Tarifas XLS SEB PRO"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
 
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea Crear Productos SEB PRO?')) then
+                        SEBPRO.UploadSEBItemPriceExcel();
+                end;
+            }
 
             action(CargaSaldosClientesfromExcel)
             {
@@ -355,6 +370,22 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 begin
                     if Confirm(('Desea cargar Saldos clientes?')) then
                         SEBPRO.CargaSaldosClientesfromExcel();
+                end;
+            }
+            action(CargaSaldosProveedorfromExcel)
+            {
+                Caption = 'Saldos Proveedor', comment = 'ESP="Saldos Proveedor"';
+                Promoted = true;
+                PromotedCategory = Report;
+                PromotedIsBig = true;
+                Image = Excel;
+
+                trigger OnAction()
+                var
+                    SEBPRO: Codeunit "SEB PRO Iberia";
+                begin
+                    if Confirm(('Desea cargar Saldos Proveedor?')) then
+                        SEBPRO.CargaSaldosProveedorfromExcel();
                 end;
             }
         }

@@ -99,7 +99,7 @@ codeunit 17412 "SEB PRO Iberia"
         end;
     end;
 
-    procedure GetClients()
+    procedure GetClients(ClientNo: Code[20])
     var
         Customer: Record Customer;
         tmpCustomer: Record Customer temporary;
@@ -112,7 +112,7 @@ codeunit 17412 "SEB PRO Iberia"
         VatNoSeb: code[50];
         UpdateCustomer: Boolean;
         Windows: Dialog;
-        lblSQLDelete: Label 'SELECT *  FROM [CLIENTS$] WHERE cliente is not null ORDER BY [Cliente]';
+        lblSQLSelect: Label 'SELECT *  FROM [CLIENTS$] WHERE cliente is not null and cliente =''%1'' ORDER BY [Cliente]';
         lblWindow: Label 'Nº Cliente #1##########\Registro #2#########\#3####### de #4########', comment = 'ESP="Nº Cliente #1##########\Registro #2#########\#3####### de #4########"';
     begin
         windows.Open(lblWindow);
@@ -121,7 +121,7 @@ codeunit 17412 "SEB PRO Iberia"
         Clear(SQLCommand);
         SQLCommand := SQLConnection.CreateCommand();
         // SQLCommand.CommandText := 'select * From ItemCompleto';
-        SQLCommand.CommandText := StrSubstNo(lblSQLDelete);
+        SQLCommand.CommandText := StrSubstNo(lblSQLSelect, ClientNo);
         // ** EXEC READER **
         SQLReader := SQLCommand.ExecuteReader;
         IF SQLReader.HasRows then
@@ -588,7 +588,7 @@ codeunit 17412 "SEB PRO Iberia"
         //Page.Run(0, Customer);
     end;
 
-    procedure GeTItems()
+    procedure GeTItems(WhereItemNo: text)
     var
         Item: Record Item;
         tmpItem: Record Item temporary;
@@ -611,15 +611,17 @@ codeunit 17412 "SEB PRO Iberia"
         SQLCommand := SQLConnection.CreateCommand();
         txtWhere := StrSubstNo('([Grupo_art] = ''%1'' or [Grupo_art] = ''%2'' or [Grupo_art] = ''%3'' or [Grupo_art] = ''%4'' or [Grupo_art] = ''%5'' or [Grupo_art] = ''%6'')',
                 '033', '043', '313', '333', '503', '991');
+        if WhereItemNo <> '' then
+            txtWhere := StrSubstNo(' [MATERIALES_STG].material=''%1''', ClearItemNo(WhereItemNo));
         txtJoin := 'left join materialestextos_stg on [materiales_stg].material = materialestextos_stg.material';
         SQLCommand.CommandText := StrSubstNo(lblSQLSelect, txtJoin, txtWhere);
         // ** EXEC READER **
         SQLReader := SQLCommand.ExecuteReader;
         IF SQLReader.HasRows then
             while SQLReader.Read() do begin
-                ItemNo := CheckItemNoSEB(SQLRGetStringFieldName(SQLReader, 'Material'));
-                windows.update(1, ItemNo);
-                GetFieldsItemSQLReader(tmpItem, SQLReader, ItemNo);
+                // ItemNo := CheckItemNoSEB(SQLRGetStringFieldName(SQLReader, 'Material'));
+                windows.update(1, WhereItemNo);
+                GetFieldsItemSQLReader(tmpItem, SQLReader, WhereItemNo);
                 if not Item.Get(tmpItem."No.") then begin
                     Item.Init();
                     Item.TransferFields(tmpItem);
@@ -637,6 +639,18 @@ codeunit 17412 "SEB PRO Iberia"
         //     exit(false);
         windows.close;
         // exit(true);
+    end;
+
+    local procedure ClearItemNo(ItemNo: text) NewItemNo: Text
+    var
+        i: Integer;
+        NumChar: Integer;
+    begin
+        NewItemNo := DelChr(ItemNo, '=', '.');
+        for i := 1 to StrLen(ItemNo) do begin
+            if copystr(NewItemNo, 1, 1) = '0' then
+                NewItemNo := copystr(NewItemNo, 2);
+        end;
     end;
 
     local procedure CheckItemNoSEB(ItemNo: text) NewItemNo: Text
@@ -1538,6 +1552,89 @@ codeunit 17412 "SEB PRO Iberia"
             item."Shelf No." := ExcelBuffer."Cell Value as Text";
     end;
 
+
+    // =============     TARIFAS PRECIOS XLS          ====================
+    // ==  
+    // ==  comment 
+    // ==  
+    // ======================================================================================================
+    procedure UploadSEBItemPriceExcel()
+    var
+        Item: record Item;
+        SalesPrice: record "Sales Price";
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        ItemNoSEB: text;
+        Precio: Decimal;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        Text000: label 'Cargar Fichero de Excel';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+        ;
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Linea #3####### de #4#######\Producto SEB: #1###############\Precio: #2################');
+
+        for linea := 3 to Rows do begin
+            ItemNoSEB := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 2);  // Codigo producto
+            if ExcelBuffer.FindSet() then
+                ItemNoSEB := ExcelBuffer."Cell Value as Text";
+            Window.Update(1, ItemNoSEB);
+            if ItemNoSEB <> '' then begin
+
+                ExcelBuffer.SetRange("Column No.", 3);  //  precio
+                if ExcelBuffer.FindSet() then
+                    if Evaluate(Precio, ExcelBuffer."Cell Value as Text") then;
+                window.update(3, linea);
+                window.update(4, Rows);
+                Window.Update(2, ItemNoSEB);
+                if not Item.Get(ItemNoSEB) then begin
+                    GeTItems(ItemNoSEB);
+                end;
+                SalesPrice.Reset();
+                SalesPrice.SetRange("Item No.", ItemNoSEB);
+                SalesPrice.SetRange("Sales Type", SalesPrice."Sales Type"::"Customer Price Group");
+                SalesPrice.SetRange("Sales Code", 'PCM');
+                if not SalesPrice.FindFirst() then begin
+                    SalesPrice.Init();
+                    SalesPrice.validate("Item No.", ItemNoSEB);
+                    SalesPrice."Sales Type" := SalesPrice."Sales Type"::"Customer Price Group";
+                    SalesPrice.validate("Sales Code", 'PCM');
+                    SalesPrice."Starting Date" := 20260101D;
+                    SalesPrice.Validate("Currency Code", 'EUR');
+                    //SalesPrice.validate("Unit of Measure Code", 'UDS');
+                    SalesPrice.Insert();
+                end;
+                SalesPrice."Unit Price" := Precio;
+                SalesPrice.Modify();
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
+
     // =============     PROVEEDORES          ====================
     // ==  
     // ==  comment 
@@ -1648,7 +1745,7 @@ codeunit 17412 "SEB PRO Iberia"
         ExcelBuffer.SetRange("Column No.", 11);  // NOMBRFE PAIS
         if ExcelBuffer.FindSet() then
             DatoExcel := ExcelBuffer."Cell Value as Text";
-        vendor."Country/Region Code" := GetPAISVendor(DatoExcel);
+        Vendor."Country/Region Code" := GetPAISVendor(DatoExcel);
 
         ExcelBuffer.SetRange("Column No.", 4);  // Nombre 1
         if ExcelBuffer.FindSet() then
@@ -1665,6 +1762,9 @@ codeunit 17412 "SEB PRO Iberia"
         ExcelBuffer.SetRange("Column No.", 12);  // Calle
         if ExcelBuffer.FindSet() then
             Vendor.Address := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 18);  // N.I.F. 
+        if ExcelBuffer.FindSet() then
+            Vendor."VAT Registration No." := ExcelBuffer."Cell Value as Text";
         ExcelBuffer.SetRange("Column No.", 20);  // Tel馭ono 1
         if ExcelBuffer.FindSet() then
             Vendor."Phone No." := ExcelBuffer."Cell Value as Text";
@@ -2014,7 +2114,110 @@ codeunit 17412 "SEB PRO Iberia"
         CustomerBankAccount.Insert();
     end;
 
+    procedure CargaSaldosProveedorfromExcel()
+    var
+        GLJnlLine: record "Gen. Journal Line";
+        Vendor: record Vendor;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        VendNoSEB: text;
+        IBAN: text;
+        Dato: text;
+        Fecha: date;
+        Importe: Decimal;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        LineNo: Integer;
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel saldos Proveedores';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
 
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 3);
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        GLJnlLine.SetRange("Journal Template Name", 'APERTURA');
+        GLJnlLine.SetRange("Journal Batch Name", 'APERTURA');
+        GLJnlLine.DeleteAll();
+
+        Window.Open('Proveedor SEB: #1###############\Fecha: #2###############\#3##### de #4#####');
+        Window.Update(4, Rows);
+        LineNo := 10000;
+        for linea := 8 to Rows do begin
+            Window.Update(3, linea);
+            VendNoSEB := '';
+            IBAN := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 3);  // codigo Proveedor
+            if ExcelBuffer.FindSet() then
+                VendNoSEB := ExcelBuffer."Cell Value as Text";
+            window.update(1, VendNoSEB);
+            if VendNoSEB <> '' then begin
+                Vendor.SetRange("Codigo Anterior", VendNoSEB);
+                if Vendor.FindFirst() then
+                    if Vendor.Blocked in [Vendor.Blocked::All, Vendor.Blocked::Payment] then begin
+                        Vendor.Blocked := Vendor.Blocked::" ";
+                        Vendor."Purchaser Code" := 'SEB';
+                        Vendor.Modify();
+                    end;
+                GLJnlLine.Init();
+                clear(GLJnlLine);
+                GLJnlLine."Journal Template Name" := 'APERTURA';
+                GLJnlLine."Journal Batch Name" := 'APERTURA';
+                GLJnlLine."Line No." := LineNo;
+                GLJnlLine.Validate("Posting Date", WorkDate());
+                fecha := 0D;
+                ExcelBuffer.SetRange("Column No.", 6);  // Fecha
+                if ExcelBuffer.FindSet() then
+                    if Evaluate(fecha, ExcelBuffer."Cell Value as Text") then
+                        GLJnlLine.validate("Document Date", Fecha);
+                GLJnlLine.validate("Document Type");
+                dato := '';
+                ExcelBuffer.SetRange("Column No.", 4);  // Documento
+                if ExcelBuffer.FindSet() then
+                    Dato := ExcelBuffer."Cell Value as Text";
+                if dato <> '' then begin
+                    ExcelBuffer.SetRange("Column No.", 5);  // Tipo Documento
+                    if ExcelBuffer.FindSet() then begin
+                        GLJnlLine.validate("Document No.", StrSubstNo('%1 %2', ExcelBuffer."Cell Value as Text", dato));
+                        GLJnlLine.validate(Description, ExcelBuffer."Cell Value as Text");
+                    end;
+                    GLJnlLine.validate("Account Type", GLJnlLine."Source Type"::Vendor);
+                    GLJnlLine.validate("Account No.", Vendor."No.");
+
+                    ExcelBuffer.SetRange("Column No.", 9);  // Importe
+                    if ExcelBuffer.FindSet() then
+                        if Evaluate(Importe, ExcelBuffer."Cell Value as Text") then
+                            GLJnlLine.validate(Amount, Importe);
+                    // GLJnlLine."Payment Method Code" := 'CONTADO';
+                    // GLJnlLine."Payment Terms Code" := 'CONTADO';
+                    GLJnlLine.validate("Bal. Account Type", GLJnlLine."Bal. Account Type"::"G/L Account");
+                    GLJnlLine.validate("Bal. Account No.", '4000998');
+                    GLJnlLine.Insert();
+                    LineNo += 10000;
+                end;
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
 
     procedure CargaSaldosClientesfromExcel()
     var
@@ -2075,9 +2278,12 @@ codeunit 17412 "SEB PRO Iberia"
                 ShiptoAddres.SetRange("Codigo Anterior", CustNoSEB);
                 if ShiptoAddres.FindFirst() then;
                 if Customer.Get(ShiptoAddres."Customer No.") then
-                    if Customer."Payment Terms Code" = '' then begin
-                        Customer."Payment Terms Code" := 'CONTADO';
-                    end;
+                    if not (Customer.Blocked in [Customer.Blocked::" "]) then
+                        Customer.Blocked := Customer.Blocked::" ";
+                if Customer."Payment Terms Code" = '' then
+                    Customer."Payment Terms Code" := 'CONTADO';
+                Customer.Modify();
+
                 GLJnlLine.Init();
                 clear(GLJnlLine);
                 GLJnlLine."Journal Template Name" := 'APERTURA';
