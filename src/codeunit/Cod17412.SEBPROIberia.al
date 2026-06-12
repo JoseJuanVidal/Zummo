@@ -477,6 +477,25 @@ codeunit 17412 "SEB PRO Iberia"
 
         // miramos por el pais, el grupo registro clientes
         UpdateCustomerPostingSetup(Customer);
+
+        CreateClienteReporting(Customer);
+    end;
+
+    local procedure CreateClienteReporting(var Customer: Record Customer)
+    var
+        ClienteRep: Record TextosAuxiliares;
+    begin
+        ClienteRep.SetRange(TipoRegistro, ClienteRep.TipoRegistro::Tabla);
+        ClienteRep.SetRange(TipoTabla, ClienteRep.TipoTabla::ClienteReporting);
+        ClienteRep.SetRange(NumReg, Customer."No.");
+        if not ClienteRep.FindFirst() then begin
+            ClienteRep.Init();
+            ClienteRep.TipoRegistro := ClienteRep.TipoRegistro::Tabla;
+            ClienteRep.TipoTabla := ClienteRep.TipoTabla::ClienteReporting;
+            ClienteRep.NumReg := Customer."No.";
+            ClienteRep.Insert();
+        end;
+        Customer.validate(ClienteReporting_btc, Customer."No.");
     end;
 
     local procedure CreateDefaultDimension(Customer: Record Customer)
@@ -492,6 +511,16 @@ codeunit 17412 "SEB PRO Iberia"
             DefaultDimension."No." := Customer."No.";
             DefaultDimension.Validate("Dimension Code", 'DIVISION');
             DefaultDimension.Validate("Dimension Value Code", 'PCM');
+            DefaultDimension.Insert();
+        end;
+        // codigo proyecto
+        DefaultDimension.SetRange("Dimension Code", 'PROYECTO');
+        if not DefaultDimension.FindFirst() then begin
+            DefaultDimension.Init();
+            DefaultDimension."Table ID" := Database::Customer;
+            DefaultDimension."No." := Customer."No.";
+            DefaultDimension.Validate("Dimension Code", 'PROYECTO');
+            DefaultDimension.Validate("Dimension Value Code", Customer."No.");
             DefaultDimension.Insert();
         end;
     end;
@@ -1506,7 +1535,7 @@ codeunit 17412 "SEB PRO Iberia"
                 begin
                     Item.Type := Item.Type::Inventory;
                     item.Validate("Gen. Prod. Posting Group", 'TERMINADOS SEB');
-                    item.Validate("Inventory Posting Group", 'TERMINADO');
+                    item.Validate("Inventory Posting Group", 'SEB MAQUINAS');
                 end;
             '043': //RENTING
                 begin
@@ -1518,7 +1547,7 @@ codeunit 17412 "SEB PRO Iberia"
                 begin
                     Item.Type := Item.Type::Inventory;
                     item.Validate("Gen. Prod. Posting Group", 'REPUESTOS SEB');
-                    item.Validate("Inventory Posting Group", 'MERCADERIA');
+                    item.Validate("Inventory Posting Group", 'SEB RESPUESTOS');
                 end;
             '503':  //S.A.T  ->  7050000  Prestación servicios Nacional
                 begin
@@ -1961,7 +1990,7 @@ codeunit 17412 "SEB PRO Iberia"
                 Vendor.SetRange("Codigo Anterior", VendorNoSEB);
                 if Vendor.FindFirst() then begin
                     AddVendorBank(ExcelBuffer, Vendor, VendorNoSEB);
-
+                    Vendor.Modify();
                 end;
             end;
         end;
@@ -1969,7 +1998,7 @@ codeunit 17412 "SEB PRO Iberia"
         Message('File %1 uploaded successfully. Content: %2', FileName, linea);
     end;
 
-    local procedure AddVendorBank(var ExcelBuffer: Record "Excel Buffer" temporary; Vendor: Record Vendor; VendorSebNo: text)
+    local procedure AddVendorBank(var ExcelBuffer: Record "Excel Buffer" temporary; var Vendor: Record Vendor; VendorSebNo: text)
     var
         VendorBankAccount: Record "Vendor Bank Account";
     begin
@@ -2000,6 +2029,7 @@ codeunit 17412 "SEB PRO Iberia"
         if ExcelBuffer.FindSet() then
             VendorBankAccount."SWIFT Code" := ExcelBuffer."Cell Value as Text";
         VendorBankAccount.Insert();
+        Vendor."Preferred Bank Account Code" := VendorBankAccount.Code;
     end;
 
     local procedure KillLeftCERO(VendorNoSEB: text): text
@@ -2078,6 +2108,7 @@ codeunit 17412 "SEB PRO Iberia"
 
     local procedure AddCustBank(var ExcelBuffer: Record "Excel Buffer" temporary; ShiptoAddress: record "Ship-to Address"; CustSebNo: text)
     var
+        Customer: Record Customer;
         CustomerBankAccount: Record "Customer Bank Account";
     begin
         CustomerBankAccount.Reset();
@@ -2085,7 +2116,7 @@ codeunit 17412 "SEB PRO Iberia"
             exit;
         clear(CustomerBankAccount);
         CustomerBankAccount.Init();
-        CustomerBankAccount."Customer No." := ShiptoAddress."Customer No.";
+        CustomerBankAccount.validate("Customer No.", ShiptoAddress."Customer No.");
         CustomerBankAccount.Code := CustSebNo;
         ExcelBuffer.SetRange("Column No.", 2);  // Nombre clientes
         if ExcelBuffer.FindSet() then
@@ -2110,8 +2141,13 @@ codeunit 17412 "SEB PRO Iberia"
         ExcelBuffer.SetRange("Column No.", 10);  // DC
         if ExcelBuffer.FindSet() then
             CustomerBankAccount."CCC Control Digits" := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(CustomerBankAccount."CCC Control Digits"));
-
         CustomerBankAccount.Insert();
+        if Customer.Get(CustomerBankAccount."Customer No.") then
+            if Customer."Preferred Bank Account Code" = '' then begin
+                Customer."Preferred Bank Account Code" := CustomerBankAccount.Code;
+                Customer.Modify();
+            end;
+
     end;
 
     procedure CargaSaldosProveedorfromExcel()
