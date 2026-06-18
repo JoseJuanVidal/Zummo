@@ -475,6 +475,10 @@ tableextension 50108 "Item" extends Item  //27
             CalcFormula = lookup(Vendor.Name where("No." = field("Vendor No.")));
             Editable = false;
         }
+        field(50138; "Creation Date"; date)
+        {
+            Caption = 'Creation Date', comment = 'ESP="Fecha Creación"';
+        }
         field(50140; "Obtener Serie Consumo"; Boolean)
         {
             Caption = 'Obtener Serie Consumo', comment = 'ESP="Obtener Serie Consumo"';
@@ -694,6 +698,19 @@ tableextension 50108 "Item" extends Item  //27
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }
+
+    trigger OnAfterInsert()
+    begin
+        if Rec."Creation Date" = 0D then
+            Rec."Creation Date" := WorkDate();
+    end;
+
+    trigger OnAfterModify()
+    begin
+        if Rec."Creation Date" = 0D then
+            Rec."Creation Date" := WorkDate();
+    end;
+
     var
         SalesSetup: Record "Sales & Receivables Setup";
 
@@ -801,5 +818,21 @@ tableextension 50108 "Item" extends Item  //27
             ItemUnitOfMeasure.Weight := Rec."Net Weight";
             ItemUnitOfMeasure.Modify();
         end;
+    end;
+
+    procedure AssingCreationDate();
+    var
+        ItemLedgerEntry: record "Item Ledger Entry";
+    begin
+        if Rec."Creation Date" <> 0D then
+            exit;
+
+        ItemLedgerEntry.Reset();
+        ItemLedgerEntry.SetRange("Item No.", Rec."No.");
+        ItemLedgerEntry.SetRange(Positive, true);
+        if ItemLedgerEntry.FindFirst() then begin
+            Rec."Creation Date" := ItemLedgerEntry."Posting Date";
+            Rec.Modify();
+        end
     end;
 }

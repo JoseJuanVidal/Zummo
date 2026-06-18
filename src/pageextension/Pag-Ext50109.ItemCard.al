@@ -195,6 +195,14 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 ApplicationArea = All;
             }
         }
+        addafter("Base Unit of Measure")
+        {
+            field("Creation Date"; "Creation Date")
+            {
+                ApplicationArea = all;
+                Editable = false;
+            }
+        }
 
         addafter("Safety Stock Quantity")
         {

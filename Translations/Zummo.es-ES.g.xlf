@@ -14751,6 +14751,11 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CargaSaldosClientesfromExcel - NamedType Text000</note>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 677864101 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel saldos Proveedores</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method CargaSaldosProveedorfromExcel - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 3658314415 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel banco proveedores</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -14818,6 +14823,11 @@
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UploadSEBItemExcel - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 83143772 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UploadSEBItemPriceExcel - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 267050289 - Method 3222099277 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select file</source>
@@ -36313,6 +36323,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaCustomerBankfromExcel - Property Caption</note>
           <target>Bancos Cust. SEB PRO</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 4091518458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Tarifas XLS SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tarifas XLS SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaItemPrice - Property Caption</note>
+          <target>Tarifas XLS SEB PRO</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 731758872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Productos SEB PRO</source>
           <note from="Developer" annotates="general" priority="2">ESP="Productos SEB PRO"</note>
@@ -36324,6 +36340,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Saldos Clientes"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaSaldosClientesfromExcel - Property Caption</note>
           <target>Saldos Clientes</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 677864101 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Saldos Proveedor</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Saldos Proveedor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaSaldosProveedorfromExcel - Property Caption</note>
+          <target>Saldos Proveedor</target>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 2280452714 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Clientes SEB PRO</source>
@@ -36709,11 +36731,23 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemLedgerEntries - Control OrderNo - Property Caption</note>
           <target>Nº Pedido ensamblado</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Method 2234610504 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
+          <source>¿Desea Asignar %1 a %2 productos seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar %1 a %2 productos seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method OnAction_AsignarCreationDate - NamedType lblConfirm</note>
+          <target>¿Desea Asignar %1 a %2 productos seleccionados?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Method 737204943 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
           <source>¿Desea Asignar numeros EAN13 a %1 productos seleccionados?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar numeros EAN13 a %1 productos seleccionados?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method OnAction_AsignarGTIN - NamedType lblConfirm</note>
           <target>¿Desea Asignar numeros EAN13 a %1 productos seleccionados?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 1390176704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Asignar Fecha Creacion</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar Fecha Creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action AsignarCreationDate - Property Caption</note>
+          <target>Asignar Fecha Creación</target>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 1191440503 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Asignar GTIN</source>
@@ -40358,6 +40392,12 @@
           <note from="Developer" annotates="general" priority="2">ESP=" ,ContraStock,BajoPedido"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field ContraStock/BajoPedido - Property OptionCaption</note>
           <target> ,ContraStock,BajoPedido</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 1407200743 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Creation Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha Creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Creation Date - Property Caption</note>
+          <target>Fecha Creación</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 779691355 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>CRM Updated</source>

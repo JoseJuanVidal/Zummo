@@ -10,6 +10,11 @@ pageextension 50133 "ItemList" extends "Item List"
                 ToolTip = 'Coded Multisource Media Format';
                 Visible = false;
             }
+            field("Creation Date"; "Creation Date")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("CMMF Code"; "CMMF Code")
             {
                 ApplicationArea = all;
@@ -179,6 +184,17 @@ pageextension 50133 "ItemList" extends "Item List"
                 trigger OnAction()
                 begin
                     OnAction_AsignarGTIN();
+                end;
+            }
+            action(AsignarCreationDate)
+            {
+                ApplicationArea = all;
+                Caption = 'Asignar Fecha Creacion', comment = 'ESP="Asignar Fecha Creación"';
+                Image = ChangeDate;
+
+                trigger OnAction()
+                begin
+                    OnAction_AsignarCreationDate();
                 end;
             }
             action(UpdateITBID)
@@ -460,6 +476,28 @@ pageextension 50133 "ItemList" extends "Item List"
         if not confirm(lblConfirm, false, Item.Count) then
             exit;
         Funciones.CreateGTIN(Item, true, BarCodeType::EAN13);
+    end;
+
+    local procedure OnAction_AsignarCreationDate()
+    var
+        Item: Record Item;
+        Window: Dialog;
+        Count: Integer;
+        lblConfirm: Label '¿Desea Asignar %1 a %2 productos seleccionados?', comment = 'ESP="¿Desea Asignar %1 a %2 productos seleccionados?"';
+    begin
+        CurrPage.SetSelectionFilter(Item);
+        if not confirm(lblConfirm, false, item.FieldCaption("Creation Date"), Item.Count) then
+            exit;
+        Window.Open('#1### de #2#####\No.: #3###################');
+        Window.Update(2, Item.Count);
+        if Item.FindFirst() then
+            repeat
+                Count += 1;
+                Window.Update(1, Count);
+                Window.Update(3, Item."No.");
+                Item.AssingCreationDate();
+            Until Item.next() = 0;
+        Window.Close();
     end;
 
     local procedure ShowNavigateSerialNoInfo()
