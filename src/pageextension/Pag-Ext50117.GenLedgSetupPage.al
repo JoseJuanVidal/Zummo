@@ -325,9 +325,41 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                             SEBPRO.CargaCustomerBankfromExcel();
                     end;
                 }
-                action(CargaItemxls)
+                // action(CargaItemxls)
+                // {
+                //     Caption = 'Productos SEB PRO', comment = 'ESP="Productos SEB PRO"';
+                //     Promoted = true;
+                //     PromotedCategory = Report;
+                //     PromotedIsBig = true;
+                //     Image = Excel;
+
+                //     trigger OnAction()
+                //     var
+                //         SEBPRO: Codeunit "SEB PRO Iberia";
+                //     begin
+                //         if Confirm(('Desea Crear Productos SEB PRO?')) then
+                //             SEBPRO.UploadSEBItemExcel();
+                //     end;
+                // }
+                // action(CargaItemPrice)
+                // {
+                //     Caption = 'Tarifas XLS SEB PRO', comment = 'ESP="Tarifas XLS SEB PRO"';
+                //     Promoted = true;
+                //     PromotedCategory = Report;
+                //     PromotedIsBig = true;
+                //     Image = Excel;
+
+                //     trigger OnAction()
+                //     var
+                //         SEBPRO: Codeunit "SEB PRO Iberia";
+                //     begin
+                //         if Confirm(('Desea Crear Productos SEB PRO?')) then
+                //             SEBPRO.UploadSEBItemPriceExcel();
+                //     end;
+                // }
+                action(UPdateClientes)
                 {
-                    Caption = 'Productos SEB PRO', comment = 'ESP="Productos SEB PRO"';
+                    Caption = 'Actualizacion clientes', comment = 'ESP="Actualizacion clientes"';
                     Promoted = true;
                     PromotedCategory = Report;
                     PromotedIsBig = true;
@@ -337,27 +369,10 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                     var
                         SEBPRO: Codeunit "SEB PRO Iberia";
                     begin
-                        if Confirm(('Desea Crear Productos SEB PRO?')) then
-                            SEBPRO.UploadSEBItemExcel();
+                        if Confirm(('Desea Actualizar clientes?')) then
+                            SEBPRO.UpdateCustomerExcel();
                     end;
                 }
-                action(CargaItemPrice)
-                {
-                    Caption = 'Tarifas XLS SEB PRO', comment = 'ESP="Tarifas XLS SEB PRO"';
-                    Promoted = true;
-                    PromotedCategory = Report;
-                    PromotedIsBig = true;
-                    Image = Excel;
-
-                    trigger OnAction()
-                    var
-                        SEBPRO: Codeunit "SEB PRO Iberia";
-                    begin
-                        if Confirm(('Desea Crear Productos SEB PRO?')) then
-                            SEBPRO.UploadSEBItemPriceExcel();
-                    end;
-                }
-
                 action(CargaSaldosClientesfromExcel)
                 {
                     Caption = 'Saldos Clientes', comment = 'ESP="Saldos Clientes"';

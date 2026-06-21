@@ -14809,6 +14809,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GeTItems - NamedType lblWindow</note>
           <target>Nº Cliente #1##########\Registro #2#########</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 1294006 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UpdateCustomerExcel - NamedType Text000</note>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 989638972 - NamedType 1373949625" size-unit="char" translate="yes" xml:space="preserve">
           <source>UPDATE [ZUMMOREM].[dbo].[clientes_stg] SET %1 WHERE [Cliente] ='%2'</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -36323,18 +36328,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaCustomerBankfromExcel - Property Caption</note>
           <target>Bancos Cust. SEB PRO</target>
         </trans-unit>
-        <trans-unit id="PageExtension 1456462102 - Action 4091518458 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
-          <source>Tarifas XLS SEB PRO</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Tarifas XLS SEB PRO"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaItemPrice - Property Caption</note>
-          <target>Tarifas XLS SEB PRO</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 1456462102 - Action 731758872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
-          <source>Productos SEB PRO</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Productos SEB PRO"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaItemxls - Property Caption</note>
-          <target>Productos SEB PRO</target>
-        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 2742540154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Saldos Clientes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Saldos Clientes"</note>
@@ -36370,6 +36363,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Productos SEB PRO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action Productos - Property Caption</note>
           <target>Productos SEB PRO</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 2034150410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Actualizacion clientes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizacion clientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action UPdateClientes - Property Caption</note>
+          <target>Actualizacion clientes</target>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Control 1639326268 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Conexión SQL ABERTIA</source>

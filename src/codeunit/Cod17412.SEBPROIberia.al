@@ -1035,6 +1035,147 @@ codeunit 17412 "SEB PRO Iberia"
         ItemUnitOfMeasure.Modify();
     end;
 
+    procedure UpdateCustomerExcel()
+    var
+        Customer: record Customer;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        CustomerNoSEB: text;
+        VATCustomerNo: text;
+        Borrado: text;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        UpdateCustomer: Boolean;
+        Text000: label 'Cargar Fichero de Excel';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+        ;
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Customer SEB: #1###############\Cliente: #2###############\#3####### de #4########');
+        Window.Update(4, Rows);
+        for linea := 2 to Rows do begin
+            Window.Update(3, linea);
+            CustomerNoSEB := '';
+            VATCustomerNo := '';
+            Borrado := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 2);  // cliente
+            if ExcelBuffer.FindSet() then
+                CustomerNoSEB := ExcelBuffer."Cell Value as Text";
+            if CustomerNoSEB <> '' then begin
+                Customer.SetRange("Codigo Anterior", CustomerNoSEB);
+                if Customer.FindFirst() then begin
+                    ExcelBuffer.SetRange("Column No.", 3);  // Nombre
+                    if ExcelBuffer.FindSet() then
+                        Customer.Name := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Customer.Name));
+                    ExcelBuffer.SetRange("Column No.", 4);  // Alias
+                    if ExcelBuffer.FindSet() then
+                        Customer."Search Name" := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Customer."Search Name"));
+                    // ExcelBuffer.SetRange("Column No.", 5);  // Dirección
+                    // if ExcelBuffer.FindSet() then
+                    //     Customer.Address := ExcelBuffer."Cell Value as Text";
+                    // ExcelBuffer.SetRange("Column No.", 6);  // Población
+                    // if ExcelBuffer.FindSet() then
+                    //     Customer. := ExcelBuffer."Cell Value as Text";
+                    // ExcelBuffer.SetRange("Column No.", 7);  // Nº teléfono
+                    // if ExcelBuffer.FindSet() then
+                    //     Customer. := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 8);  // Cód.términos pago
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Payment Terms Code", ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 9);  // Cód.país / región
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Country/Region Code", ExcelBuffer."Cell Value as Text");
+                    // ExcelBuffer.SetRange("Column No.", 10);  // Bloqueado
+                    // if ExcelBuffer.FindSet() then
+                    //     Customer. := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 11);  // Cód.forma pago
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Payment Method Code", ExcelBuffer."Cell Value as Text");
+                    // ExcelBuffer.SetRange("Column No.", 13);  // Código postal
+                    // if ExcelBuffer.FindSet() then
+                    //     Customer."Payment Method Code" := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 14);  // Correo electrónico
+                    if ExcelBuffer.FindSet() then
+                        Customer."E-Mail" := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 15);  // Area Manager
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate(AreaManager_btc, ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 16);  // Delegado
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate(Delegado_btc, ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 17);  // Cliente Tipo
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate(GrupoCliente_btc, ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 18);  // Cliente Corporativo
+                    if ExcelBuffer.FindSet() then begin
+                        Customer.validate(ClienteCorporativo_btc, AddClienteCorporativo_btc(ExcelBuffer."Cell Value as Text", ExcelBuffer."Cell Value as Text"));
+                    end;
+                    ExcelBuffer.SetRange("Column No.", 19);  // Grupo dto.cliente
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Customer Disc. Group", ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 20);  // Grupo precio cliente
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Customer Price Group", ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 21);  //  Perfil
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate(Perfil_btc, ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 22);  // Cliente Reporting
+                    if ExcelBuffer.FindSet() then begin
+                        Customer.validate(ClienteReporting_btc, AddClienteReporting_btc(ExcelBuffer."Cell Value as Text", ExcelBuffer."Cell Value as Text"));
+                    end;
+                    ExcelBuffer.SetRange("Column No.", 23);  // Cliente Actividad
+                    if ExcelBuffer.FindSet() then begin
+                        Customer.validate(ClienteActividad_btc, AddClienteActividad_btc(ExcelBuffer."Cell Value as Text", ExcelBuffer."Cell Value as Text"));
+                    end;
+                    ExcelBuffer.SetRange("Column No.", 24);  // Canal
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate(Canal_btc, ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 25);  // Mercado
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate(Mercado_btc, ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 26);  // Cód.almacén
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Location Code", ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 27);  // Código(Condiciones envío)
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Shipment Method Code", ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 28);  // Especificación transacción
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Transaction Specification", ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 29);  // Naturaleza transacción
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Transaction Type", ExcelBuffer."Cell Value as Text");
+                    ExcelBuffer.SetRange("Column No.", 30);  // Modo transporte
+                    if ExcelBuffer.FindSet() then
+                        Customer.validate("Transport Method", ExcelBuffer."Cell Value as Text");
+                    Customer.Modify()
+                end;
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
 
     procedure CreateTableFromtxt()
     var
@@ -1225,15 +1366,53 @@ codeunit 17412 "SEB PRO Iberia"
         ValueCode := CopyStr(Value, 1, MaxStrLen(TextoAuxiliares.NumReg));
         TextoAuxiliares.SetRange(TipoRegistro, TextoAuxiliares.TipoRegistro::Tabla);
         TextoAuxiliares.SetRange(TipoTabla, TextoAuxiliares.TipoTabla::"Cliente Corporativo");
-        TextoAuxiliares.setrange("Sales Manager", Code);
+        TextoAuxiliares.setrange(NumReg, Code);
         if not TextoAuxiliares.FindFirst() then begin
             TextoAuxiliares.Init();
             TextoAuxiliares.TipoRegistro := TextoAuxiliares.TipoRegistro::Tabla;
             TextoAuxiliares.TipoTabla := TextoAuxiliares.TipoTabla::"Cliente Corporativo";
             TextoAuxiliares.NumReg := ValueCode;
             TextoAuxiliares.Descripcion := Value;
-            TextoAuxiliares.Description := Code;
-            TextoAuxiliares."Sales Manager" := Code;
+            TextoAuxiliares.Insert();
+        end;
+        exit(TextoAuxiliares.NumReg);
+    end;
+
+    local procedure AddClienteReporting_btc(Value: text; Code: Text): Text
+    var
+        TextoAuxiliares: record TextosAuxiliares;
+        ValueCode: code[20];
+    begin
+        ValueCode := CopyStr(Value, 1, MaxStrLen(TextoAuxiliares.NumReg));
+        TextoAuxiliares.SetRange(TipoRegistro, TextoAuxiliares.TipoRegistro::Tabla);
+        TextoAuxiliares.SetRange(TipoTabla, TextoAuxiliares.TipoTabla::ClienteReporting);
+        TextoAuxiliares.setrange(NumReg, Code);
+        if not TextoAuxiliares.FindFirst() then begin
+            TextoAuxiliares.Init();
+            TextoAuxiliares.TipoRegistro := TextoAuxiliares.TipoRegistro::Tabla;
+            TextoAuxiliares.TipoTabla := TextoAuxiliares.TipoTabla::ClienteReporting;
+            TextoAuxiliares.NumReg := ValueCode;
+            TextoAuxiliares.Descripcion := Value;
+            TextoAuxiliares.Insert();
+        end;
+        exit(TextoAuxiliares.NumReg);
+    end;
+
+    local procedure AddClienteActividad_btc(Value: text; Code: Text): Text
+    var
+        TextoAuxiliares: record TextosAuxiliares;
+        ValueCode: code[20];
+    begin
+        ValueCode := CopyStr(Value, 1, MaxStrLen(TextoAuxiliares.NumReg));
+        TextoAuxiliares.SetRange(TipoRegistro, TextoAuxiliares.TipoRegistro::Tabla);
+        TextoAuxiliares.SetRange(TipoTabla, TextoAuxiliares.TipoTabla::ClienteActividad);
+        TextoAuxiliares.setrange(NumReg, ValueCode);
+        if not TextoAuxiliares.FindFirst() then begin
+            TextoAuxiliares.Init();
+            TextoAuxiliares.TipoRegistro := TextoAuxiliares.TipoRegistro::Tabla;
+            TextoAuxiliares.TipoTabla := TextoAuxiliares.TipoTabla::ClienteActividad;
+            TextoAuxiliares.NumReg := ValueCode;
+            TextoAuxiliares.Descripcion := Value;
             TextoAuxiliares.Insert();
         end;
         exit(TextoAuxiliares.NumReg);
@@ -1295,7 +1474,7 @@ codeunit 17412 "SEB PRO Iberia"
             'S':
                 Customer."Payment Method Code" := 'PAGARE';
             else
-                Customer."Payment Method Code" := 'CONTADO';
+                Customer."Payment Method Code" := 'EFECTIVO';
         end;
         case Termino of
             '01':    //	Pagadero inmediatamente
