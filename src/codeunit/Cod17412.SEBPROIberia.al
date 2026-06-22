@@ -1091,15 +1091,15 @@ codeunit 17412 "SEB PRO Iberia"
                     ExcelBuffer.SetRange("Column No.", 4);  // Alias
                     if ExcelBuffer.FindSet() then
                         Customer."Search Name" := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Customer."Search Name"));
-                    // ExcelBuffer.SetRange("Column No.", 5);  // Dirección
-                    // if ExcelBuffer.FindSet() then
-                    //     Customer.Address := ExcelBuffer."Cell Value as Text";
-                    // ExcelBuffer.SetRange("Column No.", 6);  // Población
-                    // if ExcelBuffer.FindSet() then
-                    //     Customer. := ExcelBuffer."Cell Value as Text";
-                    // ExcelBuffer.SetRange("Column No.", 7);  // Nº teléfono
-                    // if ExcelBuffer.FindSet() then
-                    //     Customer. := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 5);  // Dirección
+                    if ExcelBuffer.FindSet() then
+                        Customer.Address := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 6);  // Población
+                    if ExcelBuffer.FindSet() then
+                        Customer.City := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 7);  // Nº teléfono
+                    if ExcelBuffer.FindSet() then
+                        Customer."Phone No." := ExcelBuffer."Cell Value as Text";
                     ExcelBuffer.SetRange("Column No.", 8);  // Cód.términos pago
                     if ExcelBuffer.FindSet() then
                         Customer.validate("Payment Terms Code", ExcelBuffer."Cell Value as Text");
@@ -1112,9 +1112,9 @@ codeunit 17412 "SEB PRO Iberia"
                     ExcelBuffer.SetRange("Column No.", 11);  // Cód.forma pago
                     if ExcelBuffer.FindSet() then
                         Customer.validate("Payment Method Code", ExcelBuffer."Cell Value as Text");
-                    // ExcelBuffer.SetRange("Column No.", 13);  // Código postal
-                    // if ExcelBuffer.FindSet() then
-                    //     Customer."Payment Method Code" := ExcelBuffer."Cell Value as Text";
+                    ExcelBuffer.SetRange("Column No.", 13);  // Código postal
+                    if ExcelBuffer.FindSet() then
+                        Customer."Post Code" := ExcelBuffer."Cell Value as Text";
                     ExcelBuffer.SetRange("Column No.", 14);  // Correo electrónico
                     if ExcelBuffer.FindSet() then
                         Customer."E-Mail" := ExcelBuffer."Cell Value as Text";
@@ -1126,17 +1126,24 @@ codeunit 17412 "SEB PRO Iberia"
                         Customer.validate(Delegado_btc, ExcelBuffer."Cell Value as Text");
                     ExcelBuffer.SetRange("Column No.", 17);  // Cliente Tipo
                     if ExcelBuffer.FindSet() then
-                        Customer.validate(GrupoCliente_btc, ExcelBuffer."Cell Value as Text");
+                        Customer.validate(GrupoCliente_btc, ExcelBuffer."Cell Value as Text")
+                    else
+                        Customer.GrupoCliente_btc := '';
                     ExcelBuffer.SetRange("Column No.", 18);  // Cliente Corporativo
                     if ExcelBuffer.FindSet() then begin
                         Customer.validate(ClienteCorporativo_btc, AddClienteCorporativo_btc(ExcelBuffer."Cell Value as Text", ExcelBuffer."Cell Value as Text"));
-                    end;
+                    end else
+                        Customer.ClienteCorporativo_btc := '';
                     ExcelBuffer.SetRange("Column No.", 19);  // Grupo dto.cliente
                     if ExcelBuffer.FindSet() then
-                        Customer.validate("Customer Disc. Group", ExcelBuffer."Cell Value as Text");
+                        Customer.validate("Customer Disc. Group", ExcelBuffer."Cell Value as Text")
+                    else
+                        Customer."Customer Disc. Group" := '';
                     ExcelBuffer.SetRange("Column No.", 20);  // Grupo precio cliente
                     if ExcelBuffer.FindSet() then
-                        Customer.validate("Customer Price Group", ExcelBuffer."Cell Value as Text");
+                        Customer.validate("Customer Price Group", ExcelBuffer."Cell Value as Text")
+                    else
+                        Customer.GrupoCliente_btc := 'PVP';
                     ExcelBuffer.SetRange("Column No.", 21);  //  Perfil
                     if ExcelBuffer.FindSet() then
                         Customer.validate(Perfil_btc, ExcelBuffer."Cell Value as Text");
