@@ -99,6 +99,63 @@ codeunit 17412 "SEB PRO Iberia"
         end;
     end;
 
+    procedure GetItemTextos()
+    var
+        Item: Record Item;
+        ItemTranslation: record "Item Translation";
+        SQLConnection: DotNet SqlConnection;
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+        texto: text;
+        CustomerNoSEB: code[20];
+        VatNoSeb: code[50];
+        UpdateCustomer: Boolean;
+        cont: Integer;
+        Windows: Dialog;
+        lblSQLSelect: Label 'SELECT TOP (1000) [material] ,[idioma] ,[texto_breve_de_material] ,[texto_breve_de_material_2]  FROM [ZUMMOREM].[dbo].[materialestextos_stg] where idioma = ''E''  and material = ''%1''';
+        lblWindow: Label 'Nº #1##########\Registro #2#########\#3####### de #4########', comment = 'ESP="Nº #1##########\Registro #2#########\#3####### de #4########"';
+    begin
+        windows.Open(lblWindow);
+        if IsNull(SQLConnection) then
+            SQLConnect(SQLConnection);
+        Item.SetFilter("No. 2", '<>%1', '');
+        windows.update(4, Item.Count);
+        if Item.FindFirst() then
+            repeat
+                cont += 1;
+                Windows.Update(1, Item."No. 2");
+                Windows.Update(3, cont);
+                Clear(SQLCommand);
+                SQLCommand := SQLConnection.CreateCommand();
+                // SQLCommand.CommandText := 'select * From ItemCompleto';
+                SQLCommand.CommandText := StrSubstNo(lblSQLSelect, ClearItemNo(Item."No. 2"));
+                // ** EXEC READER **
+                SQLReader := SQLCommand.ExecuteReader;
+                IF SQLReader.HasRows then
+                    while SQLReader.Read() do begin
+                        windows.update(2, SQLRGetSTring(SQLReader, 0));
+                        CustomerNoSEB := SQLRGetSTring(SQLReader, 0);
+                        if not ItemTranslation.Get(Item."No.", '', 'ESP') then begin
+                            ItemTranslation.Init();
+                            ItemTranslation."Item No." := Item."No.";
+                            ItemTranslation."Variant Code" := '';
+                            ItemTranslation."Language Code" := 'ESP';
+                            ItemTranslation.Insert();
+                        end;
+                        ItemTranslation.Description := UpperCase(SQLRGetSTring(SQLReader, 2));
+                        ItemTranslation.Modify();
+
+                    end;
+                SQLReader.Close();
+            //     exit(false);
+            Until Item.next() = 0;
+        windows.close;
+        // exit(true);
+        //Page.Run(0, Customer);
+    end;
+
+
     procedure GetClients(ClientNo: Code[20])
     var
         Customer: Record Customer;
@@ -1591,6 +1648,70 @@ codeunit 17412 "SEB PRO Iberia"
     // ==  Importar excel de productos 
     // ==  
     // ======================================================================================================
+    procedure UploadSEBItemRepuestosExcel()
+    var
+        Item: record Item;
+        ExcelBuffer: Record "Excel Buffer" temporary;
+        NVInStream: InStream;
+        FileName: text;
+        Sheetname: text;
+        ItemNoSEB: text;
+        Window: Dialog;
+        Rows: Integer;
+        linea: Integer;
+        Text000: label 'Cargar Fichero de Excel';
+    begin
+        ExcelBuffer.DeleteAll();
+        if not UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream) then
+            Error('No ser ha podido abrir el fichero');
+        ;
+        If FileName <> '' then
+            Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
+        else
+            exit;
+
+        ExcelBuffer.Reset();
+        ExcelBuffer.OpenBookStream(NVInStream, Sheetname);
+        ExcelBuffer.ReadSheet();
+        Commit();
+        ExcelBuffer.Reset();
+
+        ExcelBuffer.SetRange("Column No.", 2);
+
+        If ExcelBuffer.FindLast() then
+            Rows := ExcelBuffer."Row No.";
+
+        Window.Open('Linea #3####### de #4#######\Producto SEB: #1###############\Producto NAV: #2################');
+
+        for linea := 2 to Rows do begin
+            ItemNoSEB := '';
+            ExcelBuffer.SetRange("Row No.", linea);
+            ExcelBuffer.SetRange("Column No.", 1);  // codigo new cmmf
+            if ExcelBuffer.FindSet() then
+                ItemNoSEB := ExcelBuffer."Cell Value as Text";
+            Window.Update(1, ItemNoSEB);
+            if ItemNoSEB <> '' then begin
+                window.update(3, linea);
+                window.update(4, Rows);
+                Window.Update(2, ItemNoSEB);
+                if not Item.Get(ItemNoSEB) then begin
+                    Item.Init();
+                    Item."No." := ItemNoSEB;
+                    item.Insert();
+                    // aplicar plantilla
+                    UpdateItemFromTemplate(Item, 'SAGE plantilla productos');
+                end;
+
+                GetFieldsItemRepuestoExcel(ExcelBuffer, Item);
+
+                UpdateItemAux(item);
+
+                Item.Modify();
+            end;
+        end;
+        Window.Close();
+        Message('File %1 uploaded successfully. Content: %2', FileName, linea);
+    end;
 
     procedure UploadSEBItemExcel()
     var
@@ -1630,38 +1751,58 @@ codeunit 17412 "SEB PRO Iberia"
         for linea := 2 to Rows do begin
             ItemNoSEB := '';
             ExcelBuffer.SetRange("Row No.", linea);
-            ExcelBuffer.SetRange("Column No.", 2);  // cliente
+            ExcelBuffer.SetRange("Column No.", 3);  // codigo new cmmf
             if ExcelBuffer.FindSet() then
                 ItemNoSEB := ExcelBuffer."Cell Value as Text";
             Window.Update(1, ItemNoSEB);
             if ItemNoSEB <> '' then begin
-                ExcelBuffer.SetRange("Column No.", 10);  //  GRUPOART
-                if ExcelBuffer.FindSet() then
-                    if ExcelBuffer."Cell Value as Text" in ['033', '043', '313', '333', '503', '991'] then begin
-                        window.update(3, linea);
-                        window.update(4, Rows);
-                        Window.Update(2, ItemNoSEB);
-                        if not Item.Get(ItemNoSEB) then begin
-                            Item.Init();
-                            Item."No." := ItemNoSEB;
-                            item.Insert();
-                            // aplicar plantilla
-                            UpdateItemFromTemplate(Item);
-                        end;
+                window.update(3, linea);
+                window.update(4, Rows);
+                Window.Update(2, ItemNoSEB);
+                if not Item.Get(ItemNoSEB) then begin
+                    Item.Init();
+                    Item."No." := ItemNoSEB;
+                    item.Insert();
+                    // aplicar plantilla
+                    UpdateItemFromTemplate(Item, 'SAGE Plantillas Maquinas');
+                end;
 
-                        GetFieldsItemExcel(ExcelBuffer, Item);
-                        item.validate("Base Unit of Measure", 'UDS');
+                GetFieldsItemExcel(ExcelBuffer, Item);
 
-                        Item.Modify();
-                    end;
+                UpdateItemAux(item);
 
+                Item.Modify();
             end;
         end;
         Window.Close();
         Message('File %1 uploaded successfully. Content: %2', FileName, linea);
     end;
 
-    local procedure UpdateItemFromTemplate(var Item: Record Item);
+    local procedure UpdateItemAux(var Item: record Item)
+    var
+        ItemTranslation: record "Item Translation";
+    begin
+        if not ItemTranslation.Get(Item."No.", '', 'ENU') then begin
+            ItemTranslation.Init();
+            ItemTranslation."Item No." := Item."No.";
+            ItemTranslation."Variant Code" := '';
+            ItemTranslation."Language Code" := 'ENU';
+            ItemTranslation.Insert();
+        end;
+        ItemTranslation.Description := Item."Description 2";
+        ItemTranslation.Modify();
+        if not ItemTranslation.Get(Item."No.", '', 'ENG') then begin
+            ItemTranslation.Init();
+            ItemTranslation."Item No." := Item."No.";
+            ItemTranslation."Variant Code" := '';
+            ItemTranslation."Language Code" := 'ENG';
+            ItemTranslation.Insert();
+        end;
+        ItemTranslation.Description := Item."Description 2";
+        ItemTranslation.Modify();
+    end;
+
+    local procedure UpdateItemFromTemplate(var Item: Record Item; Plantilla: text);
     var
         ConfigTemplateHeader: Record "Config. Template Header";
         ItemTemplate: Record "Item Template";
@@ -1671,7 +1812,7 @@ codeunit 17412 "SEB PRO Iberia"
     begin
         ItemRecRef.GetTable(Item);
         ConfigTemplateHeader.SetRange("Table ID", Database::Item);
-        ConfigTemplateHeader.SetRange(Description, 'SEBPRO');
+        ConfigTemplateHeader.SetRange(Description, Plantilla);
         if not ConfigTemplateHeader.FindFirst() then
             exit;
         ConfigTemplateManagement.UpdateRecord(ConfigTemplateHeader, ItemRecRef);
@@ -1680,7 +1821,7 @@ codeunit 17412 "SEB PRO Iberia"
         //NewCustomerFromTemplate(Customer);
     end;
 
-    local procedure GetFieldsItemExcel(var ExcelBuffer: Record "Excel Buffer" temporary; var Item: Record Item)
+    local procedure GetFieldsItemRepuestoExcel(var ExcelBuffer: Record "Excel Buffer" temporary; var Item: Record Item)
     var
         DatoExcel: text;
         DatoExceldesc: text;
@@ -1688,33 +1829,19 @@ codeunit 17412 "SEB PRO Iberia"
     begin
 
         Item.Blocked := false;
-        Item."Item Category Code" := DatoExcel;
+        //Item."Item Category Code" := DatoExcel;
 
-        ExcelBuffer.SetRange("Column No.", 2);  // Material
+        ExcelBuffer.SetRange("Column No.", 1);  // Material
         if ExcelBuffer.FindSet() then
             Item."No." := ExcelBuffer."Cell Value as Text";
-        ExcelBuffer.SetRange("Column No.", 3);  // Nombre 1
+        ExcelBuffer.SetRange("Column No.", 2);  // codigo anterior
         if ExcelBuffer.FindSet() then
-            Item.validate(Description, ExcelBuffer."Cell Value as Text");
-        DatoExcel := '';
-        // ExcelBuffer.SetRange("Column No.", 8);  //  [TpMt]
-        // if ExcelBuffer.FindSet() then
-        //     DatoExcel := ExcelBuffer."Cell Value as Text";
-        // case DatoExcel of
-        //     'NLAG':
-        //         Item.Type := Item.Type::Service;
-        //     else
-        //         Item.Type := Item.Type::Inventory;
-        // end;
-        ExcelBuffer.SetRange("Column No.", 10);  //  Grupo art.
-        DatoExcel := '';
+            Item."No. 2" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 3);  // Nombre 
         if ExcelBuffer.FindSet() then
-            DatoExcel := ExcelBuffer."Cell Value as Text";
-        DatoExceldesc := '';
-        ExcelBuffer.SetRange("Column No.", 11);  //  Name of Group
-        if ExcelBuffer.FindSet() then
-            DatoExceldesc := ExcelBuffer."Cell Value as Text";
-        Item.selClasVtas_btc := GetClasificacionVentas(DatoExcel, DatoExceldesc);
+            Item.validate(Description, UpperCase(ExcelBuffer."Cell Value as Text"));
+        DatoExcel := '333';
+        // Item.selClasVtas_btc := GetClasificacionVentas(DatoExcel, DatoExceldesc);
         // GRUPO ART para grupo Registro de Ventas
         case DatoExcel of
             '033': //MAQUINAS CAFE  -> Producto Terminados SEB (mercaderias) 7002005  Ventas Productos Terminados, SEB
@@ -1746,25 +1873,119 @@ codeunit 17412 "SEB PRO Iberia"
                     item.Validate("Gen. Prod. Posting Group", 'SERVICIOS SEB');
                 end;
         end;
-        ExcelBuffer.SetRange("Column No.", 12);  //  Denom.estándar
-        if ExcelBuffer.FindSet() then
-            Item."material antiguo code" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."material antiguo code"));
-        ExcelBuffer.SetRange("Column No.", 14);  //  Código EAN/UPC
+        Item."material antiguo code" := Item."No. 2";
+        ExcelBuffer.SetRange("Column No.", 8);  //  Código EAN/UPC
         if ExcelBuffer.FindSet() then
             Item.GTIN := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item.GTIN));
-        ExcelBuffer.SetRange("Column No.", 16);  //  CMMF Code
+        ExcelBuffer.SetRange("Column No.", 3);  //  CMMF Code
         if ExcelBuffer.FindSet() then
             Item."CMMF Code" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."CMMF Code"));
-        ExcelBuffer.SetRange("Column No.", 21);  //  Stock Seguridad
+        Item."Safety Stock Quantity" := 0;
+        // ExcelBuffer.SetRange("Column No.", 24);  //  Nª Codigo
+        // if ExcelBuffer.FindSet() then
+        //     item."Vendor Item No." := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(item."material antiguo code"));
+        ExcelBuffer.SetRange("Column No.", 5);  //  Base nit
         if ExcelBuffer.FindSet() then
-            if Evaluate(Item."Safety Stock Quantity", ExcelBuffer."Cell Value as Text") then
-                item."Safety Stock Quantity" := 0;
-        ExcelBuffer.SetRange("Column No.", 24);  //  Nª Codigo
-        if ExcelBuffer.FindSet() then
-            item."Vendor Item No." := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(item."material antiguo code"));
-        ExcelBuffer.SetRange("Column No.", 25);  //  Origen
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        case datoexcel of
+            'ST':
+                Item.validate("Base Unit of Measure", 'UDS');
+            'KG':
+                Item.validate("Base Unit of Measure", 'UDS');
+            'M':
+                Item.validate("Base Unit of Measure", 'METRO');
+            else
+                Item.validate("Base Unit of Measure", 'UDS');
+        end;
+        ExcelBuffer.SetRange("Column No.", 6);  //  Model Code
         if ExcelBuffer.FindSet() then
             item."Shelf No." := ExcelBuffer."Cell Value as Text";
+    end;
+
+    local procedure GetFieldsItemExcel(var ExcelBuffer: Record "Excel Buffer" temporary; var Item: Record Item)
+    var
+        DatoExcel: text;
+        DatoExceldesc: text;
+        DatoFecha: date;
+    begin
+
+        Item.Blocked := false;
+        //Item."Item Category Code" := DatoExcel;
+
+        ExcelBuffer.SetRange("Column No.", 3);  // Material
+        if ExcelBuffer.FindSet() then
+            Item."No." := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 1);  // codigo anterior
+        if ExcelBuffer.FindSet() then
+            Item."No. 2" := ExcelBuffer."Cell Value as Text";
+        ExcelBuffer.SetRange("Column No.", 5);  // Nombre 1
+        if ExcelBuffer.FindSet() then
+            Item.validate(Description, UpperCase(ExcelBuffer."Cell Value as Text"));
+        ExcelBuffer.SetRange("Column No.", 2);  // Nombre anterior
+        if ExcelBuffer.FindSet() then
+            Item.validate("Description 2", ExcelBuffer."Cell Value as Text");
+        DatoExcel := '033';
+        // Item.selClasVtas_btc := GetClasificacionVentas(DatoExcel, DatoExceldesc);
+        // GRUPO ART para grupo Registro de Ventas
+        case DatoExcel of
+            '033': //MAQUINAS CAFE  -> Producto Terminados SEB (mercaderias) 7002005  Ventas Productos Terminados, SEB
+                begin
+                    Item.Type := Item.Type::Inventory;
+                    item.Validate("Gen. Prod. Posting Group", 'TERMINADOS SEB');
+                    item.Validate("Inventory Posting Group", 'SEB MAQUINAS');
+                end;
+            '043': //RENTING
+                begin
+                    Item.Type := Item.Type::Service;
+                    item.Validate("Gen. Prod. Posting Group", 'ALQUILERPRODUCTO');
+                end;
+            '313',  // REPUESTOS  -> Repuestos SEB  7001005
+            '333':  //REP. MAQUINAS CAFE  -> Repuestos SEB  7001005
+                begin
+                    Item.Type := Item.Type::Inventory;
+                    item.Validate("Gen. Prod. Posting Group", 'REPUESTOS SEB');
+                    item.Validate("Inventory Posting Group", 'SEB RESPUESTOS');
+                end;
+            '503':  //S.A.T  ->  7050000  Prestación servicios Nacional
+                begin
+                    Item.Type := Item.Type::Service;
+                    item.Validate("Gen. Prod. Posting Group", 'SERVICIOS SEB');
+                end;
+            '991':  //Seguro/Portes/Desc.       DESPLAZAMIENTO 7592000 Prestación servicios Nacional
+                begin
+                    Item.Type := Item.Type::Service;
+                    item.Validate("Gen. Prod. Posting Group", 'SERVICIOS SEB');
+                end;
+        end;
+        Item."material antiguo code" := Item."No. 2";
+        ExcelBuffer.SetRange("Column No.", 9);  //  Código EAN/UPC
+        if ExcelBuffer.FindSet() then
+            Item.GTIN := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item.GTIN));
+        ExcelBuffer.SetRange("Column No.", 3);  //  CMMF Code
+        if ExcelBuffer.FindSet() then
+            Item."CMMF Code" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."CMMF Code"));
+        Item."Safety Stock Quantity" := 0;
+        // ExcelBuffer.SetRange("Column No.", 24);  //  Nª Codigo
+        // if ExcelBuffer.FindSet() then
+        //     item."Vendor Item No." := copystr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(item."material antiguo code"));
+        ExcelBuffer.SetRange("Column No.", 6);  //  Base nit
+        if ExcelBuffer.FindSet() then
+            DatoExcel := ExcelBuffer."Cell Value as Text";
+        case datoexcel of
+            'ST':
+                Item.validate("Base Unit of Measure", 'UDS');
+            'KG':
+                Item.validate("Base Unit of Measure", 'UDS');
+            'M':
+                Item.validate("Base Unit of Measure", 'METRO');
+            else
+                Item.validate("Base Unit of Measure", 'UDS');
+        end;
+        ExcelBuffer.SetRange("Column No.", 7);  //  Model Code
+        if ExcelBuffer.FindSet() then
+            item."Shelf No." := ExcelBuffer."Cell Value as Text";
+        item."Item Tracking Code" := 'SEGNS';
+        Item."Serial Nos." := 'SERIE';
     end;
 
 

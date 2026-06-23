@@ -14809,6 +14809,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GeTItems - NamedType lblWindow</note>
           <target>Nº Cliente #1##########\Registro #2#########</target>
         </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3847435950 - NamedType 3491503912" size-unit="char" translate="yes" xml:space="preserve">
+          <source>SELECT TOP (1000) [material] ,[idioma] ,[texto_breve_de_material] ,[texto_breve_de_material_2]  FROM [ZUMMOREM].[dbo].[materialestextos_stg] where idioma = 'E'  and material = '%1'</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetItemTextos - NamedType lblSQLSelect</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 3847435950 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Nº #1##########\Registro #2#########\#3####### de #4########</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº #1##########\Registro #2#########\#3####### de #4########"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method GetItemTextos - NamedType lblWindow</note>
+          <target>Nº #1##########\Registro #2#########\#3####### de #4########</target>
+        </trans-unit>
         <trans-unit id="Codeunit 3724173479 - Method 1294006 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -14833,6 +14844,11 @@
           <source>Cargar Fichero de Excel</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UploadSEBItemPriceExcel - NamedType Text000</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 3724173479 - Method 1674925571 - NamedType 2476940767" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Cargar Fichero de Excel</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SEB PRO Iberia - Method UploadSEBItemRepuestosExcel - NamedType Text000</note>
         </trans-unit>
         <trans-unit id="Codeunit 267050289 - Method 3222099277 - NamedType 2999144582" size-unit="char" translate="yes" xml:space="preserve">
           <source>Select file</source>
@@ -36328,6 +36344,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaCustomerBankfromExcel - Property Caption</note>
           <target>Bancos Cust. SEB PRO</target>
         </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 731758872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Maquinas SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Maquinas SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaItemxls - Property Caption</note>
+          <target>Maquinas SEB PRO</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 1456462102 - Action 4185830925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
+          <source>Repuestos SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Repuestos SEB PRO"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action CargaRepuestoItemxls - Property Caption</note>
+          <target>Repuestos SEB PRO</target>
+        </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 2742540154 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Saldos Clientes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Saldos Clientes"</note>
@@ -36359,10 +36387,10 @@
           <target>Proveedores SEB PRO</target>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 2867993921 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
-          <source>Productos SEB PRO</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Productos SEB PRO"</note>
+          <source> Traducciones Productos SEB PRO</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones Productos SEB PRO"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension GenLedgSetupPage - Action Productos - Property Caption</note>
-          <target>Productos SEB PRO</target>
+          <target>Traducciones Productos SEB PRO</target>
         </trans-unit>
         <trans-unit id="PageExtension 1456462102 - Action 2034150410 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4050813720">
           <source>Actualizacion clientes</source>
@@ -36538,6 +36566,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Action SolicitudAlta - Property Caption</note>
           <target>Solicitudes Alta</target>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 97815521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Packaging Weight data</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos pesos embalajes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Packaging Weight data - Property Caption</note>
+          <target>Datos pesos embalajes</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Control 1110367523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
+          <source>Plastic Detail</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Detalle Plasticos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control detail - Property Caption</note>
+          <target>Detalle Plasticos</target>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 1791073462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>SEB Codes</source>
           <note from="Developer" annotates="general" priority="2">ESP="Códigos SEB"</note>
@@ -36563,18 +36603,6 @@
           <source>PI2 English Description</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control SEB PI2 English Description - Property ToolTip</note>
-        </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 97815521 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Packaging Weight data</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Datos pesos embalajes"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control Packaging Weight data - Property Caption</note>
-          <target>Datos pesos embalajes</target>
-        </trans-unit>
-        <trans-unit id="PageExtension 2876958691 - Control 1110367523 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
-          <source>Plastic Detail</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Detalle Plasticos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Control detail - Property Caption</note>
-          <target>Detalle Plasticos</target>
         </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Control 4000935069 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1434786627">
           <source>Purchase Category</source>
@@ -40483,10 +40511,10 @@
           <target>Material</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 1796589795 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>Nª Material antiguo</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Nª Material antiguo"</note>
+          <source>Nº Material antiguo</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Material antiguo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field material antiguo code - Property Caption</note>
-          <target>Nª Material antiguo</target>
+          <target>Nº Material antiguo</target>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2621064865 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Material Embalaje Excluido</source>

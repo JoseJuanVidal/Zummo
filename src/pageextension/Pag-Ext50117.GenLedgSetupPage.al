@@ -245,7 +245,7 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                 // }
                 action(Productos)
                 {
-                    Caption = 'Productos SEB PRO', comment = 'ESP="Productos SEB PRO"';
+                    Caption = ' Traducciones Productos SEB PRO', comment = 'ESP="Traducciones Productos SEB PRO"';
                     Promoted = true;
                     PromotedCategory = Report;
                     PromotedIsBig = true;
@@ -256,7 +256,8 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                         SEBPRO: Codeunit "SEB PRO Iberia";
                     begin
                         if Confirm(('Desea Crear productos SEB PRO?')) then
-                            SEBPRO.GeTItems('');
+                            // SEBPRO.GeTItems('');
+                            SEBPRO.GetItemTextos();
                     end;
                 }
 
@@ -325,22 +326,38 @@ pageextension 50117 "GenLedgSetupPage" extends "General Ledger Setup"
                             SEBPRO.CargaCustomerBankfromExcel();
                     end;
                 }
-                // action(CargaItemxls)
-                // {
-                //     Caption = 'Productos SEB PRO', comment = 'ESP="Productos SEB PRO"';
-                //     Promoted = true;
-                //     PromotedCategory = Report;
-                //     PromotedIsBig = true;
-                //     Image = Excel;
+                action(CargaItemxls)
+                {
+                    Caption = 'Maquinas SEB PRO', comment = 'ESP="Maquinas SEB PRO"';
+                    Promoted = true;
+                    PromotedCategory = Report;
+                    PromotedIsBig = true;
+                    Image = Excel;
 
-                //     trigger OnAction()
-                //     var
-                //         SEBPRO: Codeunit "SEB PRO Iberia";
-                //     begin
-                //         if Confirm(('Desea Crear Productos SEB PRO?')) then
-                //             SEBPRO.UploadSEBItemExcel();
-                //     end;
-                // }
+                    trigger OnAction()
+                    var
+                        SEBPRO: Codeunit "SEB PRO Iberia";
+                    begin
+                        if Confirm(('Desea Crear Maquinas SEB PRO?')) then
+                            SEBPRO.UploadSEBItemExcel();
+                    end;
+                }
+                action(CargaRepuestoItemxls)
+                {
+                    Caption = 'Repuestos SEB PRO', comment = 'ESP="Repuestos SEB PRO"';
+                    Promoted = true;
+                    PromotedCategory = Report;
+                    PromotedIsBig = true;
+                    Image = Excel;
+
+                    trigger OnAction()
+                    var
+                        SEBPRO: Codeunit "SEB PRO Iberia";
+                    begin
+                        if Confirm(('Desea Crear Maquinas SEB PRO?')) then
+                            SEBPRO.UploadSEBItemRepuestosExcel();
+                    end;
+                }
                 // action(CargaItemPrice)
                 // {
                 //     Caption = 'Tarifas XLS SEB PRO', comment = 'ESP="Tarifas XLS SEB PRO"';

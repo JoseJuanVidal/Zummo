@@ -2,6 +2,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
 {
     layout
     {
+        addafter("No.")
+        {
+            field("No. 2"; "No. 2")
+            {
+                ApplicationArea = all;
+            }
+        }
         modify(GTIN)
         {
             trigger OnAssistEdit()

@@ -2,6 +2,13 @@ pageextension 50133 "ItemList" extends "Item List"
 {
     layout
     {
+        addafter("No.")
+        {
+            field("No. 2"; "No. 2")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter(Description)
         {
             field(GTIN; GTIN)
