@@ -198,8 +198,9 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         }
         field(50023; TipoFormarto_btc; Option)
         {
+            Caption = 'Formato Factura', comment = 'ESP="Formato Factura"';
             OptionMembers = "Exportación","Nacional","Lidl","Brasil";
-            Caption = 'SinFormato,Exportación,Nacional,Lidl,Brasil', Comment = 'ESP="SinFormato,Exportación,Nacional,Lidl,Brasil"';
+            OptionCaption = 'SinFormato,Exportación,Nacional,Lidl,Brasil', Comment = 'ESP="SinFormato,Exportación,Nacional,Lidl,Brasil"';
 
         }
         field(50024; ClienteActividad_btc; Code[20])

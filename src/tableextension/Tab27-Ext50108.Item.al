@@ -698,6 +698,11 @@ tableextension 50108 "Item" extends Item  //27
         //-  NORMATIVA MEDIO AMBIENTAL
 
     }
+    fieldgroups
+    {
+        addlast(DropDown; "No. 2")
+        { }
+    }
 
     trigger OnAfterInsert()
     begin
