@@ -181,6 +181,11 @@ pageextension 50005 "CustomerList" extends "Customer List"
                 CaptionClass = '1,2,8';
                 Visible = false;
             }
+            field(Division; Division)
+            {
+                // Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+                ApplicationArea = all;
+            }
             field(FechaAlta; FechaAlta)
             {
                 ApplicationArea = all;
@@ -476,7 +481,7 @@ pageextension 50005 "CustomerList" extends "Customer List"
     var
         GeneralLedgerSetup: Record "General Ledger Setup";
         DefaulDimension: Record "Default Dimension";
-        ShortcutDimCode: array[8] of Code[20];
+        ShortcutDimCode: array[9] of Code[20];
         StyleExp: text;
         Text000: Label '¿Desea calcular la fecha de vencimiento Aseguradora?';
 
@@ -564,7 +569,8 @@ pageextension 50005 "CustomerList" extends "Customer List"
                         ShortcutDimCode[7] := DefaulDimension."Dimension Value Code";
                     GeneralLedgerSetup."Shortcut Dimension 8 Code":
                         ShortcutDimCode[8] := DefaulDimension."Dimension Value Code";
-
+                    'DIVISION':
+                        ShortcutDimCode[9] := DefaulDimension."Dimension Value Code";
                 end;
             Until DefaulDimension.next() = 0;
     end;

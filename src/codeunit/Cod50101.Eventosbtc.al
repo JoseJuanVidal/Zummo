@@ -823,6 +823,22 @@ codeunit 50101 "Eventos_btc"
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Default Dimension", 'OnAfterValidateEvent', 'Dimension Value Code', true, true)]
+    local procedure DefaultDimension_OnAfterValidateEvent(var Rec: Record "Default Dimension"; var xRec: Record "Default Dimension"; CurrFieldNo: Integer)
+    var
+        Customer: record Customer;
+    begin
+        case Rec."Table ID" of
+            18:    // Customer
+                if Rec."Dimension Code" = 'DIVISION' then begin
+                    if Customer.Get(Rec."No.") then begin
+                        Customer.Division := Rec."Dimension Value Code";
+                        Customer.Modify();
+                    end
+                end
+        end;
+    end;
+
     [EventSubscriber(ObjectType::Table, database::Customer, 'OnAfterValidateEvent', 'Name', false, false)]
     local procedure OnAfterModifyEventcUSTOMER(rec: Record Customer)
     var

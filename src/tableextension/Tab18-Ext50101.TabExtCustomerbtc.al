@@ -431,6 +431,13 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             Caption = 'Nuevo SEB', comment = 'ESP="Nuevo SEB"';
         }
+        field(50130; "Division"; code[20])
+        {
+            Editable = false;
+            Caption = 'División', comment = 'ESP="División"';
+            TableRelation = "Default Dimension" where("Table ID" = const(18), "No." = field("No."));
+
+        }
     }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var
