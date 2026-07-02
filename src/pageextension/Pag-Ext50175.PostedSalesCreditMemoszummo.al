@@ -215,6 +215,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         SalesCRMemoHeader: Record "Sales Cr.Memo Header";
         SalesCRMemoHeader2: Record "Sales Cr.Memo Header";
         reportFactura: Report AbonoVentaRegistrado;
+        AUTLogin: Codeunit "AUT Login Mgt.";
         Path: text;
         FileName: text;
         files: dotnet Myfiles;
@@ -233,7 +234,8 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
         //     REPEAT
         //         FileMgt.DeleteServerFile(NameValueBuffer.Name);
         //     UNTIL NameValueBuffer.NEXT = 0;
-        CodEmpleado := Funciones.GetExtensionFieldValuetext(Rec.RecordId, 50500, false);  // 50500  Cód. empleado
+        // CodEmpleado := Funciones.GetExtensionFieldValuetext(Rec.RecordId, 50500, false);  // 50500  Cód. empleado
+        CodEmpleado := AUTLogin.GetEmpleado();
         if not FileMgt.ServerDirectoryExists(SalesSetup."Ruta exportar pdf facturas" + CodEmpleado) then
             FileMgt.ServerCreateDirectory(SalesSetup."Ruta exportar pdf facturas" + CodEmpleado);
 
@@ -273,7 +275,7 @@ pageextension 50175 "PostedSalesCreditMemos_zummo" extends "Posted Sales Credit 
 
         //MergePDF(files);
 
-        Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las Abonos %1 seleccionadas', SalesCRMemoHeader.Count));
+        Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las Abonos %1 seleccionadas\En la carpeta %2', SalesCRMemoHeader.Count, Path));
     end;
 
     local procedure MergePDF(var files: dotnet Myfiles)

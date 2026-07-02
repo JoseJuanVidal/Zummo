@@ -439,6 +439,18 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
 
         }
     }
+    keys
+    {
+        key(CodAnterior; "Codigo Anterior")
+        { }
+    }
+    fieldgroups
+    {
+        addlast(DropDown; "Codigo Anterior")
+        { }
+        addlast(Brick; "Codigo Anterior")
+        { }
+    }
     /*local procedure ActualizarFiltroFechasAseguradora()
     var
         HistAseg: Record "STH Hist. Aseguradora";

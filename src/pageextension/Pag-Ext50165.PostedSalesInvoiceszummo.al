@@ -402,6 +402,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         reportFactura: Report FacturaNacionalMaquinas;
         reportFacturaUK: Report FacturaNacionalUK;
         FacturaRegBrasil: report FacturaRegBrasil;
+        AUTLogin: Codeunit "AUT Login Mgt.";
         CodEmpleado: text;
         Selection: Integer;
         Path: text;
@@ -421,7 +422,8 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
         //     REPEAT
         //         FileMgt.DeleteServerFile(NameValueBuffer.Name);
         //     UNTIL NameValueBuffer.NEXT = 0;
-        CodEmpleado := Funciones.GetExtensionFieldValuetext(Rec.RecordId, 50500, false);  // 50500  Cód. empleado
+        // CodEmpleado := Funciones.GetExtensionFieldValuetext(Rec.RecordId, 50500, false);  // 50500  Cód. empleado
+        CodEmpleado := AUTLogin.GetEmpleado();
         if not FileMgt.ServerDirectoryExists(SalesSetup."Ruta exportar pdf facturas" + CodEmpleado) then
             FileMgt.ServerCreateDirectory(SalesSetup."Ruta exportar pdf facturas" + CodEmpleado);
 
@@ -510,7 +512,7 @@ pageextension 50165 "PostedSalesInvoices_zummo" extends "Posted Sales Invoices"
 
         // MergePDF(files);
 
-        Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las facturas %1 seleccionadas', SalesInvoiceHeader.Count));
+        Message(StrSubstNo('Proceso finalizado, se ha creado PDF de las facturas %1 seleccionadas\En la carpeta %2', SalesInvoiceHeader.Count, Path));
     end;
 
     local procedure GetRequestPageReport(Selection: Integer) XmlParameters: text;
