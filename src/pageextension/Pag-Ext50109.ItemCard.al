@@ -51,6 +51,13 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 }
             }
         }
+        addafter("Last Direct Cost")
+        {
+            field("Unit cost Consolidated"; "Unit cost Consolidated")
+            {
+                ApplicationArea = all;
+            }
+        }
         addafter("Sales Blocked")
         {
             field("Price Type"; "Price Type")

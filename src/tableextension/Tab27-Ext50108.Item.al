@@ -531,6 +531,10 @@ tableextension 50108 "Item" extends Item  //27
                 "Purch. Category code" = field("Purch. Category"), code = field("Purch. SubCategory")));
             Editable = false;
         }
+        field(50180; "Unit cost Consolidated"; Decimal)
+        {
+            Caption = 'Unit cost Consolidated', comment = 'ESP="Coste  unitario Consolidado"';
+        }
 
         //+ 22/11/2022 NORMATIVA MEDIO AMBIENTAL
         Field(50200; "Plastic Qty. (kg)"; decimal)

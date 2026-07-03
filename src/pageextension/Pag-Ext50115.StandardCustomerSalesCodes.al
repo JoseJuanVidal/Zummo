@@ -11,6 +11,10 @@ pageextension 50115 "StandardCustomerSalesCodes" extends "Standard Customer Sale
         }
         addafter("Valid To date")
         {
+            field(Active; Active)
+            {
+                ApplicationArea = all;
+            }
             field(Periodicidad_btc; Periodicidad_btc)
             {
                 ApplicationArea = All;
@@ -19,6 +23,7 @@ pageextension 50115 "StandardCustomerSalesCodes" extends "Standard Customer Sale
             field(UltimaFechaFactura_btc; UltimaFechaFactura_btc)
             {
                 ApplicationArea = All;
+                Editable = false;
             }
 
             field(ProximaFechaFactura_btc; ProximaFechaFactura_btc)

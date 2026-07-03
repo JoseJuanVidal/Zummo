@@ -2,6 +2,11 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
 {
     fields
     {
+        field(50000; Active; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Active', comment = 'ESP="Activo"';
+        }
 
         field(50100; Periodicidad_btc; DateFormula)
         {
@@ -50,7 +55,6 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
             DataClassification = CustomerContent;
             Description = 'Bitec';
             Caption = 'Last invoice date', comment = 'ESP="Última fecha factura"';
-            Editable = false;
 
             trigger OnValidate()
             begin

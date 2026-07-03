@@ -40858,6 +40858,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field TasaRAEE - Property Caption</note>
           <target>Tasa RAEE</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 3916881042 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Unit cost Consolidated</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Coste  unitario Consolidado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Unit cost Consolidated - Property Caption</note>
+          <target>Coste  unitario Consolidado</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 730961054 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Update BI BOM Costs</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar BI BOM Costes"</note>
@@ -43800,6 +43806,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Usuario Vencimientos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SMTPMailSetup - Field UsuarioVencimientos - Property Caption</note>
           <target>Usuario Vencimientos</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 393003494 - Field 1090351696 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
+          <source>Active</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field Active - Property Caption</note>
+          <target>Activo</target>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 2565725163 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
           <source>Amount</source>

@@ -2313,6 +2313,7 @@ table 17462 "ZM PL Items Temporary"
             Item.Reset();
             Item.Init();
             Item.TransferFields(Rec);
+            Item."No. 2" := '';
             Item.validate("No.", Rec."Item No.");
             Item.Insert();
         end;
