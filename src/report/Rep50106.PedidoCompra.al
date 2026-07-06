@@ -671,6 +671,8 @@ report 50106 "Pedido Compra"
                 }
 
                 trigger OnAfterGetRecord()
+                var
+                    NameItem: text;
                 begin
                     AllowInvDisctxt := Format("Allow Invoice Disc.");
                     TotalSubTotal += "Line Amount";
@@ -682,6 +684,7 @@ report 50106 "Pedido Compra"
                     FormatDocument.SetPurchaseLine("Purchase Line", FormattedQuanitity, FormattedDirectUnitCost);
 
                     // segun el idioma del pedido, utilizar la descripcion de los productos en el idioma si existe
+                    NameItem := "Purchase Line".Description;
                     if "Purchase Line".type in ["Purchase Line".type::Item] then begin
                         case optIdioma of
                             optIdioma::" ":
@@ -693,6 +696,8 @@ report 50106 "Pedido Compra"
                                 If ItemTranslation.Get("Purchase Line"."No.", "Purchase Line"."Variant Code", format(optIdioma)) then
                                     "Purchase Line".Description := ItemTranslation.Description;
                         end;
+                        if "Purchase Line".description = '' then
+                            "Purchase Line".description := NameItem;
                         // control del Vendor Item No.
                         if "Purchase Line"."Vendor Item No." = '' then
                             "Purchase Line"."Vendor Item No." := GetVendorItemNo("Purchase Line");

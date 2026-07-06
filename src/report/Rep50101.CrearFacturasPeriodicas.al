@@ -80,6 +80,7 @@ report 50101 "CrearFacturasPeriodicas"
         if tmpStandarCustomerSales.FindFirst() then
             repeat
                 tmpStandarCustomerSales.CalcFields("Amount Lines");
+                Body += '<tr style="height: 15px;">';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + tmpStandarCustomerSales."Customer No." + '</td>';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + tmpStandarCustomerSales."Customer Name" + '</td>';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + tmpStandarCustomerSales.Code + '</td>';
@@ -87,6 +88,7 @@ report 50101 "CrearFacturasPeriodicas"
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + format(tmpStandarCustomerSales.Periodicidad_btc) + '</td>';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + format(tmpStandarCustomerSales.ProximaFechaFactura_btc) + '</td>';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + format(tmpStandarCustomerSales."Amount Lines") + '</td>';
+                Body += '<tr>';
             Until tmpStandarCustomerSales.next() = 0;
         Body += '</tbody>';
         Body += '</table>';
