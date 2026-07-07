@@ -34,6 +34,36 @@ pageextension 50115 "StandardCustomerSalesCodes" extends "Standard Customer Sale
             {
                 ApplicationArea = all;
             }
+            field("Contract Services"; "Contract Services")
+            {
+                ApplicationArea = all;
+            }
+        }
+    }
+    actions
+    {
+        addlast(Processing)
+        {
+            action(ExportExcel)
+            {
+                ApplicationArea = all;
+                Caption = 'Export Excel', comment = 'ESP="Export Excel"';
+                Image = Excel;
+                Promoted = true;
+                PromotedCategory = Process;
+
+                trigger OnAction()
+                var
+                    StandardCustomerSales: Record "Standard Customer Sales Code";
+                    lblConfirm: Label '¿Desea exportar las %1 seleccionadas?', comment = 'ESP="¿Desea exportar las %1 seleccionadas?"';
+                begin
+                    if not Confirm(lblConfirm, false, Rec.TableCaption) then
+                        exit;
+                    StandardCustomerSales.CopyFilters(Rec);
+                    Rec.ExportExcel(StandardCustomerSales);
+                end;
+
+            }
         }
     }
 }

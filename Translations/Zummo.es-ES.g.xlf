@@ -38524,6 +38524,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension SMTPMailSetup - Control passVencimientosTxt - Property Caption</note>
           <target>Contraseña Vencimientos</target>
         </trans-unit>
+        <trans-unit id="PageExtension 3942903219 - Action 2857238821 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 437657539">
+          <source>Export Excel</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Export Excel"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension StandardCustomerSalesCodes - Action ExportExcel - Property Caption</note>
+          <target>Export Excel</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 3942903219 - Action 2857238821 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 3942903219">
+          <source>¿Desea exportar las %1 seleccionadas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea exportar las %1 seleccionadas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension StandardCustomerSalesCodes - Action ExportExcel - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea exportar las %1 seleccionadas?</target>
+        </trans-unit>
         <trans-unit id="PageExtension 818457389 - Action 1508348912 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1658838783">
           <source>Calculate Plastic BOM</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular peso plastico L.M."</note>
@@ -43818,6 +43830,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Importe Líneas"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field Amount Lines - Property Caption</note>
           <target>Importe Líneas</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 393003494 - Field 769745560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
+          <source>Nº contrato servicio</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº contrato servicio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field Contract Services - Property Caption</note>
+          <target>Nº contrato servicio</target>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 1171137197 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
           <source>Customer Name</source>

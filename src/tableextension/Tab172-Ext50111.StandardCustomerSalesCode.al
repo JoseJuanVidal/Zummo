@@ -76,17 +76,24 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
             CalcFormula = sum("Standard Sales Line".Precio_btc where("Standard Sales Code" = field(Code)));
             Editable = false;
         }
+        field(50130; "Contract Services"; code[20])
+        {
+            Caption = 'Nº contrato servicio', comment = 'ESP="Nº contrato servicio"';
+            DataClassification = CustomerContent;
+            TableRelation = "Service Contract Header" where("Customer No." = field("Customer No."));
+        }
     }
 
     procedure CalculaProximaFechaFactura()
     begin
-        TestField(Periodicidad_btc);
+        if format(Periodicidad_btc) = '' then
+            exit;
 
         if UltimaFechaFactura_btc <> 0D then
-            Validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, UltimaFechaFactura_btc))
+            Validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, ProximaFechaFactura_btc))   // UltimaFechaFactura_btc cambiamos para que aunque se facture en otra fecha, sea un desplazamiento exacto
         else
             if "Valid From Date" <> 0D then
-                validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, "Valid From Date"))
+                validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, DMY2Date(Date2DMY("Valid From Date", 1), Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3))))
             else
                 validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, WorkDate()));
     end;
@@ -98,4 +105,81 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
 
     var
         globalBoolDesdeReport: Boolean;
+
+    procedure ExportExcel(var StandardCustomerSales: record "Standard Customer Sales Code")
+    var
+        ExcelBuffer: Record "Excel Buffer" temporary;
+    begin
+        ExcelBuffer.DeleteAll();
+        ExcelBuffer.CreateNewBook('Ventas Periodicas');
+        HeaderExcelBuffer(ExcelBuffer, StandardCustomerSales.GetFilters());
+        if StandardCustomerSales.FindFirst() then
+            repeat
+                LineExcelBuffer(ExcelBuffer, StandardCustomerSales);
+            Until StandardCustomerSales.next() = 0;
+        ExcelBuffer.WriteSheet('Cliente - Ventas periodicas', COMPANYNAME, USERID);
+        ExcelBuffer.CloseBook();
+        ExcelBuffer.DownloadAndOpenExcel;
+    end;
+
+    local procedure HeaderExcelBuffer(var ExcelBuffer: Record "Excel Buffer"; TextoFiltro: text)
+    var
+        StandardSalesLine: record "Standard Sales Line";
+    begin
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn('Informe tarifas de Proveedor - precios', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn('Filtro:', FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn(TextoFiltro, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+        ExcelBuffer.NewRow();
+        ExcelBuffer.NewRow();
+        ExcelBuffer.AddColumn(Rec.FieldCaption("Customer No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption("Customer Name"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption(Code), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption("Valid From Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption("Valid to Date"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption(Periodicidad_btc), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption(UltimaFechaFactura_btc), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption(ProximaFechaFactura_btc), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(Rec.FieldCaption("Amount Lines"), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(StandardSalesLine.FieldCaption(Type), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(StandardSalesLine.FieldCaption("No."), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(StandardSalesLine.FieldCaption(Description), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(StandardSalesLine.FieldCaption(Quantity), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.AddColumn(StandardSalesLine.FieldCaption(Precio_btc), FALSE, '', TRUE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+        ExcelBuffer.NewRow();
+    end;
+
+    local procedure LineExcelBuffer(var ExcelBuffer: Record "Excel Buffer"; StandardCustomerSales: Record "Standard Customer Sales Code")
+    var
+        StandardSalesLine: record "Standard Sales Line";
+    begin
+        StandardCustomerSales.CalcFields("Amount Lines");
+        StandardSalesLine.Reset();
+        StandardSalesLine.SetRange("Standard Sales Code", StandardCustomerSales.code);
+        if StandardSalesLine.FindFirst() then
+            repeat
+                ExcelBuffer.AddColumn(StandardCustomerSales."Customer No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardCustomerSales."Customer Name", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardCustomerSales.Code, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardCustomerSales.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardCustomerSales."Valid From Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(StandardCustomerSales."Valid to Date", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(StandardCustomerSales.Periodicidad_btc, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardCustomerSales.UltimaFechaFactura_btc, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(StandardCustomerSales.ProximaFechaFactura_btc, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Date);
+                ExcelBuffer.AddColumn(StandardCustomerSales."Amount Lines", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(StandardSalesLine.Type, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardSalesLine."No.", FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardSalesLine.Description, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Text);
+                ExcelBuffer.AddColumn(StandardSalesLine.Quantity, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.AddColumn(StandardSalesLine.Precio_btc, FALSE, '', FALSE, FALSE, FALSE, '', ExcelBuffer."Cell Type"::Number);
+                ExcelBuffer.NewRow();
+                StandardCustomerSales."Amount Lines" := 0;
+            Until StandardSalesLine.next() = 0;
+
+    end;
 }
