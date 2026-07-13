@@ -70,7 +70,7 @@ report 50101 "CrearFacturasPeriodicas"
         Body += '<td style="width: 115.141px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption("Customer No.") + '</strong></td>';
         Body += '<td style="width: 277.078px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption("Customer Name") + '</strong></td>';
         Body += '<td style="width: 80.75px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption(Code) + '</strong></td>';
-        Body += '<td style="width: 57.25px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption(Description) + '</strong></td>';
+        Body += '<td style="width: 277.25px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption(Description) + '</strong></td>';
         Body += '<td style="width: 57.25px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption(Periodicidad_btc) + '</strong></td>';
         Body += '<td style="width: 43.9688px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption(ProximaFechaFactura_btc) + '</strong>.&nbsp;</td>';
         Body += '<td style="width: 43.9688px; height: 18px;"><strong>' + tmpStandarCustomerSales.FieldCaption("Amount Lines") + '</strong>.&nbsp;</td>';
@@ -79,7 +79,7 @@ report 50101 "CrearFacturasPeriodicas"
         Body += '<tbody>';
         if tmpStandarCustomerSales.FindFirst() then
             repeat
-                tmpStandarCustomerSales.CalcFields("Amount Lines");
+                tmpStandarCustomerSales.CalcFields("Amount Lines", "Customer Name");
                 Body += '<tr style="height: 15px;">';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + tmpStandarCustomerSales."Customer No." + '</td>';
                 Body += '<td style="width: 80.75px; height: 10px;text-align: right;">' + tmpStandarCustomerSales."Customer Name" + '</td>';
