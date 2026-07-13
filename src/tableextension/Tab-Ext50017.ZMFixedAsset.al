@@ -42,5 +42,11 @@ tableextension 50017 "ZMFixedAsset" extends "Fixed Asset"
             CalcFormula = count("ZM Fixed Assets Products" where("FA No." = field("No."), Dependent = const(true)));
             Editable = false;
         }
+        field(50020; "Contract No."; code[20])
+        {
+            Caption = 'Contract No.', comment = 'ESP="Nª Contrato"';
+            TableRelation = "Service Contract Header"."Contract No." where("Contract Type" = const(Contract));
+            ValidateTableRelation = false;
+        }
     }
 }

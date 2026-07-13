@@ -90,7 +90,7 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
             exit;
 
         if UltimaFechaFactura_btc <> 0D then
-            Validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, ProximaFechaFactura_btc))   // UltimaFechaFactura_btc cambiamos para que aunque se facture en otra fecha, sea un desplazamiento exacto
+            Validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, DMY2Date(Date2DMY("Valid From Date", 1), Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3))))   // UltimaFechaFactura_btc cambiamos para que aunque se facture en otra fecha, sea un desplazamiento exacto
         else
             if "Valid From Date" <> 0D then
                 validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, DMY2Date(Date2DMY("Valid From Date", 1), Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3))))

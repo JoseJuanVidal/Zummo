@@ -40,6 +40,12 @@ pageextension 50084 "ZMFixed Asset List" extends "Fixed Asset List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Serial No."; "Serial No.")
+            {
+                ApplicationArea = all;
+            }
+            field("Contract No."; "Contract No.")
+            { ApplicationArea = all; }
         }
     }
     actions

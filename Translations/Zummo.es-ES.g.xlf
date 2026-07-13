@@ -46339,6 +46339,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ship-to Address - Field Codigo Anterior - Property Caption</note>
           <target>Codigo Anterior</target>
         </trans-unit>
+        <trans-unit id="TableExtension 3602268299 - Field 3609111399 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Contract No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nª Contrato"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Contract No. - Property Caption</note>
+          <target>Nª Contrato</target>
+        </trans-unit>
         <trans-unit id="TableExtension 3602268299 - Field 3298499930 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>Date Fin. Amort</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha final amortización"</note>

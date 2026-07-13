@@ -17,6 +17,13 @@ pageextension 50191 "FixedAssetCard" extends "Fixed Asset Card"
                 ApplicationArea = all;
             }
         }
+        addafter("Serial No.")
+        {
+            field("Contract No."; "Contract No.")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {
