@@ -58,6 +58,14 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
             {
                 ApplicationArea = ALL;
             }
+            field("Business Unit"; "Business Unit")
+            {
+                ApplicationArea = all;
+            }
+            field(DIVISION; DIVISION)
+            {
+                ApplicationArea = all;
+            }
             field("Purch. Request less 200"; "Purch. Request less 200")
             {
                 ApplicationArea = all;

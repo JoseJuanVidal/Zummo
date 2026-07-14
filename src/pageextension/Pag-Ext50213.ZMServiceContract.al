@@ -9,14 +9,24 @@ pageextension 50213 "ZM Service Contract" extends "Service Contract"
                 ApplicationArea = all;
                 Caption = 'Attachment Document', comment = 'ESP="Documentos adjuntos"';
                 SubPageLink = "Table ID" = const(5965), "No." = field("Contract No.");
-
             }
         }
     }
 
     actions
     {
-        // Add changes to page actions here
+        addlast(Navigation)
+        {
+            action(LineasVenta)
+            {
+                ApplicationArea = all;
+                Caption = 'Líneas Venta Periódicas', comment = 'ESP="Líneas Venta Periódicas"';
+                Image = StatisticsDocument;
+                RunObject = page "Standard Customer Sales Codes";
+                RunPageLink = "Contract Services" = field("Contract No.");
+                RunPageMode = View;
+            }
+        }
     }
 
     trigger OnAfterGetCurrRecord()

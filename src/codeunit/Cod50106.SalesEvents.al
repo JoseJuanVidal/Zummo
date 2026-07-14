@@ -2484,4 +2484,22 @@ codeunit 50106 "SalesEvents"
             SalesHeader.Insert();
         end
     end;
+
+    // =============       Standard Customer Sales Code        ====================
+    // ==  
+    // ==  comment OnAfterCreateSalesInvoice - al crear la factura de venta periodica ponemos como documento externo el codigo de contrato
+    // ==  OnAfterApplyStdCodesToSalesLinesLoop - 
+    // ======================================================================================================
+    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnAfterCreateSalesInvoice', '', true, true)]
+    local procedure StandardCustomerSalesCode_OnAfterCreateSalesInvoice(var SalesHeader: Record "Sales Header"; StandardCustomerSalesCode: Record "Standard Customer Sales Code")
+    begin
+        // aqui ponemos el codigo de la facturación como Nº documento externo
+        SalesHeader."External Document No." := CopyStr(StandardCustomerSalesCode.Code, 1, MaxStrLen(SalesHeader."External Document No."));
+    end;
+
+    // [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnAfterApplyStdCodesToSalesLinesLoop', '', true, true)]
+    // local procedure StandardCustomerSalesCode_OnAfterApplyStdCodesToSalesLinesLoop(VAR StdSalesLine: Record "Standard Sales Line"; VAR SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header"; StdSalesCode: Record "Standard Sales Code")
+    // begin
+    //     // aqui Seria para añadir linea con comentarios
+    // end;
 }

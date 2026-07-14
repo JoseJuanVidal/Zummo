@@ -106,6 +106,14 @@ page 17385 "ZM Analisis Movs Contabilidad"
                     ApplicationArea = all;
                     Editable = false;
                 }
+                field("Business Unit"; "Business Unit")
+                {
+                    ApplicationArea = all;
+                }
+                field(DIVISION; DIVISION)
+                {
+                    ApplicationArea = all;
+                }
                 field("Gen. Posting Type"; "Gen. Posting Type")
                 {
                     ApplicationArea = all;

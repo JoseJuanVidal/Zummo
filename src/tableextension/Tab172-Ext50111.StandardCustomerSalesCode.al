@@ -80,7 +80,7 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
         {
             Caption = 'Nº contrato servicio', comment = 'ESP="Nº contrato servicio"';
             DataClassification = CustomerContent;
-            TableRelation = "Service Contract Header" where("Customer No." = field("Customer No."));
+            TableRelation = "Service Contract Header"."Contract No." where("Customer No." = field("Customer No."));
         }
     }
 
@@ -93,7 +93,7 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
             Validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, DMY2Date(Date2DMY("Valid From Date", 1), Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3))))   // UltimaFechaFactura_btc cambiamos para que aunque se facture en otra fecha, sea un desplazamiento exacto
         else
             if "Valid From Date" <> 0D then
-                validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, DMY2Date(Date2DMY("Valid From Date", 1), Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3))))
+                validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, "Valid From Date"))
             else
                 validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, WorkDate()));
     end;
