@@ -779,6 +779,12 @@ report 50102 "PedidoCliente"
                                     }
                                     column(AssemblyContUbicaciones; AssemblyContUbicaciones)
                                     { }
+                                    column(Quantity_per; "Quantity per")
+                                    { }
+                                    column(Quantity_to_Consume; "Quantity to Consume")
+                                    { }
+                                    column(Unit_of_Measure_Code; "Unit of Measure Code")
+                                    { }
 
                                     dataitem("Reservation Entry"; "Reservation Entry")
                                     {

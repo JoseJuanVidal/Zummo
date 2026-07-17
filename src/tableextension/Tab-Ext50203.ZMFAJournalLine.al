@@ -2,6 +2,20 @@ tableextension 50203 "ZM FA Journal Line" extends "FA Journal Line"
 {
     fields
     {
+        field(50113; "Business Unit"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('BUSUNIT')));
+        }
+        field(50116; "DIVISION"; Code[20])
+        {
+            Editable = false;
+            Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('DIVISION')));
+        }
         field(50120; "Purch. Request less 200"; code[20])
         {
             Caption = 'Purch. Request less 200', Comment = 'ESP="Compra menor 200"';
@@ -12,8 +26,8 @@ tableextension 50203 "ZM FA Journal Line" extends "FA Journal Line"
             begin
                 OnValidate_PurchRequest();
             end;
-
         }
+
     }
 
     keys

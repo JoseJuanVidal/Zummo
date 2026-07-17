@@ -8714,8 +8714,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación"</note>
+          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -11812,6 +11812,11 @@
           <source>Expiration Calculation</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cálculo caducidad"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Expiration Calculation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 681560359 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Activo Fijo (Moldes/Utillaje)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Activo Fijo (Moldes/Utillaje)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Fixed Assets - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 2338193685 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Flushing Method</source>
@@ -36683,6 +36688,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Aluminio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Aluminium - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Business Unit - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2721162252 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Cambiado Coste</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cambiado Coste"</note>
@@ -36714,8 +36724,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CentroTrabajp_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
-          <source>CMMF Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
+          <source>CMMF Code (Reporting)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code (Reporting)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CMMF Code - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3971075999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
@@ -36777,6 +36787,16 @@
           <source>Desc. Linea Economica</source>
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Linea Economica"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field desLineaEconomica_btc - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 804937293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Fl1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Fl1 - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 167240676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>Fl2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field Fl2 - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 2896561755 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>Desc. Purch. SubCategory</source>
@@ -41383,6 +41403,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="La solicitud %1 debe ser un %2 o %3."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblErroAccountType</note>
         </trans-unit>
+        <trans-unit id="TableExtension 3218508141 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Field Business Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3218508141 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Field DIVISION - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 3218508141 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Purch. Request less 200</source>
           <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
@@ -41463,6 +41493,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="La solicitud %1 debe ser un %2 o %3."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Journal Line - Method OnValidate_PurchRequest - NamedType lblErroAccountType</note>
         </trans-unit>
+        <trans-unit id="TableExtension 2451929409 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3539501460">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Journal Line - Field Business Unit - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2451929409 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3539501460">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Journal Line - Field DIVISION - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2451929409 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3539501460">
           <source>Purch. Request less 200</source>
           <note from="Developer" annotates="general" priority="2">ESP="Compra menor 200"</note>
@@ -41477,6 +41517,11 @@
           <source>Path File Export</source>
           <note from="Developer" annotates="general" priority="2">ESP="Directorio Exportar Ficheros"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Setup - Field Path File Export - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 787289766 - Field 2098739010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3094664591">
+          <source>Molde/Utillaje</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Molde/Utillaje"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM FA Subclass - Field Molde/Utillaje - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2910060780 - Field 441089398 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2556642749">
           <source>Expenses Job Jnl. Template</source>
@@ -41832,6 +41877,11 @@
           <source>Item Nos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nos. Producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Item Nos. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3602268299 - Field 2098739010 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
+          <source>Molde/Utillaje</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Molde/Utillaje"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZMFixedAsset - Field Molde/Utillaje - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3602268299 - Field 895284309 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 372951706">
           <source>Previous AF changes</source>

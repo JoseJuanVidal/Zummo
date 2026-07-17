@@ -49,6 +49,12 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                 }
+                field("Business Unit"; "Business Unit")
+                { ApplicationArea = all; }
+                field(Fl1; Fl1)
+                { ApplicationArea = all; }
+                field(Fl2; Fl2)
+                { ApplicationArea = all; }
             }
         }
         addafter("Last Direct Cost")

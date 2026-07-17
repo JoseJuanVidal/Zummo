@@ -48,5 +48,11 @@ tableextension 50017 "ZMFixedAsset" extends "Fixed Asset"
             TableRelation = "Service Contract Header"."Contract No." where("Contract Type" = const(Contract));
             ValidateTableRelation = false;
         }
+        field(50030; "Molde/Utillaje"; Boolean)
+        {
+            Caption = 'Molde/Utillaje', comment = 'ESP="Molde/Utillaje"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("FA Subclass"."Molde/Utillaje" where(code = field("FA Subclass Code")));
+        }
     }
 }

@@ -1298,7 +1298,11 @@ table 17462 "ZM PL Items Temporary"
         {
             Caption = 'Tipo aprovisionamiento', comment = 'ESP="Tipo aprovisionamiento"';
         }
-
+        field(50960; "Fixed Assets"; Code[20])
+        {
+            Caption = 'Activo Fijo (Moldes/Utillaje)', comment = 'ESP="Activo Fijo (Moldes/Utillaje)"';
+            TableRelation = "Fixed Asset" where("Molde/Utillaje" = const(true));
+        }
         field(65100; "Sujeto a Control de Calidad"; Boolean)
         {
             Caption = 'Sujeto a Control de Calidad', comment = 'ESP="Sujeto a Control de Calidad"';  // 65100
@@ -2293,8 +2297,12 @@ table 17462 "ZM PL Items Temporary"
 
         UpdateItemLM();
 
-        // update Precios de compra TODO
+        // creamos relacion Activos fijos Moldes/Utillage
+        if Rec."Fixed Assets" <> '' then begin
 
+        end;
+        // update Precios de compra TODO
+        CreateFixedAssetsProducts();
 
         PostedItemstemporary.Init();
         PostedItemstemporary.TransferFields(Rec);
@@ -2302,6 +2310,22 @@ table 17462 "ZM PL Items Temporary"
         Rec.Delete();
         // enviamos email de alta pendiente
         SendMailItemTemporaryFinalize();
+    end;
+
+    local procedure CreateFixedAssetsProducts()
+    var
+        FixedAssets: Record "Fixed Asset";
+        FixedAssetsProducts: Record "ZM Fixed Assets Products";
+    begin
+        if FixedAssets.Get(Rec."Fixed Assets") then begin
+            if not FixedAssetsProducts.Get(FixedAssets."No.", Rec."Item No.") then begin
+                FixedAssetsProducts.Init();
+                FixedAssetsProducts."FA No." := FixedAssets."No.";
+                FixedAssetsProducts."Item No." := Rec."Item No.";
+                FixedAssetsProducts.Description := Rec.Description;
+                FixedAssetsProducts.Insert();
+            end;
+        end;
     end;
 
     local procedure CreateNewItem()

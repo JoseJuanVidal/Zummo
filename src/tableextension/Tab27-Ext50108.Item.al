@@ -274,6 +274,7 @@ tableextension 50108 "Item" extends Item  //27
             CalcFormula = lookup(Item.Description where("No." = field("Replaces No.")));
             Editable = false;
         }
+
         field(50075; "Renovate Plan"; boolean)
         {
             DataClassification = CustomerContent;
@@ -300,7 +301,7 @@ tableextension 50108 "Item" extends Item  //27
         field(50080; "CMMF Code"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+            Caption = 'CMMF Code (Reporting)', comment = 'ESP="CMMF Code (Reporting)"';
         }
         field(50081; "SEB PI2 Code"; code[15])
         {
@@ -349,6 +350,24 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Caption = 'Nº Material antiguo', comment = 'ESP="Nº Material antiguo"';
+        }
+        field(50087; "Business Unit"; code[20])
+        {
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(BusinessUnit));
+        }
+        field(50088; "Fl1"; code[20])
+        {
+            Caption = 'Fl1', comment = 'ESP="Fl1"';
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Fl1));
+        }
+        field(50089; "Fl2"; code[20])
+        {
+            Caption = 'Fl2', comment = 'ESP="Fl2"';
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Fl2));
         }
         field(50090; "Price Type"; Enum "Price Type")
         {

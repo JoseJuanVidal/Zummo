@@ -52,6 +52,21 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Business Unit"; "Business Unit")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Fl1; Fl1)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field(Fl2; Fl2)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field(Ordenacion_btc; Ordenacion_btc)
             {
                 ApplicationArea = All;

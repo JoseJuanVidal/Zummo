@@ -110,6 +110,10 @@ page 17471 "ZM PL Items temporary card"
                         , comment = 'ESP="Especifica el motivo para el cambio del estado de Bloqueado o Desbloqueado."';
                     Editable = boolEditReasonBlocked;
                 }
+                field("Fixed Assets"; "Fixed Assets")
+                {
+                    ApplicationArea = all;
+                }
                 field("Requires Final Artwork"; "Requires Final Artwork")
                 {
                     ApplicationArea = all;
