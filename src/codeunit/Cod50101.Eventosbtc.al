@@ -1250,7 +1250,7 @@ codeunit 50101 "Eventos_btc"
         PurchaseLine.SetRange(Type, PurchLine.Type);
         PurchaseLine.SetRange("No.", PurchLine."No.");
         // si que tenemos que revisar el precio por la suma de cantidades y 
-        if PurchaseLine.count > 0 then
+        if PurchaseLine.count > 1 then
             if GetPuruchaseLineDirectCoste(PurchLine, PurchaseLine, DirectCost) then
                 PurchLine.Validate("Direct Unit Cost");
     end;
@@ -1282,7 +1282,7 @@ codeunit 50101 "Eventos_btc"
             repeat
                 // IF PurchasePrice."Minimum Quantity" <= TotalQty THEN BEGIN
                 //si el precio es mayor obtenemos este
-                IF (dateprice < PurchasePrice."Starting Date") THEN
+                IF (dateprice <= PurchasePrice."Starting Date") THEN
                     UnitPrice := 0;
                 IF UnitPrice = 0 THEN BEGIN
                     UnitPrice := PurchasePrice."Direct Unit Cost";

@@ -57,6 +57,11 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Cost Center"; "Cost Center")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field(Fl1; Fl1)
             {
                 ApplicationArea = all;

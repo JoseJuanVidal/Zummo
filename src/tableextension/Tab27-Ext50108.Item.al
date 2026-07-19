@@ -374,6 +374,12 @@ tableextension 50108 "Item" extends Item  //27
             DataClassification = CustomerContent;
             Caption = 'Price Type', comment = 'ESP="Tipo Precio"';
         }
+        field(50095; "Cost Center"; code[20])
+        {
+            Caption = 'Cost Center', comment = 'ESP="Cost Center"';
+            DataClassification = CustomerContent;
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(CostCenter));
+        }
         field(50100; "STHQuantityWhse"; Decimal)
         {
             Caption = 'Quantity Warehouse', comment = 'ESP="Cantidad Almacén"';
