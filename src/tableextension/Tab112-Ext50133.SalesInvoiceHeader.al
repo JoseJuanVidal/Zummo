@@ -252,6 +252,20 @@ tableextension 50133 "SalesInvoiceHeader" extends "Sales Invoice Header"  //112
             DataClassification = CustomerContent;
             Caption = 'Cambio divisa', comment = 'ESP="Cambio divisa"';
         }
+        field(50400; "Business Unit"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('BUSUNIT')));
+        }
+        field(50401; "DIVISION"; Code[20])
+        {
+            Editable = false;
+            Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('DIVISION')));
+        }
         field(51000; ImporteReport; Decimal)
         {
             DataClassification = CustomerContent;

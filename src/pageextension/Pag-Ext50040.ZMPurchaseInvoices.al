@@ -20,6 +20,10 @@ pageextension 50040 "ZM PurchaseInvoices" extends "Purchase Invoices"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(DIVISION; DIVISION)
+            { ApplicationArea = all; }
+            field("Business Unit"; "Business Unit")
+            { ApplicationArea = all; }
         }
     }
     actions

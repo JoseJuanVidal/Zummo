@@ -94,6 +94,21 @@ tableextension 50105 "PurchaseLine" extends "Purchase Line"  //39
             Caption = 'Fixed Asset Job Task No', Comment = 'ESP="A/F Nº Tarea Proyecto"';
             TableRelation = "Job Task"."Job Task No." where("Job No." = field("ZM Job No."));
         }
+        field(50400; "DIVISION"; Code[20])
+        {
+            Editable = false;
+            Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('DIVISION')));
+        }
+        field(50401; "Business Unit"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('BUSUNIT')));
+        }
+
     }
 
     trigger OnAfterInsert()

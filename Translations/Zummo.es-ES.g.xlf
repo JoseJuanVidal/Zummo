@@ -19378,6 +19378,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - NamedType lblConfirmUpdateITBID</note>
           <target>¿Desea Crear/Actualizar los datos en le plataforma compra ITBID?</target>
         </trans-unit>
+        <trans-unit id="Page 531307422 - Action 296798300 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change Log Entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mov. registro cambios"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - Action ChangeLogEntries - Property Caption</note>
+          <target>Mov. registro cambios</target>
+        </trans-unit>
+        <trans-unit id="Page 531307422 - Action 2549125872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Approvals</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - Action ItemApprovalsDept - Property Caption</note>
+          <target>Aprobaciones</target>
+        </trans-unit>
         <trans-unit id="Page 531307422 - Action 1918953554 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Producción</source>
           <note from="Developer" annotates="general" priority="2">ESP="Producción"</note>
@@ -19395,6 +19407,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - Action PurchasePrices - Property Caption</note>
           <target>Precios Compra</target>
+        </trans-unit>
+        <trans-unit id="Page 531307422 - Action 2653012956 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Traducciones</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Traducciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary list - Action Translations - Property Caption</note>
+          <target>Traducciones</target>
         </trans-unit>
         <trans-unit id="Page 531307422 - Action 774810596 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Confirmación Alta</source>
@@ -40289,6 +40307,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension GenLedgerSetup - Field User ID - Property Caption</note>
           <target>User ID</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1065034950 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLAccount - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1065034950 - Field 745402003 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
+          <source>División</source>
+          <note from="Developer" annotates="general" priority="2">ESP="División"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension GLAccount - Field Division - Property Caption</note>
+          <target>División</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1065034950 - Field 942837643 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4274826855">
           <source>Saldo Apertura</source>
           <note from="Developer" annotates="general" priority="2">ESP="Saldo Apertura"</note>
@@ -41361,6 +41391,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Purchase Line Discount - Field Process No. - Property Caption</note>
           <target>Cód. proceso</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1575465679 - Field 2383519540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Contracts Line No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Línea Contrato"</note>
@@ -41372,6 +41408,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Nº Contrato"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field Contracts No. - Property Caption</note>
           <target>Nº Contrato</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1575465679 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchaseLine - Field DIVISION - Property Caption</note>
+          <target>DIVISION</target>
         </trans-unit>
         <trans-unit id="TableExtension 1575465679 - Field 631869557 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1519909599">
           <source>Rejected Date</source>
@@ -41521,6 +41563,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Motivo Rechazo"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchCrMemoLine - Field TextoRechazo - Property Caption</note>
           <target>Motivo Rechazo</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 3135574534 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension PurchInvHeader - Field DIVISION - Property Caption</note>
+          <target>DIVISION</target>
         </trans-unit>
         <trans-unit id="TableExtension 3135574534 - Field 4186134217 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1592379974">
           <source>Job Category</source>
@@ -42228,6 +42282,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoHeader - Field Suplemento_aseguradora - Property Caption</note>
           <target>Suplemento aseguradora</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 2878888346 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>ContractParent</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -42262,6 +42322,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Gama"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field desGama_btc - Property Caption</note>
           <target>Desc. Gama</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1670910335 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesCrMemoLine - Field DIVISION - Property Caption</note>
+          <target>DIVISION</target>
         </trans-unit>
         <trans-unit id="TableExtension 1670910335 - Field 1817093349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3059602325">
           <source>Order Date</source>
@@ -42696,6 +42762,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Aseguradora_comunicacion - Property Caption</note>
           <target>Comunicado Aseguradora</target>
         </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 1081269253 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Canal</source>
           <note from="Developer" annotates="general" priority="2">ESP="Canal"</note>
@@ -42771,6 +42843,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Delegado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field Delegado_btc - Property Caption</note>
           <target>Delegado</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 1335712434 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension SalesInvoiceHeader - Field DIVISION - Property Caption</note>
+          <target>DIVISION</target>
         </trans-unit>
         <trans-unit id="TableExtension 1335712434 - Field 1389571439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 809936682">
           <source>Factura enviada</source>
@@ -45102,6 +45180,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Amount Subcontractor - Property Caption</note>
           <target>Importe subcontratación</target>
         </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4064840916 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field DIVISION - Property Caption</note>
+          <target>DIVISION</target>
+        </trans-unit>
         <trans-unit id="TableExtension 4064840916 - Field 1478460228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2072992664">
           <source>Email sent</source>
           <note from="Developer" annotates="general" priority="2">ESP="Enviado Email"</note>
@@ -45186,6 +45276,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtPurchaseHeader_btc - Field ZM Job Task No. - Property Caption</note>
           <target>A/F Nº Tarea Proyecto</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 138418667 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>ComentarioAut_btc</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -45225,6 +45321,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Desc. Gama"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field desGama_btc - Property Caption</note>
           <target>Desc. Gama</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2186963797 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field DIVISION - Property Caption</note>
+          <target>DIVISION</target>
         </trans-unit>
         <trans-unit id="TableExtension 2186963797 - Field 1817093349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2079186865">
           <source>Order Date</source>
@@ -45348,6 +45450,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesInvoiceLine_btc - Field TextoMotivoRetraso_btc - Property Caption</note>
           <target>Desc. Motivo Retraso</target>
         </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 3388543440 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>Internal Comment</source>
           <note from="Developer" annotates="general" priority="2">ESP="Comentario interno"</note>
@@ -45376,6 +45484,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Estado aprobación Dtos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field DiscountApprovalStatus - Property Caption</note>
           <target>Estado aprobación Dtos.</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 727588710 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension TabExtSalesLine_btc - Field DIVISION - Property Caption</note>
+          <target>DIVISION</target>
         </trans-unit>
         <trans-unit id="TableExtension 727588710 - Field 1041044262 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 2574427010">
           <source>ExternalDocument</source>

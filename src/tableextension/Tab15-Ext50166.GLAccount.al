@@ -8,7 +8,7 @@ tableextension 50166 "GLAccount" extends "G/L Account"  //15
             Editable = false;
             FieldClass = FlowField;
             CalcFormula =
-                Sum ("G/L Entry".Amount
+                Sum("G/L Entry".Amount
                 WHERE(
                     "G/L Account No." = FIELD("No."),
                     "G/L Account No." = FIELD(FILTER(Totaling)),
@@ -17,6 +17,18 @@ tableextension 50166 "GLAccount" extends "G/L Account"  //15
                      "Global Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
                       "Posting Date" = FIELD(UPPERLIMIT("Date Filter")),
                      "Dimension Set ID" = FIELD("Dimension Set ID Filter")));
+        }
+        field(50130; "Division"; code[20])
+        {
+            Editable = false;
+            Caption = 'División', comment = 'ESP="División"';
+            TableRelation = "Default Dimension" where("Table ID" = const(18), "No." = field("No."), "Dimension Code" = const('DIVISION'));
+        }
+        field(50131; "Business Unit"; code[20])
+        {
+            Editable = false;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            TableRelation = "Default Dimension" where("Table ID" = const(18), "No." = field("No."), "Dimension Code" = const('BUSUNIT'));
         }
     }
 }

@@ -149,6 +149,42 @@ page 17421 "Posted PL Items temporary list"
                     end;
                 }
             }
+            action(Translations)
+            {
+                ApplicationArea = all;
+                Caption = 'Traducciones', comment = 'ESP="Traducciones"';
+                Image = Translations;
+                Promoted = true;
+                PromotedCategory = Category4;
+                RunObject = page "ZM Item Translation temporary";
+                RunPageView = sorting("Item No.");
+                RunPageLink = "Item No." = field("No.");
+            }
+            action(ItemApprovalsDept)
+            {
+                ApplicationArea = all;
+                Caption = 'Approvals', comment = 'ESP="Aprobaciones"';
+                Image = Translations;
+                RunObject = page "Item Approval Departments";
+                RunPageLink = "Request No." = field("No.");
+            }
+            action(ChangeLogEntries)
+            {
+                ApplicationArea = all;
+                Caption = 'Change Log Entries', comment = 'ESP="Mov. registro cambios"';
+                Image = ChangeLog;
+
+                trigger OnAction()
+                var
+                    ChangeLogEntry: Record "Change Log Entry";
+                    ChangeLogEntries: page "Change Log Entries";
+                begin
+                    ChangeLogEntry.SetRange("Record ID", Rec.RecordId);
+                    ChangeLogEntries.SetTableView(ChangeLogEntry);
+                    ChangeLogEntries.Run();
+                end;
+
+            }
         }
     }
 
@@ -171,3 +207,4 @@ page 17421 "Posted PL Items temporary list"
         ShowPosted := Active;
     end;
 }
+

@@ -58,6 +58,16 @@ pageextension 50023 "ZM PurchInvoiceSubform" extends "Purch. Invoice Subform"
             {
                 ApplicationArea = all;
             }
+            field(DIVISION; DIVISION)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Business Unit"; "Business Unit")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
         modify("Job No.")
         {

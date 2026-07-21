@@ -243,6 +243,20 @@ tableextension 50100 "TabExtSalesLine_btc" extends "Sales Line"  //37
             Caption = 'Source Purch. Order Price', Comment = 'Precio Ped. Compra origen';
         }
         //-region Integracion Intercompany
+        field(50400; "Business Unit"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('BUSUNIT')));
+        }
+        field(50401; "DIVISION"; Code[20])
+        {
+            Editable = false;
+            Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('DIVISION')));
+        }
         field(50912; "No contemplar planificacion"; Boolean)
         {
             DataClassification = CustomerContent;

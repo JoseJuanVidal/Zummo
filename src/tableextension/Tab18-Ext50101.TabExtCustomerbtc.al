@@ -435,8 +435,7 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
         {
             Editable = false;
             Caption = 'División', comment = 'ESP="División"';
-            TableRelation = "Default Dimension" where("Table ID" = const(18), "No." = field("No."));
-
+            TableRelation = "Default Dimension" where("Table ID" = const(18), "No." = field("No."), "Dimension Code" = const('DIVISION'));
         }
     }
     keys

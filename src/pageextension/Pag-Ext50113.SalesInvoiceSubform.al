@@ -43,6 +43,19 @@ pageextension 50113 "SalesInvoiceSubform" extends "Sales Invoice Subform"
                 StyleExpr = StyleExpBloqueado;
             }
         }
+        addlast(Control1)
+        {
+            field(DIVISION; DIVISION)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Business Unit"; "Business Unit")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
     }
 
     actions

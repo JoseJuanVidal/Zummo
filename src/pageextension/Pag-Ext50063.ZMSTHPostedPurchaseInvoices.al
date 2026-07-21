@@ -38,6 +38,10 @@ pageextension 50063 "ZM STH PostedPurchaseInvoices" extends "Posted Purchase Inv
                 ApplicationArea = all;
                 Visible = false;
             }
+            field(DIVISION; DIVISION)
+            { ApplicationArea = all; }
+            field("Business Unit"; "Business Unit")
+            { ApplicationArea = all; }
         }
     }
 

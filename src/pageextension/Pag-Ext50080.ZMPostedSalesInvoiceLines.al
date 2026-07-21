@@ -29,6 +29,16 @@ pageextension 50080 "ZM Posted Sales Invoice Lines" extends "Posted Sales Invoic
             {
                 ApplicationArea = all;
             }
+            field(DIVISION; DIVISION)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Business Unit"; "Business Unit")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 

@@ -28,6 +28,16 @@ pageextension 50081 "ZM Posted Sales CR Memo Line" extends "Posted Sales Credit 
             {
                 ApplicationArea = all;
             }
+            field(DIVISION; DIVISION)
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("Business Unit"; "Business Unit")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
         }
     }
 
