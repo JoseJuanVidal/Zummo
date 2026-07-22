@@ -781,7 +781,7 @@ report 50102 "PedidoCliente"
                                     { }
                                     column(Quantity_per; "Quantity per")
                                     { }
-                                    column(Quantity_to_Consume; "Quantity to Consume")
+                                    column(Quantity_to_Consume; "Quantity per" * cantidadSalesLine)
                                     { }
                                     column(Unit_of_Measure_Code; "Unit of Measure Code")
                                     { }
