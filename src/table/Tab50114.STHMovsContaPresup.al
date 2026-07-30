@@ -49,6 +49,7 @@ table 50114 "STH Movs Conta-Presup"
             DataClassification = CustomerContent;
             Caption = 'PARTIDA', comment = 'ESP="PARTIDA"';
         }
+
         field(10; "Importe"; decimal)
         {
             DataClassification = CustomerContent;
@@ -60,6 +61,16 @@ table 50114 "STH Movs Conta-Presup"
         field(12; "Budget Name"; code[20])
         {
             DataClassification = CustomerContent;
+        }
+        field(20; "Global Dimension 7 Code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+        }
+        field(21; "Global Dimension 6 Code"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
         }
     }
 
@@ -74,11 +85,14 @@ table 50114 "STH Movs Conta-Presup"
     procedure CargarDatos(EjercicioActual: Boolean)
     var
         Contador: Integer;
+        GLSetup: Record "General Ledger Setup";
         GLEntry: Record "G/L Entry";
         GLBudgetEntry: Record "G/L Budget Entry";
+        DimSetEntry: Record "Dimension Set Entry";
         Window: Dialog;
         lblWindow: Label 'Nª Movimiento: #1#########\Fecha: #2##############\';
     begin
+        GLSetup.Get();
         Window.Open(lblWindow);
         case EjercicioActual of
             true:
@@ -101,6 +115,7 @@ table 50114 "STH Movs Conta-Presup"
                 Window.Update(1, GLEntry."Entry No.");
                 Window.Update(2, GLEntry."Posting Date");
                 Contador += 1;
+                clear(Rec);
                 Rec.INIT;
                 Rec."Entry No." := Contador;
                 rec."Posting Date" := GLEntry."Posting Date";
@@ -114,6 +129,13 @@ table 50114 "STH Movs Conta-Presup"
                 GLEntry.CalcFields("Global Dimension 8 Code");
                 Rec."Global Dimension 8 Code" := GLEntry."Global Dimension 8 Code";
                 Rec.Importe := GLEntry.Amount;
+                DimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
+                DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 6 Code");
+                if DimSetEntry.FindFirst() then
+                    Rec."Global Dimension 6 Code" := DimSetEntry."Dimension Value Code";
+                DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 7 Code");
+                if DimSetEntry.FindFirst() then
+                    Rec."Global Dimension 7 Code" := DimSetEntry."Dimension Value Code";
                 Rec.INSERT;
             UNTIL GLEntry.NEXT = 0;
 
@@ -133,7 +155,14 @@ table 50114 "STH Movs Conta-Presup"
                 Rec."Global Dimension 3 Code" := GLBudgetEntry."Budget Dimension 3 Code";
                 Rec."Global Dimension 8 Code" := GLBudgetEntry."Budget Dimension 2 Code";
                 Rec."Importe Presupuesto" := GLBudgetEntry.Amount;
-                rec."Budget Name" := GLBudgetEntry."Budget Name";
+                Rec."Budget Name" := GLBudgetEntry."Budget Name";
+                DimSetEntry.SetRange("Dimension Set ID", GLBudgetEntry."Dimension Set ID");
+                DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 6 Code");
+                if DimSetEntry.FindFirst() then
+                    Rec."Global Dimension 6 Code" := DimSetEntry."Dimension Value Code";
+                DimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 7 Code");
+                if DimSetEntry.FindFirst() then
+                    Rec."Global Dimension 7 Code" := DimSetEntry."Dimension Value Code";
                 Rec.INSERT;
             UNTIL GLBudgetEntry.NEXT = 0;
         Window.Close;

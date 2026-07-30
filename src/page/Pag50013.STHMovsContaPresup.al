@@ -62,6 +62,10 @@ page 50013 "STH Movs Conta-Presup"
                 {
                     ApplicationArea = all;
                 }
+                field("Global Dimension 7 Code"; "Global Dimension 7 Code")
+                { ApplicationArea = all; }
+                field("Global Dimension 6 Code"; "Global Dimension 6 Code")
+                { ApplicationArea = all; }
             }
         }
     }

@@ -22222,6 +22222,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BOM Assembly List - Control BOM Component - Property Caption</note>
           <target>Componetes ensamblado</target>
         </trans-unit>
+        <trans-unit id="Page 162831560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Unit Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bussiness Unit Sales - Property Caption</note>
+          <target>Business Unit Sales</target>
+        </trans-unit>
+        <trans-unit id="Page 162831560 - Control 539546824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Fecha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bussiness Unit Sales - Control DateFilter - Property Caption</note>
+          <target>Filtro Fecha</target>
+        </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nuevo,Procesar,Informe,Mostrar,Navegar</source>
           <note from="Developer" annotates="general" priority="2"/>

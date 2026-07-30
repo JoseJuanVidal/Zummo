@@ -17,10 +17,6 @@ pageextension 50057 "STH General JournalExt" extends "General Journal"
         }
         addbefore("Bal. Gen. Posting Type")
         {
-            field(DIVISION; DIVISION)
-            { ApplicationArea = all; }
-            field("Business Unit"; "Business Unit")
-            { ApplicationArea = all; }
             field("Purch. Request less 200"; "Purch. Request less 200")
             {
                 ApplicationArea = all;

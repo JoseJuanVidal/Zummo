@@ -1937,9 +1937,10 @@ report 50111 "FacturaNacionalMaquinas"
                 DimSetEntry1.SetRange("Dimension Set ID", "Dimension Set ID");
                 Customer.Get("Sell-to Customer No.");
                 if ShiptoAddress.Get("Sell-to Customer No.", "Ship-to Code") then;
-                if (BankAccountRecord.Get("Sell-to Customer No.", Customer."Preferred Bank Account Code")) and (
-                    "Payment Method Code" = 'GIRO') then
-                    ;
+                if "Sales invoice header"."Cust. Bank Acc. Code" <> '' then
+                    BankAccountRecord.Get("Sell-to Customer No.", "Sales invoice header"."Cust. Bank Acc. Code")
+                else if (BankAccountRecord.Get("Sell-to Customer No.", Customer."Preferred Bank Account Code")) and ("Payment Method Code" = 'GIRO') then;
+
                 GetLineFeeNoteOnReportHist("No.");
 
                 OnAfterGetRecordSalesInvoiceHeader("Sales Invoice Header");

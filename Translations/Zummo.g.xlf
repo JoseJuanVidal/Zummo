@@ -8223,6 +8223,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="DETALLE"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Global Dimension 3 Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 369657445 - Field 3717993988 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Global Dimension 6 Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 369657445 - Field 1836559811 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>DIVISION</source>
+          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table STH Movs Conta-Presup - Field Global Dimension 7 Code - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 369657445 - Field 2453785066 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PARTIDA</source>
           <note from="Developer" annotates="general" priority="2">ESP="PARTIDA"</note>
@@ -20242,6 +20252,16 @@
           <source>BOM Componente</source>
           <note from="Developer" annotates="general" priority="2">ESP="Componetes ensamblado"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM BOM Assembly List - Control BOM Component - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 162831560 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Unit Sales</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit Sales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bussiness Unit Sales - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 162831560 - Control 539546824 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Filtro Fecha</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bussiness Unit Sales - Control DateFilter - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3853294818 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>Nuevo,Procesar,Informe,Mostrar,Navegar</source>
@@ -41502,16 +41522,6 @@
           <source>La solicitud %1 debe ser un %2 o %.</source>
           <note from="Developer" annotates="general" priority="2">ESP="La solicitud %1 debe ser un %2 o %3."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Method OnValidate_PurchRequest - NamedType lblErroAccountType</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3218508141 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>Business Unit</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Field Business Unit - Property Caption</note>
-        </trans-unit>
-        <trans-unit id="TableExtension 3218508141 - Field 3501416691 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
-          <source>DIVISION</source>
-          <note from="Developer" annotates="general" priority="2">ESP="DIVISION"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Gen. Journal Line - Field DIVISION - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3218508141 - Field 62358460 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1806786327">
           <source>Purch. Request less 200</source>

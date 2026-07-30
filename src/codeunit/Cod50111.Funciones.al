@@ -811,7 +811,10 @@ codeunit 50111 "Funciones"
 
     procedure CargaFicheroNominas(JournalBatchName: code[10]; JournalTemplateName: code[10])
     var
+        GLSetup: record "General Ledger Setup";
+        cduDimMgt: Codeunit DimensionManagement;
         ExcelBuffer: Record "Excel Buffer" temporary;
+        recNewDimSetEntry: record "Dimension Set Entry" temporary;
         DimValue: Record "Dimension Value";
         NVInStream: InStream;
         GenJnlLine: record "Gen. Journal Line";
@@ -827,7 +830,9 @@ codeunit 50111 "Funciones"
         Cuenta: Text;
         DebeHaber: Text;
         Concepto: text;
+        DIVISION: text;
         CECO: Text;
+        BusinessUnit: text;
         Importe: Decimal;
         ImporteDebe: Decimal;
         ImporteHaber: Decimal;
@@ -840,17 +845,19 @@ codeunit 50111 "Funciones"
         Linea: Integer;
         Rows: Integer;
         I: Integer;
+        intDimSetId: integer;
         Sheetname: text;
         UploadResult: Boolean;
         Text000: label 'Cargar Fichero de Excel';
         Text001: Label 'Nominas %1 %2';
     begin
+        GLSetup.Get();
         ExcelBuffer.DeleteAll();
         UploadResult := UploadIntoStream(Text000, '', 'Excel Files (*.xlsx)|*.*', FileName, NVInStream);
         If FileName <> '' then
             Sheetname := ExcelBuffer.SelectSheetsNameStream(NVInStream)
         else
-            exit;
+            Error('No se ha podido cargar el fichero.');
 
         // miramos si hay serie y los ponemos
         GenJournalBatch.SetRange("Journal Template Name", JournalTemplateName);
@@ -879,67 +886,83 @@ codeunit 50111 "Funciones"
         for i := 1 to Rows do begin
             Concepto := '';
             CECO := '';
+            BusinessUnit := '';
+            DIVISION := '';
             DebeHaber := '';
             tmpTexto := '';
             ExcelBuffer.SetRange("Row No.", i);
-            ExcelBuffer.SetRange("Column No.", 2);
+
+            ExcelBuffer.SetRange("Column No.", 2);  // Concepto
             if ExcelBuffer.FindSet() then
-                Apunte := ExcelBuffer."Cell Value as Text";
-            if Evaluate(NApunte, apunte) then begin
-                ExcelBuffer.SetRange("Column No.", 3);
-                if ExcelBuffer.FindSet() then
-                    Concepto := ExcelBuffer."Cell Value as Text";
-                ExcelBuffer.SetRange("Column No.", 5);
-                if ExcelBuffer.FindSet() then
-                    CECO := ExcelBuffer."Cell Value as Text";
-                ExcelBuffer.SetRange("Column No.", 7);
-                if ExcelBuffer.FindSet() then
-                    DebeHaber := ExcelBuffer."Cell Value as Text";
-                ExcelBuffer.SetRange("Column No.", 8);
-                if ExcelBuffer.FindSet() then
-                    Cuenta := ExcelBuffer."Cell Value as Text";
-                ExcelBuffer.SetRange("Column No.", 11);
-                if ExcelBuffer.FindSet() then begin
-                    tmpTexto := ExcelBuffer."Cell Value as Text";
-                    Evaluate(ImporteDebe, tmpTexto)
-                end;
-                ExcelBuffer.SetRange("Column No.", 14);
-                if ExcelBuffer.FindSet() then begin
-                    tmpTexto := ExcelBuffer."Cell Value as Text";
-                    Evaluate(ImporteHaber, tmpTexto)
-                end;
-                if ImporteDebe > 0 then
-                    Importe := ImporteDebe
-                else
-                    Importe := -ImporteHaber;
-                fecha := DMY2Date(1);  // primer dia del mes
-                GenJnlLine.Init();
-                GenJnlLine."Journal Batch Name" := JournalBatchName;
-                GenJnlLine."Journal Template Name" := JournalTemplateName;
-                GenJnlLine."Line No." := Linea;
-                GenJnlLine."Posting Date" := Workdate;
-                GenJnlLine.Insert();
-                GenJnlLine."Document No." := DocNo;
-                GenJnlLine."External Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
-                GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
-                GenJnlLine.Validate("Account No.", Cuenta);
-                GenJnlLine.Description := Concepto;
-                GenJnlLine.Validate(Amount, Importe);
-                if CECO <> '' then begin
-                    DimValue.Reset();
-                    DimValue.SetRange("Global Dimension No.", 1);
-                    DimValue.SetRange(code, CECO);
-                    if not DimValue.FindSet() then begin
-                        DimValue.SetRange(code);
-                        DimValue.SetRange(Name, CECO);
-                        DimValue.FindSet();
-                    end;
-                    GenJnlLine.Validate("Shortcut Dimension 1 Code", DimValue.Code);
-                    //GenJnlLine.Validate("Shortcut Dimension 2 Code", 
-                end;
-                GenJnlLine.Modify();
-                Linea += 10000;
+                Concepto := ExcelBuffer."Cell Value as Text";
+            ExcelBuffer.SetRange("Column No.", 3);  // DIVISION
+            if ExcelBuffer.FindSet() then
+                DIVISION := ExcelBuffer."Cell Value as Text";
+            ExcelBuffer.SetRange("Column No.", 4);  // CECO
+            if ExcelBuffer.FindSet() then
+                CECO := ExcelBuffer."Cell Value as Text";
+            ExcelBuffer.SetRange("Column No.", 5);  // BUSINESS UNIT
+            if ExcelBuffer.FindSet() then
+                BusinessUnit := ExcelBuffer."Cell Value as Text";
+            ExcelBuffer.SetRange("Column No.", 6);  // Cuenta
+            if ExcelBuffer.FindSet() then
+                Cuenta := ExcelBuffer."Cell Value as Text";
+            ExcelBuffer.SetRange("Column No.", 7);  // Debe
+            if ExcelBuffer.FindSet() then begin
+                tmpTexto := ExcelBuffer."Cell Value as Text";
+                Evaluate(ImporteDebe, tmpTexto)
             end;
+            ExcelBuffer.SetRange("Column No.", 8);   // Haber
+            if ExcelBuffer.FindSet() then begin
+                tmpTexto := ExcelBuffer."Cell Value as Text";
+                Evaluate(ImporteHaber, tmpTexto)
+            end;
+            if ImporteDebe > 0 then
+                Importe := ImporteDebe
+            else
+                Importe := -ImporteHaber;
+            fecha := DMY2Date(1);  // primer dia del mes
+            GenJnlLine.Init();
+            GenJnlLine."Journal Batch Name" := JournalBatchName;
+            GenJnlLine."Journal Template Name" := JournalTemplateName;
+            GenJnlLine."Line No." := Linea;
+            GenJnlLine."Posting Date" := Workdate;
+            GenJnlLine.Insert();
+            GenJnlLine."Document No." := DocNo;
+            GenJnlLine."External Document No." := CopyStr(StrSubstNo(text001, Date2DMY(WorkDate(), 2), Date2DMY(WorkDate(), 3)), 1, MaxStrLen(GenJnlLine."Document No."));
+            GenJnlLine."Account Type" := GenJnlLine."Account Type"::"G/L Account";
+            GenJnlLine.Validate("Account No.", Cuenta);
+            GenJnlLine.Description := Concepto;
+            GenJnlLine.Validate(Amount, Importe);
+            recNewDimSetEntry.DeleteAll();
+            // CECO
+            if CECO <> '' then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
+                recNewDimSetEntry.Validate("Dimension Value Code", CECO);
+                recNewDimSetEntry.Insert();
+            end;
+            // DIVISION
+            if DIVISION <> '' then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 7 Code";
+                recNewDimSetEntry.Validate("Dimension Value Code", DIVISION);
+                recNewDimSetEntry.Insert();
+            end;
+            // BUSINESS UNIT
+            if BusinessUnit <> '' then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry."Dimension Code" := GLSetup."Shortcut Dimension 6 Code";
+                recNewDimSetEntry.Validate("Dimension Value Code", BusinessUnit);
+                recNewDimSetEntry.Insert();
+            end;
+
+            Clear(cduDimMgt);
+            intDimSetId := cduDimMgt.GetDimensionSetID(recNewDimSetEntry);
+            GenJnlLine."Dimension Set ID" := intDimSetId;
+            GenJnlLine."Shortcut Dimension 1 Code" := CECO;
+            GenJnlLine.Modify();
+            Linea += 10000;
         END;
     end;
 
