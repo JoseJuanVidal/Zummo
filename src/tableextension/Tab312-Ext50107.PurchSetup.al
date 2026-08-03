@@ -64,6 +64,11 @@ tableextension 50107 "PurchSetup" extends "Purchases & Payables Setup" //312
             DataClassification = CustomerContent;
             Caption = 'Path Purchase Documents pending', comment = 'ESP="Ubicación Docs. compra pdtes."';
         }
+        field(50055; "Warning Item Substitution"; boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Warning Item Substitution', comment = 'ESP="Aviso Sustitución producto"';
+        }
         field(50060; "ZM Contracts Nos."; code[20])
         {
             DataClassification = CustomerContent;

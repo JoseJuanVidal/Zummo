@@ -112,6 +112,10 @@ pageextension 50101 "CustomerCard" extends "Customer Card"
                 {
                     ApplicationArea = all;
                 }
+                field(MLA; MLA)
+                {
+                    ApplicationArea = all;
+                }
                 field("Allows change Prices/Dates"; "Allows change Prices/Dates")
                 {
                     ApplicationArea = all;

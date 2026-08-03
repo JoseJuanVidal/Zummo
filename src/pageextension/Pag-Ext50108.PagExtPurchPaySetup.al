@@ -172,6 +172,13 @@ pageextension 50108 "PagExtPurchPaySetup" extends "Purchases & Payables Setup"
             //     }
             // }
         }
+        addlast(General)
+        {
+            field("Warning Item Substitution"; "Warning Item Substitution")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
 
     trigger OnAfterGetRecord()

@@ -386,6 +386,12 @@ tableextension 50101 "TabExtCustomer_btc" extends Customer  //18
                     Error('La suma de los descuentos no puede ser mayor de 100');
             end;
         }
+        field(50078; MLA; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'MLA', comment = 'ESP="MLA"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoTabla = const(MLA), TipoRegistro = const(Tabla));
+        }
         field(50080; "Importe Facturas"; Decimal)
         {
             FieldClass = FlowField;

@@ -27,6 +27,11 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("Reporting SEB"; "Reporting SEB")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("SEB PI2 Code"; "SEB PI2 Code")
             {
                 ApplicationArea = all;

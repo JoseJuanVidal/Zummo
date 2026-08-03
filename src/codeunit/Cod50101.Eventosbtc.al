@@ -1237,7 +1237,26 @@ codeunit 50101 "Eventos_btc"
             PurhaseLine_UpdateDirectUnitCost(PurchLine);
     end;
 
+    [EventSubscriber(ObjectType::Table, database::"Purchase Line", 'OnAfterAssignFieldsForNo', '', true, true)]
+    local procedure PurhaseLine_OnAfterAssignFieldsForNo(var PurchLine: Record "Purchase Line"; var xPurchLine: Record "Purchase Line"; PurchHeader: Record "Purchase Header")
+    var
+        PurchaseSetup: Record "Purchases & Payables Setup";
+    begin
+        PurchaseSetup.Get();
+        if PurchLine.Type in [PurchLine.Type::Item] then
+            if PurchaseSetup."Warning Item Substitution" then
+                CheckItemSubstitution(PurchLine);
 
+    end;
+
+    local procedure CheckItemSubstitution(PurchLine: Record "Purchase Line")
+    var
+        ItemSubstitution: Record "Item Substitution";
+    begin
+        ItemSubstitution.SetRange("No.", PurchLine."No.");
+        if ItemSubstitution.FindSet() then
+            Message(ItemSubstitution.Description);
+    end;
 
     local procedure PurhaseLine_UpdateDirectUnitCost(var PurchLine: Record "Purchase Line")
     var

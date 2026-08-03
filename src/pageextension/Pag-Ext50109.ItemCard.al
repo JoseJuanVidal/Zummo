@@ -49,6 +49,8 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                 }
+                field("Reporting SEB"; "Reporting SEB")
+                { ApplicationArea = all; }
                 field("Business Unit"; "Business Unit")
                 { ApplicationArea = all; }
                 field("Cost Center"; "Cost Center")

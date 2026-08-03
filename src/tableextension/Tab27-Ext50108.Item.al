@@ -298,6 +298,11 @@ tableextension 50108 "Item" extends Item  //27
 
         }
         // ITEM SEB CODES PI2
+        field(50079; "Reporting SEB"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Reporting SEB', comment = 'ESP="Reporting SEB"';
+        }
         field(50080; "CMMF Code"; code[20])
         {
             DataClassification = CustomerContent;

@@ -128,6 +128,40 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
             CalcFormula = Lookup("Ship-to Address"."Country/Region Code" WHERE("Customer No." = FIELD("Customer No. Item Service"), Code = FIELD("Cust. Ship-to Code Item Serv.")));
             Editable = false;
         }
+        field(50200; "Reporting SEB"; Boolean)
+        {
+            Caption = 'Reporting SEB', comment = 'ESP="Reporting SEB"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Reporting SEB" where("No." = field("Item No.")));
+        }
+        field(50201; "Reporting SEB Entry No"; Integer)
+        {
+            Caption = 'Reporting SEB Entry No.', comment = 'ESP="Reporting SEB Entry No."';
+            Editable = false;
+            TableRelation = "Item Ledger Entry"."Reporting SEB Entry No";
+        }
+        field(50202; MLA; code[20])
+        {
+            Caption = 'MLA', comment = 'ESP="MLA"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(customer.MLA where("No." = field("Source No.")));
+        }
+        field(50203; "CMMF Code"; code[20])
+        {
+            Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."CMMF Code" where("No." = field("Item No.")));
+        }
+        field(50205; "No. 2"; code[20])
+        {
+            Caption = 'No. 2', comment = 'ESP="No. 2"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."No. 2" where("No." = field("Item No.")));
+        }
         field(50215; "Family Code"; code[20])
         {
             Caption = 'SubCategory Code', comment = 'ESP="Cód. Subcategoria"';

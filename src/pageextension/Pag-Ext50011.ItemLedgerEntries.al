@@ -34,6 +34,22 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
             field("External Document No."; "External Document No.") { }
             field("Reason Code"; "Reason Code") { }
         }
+        addafter("Item No.")
+        {
+            field("No. 2"; "No. 2")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+        }
+        addafter(Description)
+        {
+            field("CMMF Code"; "CMMF Code")
+            { ApplicationArea = all; }
+            field(MLA; MLA)
+            { ApplicationArea = all; }
+
+        }
         addafter("Reserved Quantity")
         {
             field(CantDisp; cantidadDisponible)
@@ -43,6 +59,12 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 Caption = 'Available Quantity', comment = 'ESP="Cantidad disponible"';
                 DecimalPlaces = 0 : 5;
             }
+            field("Reporting SEB Entry No"; "Reporting SEB Entry No")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+
             field("Item Category Code"; "Item Category Code")
             {
                 ApplicationArea = all;
