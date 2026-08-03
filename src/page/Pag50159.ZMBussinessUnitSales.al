@@ -67,6 +67,11 @@ page 50159 "ZM Bussiness Unit Sales"
                     ApplicationArea = all;
                     Visible = false;
                 }
+                field("Entry No."; "Entry No.")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
             }
         }
     }

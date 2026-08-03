@@ -78,7 +78,20 @@ tableextension 50112 "PurchRcptLine" extends "Purch. Rcpt. Line"  //121
             FieldClass = FlowField;
             CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('PARTIDA')));
         }
-
+        field(50112; "Global Dimension 6 Code"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('BUSUNIT')));
+        }
+        field(50113; "Global Dimension 7 Code"; Code[20])
+        {
+            Editable = false;
+            Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('DIVISION')));
+        }
         field(50157; BaseImponibleLinea; decimal)
         {
             DataClassification = CustomerContent;

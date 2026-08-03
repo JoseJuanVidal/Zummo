@@ -154,5 +154,19 @@ tableextension 50117 "SalesShipmentLine" extends "Sales Shipment Line" //111
         {
             DataClassification = CustomerContent;
         }
+        field(50112; "Global Dimension 6 Code"; Code[20])
+        {
+            Editable = false;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('BUSUNIT')));
+        }
+        field(50113; "Global Dimension 7 Code"; Code[20])
+        {
+            Editable = false;
+            Caption = 'DIVISION', comment = 'ESP="DIVISION"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Dimension Set Entry"."Dimension Value Code" where("Dimension Set ID" = field("Dimension Set ID"), "Dimension Code" = filter('DIVISION')));
+        }
     }
 }

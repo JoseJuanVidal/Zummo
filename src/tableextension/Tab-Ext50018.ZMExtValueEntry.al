@@ -23,5 +23,11 @@ tableextension 50018 "ZM Ext Value Entry" extends "Value Entry"
         {
             Caption = 'Cambiada Fecha Registro', comment = 'ESP="Cambiada Fecha Registro"';
         }
+        field(50200; "Reporting SEB Entry No"; Integer)
+        {
+            Caption = 'Reporting SEB Entry No.', comment = 'ESP="Reporting SEB Entry No."';
+            Editable = false;
+            TableRelation = "Item Ledger Entry"."Reporting SEB Entry No";
+        }
     }
 }

@@ -2,7 +2,7 @@ table 17378 "ZM Reporting SEB Sales"
 {
     DataClassification = CustomerContent;
     Caption = 'Reporting SEB Sales', comment = 'ESP="Reporting SEB Sales"';
-    Permissions = tabledata "Item Ledger Entry" = rmid;
+    Permissions = tabledata "Item Ledger Entry" = rmid, tabledata "Value Entry" = rmid;
 
     fields
     {
@@ -76,7 +76,9 @@ table 17378 "ZM Reporting SEB Sales"
         Item: Record Item;
         Customer: Record Customer;
         ItemLedgerEntry: Record "Item Ledger Entry";
+        ValueEntry: Record "Value Entry";
         RepSEBSales: Record "ZM Reporting SEB Sales";
+        RepSEBSalesDetail: Record "ZM Reporting SEB Detail";
 
 
     trigger OnInsert()
@@ -105,17 +107,20 @@ table 17378 "ZM Reporting SEB Sales"
         PeriodEnd: date;
         Window: Dialog;
         EntryNo: Integer;
+        EntryNoDetail: Integer;
+        UnitCost: Decimal;
         lblWindow: Label 'Fecha: #1###########\Nº Mov: #2###############';
     begin
         Item.Reset();
         Window.Open('Eliminando');
         RepSEBSales.DeleteAll();
+        RepSEBSalesDetail.DeleteAll();
         Window.Close();
         ItemLedgerEntry.Reset();
-        Window.Open('Limpiando');
-        ItemLedgerEntry.SetFilter("Reporting SEB Entry No", '<>0');
-        ItemLedgerEntry.ModifyAll("Reporting SEB Entry No", 0);
-        Window.Close();
+        // Window.Open('Limpiando');
+        // ItemLedgerEntry.SetFilter("Reporting SEB Entry No", '<>0');
+        // ItemLedgerEntry.ModifyAll("Reporting SEB Entry No", 0);
+        // Window.Close();
         ItemLedgerEntry.SetFilter("Posting Date", PeriodFilter);
         PeriodStart := ItemLedgerEntry.GetRangeMin("Posting Date");
         PeriodEnd := ItemLedgerEntry.GetRangeMax("Posting Date");
@@ -129,22 +134,50 @@ table 17378 "ZM Reporting SEB Sales"
                 Window.Update(2, ItemLedgerEntry."Entry No.");
                 if Item.Get(ItemLedgerEntry."Item No.") then;
                 if Customer.Get(ItemLedgerEntry."Source No.") then;
-                ItemLedgerEntry.CalcFields("Cost Amount (Actual)", "Sales Amount (Actual)");
-                RepSEBSales.SetRange("CMMF Code", Item."CMMF Code");
-                RepSEBSales.SetRange(MLA, Customer.MLA);
-                if not RepSEBSales.FindFirst() then begin
-                    RepSEBSales.Init();
-                    RepSEBSales."Entry No." := EntryNo;
-                    RepSEBSales."CMMF Code" := Item."CMMF Code";
-                    RepSEBSales.MLA := Customer.MLA;
-                    RepSEBSales.Insert();
-                end;
-                RepSEBSales.Quantity -= ItemLedgerEntry.Quantity;
-                RepSEBSales.Amount += ItemLedgerEntry."Sales Amount (Actual)";
-                RepSEBSales.Costs -= ItemLedgerEntry."Cost Amount (Actual)";
-                RepSEBSales."Period Start" := PeriodStart;
-                RepSEBSales."Period End" := PeriodEnd;
-                RepSEBSales.Modify();
+                ItemLedgerEntry.CalcFields("Cost Amount (Actual)");
+                UnitCost := 0;
+                if ItemLedgerEntry.Quantity <> 0 then
+                    UnitCost := ItemLedgerEntry."Cost Amount (Actual)" / ItemLedgerEntry.Quantity;
+
+                ValueEntry.SetRange("Item Ledger Entry No.", ItemLedgerEntry."Entry No.");
+                if ValueEntry.FindFirst() then
+                    repeat
+                        RepSEBSales.SetRange("CMMF Code", Item."CMMF Code");
+                        RepSEBSales.SetRange(MLA, Customer.MLA);
+                        if not RepSEBSales.FindFirst() then begin
+                            EntryNo += 1;
+                            RepSEBSales.Init();
+                            RepSEBSales."Entry No." := EntryNo;
+                            RepSEBSales."CMMF Code" := Item."CMMF Code";
+                            RepSEBSales.MLA := Customer.MLA;
+                            RepSEBSales."Period Start" := PeriodStart;
+                            RepSEBSales."Period End" := PeriodEnd;
+                            RepSEBSales.Insert();
+                        end;
+                        if ValueEntry."Invoiced Quantity" <> 0 then begin
+                            RepSEBSales.Quantity -= ValueEntry."Invoiced Quantity";
+                            RepSEBSales.Amount += ValueEntry."Sales Amount (Actual)";
+                            RepSEBSales.Costs -= UnitCost * ValueEntry."Invoiced Quantity";
+                            RepSEBSales.Modify();
+
+                            RepSEBSalesDetail.Init();
+                            EntryNoDetail += 1;
+                            RepSEBSalesDetail."Entry No." := EntryNoDetail;
+                            RepSEBSalesDetail."CMMF Code" := Item."CMMF Code";
+                            RepSEBSalesDetail.MLA := Customer.MLA;
+                            RepSEBSalesDetail."Item No." := ValueEntry."Item No.";
+                            RepSEBSalesDetail.Description := Item.Description;
+                            RepSEBSalesDetail."Document No." := ValueEntry."Document No.";
+                            RepSEBSalesDetail."Posting Date" := ValueEntry."Posting Date";
+                            RepSEBSalesDetail.Quantity := -ValueEntry."Invoiced Quantity";
+                            RepSEBSalesDetail.Costs := -UnitCost * ValueEntry."Invoiced Quantity";
+                            RepSEBSalesDetail.Amount := ValueEntry."Sales Amount (Actual)";
+                            RepSEBSalesDetail."Reporting SEB Entry No" := RepSEBSales."Entry No.";
+                            RepSEBSalesDetail.Insert(true);
+                        end;
+
+                    Until ValueEntry.next() = 0;
+
                 ItemLedgerEntry."Reporting SEB Entry No" := RepSEBSales."Entry No.";
                 ItemLedgerEntry.Modify();
             until ItemLedgerEntry.Next() = 0;
@@ -155,8 +188,8 @@ table 17378 "ZM Reporting SEB Sales"
     var
         myInt: Integer;
     begin
-        ItemLedgerEntry.Reset();
-        ItemLedgerEntry.SetRange("Reporting SEB Entry No", Rec."Entry No.");
-        page.RunModal(0, ItemLedgerEntry);
+        RepSEBSalesDetail.Reset();
+        RepSEBSalesDetail.SetRange("Reporting SEB Entry No", Rec."Entry No.");
+        page.RunModal(0, RepSEBSalesDetail);
     end;
 }
