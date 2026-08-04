@@ -22238,6 +22238,156 @@
           <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production BOM List - Control ItemPicture - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1493879539 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Production BOM Maintenance</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Gestión de cambios - L. M. Productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 3280453163" size-unit="char" translate="yes" xml:space="preserve">
+          <source>We will add %1 records with \%2 %3\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a añadir %1 registros con \%2 %3 \¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmAdd</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 2880736111" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The data in the %1 BOM list will be updated.\%2 %3\%4 %5\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se van a actualizar %1 registros con los datos en la lista de materiales.\%2 %3\%4 %5\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChanges</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 669054772" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity add</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad añadir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChangesQtyadd</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 149810906" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Quantity per</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cantidad por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChangesQtyper</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 3496920325" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Unit of measure</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Unidad de medida"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmChangesUnit</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 553645563" size-unit="char" translate="yes" xml:space="preserve">
+          <source>We will delete Item %2 %3 of %1 records\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a eliminar el producto %2 %3 de %1 registros\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmDelete</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - NamedType 1533938200" size-unit="char" translate="yes" xml:space="preserve">
+          <source>We will replace %1 records with \%2 %3\for %4 %5\¿Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se va a reemplazar %1 registros con \%2 %3\por %4 %5\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - NamedType lblConfirmReplace</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 1552074139 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Change dades</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambiar datos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control ChangeDades - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2130875534 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the add Quantity to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la cantidad añadir para actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Quantity add - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 3196119024 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Quantity per" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Quantity per - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 1405426649 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Unit of measure" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Unidad de medida" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Unit of measure - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 1031043976 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Delete Item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Eliminar Producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control DeleteItem - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2431294077 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Del Item No. to be replaced - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 3532928370 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Del Replaced Item Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2227291247 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Quantity per" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Delete Quantity per - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 271913511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Item to be replaced</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Producto a reemplazar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control ItemRepalced - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 668071266 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Quantity per" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Item No. to be replaced - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 902945260 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Quantity per" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Replace Quantity per - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2750157965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Replaced Item Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 3471137671 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>BOM list</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lista de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 3913899729 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Changes in Estructure</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cambios en Estructura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control LMChange - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 3657185825 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Quantity per" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Cantidad por" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control New Quantity - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2339238765 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the new "Unit of measure" to be updated in the BOM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indicar la nueva "Unidad de medida" a actualizar en las listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control New Unit of measure - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2346885236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Exchange options</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Opciones de cambio"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Options - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 2842094365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Item Description - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 568743302 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Select L.M. containing</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Seleccionar L.M. que contengan"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Item No. - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Control 3994797191 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indicate the action to be taken in the BOM components</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indique la acción a realizar en los componentes de la listas de materiales"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Control Task - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Action 1417232546 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Action Check - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1493879539 - Action 3851712227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Run</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Realizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Production Bom Maintenance - Action Run - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 4006105909 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Purch. Line Plastic</source>
           <note from="Developer" annotates="general" priority="2">ESP="Líneas Ped. Compra (Plastico)"</note>

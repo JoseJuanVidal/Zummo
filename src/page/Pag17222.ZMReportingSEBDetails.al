@@ -1,4 +1,4 @@
-page 50156 "ZM Reporting SEB Details"
+page 17222 "ZM Reporting SEB Details"
 {
     Caption = 'Reporting SEB Details', comment = 'ESP="Reporting SEB Details"';
     PageType = list;
