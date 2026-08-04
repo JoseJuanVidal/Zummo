@@ -92,6 +92,12 @@ table 17379 "ZM Reporting SEB Detail"
             DataClassification = CustomerContent;
             Caption = 'Period End', comment = 'ESP="Period End"';
         }
+        field(200; "Gen. Prod. Posting Group"; code[20])
+        {
+            Caption = 'Gen. Prod. Posting Group', comment = 'ESP="Grupo registro prod. gen."';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Gen. Prod. Posting Group" where("No." = field("Item No.")));
+        }
     }
 
     keys

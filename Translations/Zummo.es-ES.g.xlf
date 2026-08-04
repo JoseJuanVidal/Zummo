@@ -13852,6 +13852,12 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Entry No. - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1419415064 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Gen. Prod. Posting Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Grupo registro prod. gen."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Gen. Prod. Posting Group - Property Caption</note>
+          <target>Grupo registro prod. gen.</target>
+        </trans-unit>
         <trans-unit id="Table 1419415064 - Field 568743302 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item No.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Cód. producto"</note>

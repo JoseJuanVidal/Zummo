@@ -966,9 +966,11 @@ codeunit 50111 "Funciones"
         END;
     end;
 
-    procedure ChangeDimensionCECOGLEntries(var GLEntry: Record "G/L Entry"; DimGlobal1: Code[20]; DimGlobal2: Code[20])
+    procedure ChangeDimensionCECOGLEntries(var GLEntry: Record "G/L Entry"; DimGlobal1: Code[20]; DimGlobal2: Code[20]; dimGlobal3: Code[20]; dimGlobal4: Code[20];
+        dimGlobal5: Code[20]; dimGlobal6: Code[20]; dimGlobal7: Code[20]; dimGlobal8: Code[20])
     var
         GLSetup: Record "General Ledger Setup";
+        recDimSetEntry: Record "Dimension Set Entry";
         recNewDimSetEntry: record "Dimension Set Entry" temporary;
         cduDimMgt: Codeunit DimensionManagement;
         cduCambioDim: Codeunit CambioDimensiones;
@@ -983,7 +985,16 @@ codeunit 50111 "Funciones"
                 recNewDimSetEntry.Reset();
                 recNewDimSetEntry.DeleteAll();
                 // recogemos los valores del dimension SET y cambiamos el CECO por el nuevo CECO
-                GetDimSetEntry(recNewDimSetEntry, GLEntry."Dimension Set ID", DimGlobal1, DimGlobal2);
+                // GetDimSetEntry(recNewDimSetEntry, GLEntry."Dimension Set ID", DimGlobal1, DimGlobal2);
+                recDimSetEntry.Reset();
+                recDimSetEntry.SetRange("Dimension Set ID", GLEntry."Dimension Set ID");
+                if recDimSetEntry.FindSet() then
+                    repeat
+                        recNewDimSetEntry := recDimSetEntry;
+                        recNewDimSetEntry.Insert();
+                    until recDimSetEntry.Next() = 0;
+
+                SetDimGlobal(recNewDimSetEntry, DimGlobal1, DimGlobal2, dimGlobal3, dimGlobal4, dimGlobal5, dimGlobal6, dimGlobal7, dimGlobal8);
 
                 recNewDimSetEntry.Reset();
                 if not recNewDimSetEntry.IsEmpty() then begin
@@ -1005,7 +1016,96 @@ codeunit 50111 "Funciones"
             Until GLEntry.next() = 0;
     end;
 
-    local procedure GetDimSetEntry(var NewDimSetEntry: record "Dimension Set Entry"; pIntDimension: Integer; DimGlobal1: Code[20]; DimGlobal2: code[20])
+    local procedure SetDimGlobal(var recNewDimSetEntry: record "Dimension Set Entry"; DimGlobal1: Code[20]; DimGlobal2: Code[20]; dimGlobal3: Code[20]; dimGlobal4: Code[20];
+        dimGlobal5: Code[20]; dimGlobal6: Code[20]; dimGlobal7: Code[20]; dimGlobal8: Code[20])
+    var
+        GLSetup: Record "General Ledger Setup";
+    begin
+        GLSetup.get();
+        if DimGlobal1 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Global Dimension 1 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal1);
+            recNewDimSetEntry.Modify();
+        end;
+        if DimGlobal2 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Global Dimension 2 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Global Dimension 2 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal2);
+            recNewDimSetEntry.Modify();
+        end;
+        if DimGlobal3 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Shortcut Dimension 3 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal3);
+            recNewDimSetEntry.Modify();
+        end;
+        if DimGlobal4 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Shortcut Dimension 4 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal4);
+            recNewDimSetEntry.Modify();
+        end;
+        if DimGlobal5 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 5 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Shortcut Dimension 5 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal5);
+            recNewDimSetEntry.Modify();
+        end;
+        if DimGlobal6 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 6 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Shortcut Dimension 6 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal6);
+            recNewDimSetEntry.Modify();
+        end;
+        if DimGlobal7 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 7 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Shortcut Dimension 7 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal7);
+            recNewDimSetEntry.Modify();
+        end;
+        if DimGlobal8 <> '' then begin
+            recNewDimSetEntry.SetRange("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+            if not recNewDimSetEntry.FindFirst() then begin
+                recNewDimSetEntry.Init();
+                recNewDimSetEntry.Validate("Dimension Code", GLSetup."Shortcut Dimension 8 Code");
+                recNewDimSetEntry.Insert()
+            end;
+            recNewDimSetEntry.Validate("Dimension Value Code", DimGlobal8);
+            recNewDimSetEntry.Modify();
+        end;
+    end;
+
+    local procedure GetDimSetEntry(var NewDimSetEntry: record "Dimension Set Entry"; pIntDimension: Integer; DimGlobal1: Code[20]; DimGlobal2: code[20]; dimGlobal3: Code[20]; dimGlobal4: Code[20];
+        dimGlobal5: Code[20]; dimGlobal6: Code[20]; dimGlobal7: Code[20]; dimGlobal8: Code[20])
     var
         GLSetup: Record "General Ledger Setup";
         recDimSetEntry: Record "Dimension Set Entry";
@@ -1029,6 +1129,18 @@ codeunit 50111 "Funciones"
         end;
         recDimSetEntry.Reset();
         recDimSetEntry.SetRange("Dimension Set ID", pIntDimension);
+
+        // buscamos Dimensiones y sino creamos
+        recDimSetEntry.SetRange("Dimension Code", GLSetup."Global Dimension 1 Code");
+        if not recDimSetEntry.FindFirst() then begin
+            NewDimSetEntry.Init();
+            NewDimSetEntry."Dimension Set ID" := pIntDimension;
+            NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
+            NewDimSetEntry."Dimension Value Code" := DimGlobal1;
+            NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
+            NewDimSetEntry.Insert();
+        end;
+
         if recDimSetEntry.FindSet() then
             repeat
                 NewDimSetEntry := recDimSetEntry;
@@ -1048,20 +1160,7 @@ codeunit 50111 "Funciones"
                 end;
                 NewDimSetEntry.Insert();
             until recDimSetEntry.Next() = 0;
-        if (DimGlobal1 <> '') and not AddedCECO then begin
-            NewDimSetEntry."Dimension Set ID" := pIntDimension;
-            NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 1 Code";
-            NewDimSetEntry."Dimension Value Code" := DimGlobal1;
-            NewDimSetEntry."Dimension Value ID" := DimensionValue."Dimension Value ID";
-            NewDimSetEntry.Insert();
-        end;
-        if (DimGlobal2 <> '') and not AddedProyecto then begin
-            NewDimSetEntry."Dimension Set ID" := pIntDimension;
-            NewDimSetEntry."Dimension Code" := GLSetup."Global Dimension 2 Code";
-            NewDimSetEntry."Dimension Value Code" := DimGlobal2;
-            NewDimSetEntry."Dimension Value ID" := DimensionValue2."Dimension Value ID";
-            NewDimSetEntry.Insert();
-        end;
+
 
     end;
 

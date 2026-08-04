@@ -200,6 +200,12 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
         intDimSetId: Integer;
         dimGlobal1: Code[20];
         dimGlobal2: Code[20];
+        dimGlobal3: Code[20];
+        dimGlobal4: Code[20];
+        dimGlobal5: Code[20];
+        dimGlobal6: Code[20];
+        dimGlobal7: Code[20];
+        dimGlobal8: Code[20];
         Text000: Label '¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?', comment = 'ESP="¿Desea cambiar lo/s %1 movimientos a CECO %2 y Proyecto %3?"';
         lblConfirm: Label 'Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?', comment = 'ESP="Ha seleccionado %1 movimientos.\¿Esta seguro de continuar?"';
     begin
@@ -219,13 +225,12 @@ pageextension 50009 "GeneralLedgerEntries" extends "General Ledger Entries"
         Clear(pageDim);
         pageDim.LookupMode(true);
         if pageDim.RunModal() = Action::LookupOK then begin
-            dimGlobal1 := pageDim.GetCECOCOde();
-            dimGlobal2 := pageDim.GetDim2COde();
+            pageDim.GetDimCode(dimGlobal1, dimGlobal2, dimGlobal3, dimGlobal4, dimGlobal5, dimGlobal6, dimGlobal7, dimGlobal8);
             if Confirm(Text000, false, GLEntry.Count, dimGlobal1, dimGlobal2) then begin
                 if GLEntry.Count > 50 then
                     if not Confirm(lblConfirm, false, GLEntry.Count) then
                         exit;
-                Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1, dimGlobal2);
+                Funciones.ChangeDimensionCECOGLEntries(GLEntry, dimGlobal1, dimGlobal2, dimGlobal3, dimGlobal4, dimGlobal5, dimGlobal6, dimGlobal7, dimGlobal8);
                 // Añadimos opcion de cambiar tambien los Activos Fijos
                 Funciones.ChangeDimSetEntryFixedAssetsEntry(GlEntry);
                 Message('Proceso finalizado');
