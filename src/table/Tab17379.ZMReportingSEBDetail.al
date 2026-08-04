@@ -67,6 +67,21 @@ table 17379 "ZM Reporting SEB Detail"
             DataClassification = CustomerContent;
             Caption = 'Reporting SEB Entry No"', comment = 'ESP="Reporting SEB Entry No"';
         }
+        field(60; "Source No."; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Source No.', comment = 'ESP="Código"';
+        }
+        field(70; "Source Name"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Source Name', comment = 'ESP="Nombre"';
+        }
+        field(80; "Vat Registration Name"; text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Vat Registration Name', comment = 'ESP="CIF/NIF"';
+        }
         field(100; "Period Start"; Date)
         {
             DataClassification = CustomerContent;

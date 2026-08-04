@@ -13894,11 +13894,29 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Reporting SEB Entry No - Property Caption</note>
           <target>Reporting SEB Entry No</target>
         </trans-unit>
+        <trans-unit id="Table 1419415064 - Field 1343707150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Source Name - Property Caption</note>
+          <target>Nombre</target>
+        </trans-unit>
+        <trans-unit id="Table 1419415064 - Field 1882905478 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Source No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Source No. - Property Caption</note>
+          <target>Código</target>
+        </trans-unit>
         <trans-unit id="Table 1419415064 - Field 1773128682 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Unit Cost</source>
           <note from="Developer" annotates="general" priority="2">ESP="Coste Unitario"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field UnitCosts - Property Caption</note>
           <target>Coste Unitario</target>
+        </trans-unit>
+        <trans-unit id="Table 1419415064 - Field 186909583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Vat Registration Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CIF/NIF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Vat Registration Name - Property Caption</note>
+          <target>CIF/NIF</target>
         </trans-unit>
         <trans-unit id="Table 485781647 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Reporting SEB Sales</source>

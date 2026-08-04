@@ -22,6 +22,11 @@ page 50156 "ZM Reporting SEB Details"
                 field(Amount; Amount) { }
                 field(Costs; Costs) { }
                 field("Reporting SEB Entry No"; "Reporting SEB Entry No") { }
+                field("Source No."; "Source No.") { }
+                field("Source Name"; "Source Name") { }
+                field("Vat Registration Name"; "Vat Registration Name") { }
+                field("CMMF Code"; "CMMF Code") { }
+                field(MLA; MLA) { }
             }
         }
     }

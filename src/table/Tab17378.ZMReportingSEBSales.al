@@ -122,6 +122,7 @@ table 17378 "ZM Reporting SEB Sales"
         // ItemLedgerEntry.ModifyAll("Reporting SEB Entry No", 0);
         // Window.Close();
         ItemLedgerEntry.SetFilter("Posting Date", PeriodFilter);
+        ValueEntry.SetFilter("Posting Date", PeriodFilter);
         PeriodStart := ItemLedgerEntry.GetRangeMin("Posting Date");
         PeriodEnd := ItemLedgerEntry.GetRangeMax("Posting Date");
         Window.Open(lblWindow);
@@ -173,6 +174,9 @@ table 17378 "ZM Reporting SEB Sales"
                             RepSEBSalesDetail.Costs := -UnitCost * ValueEntry."Invoiced Quantity";
                             RepSEBSalesDetail.Amount := ValueEntry."Sales Amount (Actual)";
                             RepSEBSalesDetail."Reporting SEB Entry No" := RepSEBSales."Entry No.";
+                            RepSEBSalesDetail."Source No." := ItemLedgerEntry."Source No.";
+                            RepSEBSalesDetail."Source Name" := Customer.Name;
+                            RepSEBSalesDetail."Vat Registration Name" := Customer."VAT Registration No.";
                             RepSEBSalesDetail.Insert(true);
                         end;
 
