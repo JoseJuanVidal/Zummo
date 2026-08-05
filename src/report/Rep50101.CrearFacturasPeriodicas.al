@@ -22,6 +22,12 @@ report 50101 "CrearFacturasPeriodicas"
 
             trigger OnAfterGetRecord()
             begin
+                if Customer.Get("Standard Customer Sales Code"."Customer No.") then
+                    if Customer.Blocked in [Customer.Blocked::All, Customer.Blocked::Invoice] then begin
+                        SendEmailBlocked("Standard Customer Sales Code");
+                        exit;
+                    end;
+
                 tmpStandarCustomerSales.Init();
                 tmpStandarCustomerSales.TransferFields("Standard Customer Sales Code");
                 tmpStandarCustomerSales.Insert();
@@ -30,7 +36,6 @@ report 50101 "CrearFacturasPeriodicas"
                 Modify();
 
                 CreateSalesInvoice(WorkDate(), WorkDate());
-
 
             end;
         }
@@ -42,13 +47,31 @@ report 50101 "CrearFacturasPeriodicas"
     end;
 
     var
+        SalesSetup: Record "Sales & Receivables Setup";
+        recSMTPSetup: Record "SMTP Mail Setup";
+
+        Customer: Record Customer;
         tmpStandarCustomerSales: record "Standard Customer Sales Code" temporary;
+        cduSmtp: Codeunit "SMTP Mail";
+
+    local procedure SendEmailBlocked(StandardSalesCustomer: Record "Standard Customer Sales Code")
+    var
+        Destino: Text;
+        body: Text;
+    begin
+        recSMTPSetup.Get();
+        SalesSetup.Get();
+        Clear(cduSmtp);
+        if SalesSetup."Recipient Mail Invoice Summary" = '' then
+            Destino := 'pedidos@zummo.es;jvidal@zummo.es'
+        else
+            Destino := SalesSetup."Recipient Mail Invoice Summary";
+        body := StrSubstNo('El cliente %1 %2 esta %4\Linea Venta %3', StandardSalesCustomer."Customer No.", StandardSalesCustomer."Customer Name", StandardSalesCustomer.Code, Customer.Blocked);
+        cduSmtp.CreateMessage(CompanyName(), recSMTPSetup."User ID", Destino, StrSubstNo('ERROR Creación Facturación peridica %1 Bloqueado', StandardSalesCustomer."Customer No."), body, TRUE); //pDireccion, pAsunto, pCuerpo, TRUE);
+    end;
 
     local procedure SendEmail()
     var
-        SalesSetup: Record "Sales & Receivables Setup";
-        recSMTPSetup: Record "SMTP Mail Setup";
-        cduSmtp: Codeunit "SMTP Mail";
         body: text;
         Destino: text;
     begin
