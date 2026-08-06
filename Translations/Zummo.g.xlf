@@ -41633,6 +41633,11 @@
           <note from="Developer" annotates="general" priority="2">ESP=Cód. Idioma"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Language Code - Property Caption</note>
         </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 4230565839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>No. 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field No. 2 - Property Caption</note>
+        </trans-unit>
         <trans-unit id="TableExtension 2621885105 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1003430490">
           <source>Plastic Date Declaration</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Declaración plástico"</note>

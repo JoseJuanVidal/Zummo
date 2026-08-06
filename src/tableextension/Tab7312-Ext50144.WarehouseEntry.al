@@ -44,5 +44,12 @@ tableextension 50144 "WarehouseEntry" extends "Warehouse Entry"  //7312
             FieldClass = FlowField;
             CalcFormula = lookup("Item Translation".Description where("Item No." = field("Item No."), "Language Code" = field("Language Code")));
         }
+        field(50130; "No. 2"; code[20])
+        {
+            Editable = false;
+            Caption = 'No. 2', comment = 'ESP="Nº 2"';
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."No. 2" where("No." = field("Item No.")));
+        }
     }
 }
