@@ -31,9 +31,9 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
 
             trigger OnValidate()
             var
-                lbErrorFechaErr: Label 'The next invoice date cannot be less than the initial date', comment = 'ESP="La fecha de próxima factura no puede ser menor a la fecha inicial"';
-                lbErrorFechaMayorErr: Label 'The next invoice date cannot be greater than the final date', Comment = 'ESP="La fecha de próxima factura no puede ser mayor a la fecha final"';
-                lbErrorFechaMenorUltimaFechaErr: Label 'The next invoice date cannot be less than the last invoice date', comment = 'ESP="La fecha de próxima factura no puede ser menor a la fecha última factura"';
+                lbErrorFechaErr: Label 'Standard Sales %1.\The next invoice date cannot be less than the initial date', comment = 'ESP="Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha inicial"';
+                lbErrorFechaMayorErr: Label 'Standard Sales %1.\The next invoice date cannot be greater than the final date', Comment = 'ESP="Línea Venta %1.\La fecha de próxima factura no puede ser mayor a la fecha final"';
+                lbErrorFechaMenorUltimaFechaErr: Label 'Standard Sales %1.\The next invoice date cannot be less than the last invoice date', comment = 'ESP="Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha última factura"';
             begin
                 if (ProximaFechaFactura_btc <> 0D) and (ProximaFechaFactura_btc < "Valid From Date") and ("Valid From Date" <> 0D) then
                     error(lbErrorFechaErr);

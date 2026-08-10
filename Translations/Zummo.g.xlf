@@ -40009,18 +40009,18 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 16872894" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
-          <source>The next invoice date cannot be less than the initial date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser menor a la fecha inicial"</note>
+          <source>Standard Sales %1.\The next invoice date cannot be less than the initial date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha inicial"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 1977867686" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
-          <source>The next invoice date cannot be greater than the final date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser mayor a la fecha final"</note>
+          <source>Standard Sales %1.\The next invoice date cannot be greater than the final date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea Venta %1.\La fecha de próxima factura no puede ser mayor a la fecha final"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaMayorErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 2286421668" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
-          <source>The next invoice date cannot be less than the last invoice date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser menor a la fecha última factura"</note>
+          <source>Standard Sales %1.\The next invoice date cannot be less than the last invoice date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha última factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaMenorUltimaFechaErr</note>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 3574966015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">

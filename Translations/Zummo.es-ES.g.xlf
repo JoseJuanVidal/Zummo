@@ -17784,18 +17784,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Property Caption</note>
           <target>Cambiar Dimensiones Multiple</target>
         </trans-unit>
-        <trans-unit id="Page 2736406672 - Control 1157644979 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CECO</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CECO"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Control CECOValue - Property Caption</note>
-          <target>CECO</target>
-        </trans-unit>
-        <trans-unit id="Page 2736406672 - Control 1768628339 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Proyecto</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Proyecto"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Change Dim CECO - Control Proyecto - Property Caption</note>
-          <target>Proyecto</target>
-        </trans-unit>
         <trans-unit id="Page 31964965 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Clasificación pedido servicio</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -44273,22 +44261,22 @@
           <target>Próxima fecha factura</target>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 16872894" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
-          <source>The next invoice date cannot be less than the initial date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser menor a la fecha inicial"</note>
+          <source>Standard Sales %1.\The next invoice date cannot be less than the initial date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha inicial"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaErr</note>
-          <target>La fecha de próxima factura no puede ser menor a la fecha inicial</target>
+          <target>Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha inicial</target>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 1977867686" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
-          <source>The next invoice date cannot be greater than the final date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser mayor a la fecha final"</note>
+          <source>Standard Sales %1.\The next invoice date cannot be greater than the final date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea Venta %1.\La fecha de próxima factura no puede ser mayor a la fecha final"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaMayorErr</note>
-          <target>La fecha de próxima factura no puede ser mayor a la fecha final</target>
+          <target>Línea Venta %1.\La fecha de próxima factura no puede ser mayor a la fecha final</target>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 2808334599 - Method 2126772001 - NamedType 2286421668" size-unit="char" translate="yes" xml:space="preserve" al-object-target="TableExtension 393003494">
-          <source>The next invoice date cannot be less than the last invoice date</source>
-          <note from="Developer" annotates="general" priority="2">ESP="La fecha de próxima factura no puede ser menor a la fecha última factura"</note>
+          <source>Standard Sales %1.\The next invoice date cannot be less than the last invoice date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha última factura"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension StandardCustomerSalesCode - Field ProximaFechaFactura_btc - Method OnValidate - NamedType lbErrorFechaMenorUltimaFechaErr</note>
-          <target>La fecha de próxima factura no puede ser menor a la fecha última factura</target>
+          <target>Línea Venta %1.\La fecha de próxima factura no puede ser menor a la fecha última factura</target>
         </trans-unit>
         <trans-unit id="TableExtension 393003494 - Field 3574966015 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 601784662">
           <source>Last invoice date</source>
@@ -46172,6 +46160,12 @@
           <note from="Developer" annotates="general" priority="2">ESP=Cód. Idioma"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field Language Code - Property Caption</note>
           <target>Cód. Idioma"</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 4014689059 - Field 4230565839 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1535614531">
+          <source>No. 2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº 2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension WarehouseEntry - Field No. 2 - Property Caption</note>
+          <target>Nº 2</target>
         </trans-unit>
         <trans-unit id="TableExtension 2621885105 - Field 3749015872 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1003430490">
           <source>Plastic Date Declaration</source>
