@@ -12,14 +12,14 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
         {
             DataClassification = CustomerContent;
             Description = 'Bitec';
-            Caption = 'Period', comment = 'ESP="Periodicidad"';
+            Caption = 'Periodicidad', comment = 'ESP="Periodicidad"';
 
             trigger OnValidate()
             begin
                 if format(Periodicidad_btc) = '' then
                     exit;
-
-                CalculaProximaFechaFactura();
+                if ProximaFechaFactura_btc = 0D then
+                    CalculaProximaFechaFactura();
             end;
         }
 
