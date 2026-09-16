@@ -732,6 +732,7 @@ codeunit 50110 "CU_Cron"
                     begin
                         clear(reportFactura);
                         reportFactura.EsExportacion();
+                        reportFactura.Pneto(recCustomer."Mostrar Documentos Netos");
                         reportFactura.SetTableView(SalesInvoiceHeader);
                         reportFactura.SaveAsPdf(RutaServidor);
                     end;
@@ -739,6 +740,7 @@ codeunit 50110 "CU_Cron"
                     begin
                         clear(reportFactura);
                         reportFactura.EsLidl();
+                        reportFactura.Pneto(recCustomer."Mostrar Documentos Netos");
                         reportFactura.SetTableView(SalesInvoiceHeader);
                         reportFactura.SaveAsPdf(RutaServidor);
                     end;
@@ -746,6 +748,7 @@ codeunit 50110 "CU_Cron"
                     begin
                         clear(reportFactura);
                         reportFactura.EsNacional();
+                        reportFactura.Pneto(recCustomer."Mostrar Documentos Netos");
                         reportFactura.SetTableView(SalesInvoiceHeader);
                         reportFactura.SaveAsPdf(RutaServidor);
                     end;

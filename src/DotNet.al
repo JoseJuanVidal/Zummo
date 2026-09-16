@@ -10,10 +10,11 @@ dotnet
         type("System.Net.Mail.MailMessage"; MyMailMessage) { }
         type("System.Net.Mail.MailAddress"; MyMailAddress) { }
         type("System.Net.NetworkCredential"; MyNetworkCredential) { }
+
     }
     assembly(System.Data)
     {
-        Version = '4.0.0.0';
+        Version = '2.0.0.0';
         Culture = 'neutral';
         PublicKeyToken = 'b77a5c561934e089';
         type(System.Data.SqlClient.SqlConnection; SqlConnection) { }
@@ -54,7 +55,7 @@ dotnet
     }
     assembly("mscorlib")
     {
-        Version = '2.0.0.0';
+        //Version = '2.0.0.0';
         Culture = 'neutral';
         PublicKeyToken = 'b77a5c561934e089';
 

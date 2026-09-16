@@ -85,13 +85,29 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
     }
 
     procedure CalculaProximaFechaFactura()
+    var
+        FechaBase: date;
+        Day: Integer;
     begin
         if format(Periodicidad_btc) = '' then
             exit;
 
-        if UltimaFechaFactura_btc <> 0D then
-            Validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, UltimaFechaFactura_btc))  // UltimaFechaFactura_btc cambiamos para que aunque se facture en otra fecha, sea un desplazamiento exacto
-        else
+        FechaBase := CalcDate(Periodicidad_btc, UltimaFechaFactura_btc);
+        Day := DATE2DMY("Valid From Date", 1);
+        if Day <> DATE2DMY(FechaBase, 1) then begin
+            case day of
+                29, 30, 31:
+                    begin
+                        FechaBase := CalcDate('<CM>', FechaBase);
+                    end;
+                else
+                    FechaBase := DMY2DATE(Day, DATE2DMY(FechaBase, 2), DATE2DMY(FechaBase, 3));
+            end;
+        end;
+
+        if UltimaFechaFactura_btc <> 0D then begin
+            Validate(ProximaFechaFactura_btc, FechaBase);  // UltimaFechaFactura_btc cambiamos para que aunque se facture en otra fecha, sea un desplazamiento exacto
+        end else
             if "Valid From Date" <> 0D then
                 validate(ProximaFechaFactura_btc, CalcDate(Periodicidad_btc, "Valid From Date"))
             else
