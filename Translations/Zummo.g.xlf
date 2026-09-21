@@ -17078,6 +17078,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar Documento"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Hist. Reclamaciones ventas - Action UpdateDocument - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 2372084791 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Intrastat Journals Lines</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Lineas Diario Intrastat"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Intrastat Journals Lines - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2372084791 - Control 3482776088 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Intrastat Journals Lines - Control cliente - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2372084791 - Control 2693823999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Name</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nombre Cliente"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Intrastat Journals Lines - Control clienteNombre - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2372084791 - Control 809585810 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Invoice No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Factura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Intrastat Journals Lines - Control factura - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1711112215 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Item Approval Departments</source>
           <note from="Developer" annotates="general" priority="2">ESP="Aprobaciones departamento"</note>
