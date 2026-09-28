@@ -1378,6 +1378,9 @@ table 17462 "ZM PL Items Temporary"
         ZMItemPurchasePrices.Reset();
         ZMItemPurchasePrices.SetRange("Item No.", Rec."No.");
         ZMItemPurchasePrices.DeleteAll();
+        ItemTranslationtemporary.Reset();
+        ItemTranslationtemporary.SetRange("Item No.", Rec."No.");
+        ItemTranslationtemporary.DeleteAll();
     end;
 
     trigger OnRename()
@@ -1387,6 +1390,7 @@ table 17462 "ZM PL Items Temporary"
     var
         Item: Record Item;
         Vend: Record Vendor;
+        ItemTranslationtemporary: Record "ZM Item Translation temporary";
         ProdBOMHeader: Record "Production BOM Header";
         ProdBOMLine: Record "Production BOM Line";
         ZMCIMProdBOMHeader: Record "ZM CIM Prod. BOM Header";

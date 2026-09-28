@@ -52,6 +52,7 @@ page 17483 "ZM PL Items Temporary API"
         }
     }
     var
+        ItemTranslationtemporary: Record "ZM Item Translation temporary";
         TranslateENG: text[100];
         TranslateFRA: text[100];
         ReasonText: text;
@@ -59,6 +60,38 @@ page 17483 "ZM PL Items Temporary API"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
+        // Reason Text
+        Rec.SetWorkDescription(ReasonText);
+        // miramos las traducciones ingles y frances
+        CreateItemTranslate();
 
+        if Lanzado then
+            Rec.LaunchRegisterItemTemporary(false);
+    end;
+
+    local procedure CreateItemTranslate()
+    var
+        myInt: Integer;
+    begin
+        if TranslateENG <> '' then begin
+            if not ItemTranslationtemporary.get(Rec."No.", 'ENG') then begin
+                ItemTranslationtemporary.Init();
+                ItemTranslationtemporary."Item No." := Rec."No.";
+                ItemTranslationtemporary."Language Code" := 'ENG';
+                ItemTranslationtemporary.Insert();
+            end;
+            ItemTranslationtemporary.Description := TranslateENG;
+            ItemTranslationtemporary.Modify();
+        end;
+        if TranslateENG <> '' then begin
+            if not ItemTranslationtemporary.get(Rec."No.", 'FRA') then begin
+                ItemTranslationtemporary.Init();
+                ItemTranslationtemporary."Item No." := Rec."No.";
+                ItemTranslationtemporary."Language Code" := 'FRA';
+                ItemTranslationtemporary.Insert();
+            end;
+            ItemTranslationtemporary.Description := TranslateENG;
+            ItemTranslationtemporary.Modify();
+        end;
     end;
 }
