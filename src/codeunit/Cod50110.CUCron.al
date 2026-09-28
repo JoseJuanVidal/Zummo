@@ -1678,7 +1678,7 @@ codeunit 50110 "CU_Cron"
         cduSmtp: Codeunit "SMTP Mail";
         txtAsunto: Text;
     begin
-        txtAsunto := StrSubstNo('Revisar Fechas registros de Configuración Contabilidad.\Desde: %º\Hasta:%2', GLSetup."Allow Posting From", GLSetup."Allow Posting To");
+        txtAsunto := StrSubstNo('Revisar Fechas registros de Configuración Contabilidad. Desde: %1  Hasta:%2', GLSetup."Allow Posting From", GLSetup."Allow Posting To");
         SMTPSetup.Get();
         Clear(cduSmtp);
         cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", Recipients, txtAsunto, txtAsunto, TRUE);

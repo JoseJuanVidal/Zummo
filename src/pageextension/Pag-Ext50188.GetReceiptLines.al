@@ -8,6 +8,10 @@ pageextension 50188 "GetReceiptLines" extends "Get Receipt Lines"
             {
                 ApplicationArea = All;
             }
+            field("Order No."; "Order No.")
+            {
+                ApplicationArea = all;
+            }
         }
     }
 }
