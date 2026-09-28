@@ -1368,6 +1368,9 @@ codeunit 50108 "FuncionesFabricacion"
         recItem2.RESET();
         recItem2 := recItem;
         recItem2."No." := pProductoDestino;
+        recItem2."No. 2" := '';
+        recItem2."CMMF Code" := '';
+        recItem2."Last Direct Cost" := 0;
         recItem2.Validate(Description, pDescripcionNueva);
         recItem2."Unit Cost" := 0;
         recItem2.GTIN := '';
