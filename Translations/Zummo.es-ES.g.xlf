@@ -35158,6 +35158,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowInternalInfo - Property Caption</note>
           <target>Mostrar Informacion Interna</target>
         </trans-unit>
+        <trans-unit id="Report 4049458315 - Control 615621325 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Mostrar Pendientes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar Pendientes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Report PedidoTransferenciaAlmacen - Control ShowRemainingQty - Property Caption</note>
+          <target>Mostrar Pendientes</target>
+        </trans-unit>
         <trans-unit id="Report 4049458315 - Control 2390380850 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Indicates the volume of products in m3</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indica el volumen de los productos en m3"</note>

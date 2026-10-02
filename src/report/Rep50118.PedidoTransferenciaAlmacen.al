@@ -16,52 +16,24 @@ report 50118 "PedidoTransferenciaAlmacen"
             RequestFilterHeading = 'Transfer Order';
 
             column(CompanyInfo1Picture; CompanyInfo1.Picture) { }
-            column(CuadroBultos_BultosLbl; CuadroBultos_BultosLbl)
-            {
-
-            }
+            column(CuadroBultos_BultosLbl; CuadroBultos_BultosLbl) { }
             column(CuadroBultos_VolumenLbl; CuadroBultos_VolumenLbl) { }
             column(CuadroBultos_PesoNetoLbl; CuadroBultos_PesoNetoLbl) { }
             column(volumen; volumen) { }
-
             column(CuadroBultos_IncotermLbl; CuadroBultos_IncotermLbl) { }
-            column(CuadroBultos_PaletsLbl; CuadroBultos_PaletsLbl)
-            {
-            }
-            column(ShowBinContents; ShowBinContents)
-            {
-            }
-            column(totalPeso; totalPeso)
-            {
-            }
+            column(CuadroBultos_PaletsLbl; CuadroBultos_PaletsLbl) { }
+            column(ShowBinContents; ShowBinContents) { }
+            column(totalPeso; totalPeso) { }
             column(NoSerie_Caption; NumSerieLbl) { }
-            column(DesdeLbl; DesdeLbl)
-            {
-            }
-            column(totalPalets; totalPalets)
-            {
-            }
-            column(totalBultos; totalBultos)
-            {
-            }
-            column(HastaLbl; HastaLbl)
-            {
-            }
-            column(PurchOrderCaptionLbl; PurchOrderCaptionLbl)
-            {
-            }
-            column(PRCOMPRASLbl; PRCOMPRASLbl)
-            {
-            }
-            column(ISOLbl; ISOLbl)
-            {
-            }
-            column(PediProveeedorLbl; PediProveeedorLbl)
-            {
-            }
-            column(No_TransferHdr; "No.")
-            {
-            }
+            column(DesdeLbl; DesdeLbl) { }
+            column(totalPalets; totalPalets) { }
+            column(totalBultos; totalBultos) { }
+            column(HastaLbl; HastaLbl) { }
+            column(PurchOrderCaptionLbl; PurchOrderCaptionLbl) { }
+            column(PRCOMPRASLbl; PRCOMPRASLbl) { }
+            column(ISOLbl; ISOLbl) { }
+            column(PediProveeedorLbl; PediProveeedorLbl) { }
+            column(No_TransferHdr; "No.") { }
             column(TipoDocumento; TipoDocumento) { }
             column(NoDocumento; NoDocumento) { }
             column(LineaDocumento; LineaDocumento) { }
@@ -203,7 +175,7 @@ report 50118 "PedidoTransferenciaAlmacen"
                         {
                             IncludeCaption = true;
                         }
-                        column(Qty_TransLine; Quantity)
+                        column(Qty_TransLine; "Outstanding Quantity")
                         {
                             IncludeCaption = true;
                         }
@@ -319,6 +291,13 @@ report 50118 "PedidoTransferenciaAlmacen"
 
                         trigger OnAfterGetRecord()
                         begin
+                            if ShowRemainingQty then begin
+                                if "Transfer Line"."Outstanding Quantity" = 0 then
+                                    CurrReport.Skip();
+                                "Transfer Line".Quantity := "Transfer Line"."Outstanding Quantity";
+                            end;
+
+
                             DimSetEntry2.SetRange("Dimension Set ID", "Dimension Set ID");
 
                             // Añadimos las ubicaciones de los productos
@@ -446,6 +425,11 @@ report 50118 "PedidoTransferenciaAlmacen"
                         Caption = 'Mostrar Ubicaciones producto', comment = 'ESP="Mostrar Ubicaciones producto"';
                         ToolTip = 'Specifies if you want the printed report to show information that is only for internal use.';
                     }
+                    field(ShowRemainingQty; ShowRemainingQty)
+                    {
+                        ApplicationArea = Location;
+                        Caption = 'Mostrar Pendientes', comment = 'ESP="Mostrar Pendientes"';
+                    }
                     field(optIdioma; optIdioma)
                     {
                         ApplicationArea = All;
@@ -470,8 +454,10 @@ report 50118 "PedidoTransferenciaAlmacen"
         trigger OnOpenPage()
         begin
             ShowComment := true;
-            if (UserId = 'ALMACEN') or UserSetup."Informes Almacen" then
+            if (UserId = 'ALMACEN') or UserSetup."Informes Almacen" then begin
                 ShowBinContents := true;
+                ShowRemainingQty := true;
+            end;
         end;
     }
 
@@ -530,6 +516,7 @@ report 50118 "PedidoTransferenciaAlmacen"
         ShowInternalInfo: Boolean;
         ShowComment: Boolean;
         ShowBinContents: Boolean;
+        ShowRemainingQty: Boolean;
         ContUbicaciones: text;
         SerialContUbicaciones: text;
         Continue: Boolean;
