@@ -12873,6 +12873,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Quantity"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Field Quantity - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 485781647 - Field 640252945 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Family</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Familia"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Field SelFamilia_btc - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 485781647 - Field 151815974 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Value1</source>
           <note from="Developer" annotates="general" priority="2">ESP="Value1"</note>
