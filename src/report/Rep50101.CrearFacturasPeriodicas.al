@@ -43,6 +43,7 @@ report 50101 "CrearFacturasPeriodicas"
 
     trigger OnPostReport()
     begin
+        Commit();
         SendEmail();
     end;
 

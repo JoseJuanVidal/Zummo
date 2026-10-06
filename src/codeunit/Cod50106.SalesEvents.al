@@ -385,10 +385,32 @@ codeunit 50106 "SalesEvents"
     [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnBeforeApplyStdCodesToSalesLines', '', true, true)]
     local procedure T_172_OnBeforeApplyStdCodesToSalesLines(var SalesLine: Record "Sales Line"; StdSalesLine: Record "Standard Sales Line")
     begin
+
         if StdSalesLine.Precio_btc <> 0 then
             SalesLine.validate("Unit Price", StdSalesLine.Precio_btc);
     end;
 
+    // añadimos una primera linea de Nª de contrato
+    [EventSubscriber(ObjectType::Table, Database::"Standard Customer Sales Code", 'OnBeforeApplyStdCodesToSalesLinesLoop', '', true, true)]
+    local procedure T_172_OnBeforeApplyStdCodesToSalesLinesLoop(var StdSalesLine: Record "Standard Sales Line"; var SalesLine: Record "Sales Line"; SalesHeader: Record "Sales Header"; StdSalesCode: Record "Standard Sales Code")
+    var
+        lblDescription: Label 'Contract No.: %1', comment = 'ESP="Nº Contrato: %1"';
+        LineNo: Integer;
+    begin
+        LineNo := 10000;
+        SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
+        SalesLine.SETRANGE("Document No.", SalesHeader."No.");
+        IF SalesLine.FINDLAST THEN
+            LineNo := SalesLine."Line No." + 10000;
+        SalesLine.INIT;
+        SalesLine."Document Type" := SalesHeader."Document Type";
+        SalesLine."Document No." := SalesHeader."No.";
+        SalesLine."Line No." := LineNo;
+        SalesLine.VALIDATE(Type, SalesLine.Type::" ");
+        SalesLine.Description := StrSubstNo(lblDescription, StdSalesCode.Code);
+        SalesLine.Insert(true);
+
+    end;
     //Control campos obligatorios pedidos
     local procedure TestCamposPedidos(var pSalesHeader: Record "Sales Header")
     var

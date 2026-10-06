@@ -30,6 +30,7 @@ page 17483 "ZM PL Items Temporary API"
                 field(Prototype; Prototype) { }
                 field("Tipo de Cambio"; "Tipo de Cambio") { }
                 field("Replaces Item No."; "Replaces Item No.") { }
+                field("Tipo aprovisionamiento"; "Tipo aprovisionamiento") { }
                 field("Replenishment System"; "Replenishment System") { }
                 field(Reason; ReasonText) { }
                 field(Blocked; Blocked) { }
@@ -69,6 +70,12 @@ page 17483 "ZM PL Items Temporary API"
             Rec.LaunchRegisterItemTemporary(false);
     end;
 
+    trigger OnAfterGetCurrRecord()
+    begin
+        ReasonText := Rec.GetWorkDescription();
+        GetItemTranslate();
+    end;
+
     local procedure CreateItemTranslate()
     var
         myInt: Integer;
@@ -83,15 +90,25 @@ page 17483 "ZM PL Items Temporary API"
             ItemTranslationtemporary.Description := TranslateENG;
             ItemTranslationtemporary.Modify();
         end;
-        if TranslateENG <> '' then begin
+        if TranslateFRA <> '' then begin
             if not ItemTranslationtemporary.get(Rec."No.", 'FRA') then begin
                 ItemTranslationtemporary.Init();
                 ItemTranslationtemporary."Item No." := Rec."No.";
                 ItemTranslationtemporary."Language Code" := 'FRA';
                 ItemTranslationtemporary.Insert();
             end;
-            ItemTranslationtemporary.Description := TranslateENG;
+            ItemTranslationtemporary.Description := TranslateFRA;
             ItemTranslationtemporary.Modify();
         end;
+    end;
+
+    local procedure GetItemTranslate()
+    var
+        myInt: Integer;
+    begin
+        if ItemTranslationtemporary.get(Rec."No.", 'ENG') then
+            TranslateENG := ItemTranslationtemporary.Description;
+        if ItemTranslationtemporary.get(Rec."No.", 'FRA') then
+            TranslateENG := ItemTranslationtemporary.Description;
     end;
 }

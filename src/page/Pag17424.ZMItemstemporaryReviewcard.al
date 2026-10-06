@@ -92,6 +92,7 @@ page 17424 "ZM Items temporary Review card"
                 field("Codigo Empleado"; "Codigo Empleado")
                 {
                     ApplicationArea = all;
+                    Editable = false;
                 }
                 field("Nombre Empleado"; "Nombre Empleado")
                 {

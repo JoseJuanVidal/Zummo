@@ -1193,7 +1193,7 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Codigo Empleado', comment = 'ESP="Codigo Empleado"';
             TableRelation = Employee;
             ValidateTableRelation = true;
-            Editable = false;
+            //Editable = false;
 
             trigger OnValidate()
             begin

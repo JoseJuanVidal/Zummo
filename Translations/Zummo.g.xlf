@@ -13643,6 +13643,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra tipo de cambio para divisa: %1 y fecha: %2 %3: %4"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method TestTipoCambioDocumentVenta - NamedType lbErrorDivisaErr</note>
         </trans-unit>
+        <trans-unit id="Codeunit 852251969 - Method 3761722277 - NamedType 2531569296" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Contract No.: %1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Contrato: %1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit SalesEvents - Method T_172_OnBeforeApplyStdCodesToSalesLinesLoop - NamedType lblDescription</note>
+        </trans-unit>
         <trans-unit id="Codeunit 852251969 - Method 741145540 - NamedType 3422304334" size-unit="char" translate="yes" xml:space="preserve">
           <source>The registration group has a depreciation percentage set up\Do you want to autocomplete the percentage in the fixed asset?</source>
           <note from="Developer" annotates="general" priority="2">ESP="El grupo registro tiene configurado un porcentaje de amortización\¿Desea autocompletar el porcentaje en el activo fijo?"</note>
