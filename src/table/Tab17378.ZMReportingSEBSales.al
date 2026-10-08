@@ -59,13 +59,6 @@ table 17378 "ZM Reporting SEB Sales"
             DataClassification = CustomerContent;
             Caption = 'Period End', comment = 'ESP="Period End"';
         }
-        field(50021; SelFamilia_btc; text[100])
-        {
-            Caption = 'Family', comment = 'ESP="Familia"';
-            Editable = false;
-            FieldClass = FlowField;
-            CalcFormula = lookup(Item.selFamilia_btc where("CMMF Code" = field("CMMF Code")));
-        }
     }
 
     keys

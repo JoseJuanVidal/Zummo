@@ -72,11 +72,6 @@ page 50159 "ZM Bussiness Unit Sales"
                     ApplicationArea = all;
                     Visible = false;
                 }
-                field(SelFamilia_btc; SelFamilia_btc)
-                {
-                    ApplicationArea = all;
-                    Visible = false;
-                }
             }
         }
     }

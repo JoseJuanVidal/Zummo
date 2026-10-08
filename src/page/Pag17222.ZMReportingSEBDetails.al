@@ -19,6 +19,8 @@ page 17222 "ZM Reporting SEB Details"
                 field("Item No."; "Item No.") { }
                 field(Description; Description) { }
                 field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group") { }
+                field(SelFamilia_btc; SelFamilia_btc) { }
+                field(SelClasVtas_btc; SelClasVtas_btc) { }
                 field(Quantity; Quantity) { }
                 field(Amount; Amount) { }
                 field(Costs; Costs) { }

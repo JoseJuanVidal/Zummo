@@ -98,6 +98,20 @@ table 17379 "ZM Reporting SEB Detail"
             FieldClass = FlowField;
             CalcFormula = lookup(Item."Gen. Prod. Posting Group" where("No." = field("Item No.")));
         }
+        field(50021; SelFamilia_btc; Code[20])
+        {
+            Caption = 'Family', comment = 'ESP="Familia"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item.selFamilia_btc where("No." = field("Item No.")));
+        }
+        field(50022; SelClasVtas_btc; Code[20])
+        {
+            Caption = 'Sales Classification', comment = 'ESP="Clasificación Ventas"';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item.selClasVtas_btc where("No." = field("Item No.")));
+        }
     }
 
     keys
