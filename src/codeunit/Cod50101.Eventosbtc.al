@@ -246,28 +246,6 @@ codeunit 50101 "Eventos_btc"
 
 
 
-    [EventSubscriber(ObjectType::Table, 27, 'OnAfterInsertEvent', '', false, false)]
-    local procedure OnAfterInsertEventItem(VAR Rec: Record Item; RunTrigger: Boolean)
-    var
-        CreatestockkepingUnit: report "Create Stockkeeping Unit";
-        Item: Record Item;
-    begin
-        if Rec.IsTemporary then
-            exit;
-        commit;
-        SelectLatestVersion();
-        Item.reset;
-        Item.SetRange("No.", Rec."No.");
-        Item.FindFirst();
-        // JJV22/4/2021 que no cree todos los almacenes la unidad de almacenamiento
-        // animalada - 
-        /* Clear(CreatestockkepingUnit);
-        CreatestockkepingUnit.SetTableView(Item);
-        CreatestockkepingUnit.InitializeRequest(0, false, true);
-        CreatestockkepingUnit.UseRequestPage(false);
-        CreatestockkepingUnit.Run();*/
-    end;
-
     // [EventSubscriber(ObjectType::Codeunit, Codeunit::"Document-Mailing", 'OnBeforeSendEmail', '', true, true)]
     // local procedure CDU_260_OnBeforeSendemail(VAR TempEmailItem: Record "Email Item" temporary; VAR IsFromPostedDoc: Boolean; VAR PostedDocNo: Code[20]; VAR HideDialog: Boolean; VAR ReportUsage: Integer)
     // var

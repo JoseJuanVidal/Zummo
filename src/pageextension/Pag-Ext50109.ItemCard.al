@@ -760,23 +760,6 @@ pageextension 50109 "ItemCard" extends "Item Card"
     var
         IsITeminventory: Boolean;
 
-    procedure CalcularUA()
-    var
-        CreatestockkepingUnit: report "Create Stockkeeping Unit";
-        Item: Record Item;
-    begin
-        commit;
-        SelectLatestVersion();
-        Item.reset;
-        Item.SetRange("No.", Rec."No.");
-        Item.FindFirst();
-        Clear(CreatestockkepingUnit);
-        CreatestockkepingUnit.SetTableView(Item);
-        CreatestockkepingUnit.InitializeRequest(0, false, true);
-        CreatestockkepingUnit.UseRequestPage(false);
-        CreatestockkepingUnit.Run();
-    end;
-
 
     local procedure CalculatePlastic()
     var
