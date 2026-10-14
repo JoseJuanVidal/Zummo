@@ -91,8 +91,10 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
     begin
         if format(Periodicidad_btc) = '' then
             exit;
-
-        FechaBase := CalcDate(Periodicidad_btc, UltimaFechaFactura_btc);
+        if Rec.UltimaFechaFactura_btc = 0D then
+            FechaBase := CalcDate(Periodicidad_btc, "Valid From Date")
+        else
+            FechaBase := CalcDate(Periodicidad_btc, UltimaFechaFactura_btc);
         Day := DATE2DMY("Valid From Date", 1);
         if Day <> DATE2DMY(FechaBase, 1) then begin
             case day of
