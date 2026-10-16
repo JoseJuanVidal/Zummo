@@ -39013,11 +39013,47 @@
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHDefSalesPriceWorksheet - Control ItemUnitCost - Property Caption</note>
           <target>Coste Unitario</target>
         </trans-unit>
+        <trans-unit id="PageExtension 687362182 - Action 3302313536 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Sends now the email with the quality tools to be revised this month, without waiting for the job queue.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Envía ahora el email con los útiles de calidad a revisar este mes, sin esperar a la cola."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Action EnviarAvisoRevisionUtiles - Property ToolTip</note>
+          <target>Envía ahora el email con los útiles de calidad a revisar este mes, sin esperar a la cola.</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 687362182 - Action 3302313536 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Send tools revision warning</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Enviar aviso revisión útiles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Action EnviarAvisoRevisionUtiles - Property Caption</note>
+          <target>Enviar aviso revisión útiles</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 687362182 - Action 3302313536 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 687362182">
+          <source>¿Enviar ahora el aviso de revisión de útiles a %1?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Enviar ahora el aviso de revisión de útiles a %1?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Action EnviarAvisoRevisionUtiles - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Enviar ahora el aviso de revisión de útiles a %1?</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 687362182 - Action 3302313536 - Method 1377591017 - NamedType 1807784016" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 687362182">
+          <source>Aviso enviado</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aviso enviado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Action EnviarAvisoRevisionUtiles - Method OnAction - NamedType lblEnviado</note>
+          <target>Aviso enviado</target>
+        </trans-unit>
         <trans-unit id="PageExtension 687362182 - Control 2886634905 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
           <source>Calculate Balance Qty.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Calcular Cantidad Balance"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Control CalcNeed - Property Caption</note>
           <target>Calcular Cantidad Balance</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 687362182 - Control 4231634104 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Quality tools</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Útiles calidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Control UtilesCalidad - Property Caption</note>
+          <target>Útiles calidad</target>
+        </trans-unit>
+        <trans-unit id="PageExtension 687362182 - Control 2515415425 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>Recipients (separated by ;) of the monthly email with the tools to be revised this month.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Destinatarios (separados por ;) del email mensual con los útiles que se tienen que revisar este mes."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Control Email aviso revision utiles - Property ToolTip</note>
+          <target>Destinatarios (separados por ;) del email mensual con los útiles que se tienen que revisar este mes.</target>
         </trans-unit>
         <trans-unit id="PageExtension 4092476146 - Method 1523975222 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 4092476146">
           <source>&amp;Nivel superior,&amp;Todos los niveles</source>
@@ -44923,6 +44959,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STH Zum Resource - Field Es Material - Property Caption</note>
           <target>Es Material</target>
         </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 2515415425 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Prod. tools revision warning email</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Email aviso revisión útiles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Email aviso revision utiles - Property Caption</note>
+          <target>Email aviso revisión útiles</target>
+        </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 1613777343 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>Fecha Diario dentro periodo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Fecha Diario dentro periodo"</note>
@@ -45018,6 +45060,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Envío ped. transfer. (cant.)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Trans. Ord. Shipment (Qty.) - Property Caption</note>
           <target>Envío ped. transfer. (cant.)</target>
+        </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 997066580 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>Last prod. tools revision warning</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Últ. aviso revisión útiles"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field Ult. aviso revision utiles - Property Caption</note>
+          <target>Últ. aviso revisión útiles</target>
         </trans-unit>
         <trans-unit id="TableExtension 381309945 - Field 396071971 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3495052746">
           <source>Item Name production</source>

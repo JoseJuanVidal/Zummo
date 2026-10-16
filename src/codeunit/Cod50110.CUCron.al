@@ -100,6 +100,8 @@ codeunit 50110 "CU_Cron"
                         CosteMovValorGLEntry();
 
                     end;
+                'AvisoRevisionUtiles':
+                    AvisoRevisionUtiles(false);
                 else
                     error(lbNoParametroErr);
 
@@ -113,6 +115,122 @@ codeunit 50110 "CU_Cron"
         ZummoINNIC: Codeunit "Zummo Inn. IC Functions";
     begin
         zummoINNIC.GLEntry_ValueEntry(ValueEntry);
+    end;
+
+    // =============     AVISO MENSUAL DE REVISIÓN DE ÚTILES DE CALIDAD          ====================
+    // ==  Se ejecuta a diario desde la cola, pero solo envía una vez al mes (el primer día que se ejecute).
+    // ==  Si no hay útiles a revisar también se envía, para saber que la cola está activa.
+    // ==  Manual (acción en Configuración inventario): envía siempre y no actualiza la fecha del último aviso.
+    // ======================================================================================================
+
+    procedure AvisoRevisionUtiles(Manual: Boolean)
+    var
+        InventorySetup: Record "Inventory Setup";
+        SMTPSetup: Record "SMTP Mail Setup";
+        cduSmtp: Codeunit "SMTP Mail";
+        txtAsunto: Text;
+        textoHtml: Text;
+    begin
+        InventorySetup.Get();
+        if not Manual then
+            if (InventorySetup."Ult. aviso revision utiles" >= CalcDate('<-CM>', Today)) and
+               (InventorySetup."Ult. aviso revision utiles" <= CalcDate('<CM>', Today)) then
+                exit;
+        InventorySetup.TestField("Email aviso revision utiles");
+
+        txtAsunto := StrSubstNo('Útiles calidad – revisiones pendientes %1', GetNombreMes(Today));
+        textoHtml := GetHtmlRevisionUtiles();
+
+        SMTPSetup.Get();
+        Clear(cduSmtp);
+        cduSmtp.CreateMessage(CompanyName, SMTPSetup."User ID", InventorySetup."Email aviso revision utiles", txtAsunto, textoHtml, true);
+        cduSmtp.Send();
+
+        if Manual then
+            exit;
+        InventorySetup."Ult. aviso revision utiles" := Today;
+        InventorySetup.Modify();
+    end;
+
+    local procedure GetHtmlRevisionUtiles(): Text
+    var
+        ProdTools: Record "ZM Productión Tools";
+        Vendor: Record Vendor;
+        Filas: TextBuilder;
+        Html: TextBuilder;
+        NumUtiles: Integer;
+        NombreProveedor: Text;
+        EstiloCelda: Text;
+    begin
+        // colores corporativos zummocorp.com en tonos claros
+        EstiloCelda := 'padding:8px 10px;border-bottom:1px solid #e3ded8;';
+
+        ProdTools.SetFilter(Status, '<>%1', ProdTools.Status::Inctive);
+        ProdTools.SetRange("Next date revision", CalcDate('<-CM>', Today), CalcDate('<CM>', Today));
+        if ProdTools.FindSet() then
+            repeat
+                if ProdTools.RevisionThisMonth() then begin
+                    NumUtiles += 1;
+                    NombreProveedor := '';
+                    if Vendor.Get(ProdTools."Vendor No.") then
+                        NombreProveedor := Vendor.Name;
+                    Filas.Append('<tr>');
+                    Filas.Append('<td style="' + EstiloCelda + 'font-weight:bold;">' + HtmlEncode(ProdTools.Code) + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + '">' + HtmlEncode(ProdTools.Description) + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + '">' + HtmlEncode(Format(ProdTools.Type)) + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + '">' + HtmlEncode(ProdTools.Bin) + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + '">' + HtmlEncode(ProdTools.Use) + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + '">' + HtmlEncode(ProdTools.Brand + ' ' + ProdTools.Model) + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + 'white-space:nowrap;">' + Format(ProdTools."Last date revision") + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + 'white-space:nowrap;color:#e72a02;font-weight:bold;">' + Format(ProdTools."Next date revision") + '</td>');
+                    Filas.Append('<td style="' + EstiloCelda + '">' + HtmlEncode(NombreProveedor) + '</td>');
+                    Filas.Append('</tr>');
+                end;
+            until ProdTools.Next() = 0;
+
+        Html.Append('<div style="background:#fafafa;padding:20px;font-family:Segoe UI,Arial,sans-serif;color:#343a40;">');
+        Html.Append('<div style="max-width:960px;margin:0 auto;background:#ffffff;border:1px solid #e3ded8;border-top:4px solid #e72a02;">');
+        Html.Append('<div style="background:#f2f0ed;padding:16px 20px;">');
+        Html.Append('<div style="font-size:12px;color:#60696f;text-transform:uppercase;letter-spacing:1px;">Zummo · Útiles de calidad</div>');
+        Html.Append('<div style="font-size:20px;font-weight:bold;color:#0e0e0d;margin-top:4px;">Revisiones de ' + GetNombreMes(Today) + '</div>');
+        Html.Append('</div>');
+        Html.Append('<div style="padding:16px 20px;font-size:14px;">');
+
+        if NumUtiles = 0 then
+            Html.Append('<p style="margin:0;padding:12px 14px;background:#f2f0ed;border-left:4px solid #a6998b;">No hay útiles con revisión o calibración prevista este mes.</p>')
+        else begin
+            Html.Append('<p style="margin:0 0 14px 0;">Útiles habilitados con revisión o calibración prevista este mes: <b style="color:#e72a02;">' + Format(NumUtiles) + '</b></p>');
+            Html.Append('<table cellspacing="0" cellpadding="0" style="width:100%;border-collapse:collapse;font-size:13px;">');
+            Html.Append('<tr style="background:#e3ded8;color:#343a40;text-align:left;">');
+            Html.Append('<th style="padding:8px 10px;">Código</th><th style="padding:8px 10px;">Descripción</th><th style="padding:8px 10px;">Tipo</th>');
+            Html.Append('<th style="padding:8px 10px;">Ubicación</th><th style="padding:8px 10px;">Uso</th><th style="padding:8px 10px;">Marca / Modelo</th>');
+            Html.Append('<th style="padding:8px 10px;">Últ. revisión</th><th style="padding:8px 10px;">Próx. revisión</th><th style="padding:8px 10px;">Proveedor</th>');
+            Html.Append('</tr>');
+            Html.Append(Filas.ToText());
+            Html.Append('</table>');
+        end;
+
+        Html.Append('</div>');
+        Html.Append('<div style="padding:10px 20px;font-size:11px;color:#60696f;border-top:1px solid #e3ded8;">');
+        Html.Append('Aviso automático de la cola de proyectos de Business Central (' + CompanyName + '), ' + Format(Today) + '.');
+        Html.Append('</div></div></div>');
+        exit(Html.ToText());
+    end;
+
+    local procedure HtmlEncode(Texto: Text): Text
+    var
+        Resultado: TextBuilder;
+    begin
+        Resultado.Append(Texto);
+        Resultado.Replace('&', '&amp;');
+        Resultado.Replace('<', '&lt;');
+        Resultado.Replace('>', '&gt;');
+        exit(Resultado.ToText());
+    end;
+
+    local procedure GetNombreMes(Fecha: Date): Text
+    begin
+        exit(SelectStr(Date2DMY(Fecha, 2), 'enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre') + ' ' + Format(Date2DMY(Fecha, 3)));
     end;
 
     procedure AvisosClientesNuevos()

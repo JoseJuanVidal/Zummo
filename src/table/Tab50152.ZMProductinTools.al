@@ -194,6 +194,19 @@ table 50152 "ZM Productión Tools"
 
     end;
 
+    // Revisión en el mes en curso: habilitado (los deshabilitados no se calibran), con periodicidad
+    // y fecha siguiente revisión dentro del mes
+    procedure RevisionThisMonth(): Boolean
+    var
+        FechaVacia: DateFormula;
+    begin
+        if Rec.Status = Rec.Status::Inctive then
+            exit(false);
+        if Rec.Periodicity = FechaVacia then
+            exit(false);
+        exit((Rec."Next date revision" >= CalcDate('<-CM>', Today)) and (Rec."Next date revision" <= CalcDate('<CM>', Today)));
+    end;
+
     local procedure DeleteProductionTools()
     begin
         ProdToolsLdgEntry.Reset();

@@ -85,5 +85,16 @@ tableextension 50127 "STHInventory Setup" extends "Inventory Setup" //313
             DataClassification = CustomerContent;
             Caption = 'Fecha Diario dentro periodo', comment = 'ESP="Fecha Diario dentro periodo"';
         }
+        field(50130; "Email aviso revision utiles"; Text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Prod. tools revision warning email', comment = 'ESP="Email aviso revisión útiles"';
+        }
+        field(50131; "Ult. aviso revision utiles"; Date)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Last prod. tools revision warning', comment = 'ESP="Últ. aviso revisión útiles"';
+            Editable = false;
+        }
     }
 }

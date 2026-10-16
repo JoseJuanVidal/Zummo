@@ -17,67 +17,83 @@ page 50129 "Productions tools"
                 field("Code"; Rec."Code")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field(Use; Use)
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleTxt;
                 }
                 field(Bin; Bin)
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleTxt;
                 }
                 field(Type; Type)
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleTxt;
                 }
                 field(Brand; Rec.Brand)
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field(Model; Rec.Model)
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
 
                 field(Periodicity; Rec.Periodicity)
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field(Units; Units)
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleTxt;
                 }
                 field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field("Purchase Date"; Rec."Purchase Date")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field("Vendor No."; "Vendor No.")
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleTxt;
                 }
                 field("Last date revision"; Rec."Last date revision")
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field("Next date revision"; "Next date revision")
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleTxt;
                 }
                 field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
                 field(Resolution; Rec.Resolution)
                 {
                     ApplicationArea = All;
+                    StyleExpr = StyleTxt;
                 }
             }
         }
@@ -124,6 +140,14 @@ page 50129 "Productions tools"
         CurrPage."Attached Documents".Page.SetTableNo(50152, Rec.Code, 0, RefRecord);
         CurrPage."Attached Documents".Page.SetProdTools_RecordRef(Rec);
 
+        // en rojo los que se tienen que revisar este mes
+        if Rec.RevisionThisMonth() then
+            StyleTxt := 'Unfavorable'
+        else
+            StyleTxt := 'Standard';
     end;
+
+    var
+        StyleTxt: Text;
 }
 

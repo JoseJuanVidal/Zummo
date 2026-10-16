@@ -73,6 +73,7 @@ page 50130 "Productions tool"
                 field("Next date revision"; "Next date revision")
                 {
                     ApplicationArea = all;
+                    StyleExpr = StyleTxt;
                 }
                 group(Observations)
                 {
@@ -153,10 +154,16 @@ page 50130 "Productions tool"
 
         CurrPage."Attached Documents".Page.SetTableNo(50152, Rec.Code, 0, RefRecord);
         CurrPage."Attached Documents".Page.SetProdTools_RecordRef(Rec);
+
+        if Rec.RevisionThisMonth() then
+            StyleTxt := 'Unfavorable'
+        else
+            StyleTxt := 'Standard';
     end;
 
     var
         vComments: Text;
+        StyleTxt: Text;
 
     local procedure GetComments(): Text
     begin

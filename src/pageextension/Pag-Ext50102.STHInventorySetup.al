@@ -77,12 +77,51 @@ pageextension 50102 "STHInventorySetup" extends "Inventory Setup"
                     ApplicationArea = all;
                 }
             }
+            group(UtilesCalidad)
+            {
+                Caption = 'Quality tools', comment = 'ESP="Útiles calidad"';
+
+                field("Email aviso revision utiles"; "Email aviso revision utiles")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Recipients (separated by ;) of the monthly email with the tools to be revised this month.', comment = 'ESP="Destinatarios (separados por ;) del email mensual con los útiles que se tienen que revisar este mes."';
+                }
+                field("Ult. aviso revision utiles"; "Ult. aviso revision utiles")
+                {
+                    ApplicationArea = all;
+                }
+            }
         }
     }
 
     actions
     {
-        // Add changes to page actions here
+        addlast(Processing)
+        {
+            action(EnviarAvisoRevisionUtiles)
+            {
+                ApplicationArea = all;
+                Caption = 'Send tools revision warning', comment = 'ESP="Enviar aviso revisión útiles"';
+                ToolTip = 'Sends now the email with the quality tools to be revised this month, without waiting for the job queue.', comment = 'ESP="Envía ahora el email con los útiles de calidad a revisar este mes, sin esperar a la cola."';
+                Image = Email;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+
+                trigger OnAction()
+                var
+                    CUCron: Codeunit CU_Cron;
+                    lblConfirm: Label '¿Enviar ahora el aviso de revisión de útiles a %1?', comment = 'ESP="¿Enviar ahora el aviso de revisión de útiles a %1?"';
+                    lblEnviado: Label 'Aviso enviado', comment = 'ESP="Aviso enviado"';
+                begin
+                    Rec.TestField("Email aviso revision utiles");
+                    if not Confirm(lblConfirm, false, Rec."Email aviso revision utiles") then
+                        exit;
+                    CUCron.AvisoRevisionUtiles(true);
+                    Message(lblEnviado);
+                end;
+            }
+        }
     }
 
     var
