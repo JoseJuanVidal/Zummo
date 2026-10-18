@@ -22,6 +22,22 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            // PDM: ocultas por defecto, los FlowFields solo se calculan si el usuario muestra la columna
+            field("PDM Revision"; "PDM Revision")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("PDM Approval Date"; "PDM Approval Date")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
+            field("PDM In Modification"; "PDM In Modification")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("CMMF Code"; "CMMF Code")
             {
                 ApplicationArea = all;
@@ -195,6 +211,14 @@ pageextension 50133 "ItemList" extends "Item List"
             {
                 ApplicationArea = all;
                 Visible = false;
+            }
+        }
+        addfirst(FactBoxes)
+        {
+            part(PDMFactBox; "ZM PDM Item FactBox")
+            {
+                ApplicationArea = all;
+                SubPageLink = "No." = field("No.");
             }
         }
     }
@@ -447,7 +471,39 @@ pageextension 50133 "ItemList" extends "Item List"
                 RunObject = page "Posted PL Items temporary list";
                 RunPageLink = "Item No." = field("No.");
             }
+            action(PDMHistory)
+            {
+                ApplicationArea = all;
+                Caption = 'PDM History', comment = 'ESP="Histórico PDM"';
+                Image = History;
 
+                trigger OnAction()
+                begin
+                    PDMSync.ShowItemHistory(Rec."No.");
+                end;
+            }
+            action(PDMDocuments)
+            {
+                ApplicationArea = all;
+                Caption = 'PDM Documents', comment = 'ESP="Documentación PDM"';
+                Image = Documents;
+
+                trigger OnAction()
+                begin
+                    PDMSync.ShowItemDocuments(Rec."No.");
+                end;
+            }
+            action(PDMOpenPDF)
+            {
+                ApplicationArea = all;
+                Caption = 'View drawing (PDF)', comment = 'ESP="Ver plano (PDF)"';
+                Image = Document;
+
+                trigger OnAction()
+                begin
+                    PDMSync.OpenItemPDF(Rec."No.");
+                end;
+            }
         }
     }
 
@@ -461,6 +517,7 @@ pageextension 50133 "ItemList" extends "Item List"
         UserSetup: Record "User Setup";
         WarehouseEntry: Record "Warehouse Entry";
         ValueEntry: Record "Value Entry";
+        PDMSync: Codeunit "ZM PDM Sync";
         ShowExcelCostes: Boolean;
 
     local procedure CalculateItemTipoEnvasePlastic()

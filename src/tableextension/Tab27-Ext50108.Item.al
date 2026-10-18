@@ -730,6 +730,50 @@ tableextension 50108 "Item" extends Item  //27
         }
         //-  NORMATIVA MEDIO AMBIENTAL
 
+        // PDM SolidWorks: solo FlowFields (no se guarda nada en el producto), sobre el documento principal
+        field(50240; "PDM Revision"; Text[10])
+        {
+            Caption = 'PDM Revision', comment = 'ESP="Revisión PDM"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM PDM Item Link".Revision where("Item No." = field("No."), Main = const(true)));
+            Editable = false;
+        }
+        field(50241; "PDM Approval Date"; DateTime)
+        {
+            Caption = 'PDM Approval Date', comment = 'ESP="Fecha aprob. PDM"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM PDM Item Link"."Approval Date" where("Item No." = field("No."), Main = const(true)));
+            Editable = false;
+        }
+        field(50242; "PDM Approved By"; Text[50])
+        {
+            Caption = 'PDM Approved By', comment = 'ESP="Aprobado por PDM"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM PDM Item Link"."Approved By" where("Item No." = field("No."), Main = const(true)));
+            Editable = false;
+        }
+        field(50243; "PDM In Modification"; Boolean)
+        {
+            Caption = 'PDM In Modification', comment = 'ESP="En modificación PDM"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM PDM Item Link"."In Modification" where("Item No." = field("No."), Main = const(true)));
+            Editable = false;
+        }
+        field(50244; "PDM Current"; Boolean)
+        {
+            Caption = 'PDM Current', comment = 'ESP="Vigente PDM"';
+            FieldClass = FlowField;
+            CalcFormula = lookup("ZM PDM Item Link".Current where("Item No." = field("No."), Main = const(true)));
+            Editable = false;
+        }
+        field(50245; "PDM Documents"; Integer)
+        {
+            Caption = 'PDM Documents', comment = 'ESP="Documentos PDM"';
+            FieldClass = FlowField;
+            CalcFormula = count("ZM PDM Item Link" where("Item No." = field("No.")));
+            Editable = false;
+        }
+
     }
     fieldgroups
     {
