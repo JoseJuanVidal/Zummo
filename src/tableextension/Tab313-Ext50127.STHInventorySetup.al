@@ -130,5 +130,11 @@ tableextension 50127 "STHInventory Setup" extends "Inventory Setup" //313
             Caption = 'PDM Sync Mark', comment = 'ESP="Marca sincronización PDM"';
             Editable = false;
         }
+        field(50146; "PDM Pending From Date"; Date)
+        {
+            // bandeja "Aprobados PDM sin producto": planos aprobados desde esta fecha
+            DataClassification = CustomerContent;
+            Caption = 'PDM tray from date', comment = 'ESP="Bandeja PDM desde fecha"';
+        }
     }
 }

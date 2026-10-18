@@ -16,6 +16,9 @@ page 17483 "ZM PL Items Temporary API"
                 field("State Creation"; "State Creation") { }
                 field(Type; Type) { }
                 field("Item No."; "Item No.") { }
+                // después del nº producto: si el PDM envía el ID del documento, prevalece sobre la búsqueda por código
+                field("PDM Document ID"; "PDM Document ID") { }
+                field("PDM Status"; "PDM Status") { Editable = false; }
                 field(Description; Description) { }
                 field("Base Unit of Measure"; "Base Unit of Measure") { }
                 field("Clasification Type"; "Clasification Type") { }
@@ -81,7 +84,7 @@ page 17483 "ZM PL Items Temporary API"
         myInt: Integer;
     begin
         if TranslateENG <> '' then begin
-            if not ItemTranslationtemporary.get(Rec."No.", 'ENG') then begin
+            if not ItemTranslationtemporary.Get(Rec."No.", '', 'ENG') then begin
                 ItemTranslationtemporary.Init();
                 ItemTranslationtemporary."Item No." := Rec."No.";
                 ItemTranslationtemporary."Language Code" := 'ENG';
@@ -91,7 +94,7 @@ page 17483 "ZM PL Items Temporary API"
             ItemTranslationtemporary.Modify();
         end;
         if TranslateFRA <> '' then begin
-            if not ItemTranslationtemporary.get(Rec."No.", 'FRA') then begin
+            if not ItemTranslationtemporary.Get(Rec."No.", '', 'FRA') then begin
                 ItemTranslationtemporary.Init();
                 ItemTranslationtemporary."Item No." := Rec."No.";
                 ItemTranslationtemporary."Language Code" := 'FRA';
@@ -108,9 +111,9 @@ page 17483 "ZM PL Items Temporary API"
     begin
         Clear(TranslateENG);
         Clear(TranslateFRA);
-        if ItemTranslationtemporary.get(Rec."No.", 'ENG') then
+        if ItemTranslationtemporary.Get(Rec."No.", '', 'ENG') then
             TranslateENG := ItemTranslationtemporary.Description;
-        if ItemTranslationtemporary.get(Rec."No.", 'FRA') then
+        if ItemTranslationtemporary.Get(Rec."No.", '', 'FRA') then
             TranslateFRA := ItemTranslationtemporary.Description;
     end;
 }

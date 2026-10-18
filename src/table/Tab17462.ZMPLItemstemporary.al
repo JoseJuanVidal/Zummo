@@ -26,10 +26,14 @@ table 17462 "ZM PL Items Temporary"
             ValidateTableRelation = false;
 
             trigger OnValidate()
+            var
+                PDMSync: Codeunit "ZM PDM Sync";
             begin
                 if Rec."Request Type" in [Rec."Request Type"::New, Rec."Request Type"::Change] then
                     SetupPreItemReg.CheckMaxLengthItemNo(Rec."Item No.");
                 OnValidate_ItemNo();
+                // plano del PDM con ese código (aprobado o, consultando el PDM, pendiente de aprobar)
+                PDMSync.LinkRequest(Rec, true);
 
                 ChangeFieldNo(Rec.FieldNo("Item No."));
             end;
@@ -1303,6 +1307,48 @@ table 17462 "ZM PL Items Temporary"
             Caption = 'Activo Fijo (Moldes/Utillaje)', comment = 'ESP="Activo Fijo (Moldes/Utillaje)"';
             TableRelation = "Fixed Asset" where("Molde/Utillaje" = const(true));
         }
+        // PDM SolidWorks: plano relacionado (mismos números en "Posted PL Items temporary")
+        field(50970; "PDM Document ID"; Integer)
+        {
+            Caption = 'PDM Document ID', comment = 'ESP="ID Documento PDM"';
+            BlankZero = true;
+
+            trigger OnValidate()
+            var
+                PDMSync: Codeunit "ZM PDM Sync";
+            begin
+                PDMSync.ValidateRequestDocument(Rec);
+            end;
+
+            trigger OnLookup()
+            var
+                PDMSync: Codeunit "ZM PDM Sync";
+            begin
+                PDMSync.LookupRequestDocument(Rec);
+            end;
+        }
+        field(50971; "PDM Code"; Text[100])
+        {
+            Caption = 'PDM Code', comment = 'ESP="Código PDM"';
+            Editable = false;
+        }
+        field(50972; "PDM Status"; Option)
+        {
+            Caption = 'PDM Status', comment = 'ESP="Estado PDM"';
+            OptionMembers = " ","Pending Approval",Approved,"In Modification";
+            OptionCaption = ' ,Pending Approval,Approved,In Modification', comment = 'ESP=" ,Pendiente aprobación,Aprobado,En modificación"';
+            Editable = false;
+        }
+        field(50973; "PDM Revision"; Text[10])
+        {
+            Caption = 'PDM Revision', comment = 'ESP="Revisión PDM"';
+            Editable = false;
+        }
+        field(50974; "PDM Approval Date"; DateTime)
+        {
+            Caption = 'PDM Approval Date', comment = 'ESP="Fecha aprob. PDM"';
+            Editable = false;
+        }
         field(65100; "Sujeto a Control de Calidad"; Boolean)
         {
             Caption = 'Sujeto a Control de Calidad', comment = 'ESP="Sujeto a Control de Calidad"';  // 65100
@@ -1709,6 +1755,7 @@ table 17462 "ZM PL Items Temporary"
     procedure LaunchRegisterItemTemporary(Requested: Boolean)
     var
         ItemApprovalDepartment: Record "ZM Item Approval Department";
+        PDMSync: Codeunit "ZM PDM Sync";
         Dpto: code[20];
         RField: fieldRef;
         lblRequestError: Label 'You must select a value in %1.', comment = 'ESP="Debe seleccionar un valor en %1."';
@@ -1722,6 +1769,9 @@ table 17462 "ZM PL Items Temporary"
             Error(lblRequestError, Rec.FieldCaption("Request Type"));
         if rec."State Creation" in [Rec."State Creation"::Finished] then
             Error(lblError, Rec."No.", Rec.Description);
+        // aviso si el plano relacionado en el PDM no está aprobado (no bloquea)
+        if not PDMSync.CheckRequestBeforeLaunch(Rec) then
+            exit;
         CheckItemsTemporary(Dpto);
         case Requested of
             false:  // lanzamiento por el primer usuario que lo crea

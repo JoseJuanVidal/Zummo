@@ -125,6 +125,14 @@ table 17300 "ZM PDM Document"
             CalcFormula = count("ZM PDM Item Link" where("Document ID" = field("Document ID")));
             Editable = false;
         }
+        field(41; "Has PDF"; Boolean)
+        {
+            // hay un PDF aprobado con el mismo código (el PDF es otro documento del PDM)
+            Caption = 'Has PDF', comment = 'ESP="Tiene PDF"';
+            FieldClass = FlowField;
+            CalcFormula = exist("ZM PDM Document" where("PDM Code" = field("PDM Code"), Extension = const('pdf'), Obsolete = const(false)));
+            Editable = false;
+        }
     }
 
     keys

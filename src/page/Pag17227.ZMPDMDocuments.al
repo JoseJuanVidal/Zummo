@@ -27,6 +27,11 @@ page 17227 "ZM PDM Documents"
                 {
                     ApplicationArea = All;
                 }
+                field("Has PDF"; "Has PDF")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
                 field(Revision; Revision)
                 {
                     ApplicationArea = All;

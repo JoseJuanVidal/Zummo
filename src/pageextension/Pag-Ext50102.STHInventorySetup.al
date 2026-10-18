@@ -129,6 +129,11 @@ pageextension 50102 "STHInventorySetup" extends "Inventory Setup"
                 {
                     ApplicationArea = all;
                 }
+                field("PDM Pending From Date"; "PDM Pending From Date")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'The tray ''PDM approved without item'' shows the drawings approved from this date.', comment = 'ESP="La bandeja ''Aprobados PDM sin producto'' muestra los planos aprobados desde esta fecha."';
+                }
             }
         }
     }

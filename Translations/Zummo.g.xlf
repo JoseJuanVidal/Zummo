@@ -6513,6 +6513,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado Bulto (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field Packing Recycled plastic (kg) - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1338702598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Approval Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha aprob. PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field PDM Approval Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1795102000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field PDM Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 3154320237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Document ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Documento PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field PDM Document ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 1722534006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Revision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisión PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field PDM Revision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2185652831 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field PDM Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1358451628 - Field 2185652831 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Pending Approval,Approved,In Modification</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Pendiente aprobación,Aprobado,En modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Posted PL Items temporary - Field PDM Status - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 1358451628 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Picture</source>
           <note from="Developer" annotates="general" priority="2">ESP="Imagen"</note>
@@ -11383,6 +11413,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Carpeta"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Folder - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 241878115 - Field 2162073852 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Has PDF</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tiene PDF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Has PDF - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 241878115 - Field 999929299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>In Modification</source>
           <note from="Developer" annotates="general" priority="2">ESP="En modificación"</note>
@@ -12287,6 +12322,36 @@
           <source>Package Recycled Plastic (kg)</source>
           <note from="Developer" annotates="general" priority="2">ESP="Plástico reciclado Bulto (kg)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field Packing Recycled plastic (kg) - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 1338702598 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Approval Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha aprob. PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field PDM Approval Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 1795102000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field PDM Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 3154320237 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Document ID</source>
+          <note from="Developer" annotates="general" priority="2">ESP="ID Documento PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field PDM Document ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 1722534006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Revision</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Revisión PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field PDM Revision - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 2185652831 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field PDM Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 4269697522 - Field 2185652831 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Pending Approval,Approved,In Modification</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Pendiente aprobación,Aprobado,En modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PL Items Temporary - Field PDM Status - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 4269697522 - Field 1594621544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Picture</source>
@@ -14103,6 +14168,51 @@
           <note from="Developer" annotates="general" priority="2">ESP="Proveedor #1#############\Prodcuto #2##################################"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM Ext Excel Export - Method ExportVendorPrice - NamedType lblDialog</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 4275267261 - NamedType 1913630151" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The drawing %1 (%2) is in status '%3' in the PDM and has not been approved yet.\Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El plano %1 (%2) está en estado '%3' en el PDM y todavía no está aprobado.\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CheckRequestBeforeLaunch - NamedType lblPending</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 4275267261 - NamedType 4146701517" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The drawing %1 is being modified in the PDM (approved revision: %2).\Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El plano %1 se está modificando en el PDM (revisión aprobada: %2).\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CheckRequestBeforeLaunch - NamedType lblInModification</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 4275267261 - NamedType 2172267159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The PDM could not be checked. The request continues without checking the drawing.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha podido consultar el PDM. La solicitud continúa sin comprobar el plano."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CheckRequestBeforeLaunch - NamedType lblNoConnection</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 645593098 - NamedType 4139126033" size-unit="char" translate="yes" xml:space="preserve">
+          <source>(without item no., %1)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="(sin nº producto, %1)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CreateRequestsFromTray - NamedType lblNoItemNo</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 645593098 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The following requests will be created:\%1\Do you want to continue?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se van a crear las siguientes solicitudes:\%1\¿Desea continuar?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CreateRequestsFromTray - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 645593098 - NamedType 842810174" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 requests have been created: %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Se han creado %1 solicitudes: %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CreateRequestsFromTray - NamedType lblDone</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 3057475107 - NamedType 725712075" size-unit="char" translate="yes" xml:space="preserve">
+          <source>No drawing has been found in the PDM for %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha encontrado ningún plano en el PDM para %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method FillRequestFromPDM - NamedType lblNotFound</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 3057475107 - NamedType 842810174" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM data updated (only the empty fields are filled in). Drawing status: %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Datos del PDM actualizados (solo se rellenan los campos vacíos). Estado del plano: %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method FillRequestFromPDM - NamedType lblDone</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 1284794349 - NamedType 1938112563" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There is no approved PDF in the PDM for %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No hay ningún PDF aprobado en el PDM para %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method OpenCodePDF - NamedType lblNoPDF</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2456881923 - Method 3326077956 - NamedType 1754445092" size-unit="char" translate="yes" xml:space="preserve">
           <source>Only versions that were approved can be opened.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solo se pueden abrir las versiones que fueron aprobadas."</note>
@@ -14117,6 +14227,11 @@
           <source>Item %1 has no approved PDF (replaced by %2).</source>
           <note from="Developer" annotates="general" priority="2">ESP="El producto %1 no tiene PDF aprobado (sustituido por %2)."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method OpenItemPDF - NamedType lblNoPDFReplaced</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 707113145 - NamedType 1938112563" size-unit="char" translate="yes" xml:space="preserve">
+          <source>There is no approved PDF in the PDM for %1.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No hay ningún PDF aprobado en el PDM para %1."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method OpenRequestPDF - NamedType lblNoPDF</note>
         </trans-unit>
         <trans-unit id="Codeunit 2456881923 - Method 1700790716 - NamedType 725712075" size-unit="char" translate="yes" xml:space="preserve">
           <source>File %1 (version %2) not found in the PDM vault:\%3</source>
@@ -14139,8 +14254,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method Synchronize - NamedType lblWindow</note>
         </trans-unit>
         <trans-unit id="Codeunit 2456881923 - Method 4166145734 - NamedType 842810174" size-unit="char" translate="yes" xml:space="preserve">
-          <source>PDM synchronization finished.\Documents: %1\History entries: %2</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Sincronización PDM terminada.\Documentos: %1\Líneas de histórico: %2"</note>
+          <source>PDM synchronization finished.\Documents: %1\History entries: %2\Updated item requests: %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Sincronización PDM terminada.\Documentos: %1\Líneas de histórico: %2\Solicitudes de alta actualizadas: %3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method Synchronize - NamedType lblDone</note>
         </trans-unit>
         <trans-unit id="Codeunit 2456881923 - Method 4263468516 - NamedType 4085723346" size-unit="char" translate="yes" xml:space="preserve">
@@ -14152,6 +14267,11 @@
           <source>Items</source>
           <note from="Developer" annotates="general" priority="2">ESP="Productos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method UpdateMainLinks - NamedType lblItems</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 3309228652 - NamedType 725712075" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Document %1 does not exist in the PDM.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El documento %1 no existe en el PDM."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method ValidateRequestDocument - NamedType lblNotFound</note>
         </trans-unit>
         <trans-unit id="Codeunit 3770991987 - Method 2226100883 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
           <source>¿Do you want to open the discharge request for item %1 %2?</source>
@@ -18047,6 +18167,11 @@
           <source>Indica el estado de la solicitud de datos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Indica el estado de la solicitud de datos."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control State Creation - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 4165822776 - Control 2624695723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM drawing</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plano PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Posted PL Items temporary card - Control PDM - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 4165822776 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prices &amp; Sales</source>
@@ -21983,6 +22108,66 @@
           <note from="Developer" annotates="general" priority="2">ESP="Ver plano (PDF)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Item FactBox - Action OpenPDF - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1496004825 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM approved without item</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobados PDM sin producto"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 2182717378 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Creates a new item request for each selected drawing (one per color when the drawing is a color variant '-X').</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crea una solicitud de alta por cada plano seleccionado (una por color si el plano es de variantes '-X')."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action CreateRequests - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 2182717378 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Create request</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Crear solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action CreateRequests - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 4201773078 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM History</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Histórico PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action History - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 2221265558 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open SolidWorks file</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abrir fichero SolidWorks"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action OpenFile - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 925742266 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View drawing (PDF)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver plano (PDF)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action OpenPDF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 2026913255 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Refresh</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action Refresh - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1968399940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Search in PDM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Buscar en el PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Search - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1968399940 - Method 2568720719 - NamedType 1047248991" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Enter at least 3 characters.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indique al menos 3 caracteres."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Search - Method DoSearch - NamedType lblShortText</note>
+        </trans-unit>
+        <trans-unit id="Page 1968399940 - Method 2568720719 - NamedType 2172267159" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The PDM could not be checked.\%1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="No se ha podido consultar el PDM.\%1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Search - Method DoSearch - NamedType lblNoConnection</note>
+        </trans-unit>
+        <trans-unit id="Page 1968399940 - Control 782762290 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Search</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Búsqueda"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Search - Control Search - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1968399940 - Control 341019013 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Code, description or file name contains</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Código, descripción o nombre de fichero contiene"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Search - Control SearchText - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1863527760 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Pre-Items registration list</source>
           <note from="Developer" annotates="general" priority="2">ESP="Lista Pre-Productos"</note>
@@ -22223,6 +22408,16 @@
           <note from="Developer" annotates="general" priority="2">ESP="Comprobador"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control UserName - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 2624695723 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM drawing</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plano PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control PDM - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Control 3154320237 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Drawing of the PDM related to the request. It is searched automatically with the item no.; with the lookup you can search it in the PDM.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Plano del PDM relacionado con la solicitud. Se busca solo con el nº de producto; con la búsqueda se puede localizar en el PDM."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Control PDM Document ID - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Control 1795699428 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Prices &amp; Sales</source>
           <note from="Developer" annotates="general" priority="2">ESP="Precios y ventas"</note>
@@ -22278,6 +22473,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Precios Compra"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PurchasePrices - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 3910157925 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM History</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Histórico PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PDMHistory - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Action 186804761 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Hist. de Altas de productos</source>
           <note from="Developer" annotates="general" priority="2">ESP="Hist. de Altas de productos"</note>
@@ -22327,6 +22527,26 @@
           <source>Open</source>
           <note from="Developer" annotates="general" priority="2">ESP="Abrir"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action Open - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 2346371464 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PDMActions - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 1811937610 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Searches the drawing in the PDM again and fills in the empty fields of the request.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Vuelve a buscar el plano en el PDM y rellena los campos vacíos de la solicitud."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PDMFill - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 1811937610 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fill in from PDM</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Rellenar desde PDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PDMFill - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3139896982 - Action 3772672441 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>View drawing (PDF)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver plano (PDF)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items temporary card - Action PDMOpenPDF - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 3139896982 - Action 677328574 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Procesar Producto</source>
@@ -35983,6 +36203,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="PDM SolidWorks"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Control PDM - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 687362182 - Control 1004124792 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
+          <source>The tray 'PDM approved without item' shows the drawings approved from this date.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="La bandeja 'Aprobados PDM sin producto' muestra los planos aprobados desde esta fecha."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension STHInventorySetup - Control PDM Pending From Date - Property ToolTip</note>
+        </trans-unit>
         <trans-unit id="PageExtension 687362182 - Control 660243426 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 1180040559">
           <source>Read-only SQL user. Leave it blank to use the account of the Business Central service.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Usuario SQL de solo lectura. En blanco se usa la cuenta del servicio de Business Central."</note>
@@ -41117,6 +41342,11 @@
           <source>PDM Last Sync</source>
           <note from="Developer" annotates="general" priority="2">ESP="Últ. sincronización PDM"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field PDM Last Sync - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 2681093606 - Field 1004124792 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
+          <source>PDM tray from date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Bandeja PDM desde fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension STHInventory Setup - Field PDM Pending From Date - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 2681093606 - Field 566153310 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 1180040559">
           <source>PDM SQL Database</source>

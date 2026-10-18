@@ -207,6 +207,32 @@ page 17471 "ZM PL Items temporary card"
                 }
 
             }
+            group(PDM)
+            {
+                Caption = 'PDM drawing', comment = 'ESP="Plano PDM"';
+
+                field("PDM Document ID"; "PDM Document ID")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Drawing of the PDM related to the request. It is searched automatically with the item no.; with the lookup you can search it in the PDM.', comment = 'ESP="Plano del PDM relacionado con la solicitud. Se busca solo con el nº de producto; con la búsqueda se puede localizar en el PDM."';
+                }
+                field("PDM Code"; "PDM Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Status"; "PDM Status")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Revision"; "PDM Revision")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Approval Date"; "PDM Approval Date")
+                {
+                    ApplicationArea = all;
+                }
+            }
             group(changesLMItems)
             {
                 Caption = 'Sustituye a productos', comment = 'ESP="Sustituye a productos"';
@@ -718,6 +744,36 @@ page 17471 "ZM PL Items temporary card"
     {
         area(Processing)
         {
+            group(PDMActions)
+            {
+                Caption = 'PDM', comment = 'ESP="PDM"';
+                Image = Document;
+
+                action(PDMOpenPDF)
+                {
+                    ApplicationArea = all;
+                    Caption = 'View drawing (PDF)', comment = 'ESP="Ver plano (PDF)"';
+                    Image = Document;
+
+                    trigger OnAction()
+                    begin
+                        PDMSync.OpenRequestPDF(Rec);
+                    end;
+                }
+                action(PDMFill)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Fill in from PDM', comment = 'ESP="Rellenar desde PDM"';
+                    ToolTip = 'Searches the drawing in the PDM again and fills in the empty fields of the request.', comment = 'ESP="Vuelve a buscar el plano en el PDM y rellena los campos vacíos de la solicitud."';
+                    Image = Refresh;
+
+                    trigger OnAction()
+                    begin
+                        PDMSync.FillRequestFromPDM(Rec);
+                        CurrPage.Update(false);
+                    end;
+                }
+            }
             // action(Release)
             // {
             //     ApplicationArea = All;
@@ -924,6 +980,17 @@ page 17471 "ZM PL Items temporary card"
         }
         area(Navigation)
         {
+            action(PDMHistory)
+            {
+                ApplicationArea = all;
+                Caption = 'PDM History', comment = 'ESP="Histórico PDM"';
+                Image = History;
+
+                trigger OnAction()
+                begin
+                    PDMSync.ShowRequestHistory(Rec);
+                end;
+            }
             action(ItemsReview)
             {
                 ApplicationArea = all;
@@ -1062,6 +1129,7 @@ page 17471 "ZM PL Items temporary card"
 
     var
         cduEventosBTC: Codeunit Eventos_btc;
+        PDMSync: Codeunit "ZM PDM Sync";
         Item: Record Item;
         ItemSetupApproval: Record "ZM PL Item Setup Approval";
         ItemSetupDepartment: Record "ZM PL Item Setup Department";

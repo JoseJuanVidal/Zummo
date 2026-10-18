@@ -20,6 +20,9 @@ codeunit 17300 "ZM PDM Sync"
         FileMgt: Codeunit "File Management";
         Window: Dialog;
         SyncTime: DateTime;
+        LiveSearchFailed: Boolean;
+        LiveFileName: Text;
+        LiveStatus: Text;
         PasswordKeyTok: Label 'ZMPDMSQLPassword', Locked = true;
         ApprovedStatusTok: Label 'N''Aprobado'',N''Aprobado Librería'',N''Publicado'',N''Publicado PDF'',N''Publicado PDF_DXF_X_T'',N''Publicado produccion''', Locked = true;
 
@@ -37,7 +40,8 @@ codeunit 17300 "ZM PDM Sync"
         NoDocs: Integer;
         NoHist: Integer;
         lblWindow: Label 'Synchronizing PDM\#1##############################\#2##########', comment = 'ESP="Sincronizando PDM\#1##############################\#2##########"';
-        lblDone: Label 'PDM synchronization finished.\Documents: %1\History entries: %2', comment = 'ESP="Sincronización PDM terminada.\Documentos: %1\Líneas de histórico: %2"';
+        NoRequests: Integer;
+        lblDone: Label 'PDM synchronization finished.\Documents: %1\History entries: %2\Updated item requests: %3', comment = 'ESP="Sincronización PDM terminada.\Documentos: %1\Líneas de histórico: %2\Solicitudes de alta actualizadas: %3"';
     begin
         InventorySetup.Get();
         CheckSetup();
@@ -64,6 +68,7 @@ codeunit 17300 "ZM PDM Sync"
         SQLConnection.Close();
         AddCurrentLinks();
         UpdateMainLinks();
+        NoRequests := UpdateOpenRequests();
 
         InventorySetup.Get();
         InventorySetup."PDM Sync Mark" := CopyStr(NewMark, 1, MaxStrLen(InventorySetup."PDM Sync Mark"));
@@ -71,7 +76,7 @@ codeunit 17300 "ZM PDM Sync"
         InventorySetup.Modify();
         if GuiAllowed() then begin
             Window.Close();
-            Message(lblDone, NoDocs, NoHist);
+            Message(lblDone, NoDocs, NoHist, NoRequests);
         end;
     end;
 
@@ -715,5 +720,697 @@ codeunit 17300 "ZM PDM Sync"
         // sin documentos: filtro que no devuelve nada
         if DocFilter = '' then
             DocFilter := '-1';
+    end;
+
+    // ======================================================================================================
+    // ==  Solicitud de alta de producto (fase 2)
+    // ==  - la solicitud se relaciona con el plano por código (o por ID desde la API)
+    // ==  - planos aprobados: se rellenan los datos vacíos de la solicitud
+    // ==  - planos sin aprobar (consulta directa al PDM): solo se informa el estado y se avisa al lanzar
+    // ======================================================================================================
+    procedure LinkRequest(var Request: Record "ZM PL Items Temporary"; LiveSearch: Boolean)
+    var
+        PDMDocument: Record "ZM PDM Document";
+        TempPDMDocument: Record "ZM PDM Document" temporary;
+    begin
+        LiveSearchFailed := false;
+        LiveFileName := '';
+        LiveStatus := '';
+        if Request."Item No." = '' then begin
+            if LiveSearch then
+                ClearRequestLink(Request);
+            exit;
+        end;
+        if FindApprovedDocument(Request."Item No.", '', PDMDocument) then begin
+            SetRequestLink(Request, PDMDocument);
+            exit;
+        end;
+        if not LiveSearch then
+            exit;
+        if SearchPDM(GetCodeFilter(Request."Item No."), '', 0, TempPDMDocument) then
+            if TempPDMDocument.FindFirst() then begin
+                SetRequestPending(Request, TempPDMDocument, GetBestDocumentID(TempPDMDocument));
+                exit;
+            end;
+        ClearRequestLink(Request);
+    end;
+
+    procedure ValidateRequestDocument(var Request: Record "ZM PL Items Temporary")
+    var
+        PDMDocument: Record "ZM PDM Document";
+        TempPDMDocument: Record "ZM PDM Document" temporary;
+        DocumentID: Integer;
+        lblNotFound: Label 'Document %1 does not exist in the PDM.', comment = 'ESP="El documento %1 no existe en el PDM."';
+    begin
+        if Request."PDM Document ID" = 0 then begin
+            ClearRequestLink(Request);
+            exit;
+        end;
+        if PDMDocument.Get(Request."PDM Document ID") then begin
+            SetRequestLink(Request, PDMDocument);
+            exit;
+        end;
+        if SearchPDM('', '', Request."PDM Document ID", TempPDMDocument) then
+            if TempPDMDocument.FindFirst() then begin
+                DocumentID := TempPDMDocument."Document ID";
+                // resto de documentos del mismo código (la pieza tiene material y peso)
+                if TempPDMDocument."PDM Code" <> '' then
+                    if not SearchPDM(GetCodeFilter(TempPDMDocument."PDM Code"), '', 0, TempPDMDocument) or not TempPDMDocument.Get(DocumentID) then
+                        if SearchPDM('', '', DocumentID, TempPDMDocument) then;
+                SetRequestPending(Request, TempPDMDocument, DocumentID);
+                exit;
+            end;
+        if LiveSearchFailed then
+            exit;  // sin conexión: se guarda el ID y se resolverá en la sincronización
+        Error(lblNotFound, Request."PDM Document ID");
+    end;
+
+    procedure LookupRequestDocument(var Request: Record "ZM PL Items Temporary")
+    var
+        PDMSearch: Page "ZM PDM Search";
+        SearchText: Text;
+    begin
+        SearchText := Request."Item No.";
+        if Request."PDM Code" <> '' then
+            SearchText := Request."PDM Code";
+        PDMSearch.SetSearchText(SearchText);
+        PDMSearch.LookupMode(true);
+        if PDMSearch.RunModal() = Action::LookupOK then
+            Request.Validate("PDM Document ID", PDMSearch.GetSelectedDocumentID());
+    end;
+
+    procedure FillRequestFromPDM(var Request: Record "ZM PL Items Temporary")
+    var
+        lblNotFound: Label 'No drawing has been found in the PDM for %1.', comment = 'ESP="No se ha encontrado ningún plano en el PDM para %1."';
+        lblDone: Label 'PDM data updated (only the empty fields are filled in). Drawing status: %1.', comment = 'ESP="Datos del PDM actualizados (solo se rellenan los campos vacíos). Estado del plano: %1."';
+    begin
+        LinkRequest(Request, true);
+        Request.Modify();
+        if Request."PDM Status" = Request."PDM Status"::" " then
+            Message(lblNotFound, Request."Item No.")
+        else
+            Message(lblDone, Request."PDM Status");
+    end;
+
+    procedure CheckRequestBeforeLaunch(var Request: Record "ZM PL Items Temporary"): Boolean
+    var
+        lblPending: Label 'The drawing %1 (%2) is in status ''%3'' in the PDM and has not been approved yet.\Do you want to continue?', comment = 'ESP="El plano %1 (%2) está en estado ''%3'' en el PDM y todavía no está aprobado.\¿Desea continuar?"';
+        lblInModification: Label 'The drawing %1 is being modified in the PDM (approved revision: %2).\Do you want to continue?', comment = 'ESP="El plano %1 se está modificando en el PDM (revisión aprobada: %2).\¿Desea continuar?"';
+        lblNoConnection: Label 'The PDM could not be checked. The request continues without checking the drawing.', comment = 'ESP="No se ha podido consultar el PDM. La solicitud continúa sin comprobar el plano."';
+    begin
+        // estado al día justo antes de lanzar; solo avisa, nunca bloquea
+        LinkRequest(Request, true);
+        if Request.Modify() then;
+        if not GuiAllowed() then
+            exit(true);
+        if LiveSearchFailed then
+            Message(lblNoConnection);
+        case Request."PDM Status" of
+            Request."PDM Status"::"Pending Approval":
+                exit(Confirm(lblPending, false, LiveFileName, Request."PDM Code", LiveStatus));
+            Request."PDM Status"::"In Modification":
+                exit(Confirm(lblInModification, false, Request."PDM Code", Request."PDM Revision"));
+        end;
+        exit(true);
+    end;
+
+    procedure OpenRequestPDF(Request: Record "ZM PL Items Temporary")
+    var
+        PDMDocument: Record "ZM PDM Document";
+        lblNoPDF: Label 'There is no approved PDF in the PDM for %1.', comment = 'ESP="No hay ningún PDF aprobado en el PDM para %1."';
+    begin
+        if Request."Item No." <> '' then
+            if FindApprovedDocument(Request."Item No.", 'pdf', PDMDocument) then begin
+                OpenDocumentFile(PDMDocument);
+                exit;
+            end;
+        Error(lblNoPDF, Request."Item No.");
+    end;
+
+    procedure OpenCodePDF(PDMCode: Text)
+    var
+        PDMDocument: Record "ZM PDM Document";
+        lblNoPDF: Label 'There is no approved PDF in the PDM for %1.', comment = 'ESP="No hay ningún PDF aprobado en el PDM para %1."';
+    begin
+        if PDMCode <> '' then
+            if FindApprovedDocument(PDMCode, 'pdf', PDMDocument) then begin
+                OpenDocumentFile(PDMDocument);
+                exit;
+            end;
+        Error(lblNoPDF, PDMCode);
+    end;
+
+    procedure ShowRequestHistory(Request: Record "ZM PL Items Temporary")
+    var
+        PDMHistory: Record "ZM PDM History";
+    begin
+        Request.TestField("PDM Document ID");
+        PDMHistory.SetCurrentKey("Date");
+        PDMHistory.Ascending(false);
+        PDMHistory.SetRange("Document ID", Request."PDM Document ID");
+        Page.Run(Page::"ZM PDM History", PDMHistory);
+    end;
+
+    local procedure SetRequestLink(var Request: Record "ZM PL Items Temporary"; PDMDocument: Record "ZM PDM Document")
+    var
+        PartDocument: Record "ZM PDM Document";
+    begin
+        Request."PDM Document ID" := PDMDocument."Document ID";
+        Request."PDM Code" := PDMDocument."PDM Code";
+        Request."PDM Revision" := PDMDocument.Revision;
+        Request."PDM Approval Date" := PDMDocument."Approval Date";
+        if PDMDocument."In Modification" then
+            Request."PDM Status" := Request."PDM Status"::"In Modification"
+        else
+            Request."PDM Status" := Request."PDM Status"::Approved;
+        FillRequestFromDocument(Request, PDMDocument, PartDocument, FindApprovedDocument(PDMDocument."PDM Code", 'sldprt', PartDocument));
+    end;
+
+    local procedure SetRequestPending(var Request: Record "ZM PL Items Temporary"; var TempPDMDocument: Record "ZM PDM Document" temporary; DocumentID: Integer)
+    var
+        TempPartDocument: Record "ZM PDM Document" temporary;
+    begin
+        // plano aún no aprobado: datos de su última versión (al aprobarse se revisan otra vez los campos vacíos)
+        TempPartDocument.Copy(TempPDMDocument, true);
+        TempPartDocument.SetRange(Extension, 'sldprt');
+        TempPDMDocument.Get(DocumentID);
+        Request."PDM Document ID" := TempPDMDocument."Document ID";
+        Request."PDM Code" := TempPDMDocument."PDM Code";
+        Request."PDM Revision" := TempPDMDocument.Revision;
+        Request."PDM Approval Date" := 0DT;
+        Request."PDM Status" := Request."PDM Status"::"Pending Approval";
+        LiveFileName := TempPDMDocument."File Name";
+        LiveStatus := TempPDMDocument."Current Status";
+        FillRequestFromDocument(Request, TempPDMDocument, TempPartDocument, TempPartDocument.FindFirst());
+    end;
+
+    local procedure ClearRequestLink(var Request: Record "ZM PL Items Temporary")
+    begin
+        Request."PDM Document ID" := 0;
+        Request."PDM Code" := '';
+        Request."PDM Revision" := '';
+        Request."PDM Approval Date" := 0DT;
+        Request."PDM Status" := Request."PDM Status"::" ";
+    end;
+
+    local procedure FillRequestFromDocument(var Request: Record "ZM PL Items Temporary"; PDMDocument: Record "ZM PDM Document"; PartDocument: Record "ZM PDM Document"; HasPart: Boolean)
+    var
+        Weight: Decimal;
+        ReplacesItemNo: Code[20];
+    begin
+        // solo campos vacíos: nunca se sobrescribe lo que haya puesto el usuario
+        if (Request.Description = '') and (PDMDocument.Description <> '') then
+            Request.Description := CopyStr(PDMDocument.Description, 1, MaxStrLen(Request.Description));
+        if Request."No." <> '' then begin
+            SetRequestTranslation(Request."No.", 'ENG', PDMDocument."Description ENG");
+            SetRequestTranslation(Request."No.", 'FRA', PDMDocument."Description FRA");
+        end;
+        Request.CalcFields(Reason);
+        if (not Request.Reason.HasValue()) and (PDMDocument.Modification <> '') then
+            SetRequestReason(Request, PDMDocument.Modification);
+        // material y peso están en la pieza (en el plano vienen vacíos)
+        if HasPart then begin
+            if (Request.Material = '') and IsValidPDMValue(PartDocument.Material) then
+                Request.Material := CopyStr(PartDocument.Material, 1, MaxStrLen(Request.Material));
+            if IsValidPDMValue(PartDocument.Weight) then
+                if Evaluate(Weight, PartDocument.Weight, 9) then
+                    if Weight > 0 then begin
+                        if Request."Net Weight" = 0 then
+                            Request."Net Weight" := Weight;
+                        if Request."Gross Weight" = 0 then
+                            Request."Gross Weight" := Weight;
+                    end;
+        end;
+        if (Request."Replaces Item No." = '') and (Request."Request Type" = Request."Request Type"::New) then begin
+            ReplacesItemNo := GetPreviousItemNo(PDMDocument, Request."Item No.");
+            if ReplacesItemNo <> '' then
+                Request."Replaces Item No." := ReplacesItemNo;
+        end;
+    end;
+
+    local procedure SetRequestTranslation(RequestNo: Code[20]; LanguageCode: Code[10]; TranslatedText: Text)
+    var
+        ItemTranslationTemporary: Record "ZM Item Translation temporary";
+    begin
+        if TranslatedText = '' then
+            exit;
+        if not ItemTranslationTemporary.Get(RequestNo, '', LanguageCode) then begin
+            ItemTranslationTemporary.Init();
+            ItemTranslationTemporary."Item No." := RequestNo;
+            ItemTranslationTemporary."Language Code" := LanguageCode;
+            ItemTranslationTemporary.Insert();
+        end;
+        if ItemTranslationTemporary.Description <> '' then
+            exit;
+        ItemTranslationTemporary.Description := CopyStr(TranslatedText, 1, MaxStrLen(ItemTranslationTemporary.Description));
+        ItemTranslationTemporary.Modify();
+    end;
+
+    local procedure SetRequestReason(var Request: Record "ZM PL Items Temporary"; ReasonText: Text)
+    var
+        TempBlob: Record TempBlob;
+    begin
+        // sin Modify: la solicitud puede no estar insertada todavía (alta desde la página o la API)
+        TempBlob.WriteAsText(ReasonText, TextEncoding::UTF8);
+        Request.Reason := TempBlob.Blob;
+    end;
+
+    local procedure IsValidPDMValue(Value: Text): Boolean
+    begin
+        // descarta valores vacíos, fórmulas de SolidWorks ("SW-Masa@...") y "Material <sin especificar>"
+        if Value = '' then
+            exit(false);
+        if (StrPos(Value, '"') > 0) or (StrPos(Value, '@') > 0) or (StrPos(Value, '<') > 0) then
+            exit(false);
+        exit(true);
+    end;
+
+    local procedure GetPreviousItemNo(PDMDocument: Record "ZM PDM Document"; ItemNo: Code[20]): Code[20]
+    var
+        Item: Record Item;
+        PDMHistory: Record "ZM PDM History";
+        CurrentCode: Text;
+        PreviousCode: Text;
+        Candidate: Text;
+    begin
+        // código aprobado anterior del mismo plano que exista como producto: 260525B -> 260525A
+        // con colores se mantiene el sufijo: 250510B-18 (plano 250510B-X) -> 250510A-18
+        CurrentCode := UpperCase(DelChr(PDMDocument."PDM Code", '<>', ' '));
+        PDMHistory.SetCurrentKey("Date");
+        PDMHistory.Ascending(false);
+        PDMHistory.SetRange("Document ID", PDMDocument."Document ID");
+        PDMHistory.SetRange(Approval, true);
+        if PDMHistory.FindSet() then
+            repeat
+                PreviousCode := UpperCase(DelChr(PDMHistory."PDM Code", '<>', ' '));
+                if (PreviousCode <> '') and (PreviousCode <> CurrentCode) then begin
+                    Candidate := PreviousCode;
+                    if IsColorCode(PreviousCode) and IsColorCode(CurrentCode) then
+                        if CopyStr(ItemNo, 1, StrLen(CurrentCode) - 1) = CopyStr(CurrentCode, 1, StrLen(CurrentCode) - 1) then
+                            Candidate := CopyStr(PreviousCode, 1, StrLen(PreviousCode) - 1) + CopyStr(ItemNo, StrLen(CurrentCode));
+                    if StrLen(Candidate) <= MaxStrLen(Item."No.") then
+                        if Item.Get(Candidate) then
+                            exit(Item."No.");
+                end;
+            until PDMHistory.Next() = 0;
+    end;
+
+    local procedure FindApprovedDocument(ItemNo: Text; Extension: Text; var PDMDocument: Record "ZM PDM Document"): Boolean
+    var
+        CandidateDocument: Record "ZM PDM Document";
+        CodeList: List of [Text];
+        PDMCode: Text;
+        Found: Boolean;
+    begin
+        // por código exacto o, para variantes de color (250502B-18), por el código "-X" del PDM (250502B-X)
+        CodeList.Add(UpperCase(ItemNo));
+        if GetColorCode(ItemNo) <> '' then
+            CodeList.Add(GetColorCode(ItemNo));
+        CandidateDocument.SetCurrentKey("PDM Code");
+        CandidateDocument.SetRange(Obsolete, false);
+        if Extension <> '' then
+            CandidateDocument.SetRange(Extension, Extension);
+        foreach PDMCode in CodeList do begin
+            CandidateDocument.SetRange("PDM Code", PDMCode);
+            if CandidateDocument.FindSet() then
+                repeat
+                    if (not Found) or IsBetterDocument(CandidateDocument, PDMDocument) then begin
+                        PDMDocument := CandidateDocument;
+                        Found := true;
+                    end;
+                until CandidateDocument.Next() = 0;
+        end;
+        exit(Found);
+    end;
+
+    local procedure GetBestDocumentID(var TempPDMDocument: Record "ZM PDM Document" temporary): Integer
+    var
+        TempBestDocument: Record "ZM PDM Document" temporary;
+        Found: Boolean;
+    begin
+        // la tabla temporal va por ID: se elige plano > ensamblaje > pieza > resto
+        if TempPDMDocument.FindSet() then
+            repeat
+                if (not Found) or IsBetterDocument(TempPDMDocument, TempBestDocument) then begin
+                    TempBestDocument := TempPDMDocument;
+                    Found := true;
+                end;
+            until TempPDMDocument.Next() = 0;
+        exit(TempBestDocument."Document ID");
+    end;
+
+    local procedure IsBetterDocument(CandidateDocument: Record "ZM PDM Document"; BestDocument: Record "ZM PDM Document"): Boolean
+    begin
+        if ExtensionPriority(CandidateDocument.Extension) <> ExtensionPriority(BestDocument.Extension) then
+            exit(ExtensionPriority(CandidateDocument.Extension) < ExtensionPriority(BestDocument.Extension));
+        exit(CandidateDocument."Approval Date" > BestDocument."Approval Date");
+    end;
+
+    local procedure GetColorCode(ItemNo: Text): Text
+    var
+        Position: Integer;
+    begin
+        // 250502B-18 -> 250502B-X (último guion seguido solo de dígitos)
+        ItemNo := UpperCase(ItemNo);
+        Position := StrLen(ItemNo);
+        while (Position > 1) and (CopyStr(ItemNo, Position, 1) <> '-') do
+            Position -= 1;
+        if Position <= 1 then
+            exit('');
+        if not IsDigits(CopyStr(ItemNo, Position + 1)) then
+            exit('');
+        exit(CopyStr(ItemNo, 1, Position) + 'X');
+    end;
+
+    local procedure IsColorCode(PDMCode: Text): Boolean
+    begin
+        if StrLen(PDMCode) <= 2 then
+            exit(false);
+        exit(CopyStr(PDMCode, StrLen(PDMCode) - 1) = '-X');
+    end;
+
+    local procedure GetCodeFilter(ItemNo: Text) CodeFilter: Text
+    begin
+        // lista SQL de códigos a buscar en el PDM: N'250502B-18',N'250502B-X'
+        CodeFilter := 'N''' + SQLText(UpperCase(ItemNo)) + '''';
+        if GetColorCode(ItemNo) <> '' then
+            CodeFilter += ',N''' + SQLText(GetColorCode(ItemNo)) + '''';
+    end;
+
+    local procedure SQLText(Value: Text): Text
+    begin
+        exit(DelChr(Value, '=', ''''));
+    end;
+
+    local procedure UpdateOpenRequests() NoRequests: Integer
+    var
+        Request: Record "ZM PL Items Temporary";
+        OldStatus: Integer;
+        OldDocumentID: Integer;
+    begin
+        // las solicitudes abiertas se relacionan solas cuando llega la aprobación del plano
+        Request.SetFilter("State Creation", '<>%1', Request."State Creation"::Finished);
+        Request.SetFilter("Item No.", '<>%1', '');
+        if Request.FindSet(true) then
+            repeat
+                OldStatus := Request."PDM Status";
+                OldDocumentID := Request."PDM Document ID";
+                LinkRequest(Request, false);
+                Request.Modify();
+                if (OldStatus <> Request."PDM Status") or (OldDocumentID <> Request."PDM Document ID") then
+                    NoRequests += 1;
+            until Request.Next() = 0;
+    end;
+
+    // ======================================================================================================
+    // ==  Consulta directa al PDM (cualquier estado): por códigos, por texto o por ID de documento
+    // ======================================================================================================
+    procedure SearchPDM(CodeFilter: Text; SearchText: Text; DocumentID: Integer; var TempPDMDocument: Record "ZM PDM Document" temporary): Boolean
+    begin
+        TempPDMDocument.Reset();
+        TempPDMDocument.DeleteAll();
+        InventorySetup.Get();
+        if InventorySetup."PDM SQL Server" = '' then
+            exit(false);  // PDM sin configurar
+        ClearLastError();
+        if not TrySearchPDM(CodeFilter, SearchText, DocumentID, TempPDMDocument) then begin
+            LiveSearchFailed := true;
+            exit(false);
+        end;
+        exit(true);
+    end;
+
+    [TryFunction]
+    local procedure TrySearchPDM(CodeFilter: Text; SearchText: Text; DocumentID: Integer; var TempPDMDocument: Record "ZM PDM Document" temporary)
+    var
+        PDMDocument: Record "ZM PDM Document";
+        SQLConnection: DotNet SqlConnection;
+        SQLCommand: DotNet SqlCommand;
+        SQLReader: DotNet SqlDataReader;
+    begin
+        SQLConnect(SQLConnection);
+        SQLCommand := SQLConnection.CreateCommand();
+        SQLCommand.CommandTimeout := 60;
+        SQLCommand.CommandText := SearchQuery(CodeFilter, SearchText, DocumentID);
+        SQLReader := SQLCommand.ExecuteReader();
+        while SQLReader.Read() do begin
+            TempPDMDocument.Init();
+            TempPDMDocument."Document ID" := GetInt(SQLReader, 'DocumentID');
+            TempPDMDocument."File Name" := CopyStr(GetText(SQLReader, 'Filename'), 1, MaxStrLen(TempPDMDocument."File Name"));
+            TempPDMDocument.Extension := CopyStr(LowerCase(GetText(SQLReader, 'Extension')), 1, MaxStrLen(TempPDMDocument.Extension));
+            TempPDMDocument.Folder := CopyStr(GetText(SQLReader, 'Folder'), 1, MaxStrLen(TempPDMDocument.Folder));
+            TempPDMDocument."PDM Code" := CopyStr(GetText(SQLReader, 'Code'), 1, MaxStrLen(TempPDMDocument."PDM Code"));
+            TempPDMDocument.Description := CopyStr(GetText(SQLReader, 'Descr'), 1, MaxStrLen(TempPDMDocument.Description));
+            TempPDMDocument.Revision := CopyStr(GetText(SQLReader, 'Rev'), 1, MaxStrLen(TempPDMDocument.Revision));
+            TempPDMDocument."Description ENG" := CopyStr(GetText(SQLReader, 'DescrENG'), 1, MaxStrLen(TempPDMDocument."Description ENG"));
+            TempPDMDocument."Description FRA" := CopyStr(GetText(SQLReader, 'DescrFRA'), 1, MaxStrLen(TempPDMDocument."Description FRA"));
+            TempPDMDocument.Modification := CopyStr(GetText(SQLReader, 'Modif'), 1, MaxStrLen(TempPDMDocument.Modification));
+            TempPDMDocument.Material := CopyStr(GetText(SQLReader, 'Material'), 1, MaxStrLen(TempPDMDocument.Material));
+            TempPDMDocument.Weight := CopyStr(GetText(SQLReader, 'Weight'), 1, MaxStrLen(TempPDMDocument.Weight));
+            TempPDMDocument."Current Status" := CopyStr(GetText(SQLReader, 'StatusName'), 1, MaxStrLen(TempPDMDocument."Current Status"));
+            TempPDMDocument."Latest Version" := GetInt(SQLReader, 'LatestRevisionNo');
+            // si ya está aprobado (sincronizado), se indican los datos de la aprobación
+            if PDMDocument.Get(TempPDMDocument."Document ID") then begin
+                TempPDMDocument."Approved Version" := PDMDocument."Approved Version";
+                TempPDMDocument."Approval Date" := PDMDocument."Approval Date";
+                TempPDMDocument."Approved By" := PDMDocument."Approved By";
+                TempPDMDocument."In Modification" := PDMDocument."In Modification";
+            end;
+            if TempPDMDocument.Insert() then;
+        end;
+        SQLReader.Close();
+        SQLConnection.Close();
+    end;
+
+    local procedure SearchQuery(CodeFilter: Text; SearchText: Text; DocumentID: Integer) SQL: Text
+    var
+        LikeText: Text;
+    begin
+        SQL := 'SET NOCOUNT ON; ';
+        SQL += 'WITH cv AS (SELECT VariableID FROM Variable WHERE VariableName = N''CodigodeProducto''), ';
+        SQL += 'c AS (';
+        case true of
+            DocumentID <> 0:
+                SQL += 'SELECT ' + Format(DocumentID, 0, 9) + ' DocumentID';
+            CodeFilter <> '':
+                SQL += 'SELECT DISTINCT vv.DocumentID FROM VariableValue vv WHERE vv.VariableID = (SELECT VariableID FROM cv) AND UPPER(LTRIM(RTRIM(vv.ValueCache))) IN (' + CodeFilter + ')';
+            else begin
+                LikeText := 'N''%' + SQLText(SearchText) + '%''';
+                // código, descripción (p. ej. prototipos AC... que aún no tienen el código definitivo) o nombre de fichero
+                SQL += 'SELECT DISTINCT vv.DocumentID FROM VariableValue vv JOIN Variable vr ON vr.VariableID = vv.VariableID ';
+                SQL += 'WHERE vr.VariableName IN (N''CodigodeProducto'', N''DescripcionProducto'') AND vv.ValueCache LIKE ' + LikeText;
+                SQL += ' UNION SELECT DocumentID FROM Documents WHERE Filename LIKE ' + LikeText;
+            end;
+        end;
+        SQL += ') ';
+        SQL += 'SELECT TOP 200 d.DocumentID, d.Filename, e.Extension, ISNULL(s.Name, N'''') StatusName, d.LatestRevisionNo, x.Code, x.Rev, x.Descr, ';
+        SQL += 'x.DescrENG, x.DescrFRA, x.Modif, x.Material, x.Weight, ISNULL(p.Path, N'''') Folder ';
+        SQL += 'FROM c JOIN Documents d ON d.DocumentID = c.DocumentID AND d.Deleted = 0 ';
+        SQL += 'JOIN FileExtension e ON e.ExtensionID = d.ExtensionID LEFT JOIN Status s ON s.StatusID = d.CurrentStatusID ';
+        SQL += 'OUTER APPLY (SELECT TOP 1 pr.Path FROM DocumentsInProjects dp JOIN Projects pr ON pr.ProjectID = dp.ProjectID ';
+        SQL += ' WHERE dp.DocumentID = d.DocumentID AND dp.Deleted = 0 AND pr.Deleted = 0 ORDER BY dp.ProjectID) p ';
+        // datos de la última versión (la que está en curso en el PDM)
+        SQL += 'OUTER APPLY (SELECT ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''CodigodeProducto'' THEN y.Val END) Code, ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''Revision'' THEN y.Val END) Rev, ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''DescripcionProducto'' THEN y.Val END) Descr, ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''DescripcionProductoIngles'' THEN y.Val END) DescrENG, ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''DescripcionProductoFrances'' THEN y.Val END) DescrFRA, ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''Modificacion'' THEN y.Val END) Modif, ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''Material'' THEN y.Val END) Material, ';
+        SQL += ' MAX(CASE WHEN y.VariableName = N''Weight'' THEN y.Val END) Weight ';
+        SQL += ' FROM (SELECT vr.VariableName, LTRIM(RTRIM(COALESCE(NULLIF(vv.ValueText, N''''), vv.ValueCache))) Val, ';
+        SQL += '  ROW_NUMBER() OVER (PARTITION BY vv.VariableID ORDER BY vv.RevisionNo DESC, CASE vv.ConfigurationID WHEN 2 THEN 0 WHEN 1 THEN 1 ELSE 2 END) rn ';
+        SQL += '  FROM VariableValue vv JOIN Variable vr ON vr.VariableID = vv.VariableID ';
+        SQL += '  WHERE vv.DocumentID = d.DocumentID AND vr.VariableName IN (N''CodigodeProducto'', N''Revision'', N''DescripcionProducto'', ';
+        SQL += '  N''DescripcionProductoIngles'', N''DescripcionProductoFrances'', N''Modificacion'', N''Material'', N''Weight'')) y WHERE y.rn = 1) x ';
+        if CodeFilter <> '' then
+            SQL += 'WHERE UPPER(x.Code) IN (' + CodeFilter + ') ';
+        SQL += 'ORDER BY CASE LOWER(e.Extension) WHEN ''slddrw'' THEN 1 WHEN ''sldasm'' THEN 2 WHEN ''sldprt'' THEN 3 WHEN ''pdf'' THEN 4 ELSE 9 END, d.DocumentID DESC';
+    end;
+
+    // ======================================================================================================
+    // ==  Bandeja: planos aprobados sin producto ni solicitud
+    // ======================================================================================================
+    procedure BuildPendingTray(var TempPDMDocument: Record "ZM PDM Document" temporary)
+    var
+        PDMDocument: Record "ZM PDM Document";
+        TempByCode: Record "ZM PDM Document" temporary;
+        PDMCode: Text;
+    begin
+        TempPDMDocument.Reset();
+        TempPDMDocument.DeleteAll();
+        InventorySetup.Get();
+        InventorySetup.TestField("PDM Pending From Date");
+        PDMDocument.SetFilter("Approval Date", '>=%1', CreateDateTime(InventorySetup."PDM Pending From Date", 0T));
+        PDMDocument.SetRange(Obsolete, false);
+        PDMDocument.SetFilter(Extension, '%1|%2|%3', 'slddrw', 'sldasm', 'sldprt');
+        if PDMDocument.FindSet() then
+            repeat
+                PDMCode := UpperCase(DelChr(PDMDocument."PDM Code", '<>', ' '));
+                if IsItemCode(PDMCode) then begin
+                    // un documento por código: plano > ensamblaje > pieza
+                    TempByCode.SetRange("PDM Code", PDMDocument."PDM Code");
+                    if TempByCode.FindFirst() then begin
+                        if IsBetterDocument(PDMDocument, TempByCode) then begin
+                            TempByCode.Delete();
+                            TempByCode := PDMDocument;
+                            TempByCode.Insert();
+                        end;
+                    end else begin
+                        TempByCode := PDMDocument;
+                        TempByCode.Insert();
+                    end;
+                end;
+            until PDMDocument.Next() = 0;
+        TempByCode.Reset();
+        if TempByCode.FindSet() then
+            repeat
+                PDMCode := UpperCase(DelChr(TempByCode."PDM Code", '<>', ' '));
+                if not ItemOrRequestExists(PDMCode) then begin
+                    TempPDMDocument := TempByCode;
+                    TempPDMDocument.Insert();
+                end;
+            until TempByCode.Next() = 0;
+    end;
+
+    local procedure IsItemCode(PDMCode: Text): Boolean
+    var
+        i: Integer;
+    begin
+        // fuera: vacíos, largos, con espacios, prototipos (AC0358-..., PM23-...) y componentes (-C1, C1-...)
+        if (PDMCode = '') or (StrLen(PDMCode) > 20) or (StrPos(PDMCode, ' ') > 0) then
+            exit(false);
+        if (StrLen(PDMCode) > 2) and (CopyStr(PDMCode, 1, 2) in ['AC', 'PM']) and IsDigits(CopyStr(PDMCode, 3, 1)) then
+            exit(false);
+        if (StrLen(PDMCode) > 2) and (CopyStr(PDMCode, 1, 1) = 'C') and IsDigits(CopyStr(PDMCode, 2, 1)) and (CopyStr(PDMCode, 3, 1) = '-') then
+            exit(false);
+        for i := 1 to StrLen(PDMCode) - 2 do
+            if (CopyStr(PDMCode, i, 2) = '-C') and IsDigits(CopyStr(PDMCode, i + 2, 1)) then
+                exit(false);
+        exit(true);
+    end;
+
+    local procedure ItemOrRequestExists(PDMCode: Text): Boolean
+    var
+        Item: Record Item;
+        Request: Record "ZM PL Items Temporary";
+        PostedRequest: Record "Posted PL Items temporary";
+        BaseCode: Text;
+    begin
+        Request.SetRange("PDM Code", PDMCode);
+        if not Request.IsEmpty() then
+            exit(true);
+        PostedRequest.SetRange("PDM Code", PDMCode);
+        if not PostedRequest.IsEmpty() then
+            exit(true);
+        if not IsColorCode(PDMCode) then begin
+            if Item.Get(PDMCode) then
+                exit(true);
+            Request.Reset();
+            Request.SetRange("Item No.", PDMCode);
+            if not Request.IsEmpty() then
+                exit(true);
+            PostedRequest.Reset();
+            PostedRequest.SetRange("Item No.", PDMCode);
+            exit(not PostedRequest.IsEmpty());
+        end;
+        // variantes de color: basta con que exista alguna (250510B-15, 250510B-18...)
+        BaseCode := CopyStr(PDMCode, 1, StrLen(PDMCode) - 1);
+        Item.SetRange("No.", BaseCode + '0', CopyStr(BaseCode + '99999999', 1, MaxStrLen(Item."No.")));
+        if not Item.IsEmpty() then
+            exit(true);
+        Request.Reset();
+        Request.SetRange("Item No.", BaseCode + '0', CopyStr(BaseCode + '99999999', 1, MaxStrLen(Request."Item No.")));
+        if not Request.IsEmpty() then
+            exit(true);
+        PostedRequest.Reset();
+        PostedRequest.SetRange("Item No.", BaseCode + '0', CopyStr(BaseCode + '99999999', 1, MaxStrLen(PostedRequest."Item No.")));
+        exit(not PostedRequest.IsEmpty());
+    end;
+
+    procedure GetNewItemNumbers(PDMDocument: Record "ZM PDM Document"; var ItemNumbers: List of [Text])
+    var
+        Item: Record Item;
+        PDMHistory: Record "ZM PDM History";
+        CurrentCode: Text;
+        PreviousCode: Text;
+        PreviousBase: Text;
+    begin
+        // sin colores: el propio código. Con colores (250510B-X): un producto por cada color de la
+        // revisión anterior (250510A-15, 250510A-18 -> 250510B-15, 250510B-18)
+        Clear(ItemNumbers);
+        CurrentCode := UpperCase(DelChr(PDMDocument."PDM Code", '<>', ' '));
+        if not IsColorCode(CurrentCode) then begin
+            ItemNumbers.Add(CurrentCode);
+            exit;
+        end;
+        PDMHistory.SetCurrentKey("Date");
+        PDMHistory.Ascending(false);
+        PDMHistory.SetRange("Document ID", PDMDocument."Document ID");
+        PDMHistory.SetRange(Approval, true);
+        if PDMHistory.FindSet() then
+            repeat
+                PreviousCode := UpperCase(DelChr(PDMHistory."PDM Code", '<>', ' '));
+                if (PreviousCode <> CurrentCode) and IsColorCode(PreviousCode) then begin
+                    PreviousBase := CopyStr(PreviousCode, 1, StrLen(PreviousCode) - 1);
+                    Item.SetRange("No.", PreviousBase + '0', CopyStr(PreviousBase + '99999999', 1, MaxStrLen(Item."No.")));
+                    if Item.FindSet() then
+                        repeat
+                            if IsDigits(CopyStr(Item."No.", StrLen(PreviousBase) + 1)) then
+                                if StrLen(CurrentCode) - 1 + StrLen(Item."No.") - StrLen(PreviousBase) <= MaxStrLen(Item."No.") then
+                                    ItemNumbers.Add(CopyStr(CurrentCode, 1, StrLen(CurrentCode) - 1) + CopyStr(Item."No.", StrLen(PreviousBase) + 1));
+                        until Item.Next() = 0;
+                    if ItemNumbers.Count() > 0 then
+                        exit;
+                end;
+            until PDMHistory.Next() = 0;
+        // sin revisión anterior con colores: una solicitud sin Nº producto, para completarla a mano
+        ItemNumbers.Add('');
+    end;
+
+    procedure CreateRequestsFromTray(var TempPDMDocument: Record "ZM PDM Document" temporary)
+    var
+        Request: Record "ZM PL Items Temporary";
+        ItemNumbers: List of [Text];
+        ItemNo: Text;
+        RequestList: Text;
+        ConfirmList: Text;
+        NoRequests: Integer;
+        lblNoItemNo: Label '(without item no., %1)', comment = 'ESP="(sin nº producto, %1)"';
+        lblConfirm: Label 'The following requests will be created:\%1\Do you want to continue?', comment = 'ESP="Se van a crear las siguientes solicitudes:\%1\¿Desea continuar?"';
+        lblDone: Label '%1 requests have been created: %2', comment = 'ESP="Se han creado %1 solicitudes: %2"';
+    begin
+        if TempPDMDocument.FindSet() then
+            repeat
+                GetNewItemNumbers(TempPDMDocument, ItemNumbers);
+                foreach ItemNo in ItemNumbers do
+                    if ItemNo = '' then
+                        ConfirmList += '\' + StrSubstNo(lblNoItemNo, TempPDMDocument."PDM Code")
+                    else
+                        ConfirmList += '\' + ItemNo;
+            until TempPDMDocument.Next() = 0;
+        if ConfirmList = '' then
+            exit;
+        if not Confirm(lblConfirm, false, CopyStr(ConfirmList, 2)) then
+            exit;
+        if TempPDMDocument.FindSet() then
+            repeat
+                GetNewItemNumbers(TempPDMDocument, ItemNumbers);
+                foreach ItemNo in ItemNumbers do begin
+                    Clear(Request);
+                    Request.Init();
+                    Request.Insert(true);
+                    Request."Request Type" := Request."Request Type"::New;
+                    if ItemNo <> '' then
+                        Request.Validate("Item No.", CopyStr(ItemNo, 1, MaxStrLen(Request."Item No.")))
+                    else
+                        Request.Validate("PDM Document ID", TempPDMDocument."Document ID");
+                    Request.Modify(true);
+                    NoRequests += 1;
+                    RequestList += ', ' + Request."No.";
+                end;
+            until TempPDMDocument.Next() = 0;
+        Message(lblDone, NoRequests, CopyStr(RequestList, 3));
     end;
 }
