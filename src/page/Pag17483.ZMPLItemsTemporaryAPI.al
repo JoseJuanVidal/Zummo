@@ -106,9 +106,11 @@ page 17483 "ZM PL Items Temporary API"
     var
         myInt: Integer;
     begin
+        Clear(TranslateENG);
+        Clear(TranslateFRA);
         if ItemTranslationtemporary.get(Rec."No.", 'ENG') then
             TranslateENG := ItemTranslationtemporary.Description;
         if ItemTranslationtemporary.get(Rec."No.", 'FRA') then
-            TranslateENG := ItemTranslationtemporary.Description;
+            TranslateFRA := ItemTranslationtemporary.Description;
     end;
 }
