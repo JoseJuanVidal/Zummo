@@ -24588,6 +24588,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Item Setup Departments - Action showEmployee - Property Caption</note>
           <target>Mostrar empleados</target>
         </trans-unit>
+        <trans-unit id="Page 4184179594 - Control 2028197887 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Raw Material/Item,Service,Item Out of stock</source>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PL Items Temporary API - Control Clasification Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Page 3139896982 - Property 2019332006" size-unit="char" translate="yes" xml:space="preserve">
           <source>New,Process,Report,Navigate,Item</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nuevo,Procesar,Informe,Navegar,Producto"</note>

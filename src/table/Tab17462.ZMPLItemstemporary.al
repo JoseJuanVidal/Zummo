@@ -1777,13 +1777,16 @@ table 17462 "ZM PL Items Temporary"
             false:  // lanzamiento por el primer usuario que lo crea
                 begin
                     CheckObligatoryFieldsUser(true);
-                    if not Confirm(lblConfirm, false, Rec."No.", Rec."Item No.", Rec.Description) then
-                        exit;
+                    // desde la API (sin usuario delante) no se pregunta
+                    if GuiAllowed() then
+                        if not Confirm(lblConfirm, false, Rec."No.", Rec."Item No.", Rec.Description) then
+                            exit;
                     SendItemTemporaryFirstRegister();
                 end;
             else begin
-                if not Confirm(lblRelease, false, Rec."No.", rec."Item No.", Rec.Description) then
-                    exit;
+                if GuiAllowed() then
+                    if not Confirm(lblRelease, false, Rec."No.", rec."Item No.", Rec.Description) then
+                        exit;
                 SendItemTemporaryRegister();
                 Rec.UpdateStatusReleased();
                 ItemApprovalDepartment.CreateRequestDepartment(Rec);
@@ -1843,8 +1846,9 @@ table 17462 "ZM PL Items Temporary"
         end;
 
         if Rec."E-mail sent" then
-            if not Confirm(lblConfirmEmail) then
-                exit;
+            if GuiAllowed() then
+                if not Confirm(lblConfirmEmail) then
+                    exit;
         SendMailItemTemporaryFirstRegister(Recipients, ItemSetupDepartment.Code);
         Rec."E-mail sent" := true;
         Rec."State Creation" := Rec."State Creation"::Requested;

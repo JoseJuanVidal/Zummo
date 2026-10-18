@@ -935,6 +935,8 @@ codeunit 17300 "ZM PDM Sync"
             if IsValidPDMValue(PartDocument.Weight) then
                 if Evaluate(Weight, PartDocument.Weight, 9) then
                     if Weight > 0 then begin
+                        // el PDM guarda la masa de SolidWorks en gramos; en BC el peso va en kg
+                        Weight := Round(Weight / 1000, 0.00001);
                         if Request."Net Weight" = 0 then
                             Request."Net Weight" := Weight;
                         if Request."Gross Weight" = 0 then
