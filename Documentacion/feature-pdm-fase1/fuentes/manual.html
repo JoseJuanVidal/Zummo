@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Planos del PDM en Business Central</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Planos del PDM en Business Central</h1>
+<div class="subtitle">Manual de usuario · Extensión Zummo 1.0.0.1018 · octubre 2026</div>
+
+<h2>Para qué sirve</h2>
+<p>I+D guarda los planos y la documentación técnica de los productos en el <b>PDM de SolidWorks</b>. Hasta ahora, para ver un plano había que tener el PDM instalado y una licencia.</p>
+<p>Ahora, desde la ficha y la lista de productos de Business Central se puede:</p>
+<ul>
+  <li>ver la <b>revisión vigente</b> del plano del producto, quién la aprobó y cuándo;</li>
+  <li><b>abrir el plano en PDF</b> y el resto de documentación (DXF, STEP…) con un clic;</li>
+  <li>consultar el <b>histórico de cambios</b> del plano: versiones, aprobaciones y comentarios de I+D.</li>
+</ul>
+<p>No hace falta tener el PDM ni licencia. Los datos se leen del PDM automáticamente.</p>
+
+<h2>Qué se ve en Business Central</h2>
+<table>
+  <tr><th>Regla</th><th>Qué significa</th></tr>
+  <tr><td class="k"><b>Solo documentos aprobados</b></td><td>Solo llegan a BC los planos que I+D ha aprobado. Lo que está en diseño no se ve.</td></tr>
+  <tr><td class="k"><span class="amber">En modificación</span></td><td>I+D está cambiando un plano que ya estaba aprobado. En BC se sigue viendo la <b>última versión aprobada</b> hasta que se apruebe la nueva.</td></tr>
+  <tr><td class="k"><span class="red">Sustituido</span></td><td>La letra de revisión forma parte del código del producto (260525 → 260525A → 260525B). Cuando I+D aprueba la letra nueva, los códigos anteriores quedan como <b>sustituidos</b> y se indica cuál es el vigente.</td></tr>
+  <tr><td class="k"><b>Colores</b></td><td>El PDM tiene un único plano para todas las variantes de color: <span class="mono">250502B-X</span> sirve para 250502B-15 (BG), 250502B-18 (BL), etc. BC los relaciona solo.</td></tr>
+  <tr><td class="k"><b>Actualización</b></td><td>Lo que se aprueba en el PDM aparece en BC en la siguiente sincronización automática (cada hora).</td></tr>
+</table>
+
+<div class="note">Por ahora, las <b>máquinas</b> (ZMT40…, CM40…) no tienen plano relacionado: en el PDM se documentan como modelo genérico (Z40 Nature…) y no con el código comercial. Se hará en una fase posterior.</div>
+
+<h2 class="pagebreak">Ficha de producto: panel PDM</h2>
+<p>A la derecha de la ficha, en los paneles informativos, aparece el panel <b>PDM</b>. Ejemplo del producto 260525B (empujador calibre 7-8):</p>
+<div class="mock">
+  <div class="bar">PDM</div>
+  <div class="row"><span>Revisión PDM</span><span><u>05</u></span></div>
+  <div class="row"><span>Fecha aprob. PDM</span><span>18/09/2026 9:01</span></div>
+  <div class="row"><span>Aprobado por PDM</span><span>jorge-martinez</span></div>
+  <div class="row"><span>En modificación PDM</span><span>No</span></div>
+  <div class="row"><span>Sustituido por (PDM)</span><span></span></div>
+  <div class="row"><span>Documentos PDM</span><span><u>5</u></span></div>
+</div>
+<table>
+  <tr><th>Campo</th><th>Qué indica</th></tr>
+  <tr><td class="k">Revisión PDM</td><td>Revisión del plano (01, 02…). <b>Pulsando en ella</b> se abre el histórico. Se muestra en <span class="amber">ámbar</span> si el plano está en modificación y en <span class="red">rojo</span> si el producto está sustituido.</td></tr>
+  <tr><td class="k">Fecha aprob. / Aprobado por</td><td>Cuándo y quién aprobó esa revisión en el PDM.</td></tr>
+  <tr><td class="k">En modificación PDM</td><td>Sí: I+D está cambiando el plano. Lo que se ve es la última versión aprobada.</td></tr>
+  <tr><td class="k">Sustituido por (PDM)</td><td>Solo en productos antiguos: código vigente que lo sustituye. Por ejemplo, en 260525A pone <span class="red">260525B</span>.</td></tr>
+  <tr><td class="k">Documentos PDM</td><td>Cuántos documentos tiene el producto: plano, pieza, PDF, DXF… <b>Pulsando en el número</b> se abre la lista.</td></tr>
+</table>
+
+<h2>Acciones en la ficha y en la lista de productos</h2>
+<p>En la pestaña <b>Navegar</b> de la ficha y de la lista de productos, y también en el propio panel PDM:</p>
+<table>
+  <tr><th>Acción</th><th>Qué hace</th></tr>
+  <tr><td class="k"><b>Ver plano (PDF)</b></td><td>Abre el PDF aprobado del producto. El fichero se llama con el código y la revisión, por ejemplo <span class="mono">260525B rev05.pdf</span>.</td></tr>
+  <tr><td class="k"><b>Documentación PDM</b></td><td>Lista todos los documentos aprobados del producto (plano, pieza, PDF, DXF, STEP…). Desde ahí se abre cualquiera de ellos.</td></tr>
+  <tr><td class="k"><b>Histórico PDM</b></td><td>Versiones y aprobaciones de esos documentos, de la más reciente a la más antigua.</td></tr>
+</table>
+<p>Si el producto no tiene PDF, aparece un aviso:</p>
+<ul>
+  <li><i>"No hay ningún PDF aprobado en el PDM para el producto …"</i> — I+D no ha publicado PDF de ese producto.</li>
+  <li><i>"El producto 260525A no tiene PDF aprobado (sustituido por 260525B)."</i> — es un código antiguo; hay que consultar el vigente.</li>
+</ul>
+
+<h3>Columnas en la lista de productos</h3>
+<p>La lista tiene tres columnas que vienen <b>ocultas</b>: <i>Revisión PDM</i>, <i>Fecha aprob. PDM</i> y <i>En modificación PDM</i>. Para verlas, usar <b>Elegir columnas</b>. Están ocultas para que la lista no vaya más lenta a quien no las necesita.</p>
+
+<h2>Documentos PDM</h2>
+<p>Se abre desde <i>Documentación PDM</i> (solo los documentos del producto) o desde <b>Configuración de inventario → Documentos PDM</b> (todos los documentos aprobados, se puede filtrar por código, máquina, fechas…).</p>
+<table>
+  <tr><th>Columna</th><th>Contenido</th></tr>
+  <tr><td class="k">Código PDM / Nombre fichero</td><td>Código del producto en el PDM y nombre del fichero. En <span class="amber">ámbar</span> si está en modificación y en <span class="grey">gris</span> si está obsoleto.</td></tr>
+  <tr><td class="k">Extensión</td><td>Tipo de documento: <span class="mono">slddrw</span> plano, <span class="mono">sldprt</span> pieza, <span class="mono">sldasm</span> ensamblaje, <span class="mono">pdf</span>, <span class="mono">dxf</span>, <span class="mono">x_t</span>, <span class="mono">step</span>…</td></tr>
+  <tr><td class="k">Revisión, Descripción, Máquina</td><td>Datos de la ficha del documento en el PDM.</td></tr>
+  <tr><td class="k">Fecha aprobación / Aprobado por</td><td>Aprobación vigente.</td></tr>
+  <tr><td class="k">Estado actual</td><td>Estado en el PDM (Aprobado, Publicado PDF_DXF_X_T, Diseño…).</td></tr>
+  <tr><td class="k">Modificación</td><td>Texto de I+D explicando el último cambio.</td></tr>
+  <tr><td class="k">Nº productos</td><td>Productos de BC que usan el documento (por ejemplo, todas las variantes de color). Pulsando se abren.</td></tr>
+</table>
+<p>Acciones: <b>Abrir fichero</b> (versión aprobada), <b>Histórico PDM</b> y <b>Productos</b>.</p>
+
+<h2>Histórico PDM</h2>
+<p>Cada documento tiene dos tipos de líneas:</p>
+<ul>
+  <li><b>Versión</b>: cada vez que I+D guarda el fichero en el PDM.</li>
+  <li><b>Transición</b>: cada cambio de estado del flujo (enviar a aprobar, aprobar, volver a diseño…). Las <span class="green">aprobaciones</span> se ven en verde.</li>
+</ul>
+<p>En cada línea se ve el <b>código y la revisión</b> que tenía el plano en ese momento. Así se sigue la historia completa, por ejemplo del 260525B: prototipo AC0358-01-529 (2022) → 260525 → 260525A → 260525B (aprobado el 18/09/2026, <i>"Se modifica el alojamiento y topes para el Pasador"</i>).</p>
+<table>
+  <tr><th>Acción</th><th>Qué hace</th></tr>
+  <tr><td class="k">Abrir versión aprobada</td><td>Sobre una línea de aprobación (verde), abre el fichero tal como se aprobó en ese momento. Sirve para comparar con revisiones anteriores.</td></tr>
+  <tr><td class="k">Solo aprobaciones</td><td>Muestra solo las aprobaciones. Pulsando otra vez se ven todas las líneas.</td></tr>
+</table>
+
+<h2 class="pagebreak">Qué programa abre cada fichero</h2>
+<table>
+  <tr><th>Tipo</th><th>Programa</th></tr>
+  <tr><td class="k">PDF</td><td>El lector de PDF habitual.</td></tr>
+  <tr><td class="k">DXF, STEP, X_T</td><td>Programas de CAD o visores. Normalmente se usan para enviarlos a un proveedor.</td></tr>
+  <tr><td class="k">SLDDRW, SLDPRT, SLDASM</td><td>SolidWorks o el visor gratuito <b>eDrawings</b>. Si no se tiene, mejor usar el PDF.</td></tr>
+</table>
+<div class="note">En el <b>cliente Windows</b> el fichero se abre directamente. En el <b>cliente web</b> el navegador lo descarga o lo abre en otra pestaña.</div>
+
+<h2>Preguntas frecuentes</h2>
+<table>
+  <tr><th>Situación</th><th>Respuesta</th></tr>
+  <tr><td class="k">El producto no tiene panel PDM con datos</td><td>No hay ningún documento aprobado en el PDM con ese código. Ocurre con productos comerciales, máquinas y productos antiguos (anteriores al PDM, 2019).</td></tr>
+  <tr><td class="k">I+D acaba de aprobar y no lo veo</td><td>Se actualiza cada hora. Si es urgente, el responsable puede lanzar <i>Sincronizar PDM ahora</i> en Configuración de inventario.</td></tr>
+  <tr><td class="k">Sale "en modificación"</td><td>I+D está cambiando el plano. Lo que se abre es la última versión aprobada, que es la válida.</td></tr>
+  <tr><td class="k">Sale "sustituido por …"</td><td>El código consultado es una revisión antigua. Consultar el código indicado.</td></tr>
+  <tr><td class="k">"No se encuentra el fichero … en el almacén"</td><td>Avisar a Sistemas: el servidor de BC no llega a la carpeta del PDM.</td></tr>
+</table>
+
+</body>
+</html>
