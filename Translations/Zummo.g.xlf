@@ -11373,6 +11373,36 @@
           <note from="Developer" annotates="general" priority="2">ESP="Versión aprobada"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Approved Version - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 241878115 - Field 1778072510 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Closed - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 241878115 - Field 1060753699 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Closed By - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 241878115 - Field 3184896434 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha cierre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Closed Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 241878115 - Field 2901082288 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed Request No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº solicitud cierre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Closed Request No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 241878115 - Field 1356744270 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo cierre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Closed Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 241878115 - Field 1356744270 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source> ,Manual,Request</source>
+          <note from="Developer" annotates="general" priority="2">ESP=" ,Manual,Solicitud"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM PDM Document - Field Closed Type - Property OptionCaption</note>
+        </trans-unit>
         <trans-unit id="Table 241878115 - Field 2762735367 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Current Status</source>
           <note from="Developer" annotates="general" priority="2">ESP="Estado actual"</note>
@@ -14183,6 +14213,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="No se ha podido consultar el PDM. La solicitud continúa sin comprobar el plano."</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CheckRequestBeforeLaunch - NamedType lblNoConnection</note>
         </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 2106811944 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close %1 drawings? They will leave the tray and no request will be created for them.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Cerrar %1 planos? Saldrán de la bandeja y no se creará su solicitud."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method CloseTrayDocuments - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="Codeunit 2456881923 - Method 645593098 - NamedType 4139126033" size-unit="char" translate="yes" xml:space="preserve">
           <source>(without item no., %1)</source>
           <note from="Developer" annotates="general" priority="2">ESP="(sin nº producto, %1)"</note>
@@ -14237,6 +14272,11 @@
           <source>File %1 (version %2) not found in the PDM vault:\%3</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra el fichero %1 (versión %2) en el almacén del PDM:\%3"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method OpenVaultFile - NamedType lblNotFound</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2456881923 - Method 1006089387 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen %1 drawings? They will appear again in the tray (if they still have no item or request).</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Reabrir %1 planos? Volverán a la bandeja (si siguen sin producto ni solicitud)."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit ZM PDM Sync - Method ReopenTrayDocuments - NamedType lblConfirm</note>
         </trans-unit>
         <trans-unit id="Codeunit 2456881923 - Method 4016706693 - NamedType 461865058" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents</source>
@@ -22113,6 +22153,31 @@
           <note from="Developer" annotates="general" priority="2">ESP="Aprobados PDM sin producto"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1496004825 - Method 716454850 - NamedType 3813755426" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDM closed in tray</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Aprobados PDM cerrados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Method OnOpenPage - NamedType lblClosedCaption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 4059277052 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Drawings closed in the tray, by hand or when creating the request.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Planos cerrados en la bandeja, a mano o al crear la solicitud."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action ClosedHistory - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 4059277052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Closed history</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Histórico cerrados"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action ClosedHistory - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 1332466206 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Removes the selected drawings from the tray without creating a request. They can be seen in the closed history.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Quita de la bandeja los planos seleccionados sin crear solicitud. Se ven en el histórico de cerrados."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action CloseDocuments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 1332466206 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cerrar"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action CloseDocuments - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1496004825 - Action 2182717378 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
           <source>Creates a new item request for each selected drawing (one per color when the drawing is a color variant '-X').</source>
           <note from="Developer" annotates="general" priority="2">ESP="Crea una solicitud de alta por cada plano seleccionado (una por color si el plano es de variantes '-X')."</note>
@@ -22142,6 +22207,16 @@
           <source>Refresh</source>
           <note from="Developer" annotates="general" priority="2">ESP="Actualizar"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action Refresh - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 2472276297 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Returns the selected drawings to the tray.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Devuelve a la bandeja los planos seleccionados."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action ReopenDocuments - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="Page 1496004825 - Action 2472276297 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Reopen</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Reabrir"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM Pending Items - Action ReopenDocuments - Property Caption</note>
         </trans-unit>
         <trans-unit id="Page 1968399940 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Search in PDM</source>

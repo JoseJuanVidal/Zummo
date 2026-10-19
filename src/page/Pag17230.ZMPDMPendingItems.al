@@ -59,6 +59,31 @@ page 17230 "ZM PDM Pending Items"
                     ApplicationArea = All;
                     Visible = false;
                 }
+                field(Closed; Closed)
+                {
+                    ApplicationArea = All;
+                    Visible = ShowClosed;
+                }
+                field("Closed Type"; "Closed Type")
+                {
+                    ApplicationArea = All;
+                    Visible = ShowClosed;
+                }
+                field("Closed Request No."; "Closed Request No.")
+                {
+                    ApplicationArea = All;
+                    Visible = ShowClosed;
+                }
+                field("Closed By"; "Closed By")
+                {
+                    ApplicationArea = All;
+                    Visible = ShowClosed;
+                }
+                field("Closed Date"; "Closed Date")
+                {
+                    ApplicationArea = All;
+                    Visible = ShowClosed;
+                }
             }
         }
     }
@@ -76,6 +101,7 @@ page 17230 "ZM PDM Pending Items"
                 Promoted = true;
                 PromotedCategory = Process;
                 PromotedIsBig = true;
+                Visible = not ShowClosed;
 
                 trigger OnAction()
                 var
@@ -84,8 +110,49 @@ page 17230 "ZM PDM Pending Items"
                     TempSelected.Copy(Rec, true);
                     CurrPage.SetSelectionFilter(TempSelected);
                     PDMSync.CreateRequestsFromTray(TempSelected);
-                    PDMSync.BuildPendingTray(Rec);
-                    CurrPage.Update(false);
+                    RefreshTray(true);
+                end;
+            }
+            action(CloseDocuments)
+            {
+                ApplicationArea = All;
+                Caption = 'Close', comment = 'ESP="Cerrar"';
+                ToolTip = 'Removes the selected drawings from the tray without creating a request. They can be seen in the closed history.', comment = 'ESP="Quita de la bandeja los planos seleccionados sin crear solicitud. Se ven en el histórico de cerrados."';
+                Image = Close;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Visible = not ShowClosed;
+
+                trigger OnAction()
+                var
+                    TempSelected: Record "ZM PDM Document" temporary;
+                begin
+                    TempSelected.Copy(Rec, true);
+                    CurrPage.SetSelectionFilter(TempSelected);
+                    PDMSync.CloseTrayDocuments(TempSelected);
+                    RefreshTray(true);
+                end;
+            }
+            action(ReopenDocuments)
+            {
+                ApplicationArea = All;
+                Caption = 'Reopen', comment = 'ESP="Reabrir"';
+                ToolTip = 'Returns the selected drawings to the tray.', comment = 'ESP="Devuelve a la bandeja los planos seleccionados."';
+                Image = ReOpen;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Visible = ShowClosed;
+
+                trigger OnAction()
+                var
+                    TempSelected: Record "ZM PDM Document" temporary;
+                begin
+                    TempSelected.Copy(Rec, true);
+                    CurrPage.SetSelectionFilter(TempSelected);
+                    PDMSync.ReopenTrayDocuments(TempSelected);
+                    RefreshTray(true);
                 end;
             }
             action(OpenPDF)
@@ -133,18 +200,57 @@ page 17230 "ZM PDM Pending Items"
 
                 trigger OnAction()
                 begin
-                    PDMSync.BuildPendingTray(Rec);
-                    CurrPage.Update(false);
+                    RefreshTray(true);
+                end;
+            }
+        }
+        area(Navigation)
+        {
+            action(ClosedHistory)
+            {
+                ApplicationArea = All;
+                Caption = 'Closed history', comment = 'ESP="Histórico cerrados"';
+                ToolTip = 'Drawings closed in the tray, by hand or when creating the request.', comment = 'ESP="Planos cerrados en la bandeja, a mano o al crear la solicitud."';
+                Image = History;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = not ShowClosed;
+
+                trigger OnAction()
+                var
+                    PDMPendingItems: Page "ZM PDM Pending Items";
+                begin
+                    PDMPendingItems.SetShowClosed(true);
+                    PDMPendingItems.Run();
                 end;
             }
         }
     }
 
     trigger OnOpenPage()
+    var
+        lblClosedCaption: Label 'PDM closed in tray', comment = 'ESP="Aprobados PDM cerrados"';
     begin
-        PDMSync.BuildPendingTray(Rec);
+        if ShowClosed then
+            CurrPage.Caption := lblClosedCaption;
+        RefreshTray(false);
     end;
 
     var
         PDMSync: Codeunit "ZM PDM Sync";
+        ShowClosed: Boolean;
+
+    procedure SetShowClosed(NewShowClosed: Boolean)
+    begin
+        // false (por defecto): pendientes; true: histórico de cerrados
+        ShowClosed := NewShowClosed;
+    end;
+
+    local procedure RefreshTray(UpdatePage: Boolean)
+    begin
+        PDMSync.BuildPendingTray(Rec, ShowClosed);
+        Rec.SetRange(Closed, ShowClosed);
+        if UpdatePage then
+            CurrPage.Update(false);
+    end;
 }

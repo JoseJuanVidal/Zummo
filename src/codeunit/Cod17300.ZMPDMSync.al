@@ -17,6 +17,7 @@ codeunit 17300 "ZM PDM Sync"
         InventorySetup: Record "Inventory Setup";
         TempAffectedItem: Record Item temporary;
         TempSyncedDocument: Record "Integer" temporary;
+        TempClosedDocument: Record "ZM PDM Document" temporary;
         FileMgt: Codeunit "File Management";
         Window: Dialog;
         SyncTime: DateTime;
@@ -54,6 +55,8 @@ codeunit 17300 "ZM PDM Sync"
             Window.Open(lblWindow);
         SQLConnect(SQLConnection);
         NewMark := GetServerTime(SQLConnection);
+        // el cierre de la bandeja va en los documentos, que se borran y se vuelven a cargar
+        SaveClosedCodes();
         if FullReload or (InventorySetup."PDM Sync Mark" = '') then begin
             Since := 'NULL';
             PDMItemLink.DeleteAll();
@@ -68,6 +71,7 @@ codeunit 17300 "ZM PDM Sync"
         SQLConnection.Close();
         AddCurrentLinks();
         UpdateMainLinks();
+        RestoreClosedCodes();
         NoRequests := UpdateOpenRequests();
 
         InventorySetup.Get();
@@ -1234,17 +1238,22 @@ codeunit 17300 "ZM PDM Sync"
     // ======================================================================================================
     // ==  Bandeja: planos aprobados sin producto ni solicitud
     // ======================================================================================================
-    procedure BuildPendingTray(var TempPDMDocument: Record "ZM PDM Document" temporary)
+    procedure BuildPendingTray(var TempPDMDocument: Record "ZM PDM Document" temporary; ShowClosed: Boolean)
     var
         PDMDocument: Record "ZM PDM Document";
         TempByCode: Record "ZM PDM Document" temporary;
         PDMCode: Text;
     begin
+        // ShowClosed = false: pendientes (aprobados desde la fecha de configuración, sin producto ni solicitud)
+        // ShowClosed = true: histórico de cerrados (a mano o al crear la solicitud), de cualquier fecha
         TempPDMDocument.Reset();
         TempPDMDocument.DeleteAll();
         InventorySetup.Get();
-        InventorySetup.TestField("PDM Pending From Date");
-        PDMDocument.SetFilter("Approval Date", '>=%1', CreateDateTime(InventorySetup."PDM Pending From Date", 0T));
+        if not ShowClosed then begin
+            InventorySetup.TestField("PDM Pending From Date");
+            PDMDocument.SetFilter("Approval Date", '>=%1', CreateDateTime(InventorySetup."PDM Pending From Date", 0T));
+        end;
+        PDMDocument.SetRange(Closed, ShowClosed);
         PDMDocument.SetRange(Obsolete, false);
         PDMDocument.SetFilter(Extension, '%1|%2|%3', 'slddrw', 'sldasm', 'sldprt');
         if PDMDocument.FindSet() then
@@ -1269,7 +1278,7 @@ codeunit 17300 "ZM PDM Sync"
         if TempByCode.FindSet() then
             repeat
                 PDMCode := UpperCase(DelChr(TempByCode."PDM Code", '<>', ' '));
-                if not ItemOrRequestExists(PDMCode) then begin
+                if ShowClosed or not ItemOrRequestExists(PDMCode) then begin
                     TempPDMDocument := TempByCode;
                     TempPDMDocument.Insert();
                 end;
@@ -1382,6 +1391,7 @@ codeunit 17300 "ZM PDM Sync"
         lblNoItemNo: Label '(without item no., %1)', comment = 'ESP="(sin nº producto, %1)"';
         lblConfirm: Label 'The following requests will be created:\%1\Do you want to continue?', comment = 'ESP="Se van a crear las siguientes solicitudes:\%1\¿Desea continuar?"';
         lblDone: Label '%1 requests have been created: %2', comment = 'ESP="Se han creado %1 solicitudes: %2"';
+        LastRequestNo: Code[20];
     begin
         if TempPDMDocument.FindSet() then
             repeat
@@ -1399,6 +1409,7 @@ codeunit 17300 "ZM PDM Sync"
         if TempPDMDocument.FindSet() then
             repeat
                 GetNewItemNumbers(TempPDMDocument, ItemNumbers);
+                LastRequestNo := '';
                 foreach ItemNo in ItemNumbers do begin
                     Clear(Request);
                     Request.Init();
@@ -1411,8 +1422,107 @@ codeunit 17300 "ZM PDM Sync"
                     Request.Modify(true);
                     NoRequests += 1;
                     RequestList += ', ' + Request."No.";
+                    LastRequestNo := Request."No.";
                 end;
+                // sale de la bandeja y queda en el histórico de cerrados con la solicitud creada
+                CloseCode(TempPDMDocument."PDM Code", TempPDMDocument."Closed Type"::Request, LastRequestNo);
             until TempPDMDocument.Next() = 0;
         Message(lblDone, NoRequests, CopyStr(RequestList, 3));
+    end;
+
+    procedure CloseTrayDocuments(var TempPDMDocument: Record "ZM PDM Document" temporary)
+    var
+        lblConfirm: Label 'Close %1 drawings? They will leave the tray and no request will be created for them.', comment = 'ESP="¿Cerrar %1 planos? Saldrán de la bandeja y no se creará su solicitud."';
+    begin
+        if TempPDMDocument.Count() = 0 then
+            exit;
+        if not Confirm(lblConfirm, false, TempPDMDocument.Count()) then
+            exit;
+        if TempPDMDocument.FindSet() then
+            repeat
+                CloseCode(TempPDMDocument."PDM Code", TempPDMDocument."Closed Type"::Manual, '');
+            until TempPDMDocument.Next() = 0;
+    end;
+
+    procedure ReopenTrayDocuments(var TempPDMDocument: Record "ZM PDM Document" temporary)
+    var
+        PDMDocument: Record "ZM PDM Document";
+        lblConfirm: Label 'Reopen %1 drawings? They will appear again in the tray (if they still have no item or request).', comment = 'ESP="¿Reabrir %1 planos? Volverán a la bandeja (si siguen sin producto ni solicitud)."';
+    begin
+        if TempPDMDocument.Count() = 0 then
+            exit;
+        if not Confirm(lblConfirm, false, TempPDMDocument.Count()) then
+            exit;
+        if TempPDMDocument.FindSet() then
+            repeat
+                PDMDocument.Reset();
+                PDMDocument.SetCurrentKey("PDM Code");
+                PDMDocument.SetRange("PDM Code", TempPDMDocument."PDM Code");
+                PDMDocument.ModifyAll(Closed, false);
+                PDMDocument.ModifyAll("Closed Type", PDMDocument."Closed Type"::" ");
+                PDMDocument.ModifyAll("Closed Request No.", '');
+                PDMDocument.ModifyAll("Closed By", '');
+                PDMDocument.ModifyAll("Closed Date", 0DT);
+            until TempPDMDocument.Next() = 0;
+    end;
+
+    local procedure CloseCode(PDMCode: Text; ClosedType: Option; RequestNo: Code[20])
+    var
+        PDMDocument: Record "ZM PDM Document";
+    begin
+        // por código: se marcan todos sus documentos (plano, pieza, PDF...)
+        PDMDocument.SetCurrentKey("PDM Code");
+        PDMDocument.SetRange("PDM Code", PDMCode);
+        if PDMDocument.FindSet(true) then
+            repeat
+                PDMDocument.Closed := true;
+                PDMDocument."Closed Type" := ClosedType;
+                PDMDocument."Closed Request No." := RequestNo;
+                PDMDocument."Closed By" := CopyStr(UserId(), 1, MaxStrLen(PDMDocument."Closed By"));
+                PDMDocument."Closed Date" := CurrentDateTime();
+                PDMDocument.Modify();
+            until PDMDocument.Next() = 0;
+    end;
+
+    local procedure SaveClosedCodes()
+    var
+        PDMDocument: Record "ZM PDM Document";
+    begin
+        // un registro por código cerrado, con los datos del cierre
+        TempClosedDocument.Reset();
+        TempClosedDocument.DeleteAll();
+        PDMDocument.SetRange(Closed, true);
+        if PDMDocument.FindSet() then
+            repeat
+                TempClosedDocument.SetRange("PDM Code", PDMDocument."PDM Code");
+                if TempClosedDocument.IsEmpty() then begin
+                    TempClosedDocument := PDMDocument;
+                    TempClosedDocument.Insert();
+                end;
+            until PDMDocument.Next() = 0;
+        TempClosedDocument.Reset();
+    end;
+
+    local procedure RestoreClosedCodes()
+    var
+        PDMDocument: Record "ZM PDM Document";
+    begin
+        // vuelve a marcar los documentos de los códigos cerrados (también los nuevos del mismo código)
+        if TempClosedDocument.FindSet() then
+            repeat
+                PDMDocument.Reset();
+                PDMDocument.SetCurrentKey("PDM Code");
+                PDMDocument.SetRange("PDM Code", TempClosedDocument."PDM Code");
+                PDMDocument.SetRange(Closed, false);
+                if PDMDocument.FindSet(true) then
+                    repeat
+                        PDMDocument.Closed := true;
+                        PDMDocument."Closed Type" := TempClosedDocument."Closed Type";
+                        PDMDocument."Closed Request No." := TempClosedDocument."Closed Request No.";
+                        PDMDocument."Closed By" := TempClosedDocument."Closed By";
+                        PDMDocument."Closed Date" := TempClosedDocument."Closed Date";
+                        PDMDocument.Modify();
+                    until PDMDocument.Next() = 0;
+            until TempClosedDocument.Next() = 0;
     end;
 }

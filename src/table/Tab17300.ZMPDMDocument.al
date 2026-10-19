@@ -125,6 +125,37 @@ table 17300 "ZM PDM Document"
             CalcFormula = count("ZM PDM Item Link" where("Document ID" = field("Document ID")));
             Editable = false;
         }
+        // cierre en la bandeja "Aprobados PDM sin producto" (por código PDM: se marcan todos sus documentos).
+        // La sincronización lo conserva aunque borre y vuelva a cargar los documentos.
+        field(50; Closed; Boolean)
+        {
+            Caption = 'Closed', comment = 'ESP="Cerrado"';
+            DataClassification = CustomerContent;
+        }
+        field(51; "Closed Type"; Option)
+        {
+            Caption = 'Closed Type', comment = 'ESP="Tipo cierre"';
+            DataClassification = CustomerContent;
+            OptionMembers = " ",Manual,Request;
+            OptionCaption = ' ,Manual,Request', comment = 'ESP=" ,Manual,Solicitud"';
+        }
+        field(52; "Closed Request No."; Code[20])
+        {
+            Caption = 'Closed Request No.', comment = 'ESP="Nº solicitud cierre"';
+            DataClassification = CustomerContent;
+            TableRelation = "ZM PL Items Temporary";
+            ValidateTableRelation = false;
+        }
+        field(53; "Closed By"; Code[50])
+        {
+            Caption = 'Closed By', comment = 'ESP="Cerrado por"';
+            DataClassification = CustomerContent;
+        }
+        field(54; "Closed Date"; DateTime)
+        {
+            Caption = 'Closed Date', comment = 'ESP="Fecha cierre"';
+            DataClassification = CustomerContent;
+        }
         field(41; "Has PDF"; Boolean)
         {
             // hay un PDF aprobado con el mismo código (el PDF es otro documento del PDM)
