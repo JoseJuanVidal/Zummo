@@ -287,7 +287,13 @@
             <ObjectType>Page</ObjectType>
             <ObjectID>60029</ObjectID>
             <ServiceName>STHApiPostCommentLine</ServiceName>
-            <Published>true</Published>            
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Query</ObjectType>
+            <ObjectID>50013</ObjectID>
+            <ServiceName>WSMovsContabilidad</ServiceName>
+            <Published>true</Published>
         </TenantWebService>
     </TenantWebServiceCollection>
 </ExportedData>

@@ -36081,6 +36081,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Query ZM Items - Purchase Category - NamedType lblWindow</note>
           <target>Nº Mov.: #1#############\Fecha: #2###############</target>
         </trans-unit>
+        <trans-unit id="Query 3739940462 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>WS G/L Entries</source>
+          <note from="Developer" annotates="general" priority="2">ESP="WS Movs. contabilidad"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Query ZM WS Movs. Contabilidad - Property Caption</note>
+          <target>WS Movs. contabilidad</target>
+        </trans-unit>
         <trans-unit id="XmlPort 27130196 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>SEPA DD pain.008.001.02 REG</source>
           <note from="Developer" annotates="general" priority="2"/>
