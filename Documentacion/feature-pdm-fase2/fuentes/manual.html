@@ -18,7 +18,7 @@
   <li><b>abrir el plano en PDF</b> y el resto de documentación (DXF, STEP…) con un clic;</li>
   <li>consultar el <b>histórico de cambios</b> del plano: versiones, aprobaciones y comentarios de I+D;</li>
   <li>relacionar la <b>solicitud de alta</b> con su plano, que rellena sus datos y avisa si el plano no está aprobado;</li>
-  <li>ver los <b>planos aprobados que aún no tienen producto</b> y crear su solicitud.</li>
+  <li>ver los <b>planos aprobados que aún no tienen producto</b> y crear su solicitud, o cerrarlos si no la necesitan.</li>
 </ul>
 <p>No hace falta tener el PDM ni licencia. Los datos se leen del PDM automáticamente.</p>
 
@@ -143,16 +143,72 @@
 <div class="note"><i>El plano 260312.SLDDRW (260312) está en estado 'Diseño' en el PDM y todavía no está aprobado. ¿Desea continuar?</i></div>
 <p>Es solo un aviso: se puede continuar. En la lista de solicitudes, la columna <i>Estado PDM</i> muestra el estado de cada una.</p>
 
-<h2>Aprobados PDM sin producto</h2>
-<p>Lista de planos <b>aprobados en el PDM</b> (desde la fecha indicada en la configuración) cuyo código <b>no existe en BC ni tiene solicitud</b>. Sirve para que no se quede ningún plano aprobado sin dar de alta, sobre todo las nuevas letras de revisión. Se abre desde el buscador del menú: <b>Aprobados PDM sin producto</b>.</p>
+<h2 class="pagebreak">Aprobados PDM sin producto (bandeja)</h2>
+<p>Cuando I+D aprueba un plano en el PDM, normalmente hay que dar de alta el producto en BC; sobre todo cuando cambia la letra de revisión (260525A → 260525B), que es un producto nuevo. Esta pantalla es la <b>bandeja de entrada</b> de esos planos: muestra los <b>aprobados que todavía no tienen producto ni solicitud</b>, para que no se quede ninguno sin tratar.</p>
+<p>Se abre desde el buscador del menú: <b>Aprobados PDM sin producto</b>. El responsable indica en <i>Configuración de inventario › PDM SolidWorks › Bandeja PDM desde fecha</i> desde qué fecha de aprobación se muestran (por ejemplo, el 01/03/2026, cuando empezaron las solicitudes de alta).</p>
+
+<div class="mock">
+  <div class="bar">Aprobados PDM sin producto</div>
+  <div class="act">Procesar: <b>Crear solicitud</b> · <b>Cerrar</b> · Ver plano (PDF) · Histórico PDM · Actualizar &nbsp;|&nbsp; Navegar: <b>Histórico cerrados</b></div>
+  <table style="margin:0">
+    <tr><th>Código PDM</th><th>Descripción</th><th>Rev.</th><th>Fecha aprobación</th><th>Aprobado por</th><th>Tiene PDF</th></tr>
+    <tr><td>2102023B-X</td><td>TUERCA 1/4 CORTA</td><td>03</td><td>07/10/2026</td><td>jorge-martinez</td><td>Sí</td></tr>
+    <tr><td>250510B-X</td><td>BOLA EXTRA PEQUEÑA Z25</td><td>01</td><td>05/10/2026</td><td>jorge-martinez</td><td>Sí</td></tr>
+    <tr><td>3105010A</td><td>EJE COPA Z31</td><td>02</td><td>11/06/2026</td><td>nico-ros</td><td>No</td></tr>
+    <tr><td>CONECTOR</td><td></td><td>03</td><td>23/03/2026</td><td>jorge-martinez</td><td>No</td></tr>
+  </table>
+</div>
+
+<h3>Qué planos aparecen y cuándo desaparecen</h3>
+<ul>
+  <li><b>Aparecen</b> los planos (o, si no hay plano, el ensamblaje o la pieza) <b>aprobados</b> desde la fecha de configuración, uno por código, cuyo código <b>no existe como producto ni tiene solicitud</b> (abierta o registrada). En colores ("-X") basta con que exista alguna variante para que no aparezca.</li>
+  <li>No aparecen los prototipos (códigos AC…, PM…), los componentes (-C1, C1-…) ni los obsoletos.</li>
+  <li><b>Desaparecen</b> al <b>crear su solicitud</b>, al <b>cerrarlos</b>, o cuando alguien da de alta el producto o hace la solicitud por otra vía.</li>
+</ul>
+
+<h3>Columnas</h3>
 <table>
-  <tr><th>Acción / columna</th><th>Qué hace</th></tr>
-  <tr><td class="k">Crear solicitud</td><td>Crea una solicitud de alta nueva por cada plano seleccionado, ya relacionada con el plano y con los datos rellenados. Si el plano es de colores ("-X"), crea <b>una por cada color</b> que tenía la revisión anterior (250510A-17 → 250510B-17). Antes muestra la lista para confirmar.</td></tr>
-  <tr><td class="k">Tiene PDF</td><td>Indica si hay un PDF aprobado con ese código.</td></tr>
-  <tr><td class="k">Ver plano (PDF)</td><td>Abre ese PDF. <i>Abrir fichero SolidWorks</i> abre el fichero de SolidWorks del plano.</td></tr>
-  <tr><td class="k">Histórico PDM / Actualizar</td><td>Histórico del plano / vuelve a calcular la lista.</td></tr>
+  <tr><th>Columna</th><th>Qué indica</th></tr>
+  <tr><td class="k">Código PDM</td><td>Código aprobado (el futuro Nº de producto; con "-X" si es de colores).</td></tr>
+  <tr><td class="k">Descripción, Revisión, Máquina</td><td>Datos del plano en el PDM.</td></tr>
+  <tr><td class="k">Fecha aprobación / Aprobado por</td><td>Cuándo y quién lo aprobó.</td></tr>
+  <tr><td class="k">Modificación</td><td>Texto de I+D con el motivo del cambio (será el motivo de la solicitud).</td></tr>
+  <tr><td class="k">Tiene PDF</td><td>Si hay un PDF aprobado con ese código para consultarlo.</td></tr>
+  <tr><td class="k">Nombre fichero</td><td>Fichero de SolidWorks del plano.</td></tr>
 </table>
-<p>La lista puede incluir algún código que no es un producto (tornillería de librería, piezas de proveedor…): basta con no crear solicitud para ellos.</p>
+
+<h3>Acciones</h3>
+<table style="break-inside: avoid">
+  <tr><th>Acción</th><th>Qué hace</th></tr>
+  <tr><td class="k"><b>Crear solicitud</b></td><td>Crea una solicitud de alta <b>Nueva</b> por cada plano seleccionado (se pueden seleccionar varios), ya relacionada con el plano y con los datos rellenados: descripción, traducciones, motivo, material, peso y "sustituye a". Antes muestra la lista de solicitudes que va a crear y pide confirmación; al terminar indica sus números (SOL26…). El plano sale de la bandeja y queda en el histórico de cerrados como <i>Solicitud</i>.</td></tr>
+  <tr><td class="k"><b>Cerrar</b></td><td>Para los planos que <b>no deben darse de alta</b> (tornillería de librería, piezas de proveedor, nombres que no son códigos…). Pide confirmación y los quita de la bandeja sin crear nada. Quedan en el histórico de cerrados como <i>Manual</i>, con el usuario y la fecha.</td></tr>
+  <tr><td class="k">Ver plano (PDF)</td><td>Abre el PDF aprobado del código (si <i>Tiene PDF</i>). <i>Abrir fichero SolidWorks</i> abre el SLDDRW/SLDASM/SLDPRT.</td></tr>
+  <tr><td class="k">Histórico PDM</td><td>Versiones y aprobaciones del plano, con los comentarios de I+D.</td></tr>
+  <tr><td class="k">Actualizar</td><td>Vuelve a calcular la lista (por ejemplo, después de una sincronización).</td></tr>
+  <tr><td class="k"><b>Histórico cerrados</b> (Navegar)</td><td>Abre los planos cerrados (ver más abajo).</td></tr>
+</table>
+
+<h3>Planos de colores ("-X")</h3>
+<p>Un plano como <span class="mono">250510B-X</span> sirve para todos los colores. <i>Crear solicitud</i> crea <b>una solicitud por cada color</b> que tenía la revisión anterior en BC: si existía 250510A-17, propone 250510B-17; si existían 250510A-15 y 250510A-18, propone 250510B-15 y 250510B-18. Cada una lleva en "Sustituye a" su color anterior. Si no hay revisión anterior con colores, crea una solicitud sin Nº de producto, relacionada con el plano, para completarla a mano.</p>
+
+<h3>Histórico de cerrados</h3>
+<p>Desde <i>Navegar › Histórico cerrados</i> se abre la misma pantalla, titulada <b>Aprobados PDM cerrados</b>, con los planos cerrados de cualquier fecha y cinco columnas más:</p>
+<table>
+  <tr><th>Columna / acción</th><th>Qué indica / hace</th></tr>
+  <tr><td class="k">Cerrado · Tipo cierre</td><td><i>Manual</i> (con la acción Cerrar) o <i>Solicitud</i> (al crear la solicitud desde la bandeja).</td></tr>
+  <tr><td class="k">Nº solicitud cierre</td><td>Solicitud creada (si es tipo <i>Solicitud</i>; en colores, la última de las creadas).</td></tr>
+  <tr><td class="k">Cerrado por · Fecha cierre</td><td>Usuario y fecha del cierre.</td></tr>
+  <tr><td class="k"><b>Reabrir</b></td><td>Quita el cierre a los seleccionados: vuelven a la bandeja si siguen sin producto ni solicitud. Útil si se cerró alguno por error.</td></tr>
+</table>
+<div class="note">El cierre se guarda por <b>código</b>. Si más adelante I+D aprueba una revisión nueva (por ejemplo 250510C-X), es otro código y volverá a aparecer en la bandeja.</div>
+
+<h3>Uso recomendado</h3>
+<ol style="break-inside: avoid">
+  <li>Abrir la bandeja (por ejemplo, cada mañana): lo que aparece está aprobado en el PDM y sin dar de alta.</li>
+  <li>Revisar cada plano con <i>Ver plano (PDF)</i> o <i>Histórico PDM</i> si hace falta.</li>
+  <li>Si hay que darlo de alta: seleccionarlo y <b>Crear solicitud</b>; completar la solicitud (familia de compra, etc.) y lanzarla como siempre.</li>
+  <li>Si no hay que darlo de alta: <b>Cerrar</b>.</li>
+</ol>
 
 <h2>Qué programa abre cada fichero</h2>
 <table>

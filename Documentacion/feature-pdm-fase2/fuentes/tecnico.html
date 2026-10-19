@@ -48,7 +48,7 @@
   <tr><td class="k">Página 17231 "ZM PDM Search"</td><td>Worksheet temporal: búsqueda directa en el PDM (cualquier estado) por código, descripción o fichero; lookup del campo PDM Document ID.</td></tr>
   <tr><td class="k">Páginas 17471 / 17458 / 17422</td><td>Ficha (grupo Plano PDM; Acciones › PDM: Ver plano, Rellenar desde PDM; Navegar: Histórico PDM), lista (columna Estado PDM) y ficha registrada de la solicitud.</td></tr>
   <tr><td class="k">Página 17483 API</td><td>Servicio SolicitudAltaProductos: Request Type (por defecto New), PDM Document ID, PDM Status, Clasificación y Código empleado editables, Lanzado. Documento propio: <i>API Solicitud alta de productos.pdf</i>.</td></tr>
-  <tr><td class="k">Tabla 17300 / Inventory Setup</td><td>FlowField 41 "Has PDF". Campo 50146 "PDM Pending From Date" (fecha de la bandeja).</td></tr>
+  <tr><td class="k">Tabla 17300 / Inventory Setup</td><td>FlowField 41 "Has PDF". Cierre en la bandeja: campos 50 Closed, 51 Closed Type (Manual, Request), 52 Closed Request No., 53 Closed By, 54 Closed Date. Campo 50146 "PDM Pending From Date" (fecha de la bandeja).</td></tr>
   <tr><td class="k">Otros</td><td>Traducciones es-ES de los textos PDM. Permisos en el conjunto ZUMMO (tabledata RIMD de 17300–17302, ejecución de tablas, páginas 17227–17231 y codeunit).</td></tr>
 </table>
 
@@ -100,7 +100,9 @@
   <li>Documentos aprobados desde <i>PDM Pending From Date</i>, no obsoletos, slddrw/sldasm/sldprt; uno por código (mejor por tipo).</li>
   <li>Fuera: códigos vacíos, de más de 20 caracteres o con espacios, prototipos (<span class="mono">AC#</span>, <span class="mono">PM#</span>) y componentes (<span class="mono">-C#</span>, <span class="mono">C#-</span>).</li>
   <li>Fuera si ya existe el producto o una solicitud (abierta o registrada) por Item No. o por PDM Code; con <span class="mono">-X</span>, basta con que exista alguna variante <span class="mono">&lt;base&gt;-dígitos</span>.</li>
-  <li><b>Crear solicitud</b>: sin colores, el propio código; con <span class="mono">-X</span>, un producto por cada color de la revisión anterior aprobada del plano; si no la hay, una solicitud sin Nº de producto relacionada por ID.</li>
+  <li><b>Crear solicitud</b>: sin colores, el propio código; con <span class="mono">-X</span>, un producto por cada color de la revisión anterior aprobada del plano; si no la hay, una solicitud sin Nº de producto relacionada por ID. Después cierra el código como <i>Request</i> con el Nº de solicitud (la última, en colores).</li>
+  <li><b>Cierre</b> (acción Cerrar → <i>Manual</i>): por código PDM, en todos sus documentos de la 17300. La bandeja filtra <span class="mono">Closed = false</span>; <span class="mono">SetShowClosed(true)</span> abre el histórico de cerrados (cualquier fecha, sin comprobar producto/solicitud) con la acción Reabrir.</li>
+  <li>La sincronización borra y vuelve a cargar documentos: al empezar guarda los códigos cerrados (tabla temporal de la 17300) y al terminar vuelve a marcar sus documentos, también los nuevos del mismo código. Una revisión nueva es otro código y no hereda el cierre.</li>
 </ul>
 
 <h2>Ficheros del almacén</h2>
@@ -114,8 +116,8 @@ Ej.: 260525B.pdf, ID 93500, versión 2 → \\172.21.6.4\pdm-fs\Data\PDM-ZUMMO\c\
   <li>Siempre se abre la versión aprobada (o la de la aprobación elegida en el histórico), nunca una versión en diseño.</li>
 </ul>
 
-<h2 class="pagebreak">Configuración (Configuración de inventario → PDM SolidWorks)</h2>
-<table>
+<h2>Configuración (Configuración de inventario → PDM SolidWorks)</h2>
+<table style="break-inside: avoid">
   <tr><th>Campo</th><th>Valor</th></tr>
   <tr><td class="k">Servidor SQL PDM</td><td>Instancia SQL del PDM (producción: SQLPdm).</td></tr>
   <tr><td class="k">Base de datos PDM</td><td>PDM-ZUMMO.</td></tr>
@@ -139,7 +141,7 @@ Ej.: 260525B.pdf, ID 93500, versión 2 → \\172.21.6.4\pdm-fs\Data\PDM-ZUMMO\c\
 </ol>
 
 <h2>Volumen y rendimiento</h2>
-<table>
+<table style="break-inside: avoid">
   <tr><th>Dato</th><th>Valor (copia de octubre 2026)</th></tr>
   <tr><td class="k">Documentos aprobados</td><td>14.700 (consulta SQL ≈ 11 s)</td></tr>
   <tr><td class="k">Líneas de histórico</td><td>103.734 (consulta SQL ≈ 4 s)</td></tr>
