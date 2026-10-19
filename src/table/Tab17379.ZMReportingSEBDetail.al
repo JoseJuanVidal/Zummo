@@ -22,6 +22,11 @@ table 17379 "ZM Reporting SEB Detail"
             DataClassification = CustomerContent;
             Caption = 'MLA', comment = 'ESP="MLA"';
         }
+        field(4; "Business Unit"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+        }
         field(5; "Item No."; code[20])
         {
             DataClassification = CustomerContent;
@@ -41,6 +46,16 @@ table 17379 "ZM Reporting SEB Detail"
         {
             DataClassification = CustomerContent;
             Caption = 'Posting Date', comment = 'ESP="Fecha registro"';
+        }
+        field(11; Fl1; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fl1', comment = 'ESP="Fl1"';
+        }
+        field(12; Fl2; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fl2', comment = 'ESP="Fl2"';
         }
         field(10; Quantity; Decimal)
         {
@@ -121,6 +136,8 @@ table 17379 "ZM Reporting SEB Detail"
             Clustered = true;
         }
         key(Key1; "CMMF Code", MLA)
+        { }
+        key(Key2; "Period Start")
         { }
     }
 

@@ -27,7 +27,8 @@ tableextension 50018 "ZM Ext Value Entry" extends "Value Entry"
         {
             Caption = 'Reporting SEB Entry No.', comment = 'ESP="Reporting SEB Entry No."';
             Editable = false;
-            TableRelation = "Item Ledger Entry"."Reporting SEB Entry No";
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Reporting SEB: el enlace va en la tabla de detalle';
         }
     }
 }

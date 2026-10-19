@@ -139,7 +139,8 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
         {
             Caption = 'Reporting SEB Entry No.', comment = 'ESP="Reporting SEB Entry No."';
             Editable = false;
-            TableRelation = "Item Ledger Entry"."Reporting SEB Entry No";
+            ObsoleteState = Removed;
+            ObsoleteReason = 'Reporting SEB: el enlace va en la tabla de detalle';
         }
         field(50202; MLA; code[20])
         {

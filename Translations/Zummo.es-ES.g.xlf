@@ -13823,6 +13823,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Amount - Property Caption</note>
           <target>Importe Ventas</target>
         </trans-unit>
+        <trans-unit id="Table 1419415064 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
         <trans-unit id="Table 1419415064 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CMMF Code</source>
           <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
@@ -13851,6 +13857,18 @@
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 1419415064 - Field 804937293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fl1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Fl1 - Property Caption</note>
+          <target>Fl1</target>
+        </trans-unit>
+        <trans-unit id="Table 1419415064 - Field 167240676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fl2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Detail - Field Fl2 - Property Caption</note>
+          <target>Fl2</target>
         </trans-unit>
         <trans-unit id="Table 1419415064 - Field 2139693550 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Gen. Prod. Posting Group</source>
@@ -13942,6 +13960,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Property Caption</note>
           <target>Reporting SEB Sales</target>
         </trans-unit>
+        <trans-unit id="Table 485781647 - Method 614775211 - NamedType 306410641" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Indique un filtro de fecha con fecha inicial y final.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Indique un filtro de fecha con fecha inicial y final."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Method GetMonthRange - NamedType lblErrFilter</note>
+          <target>Indique un filtro de fecha con fecha inicial y final.</target>
+        </trans-unit>
         <trans-unit id="Table 485781647 - Method 4206184793 - NamedType 395994850" size-unit="char" translate="yes" xml:space="preserve">
           <source>Fecha: #1###########\Nº Mov: #2###############</source>
           <note from="Developer" annotates="general" priority="2"/>
@@ -13952,6 +13976,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Amount"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Field Amount - Property Caption</note>
           <target>Amount</target>
+        </trans-unit>
+        <trans-unit id="Table 485781647 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
         </trans-unit>
         <trans-unit id="Table 485781647 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CMMF Code</source>
@@ -13969,6 +13999,18 @@
           <source>Entry No.</source>
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Field Entry No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 485781647 - Field 804937293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fl1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Field Fl1 - Property Caption</note>
+          <target>Fl1</target>
+        </trans-unit>
+        <trans-unit id="Table 485781647 - Field 167240676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fl2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Reporting SEB Sales - Field Fl2 - Property Caption</note>
+          <target>Fl2</target>
         </trans-unit>
         <trans-unit id="Table 485781647 - Field 970704236 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>MLA</source>
@@ -22458,6 +22500,12 @@
           <note from="Developer" annotates="general" priority="2">ESP="Filtro Fecha"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bussiness Unit Sales - Control DateFilter - Property Caption</note>
           <target>Filtro Fecha</target>
+        </trans-unit>
+        <trans-unit id="Page 162831560 - Control 864109087 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Month</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mes"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Bussiness Unit Sales - Control Period Start - Property Caption</note>
+          <target>Mes</target>
         </trans-unit>
         <trans-unit id="Page 162831560 - Action 813397307 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Trace</source>
@@ -41497,12 +41545,6 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Reporting SEB - Property Caption</note>
           <target>Reporting SEB</target>
         </trans-unit>
-        <trans-unit id="TableExtension 1719057576 - Field 2875545145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
-          <source>Reporting SEB Entry No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Reporting SEB Entry No."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field Reporting SEB Entry No - Property Caption</note>
-          <target>Reporting SEB Entry No.</target>
-        </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 2861034351 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Nº Serie Consumo</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie Consumo"</note>
@@ -46449,12 +46491,6 @@
           <note from="Developer" annotates="general" priority="2">ESP="Estado Ord. Prod."</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Field Prod. Order State - Property Caption</note>
           <target>Estado Ord. Prod.</target>
-        </trans-unit>
-        <trans-unit id="TableExtension 3398565291 - Field 2875545145 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
-          <source>Reporting SEB Entry No.</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Reporting SEB Entry No."</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension ZM Ext Value Entry - Field Reporting SEB Entry No - Property Caption</note>
-          <target>Reporting SEB Entry No.</target>
         </trans-unit>
         <trans-unit id="TableExtension 3398565291 - Field 4134490150 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 467645625">
           <source>Updated Cost Entry</source>

@@ -1,10 +1,11 @@
 page 50159 "ZM Bussiness Unit Sales"
 {
     Caption = 'Reporting SEB', comment = 'ESP="Reporting SEB"';
-    PageType = Worksheet;
+    PageType = List;
     ApplicationArea = All;
     UsageCategory = Documents;
     SourceTable = "ZM Reporting SEB Sales";
+    SourceTableView = sorting("Period Start", "Business Unit", MLA, "CMMF Code");
 
     layout
     {
@@ -16,6 +17,7 @@ page 50159 "ZM Bussiness Unit Sales"
                 {
                     ApplicationArea = all;
                     Caption = 'Filtro Fecha', comment = 'ESP="Filtro Fecha"';
+                    // Solo para la acción Cargar; no filtra las líneas (se filtran por Mes en el panel)
                     trigger OnValidate()
                     begin
                         Fechas.SetFilter("Period Start", DateFilter);
@@ -26,8 +28,16 @@ page 50159 "ZM Bussiness Unit Sales"
             repeater(Lines)
             {
                 Editable = false;
-                field("CMMF Code"; "CMMF Code") { ApplicationArea = all; }
+                field("Period Start"; "Period Start")
+                {
+                    ApplicationArea = all;
+                    Caption = 'Month', comment = 'ESP="Mes"';
+                }
+                field("Business Unit"; "Business Unit") { ApplicationArea = all; }
                 field(MLA; MLA) { ApplicationArea = all; }
+                field("CMMF Code"; "CMMF Code") { ApplicationArea = all; }
+                field(Fl1; Fl1) { ApplicationArea = all; }
+                field(Fl2; Fl2) { ApplicationArea = all; }
                 field(Quantity; Quantity)
                 {
                     ApplicationArea = all;
@@ -56,11 +66,6 @@ page 50159 "ZM Bussiness Unit Sales"
                     begin
                         rec.DrillDrow();
                     end;
-                }
-                field("Period Start"; "Period Start")
-                {
-                    ApplicationArea = all;
-                    Visible = false;
                 }
                 field("Period End"; "Period End")
                 {
@@ -91,10 +96,15 @@ page 50159 "ZM Bussiness Unit Sales"
 
                 trigger OnAction()
                 var
+                    FromDate: Date;
+                    ToDate: Date;
                     lblConfirm: Label '¿Desea Cargar los datos de filtro %1?', comment = 'ESP="¿Desea Cargar los datos de filtro %1?"';
                 begin
-                    if Confirm(lblConfirm, true, DateFilter) then
+                    Rec.GetMonthRange(DateFilter, FromDate, ToDate);
+                    if Confirm(lblConfirm, true, DateFilter) then begin
                         Rec.UploadItemLedgerEntry(DateFilter);
+                        CurrPage.Update(false);
+                    end;
                 end;
             }
         }

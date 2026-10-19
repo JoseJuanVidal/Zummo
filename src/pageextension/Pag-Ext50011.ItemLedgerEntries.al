@@ -59,12 +59,6 @@ pageextension 50011 "ItemLedgerEntries" extends "Item Ledger Entries"
                 Caption = 'Available Quantity', comment = 'ESP="Cantidad disponible"';
                 DecimalPlaces = 0 : 5;
             }
-            field("Reporting SEB Entry No"; "Reporting SEB Entry No")
-            {
-                ApplicationArea = all;
-                Visible = false;
-            }
-
             field("Item Category Code"; "Item Category Code")
             {
                 ApplicationArea = all;

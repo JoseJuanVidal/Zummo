@@ -28,8 +28,11 @@ page 17222 "ZM Reporting SEB Details"
                 field("Source No."; "Source No.") { }
                 field("Source Name"; "Source Name") { }
                 field("Vat Registration Name"; "Vat Registration Name") { }
-                field("CMMF Code"; "CMMF Code") { }
+                field("Business Unit"; "Business Unit") { }
                 field(MLA; MLA) { }
+                field("CMMF Code"; "CMMF Code") { }
+                field(Fl1; Fl1) { }
+                field(Fl2; Fl2) { }
             }
         }
     }
