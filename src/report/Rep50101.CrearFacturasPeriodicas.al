@@ -25,10 +25,11 @@ report 50101 "CrearFacturasPeriodicas"
                 if not CuotaPendiente("Standard Customer Sales Code") then
                     CurrReport.Skip();
 
+                // Cliente bloqueado: no se factura y se informa en el resumen de líneas no facturadas
                 if Customer.Get("Standard Customer Sales Code"."Customer No.") then
                     if Customer.Blocked in [Customer.Blocked::All, Customer.Blocked::Invoice] then begin
-                        SendEmailBlocked("Standard Customer Sales Code");
-                        exit;
+                        AddLineaNoFacturada("Standard Customer Sales Code", StrSubstNo('Cliente bloqueado (%1)', Customer.Blocked));
+                        CurrReport.Skip();
                     end;
 
                 tmpStandarCustomerSales.Init();
@@ -97,22 +98,6 @@ report 50101 "CrearFacturasPeriodicas"
         Linea += '<td style="width: 80.75px; height: 10px;text-align: left;">' + Motivo + '</td>';
         Linea += '</tr>';
         LineasNoFacturadas.Add(Linea);
-    end;
-
-    local procedure SendEmailBlocked(StandardSalesCustomer: Record "Standard Customer Sales Code")
-    var
-        Destino: Text;
-        body: Text;
-    begin
-        recSMTPSetup.Get();
-        SalesSetup.Get();
-        Clear(cduSmtp);
-        if SalesSetup."Recipient Mail Invoice Summary" = '' then
-            Destino := 'pedidos@zummo.es;jvidal@zummo.es'
-        else
-            Destino := SalesSetup."Recipient Mail Invoice Summary";
-        body := StrSubstNo('El cliente %1 %2 esta %4\Linea Venta %3', StandardSalesCustomer."Customer No.", StandardSalesCustomer."Customer Name", StandardSalesCustomer.Code, Customer.Blocked);
-        cduSmtp.CreateMessage(CompanyName(), recSMTPSetup."User ID", Destino, StrSubstNo('ERROR Creación Facturación peridica %1 Bloqueado', StandardSalesCustomer."Customer No."), body, TRUE); //pDireccion, pAsunto, pCuerpo, TRUE);
     end;
 
     local procedure SendEmail()
