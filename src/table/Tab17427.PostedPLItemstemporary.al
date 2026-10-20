@@ -758,6 +758,30 @@ table 17427 "Posted PL Items temporary"
         {
             Caption = 'Tipo aprovisionamiento', comment = 'ESP="Tipo aprovisionamiento"';
         }
+        // PDM SolidWorks: plano relacionado (mismos números que en "ZM PL Items Temporary")
+        field(50970; "PDM Document ID"; Integer)
+        {
+            Caption = 'PDM Document ID', comment = 'ESP="ID Documento PDM"';
+            BlankZero = true;
+        }
+        field(50971; "PDM Code"; Text[100])
+        {
+            Caption = 'PDM Code', comment = 'ESP="Código PDM"';
+        }
+        field(50972; "PDM Status"; Option)
+        {
+            Caption = 'PDM Status', comment = 'ESP="Estado PDM"';
+            OptionMembers = " ","Pending Approval",Approved,"In Modification";
+            OptionCaption = ' ,Pending Approval,Approved,In Modification', comment = 'ESP=" ,Pendiente aprobación,Aprobado,En modificación"';
+        }
+        field(50973; "PDM Revision"; Text[10])
+        {
+            Caption = 'PDM Revision', comment = 'ESP="Revisión PDM"';
+        }
+        field(50974; "PDM Approval Date"; DateTime)
+        {
+            Caption = 'PDM Approval Date', comment = 'ESP="Fecha aprob. PDM"';
+        }
 
 
         field(65100; "Sujeto a Control de Calidad"; Boolean)

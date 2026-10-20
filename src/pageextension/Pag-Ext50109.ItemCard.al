@@ -618,6 +618,14 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 }
             }
         }
+        addfirst(FactBoxes)
+        {
+            part(PDMFactBox; "ZM PDM Item FactBox")
+            {
+                ApplicationArea = all;
+                SubPageLink = "No." = field("No.");
+            }
+        }
     }
 
     actions
@@ -753,11 +761,45 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 RunObject = page "Posted PL Items temporary list";
                 RunPageLink = "Item No." = field("No.");
             }
+            action(PDMHistory)
+            {
+                ApplicationArea = all;
+                Caption = 'PDM History', comment = 'ESP="Histórico PDM"';
+                Image = History;
+
+                trigger OnAction()
+                begin
+                    PDMSync.ShowItemHistory(Rec."No.");
+                end;
+            }
+            action(PDMDocuments)
+            {
+                ApplicationArea = all;
+                Caption = 'PDM Documents', comment = 'ESP="Documentación PDM"';
+                Image = Documents;
+
+                trigger OnAction()
+                begin
+                    PDMSync.ShowItemDocuments(Rec."No.");
+                end;
+            }
+            action(PDMOpenPDF)
+            {
+                ApplicationArea = all;
+                Caption = 'View drawing (PDF)', comment = 'ESP="Ver plano (PDF)"';
+                Image = Document;
+
+                trigger OnAction()
+                begin
+                    PDMSync.OpenItemPDF(Rec."No.");
+                end;
+            }
         }
     }
 
 
     var
+        PDMSync: Codeunit "ZM PDM Sync";
         IsITeminventory: Boolean;
 
 

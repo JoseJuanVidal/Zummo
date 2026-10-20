@@ -171,6 +171,31 @@ page 17422 "Posted PL Items temporary card"
                 }
 
             }
+            group(PDM)
+            {
+                Caption = 'PDM drawing', comment = 'ESP="Plano PDM"';
+
+                field("PDM Document ID"; "PDM Document ID")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Code"; "PDM Code")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Status"; "PDM Status")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Revision"; "PDM Revision")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Approval Date"; "PDM Approval Date")
+                {
+                    ApplicationArea = all;
+                }
+            }
             group(changesLMItems)
             {
                 Caption = 'Sustituye a productos', comment = 'ESP="Sustituye a productos"';

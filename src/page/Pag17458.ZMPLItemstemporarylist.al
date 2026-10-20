@@ -49,6 +49,15 @@ page 17458 "ZM PL Items temporary list"
                     ApplicationArea = all;
                     StyleExpr = StyleText;
                 }
+                field("PDM Status"; "PDM Status")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Code"; "PDM Code")
+                {
+                    ApplicationArea = all;
+                    Visible = false;
+                }
                 field("ITBID Status"; "ITBID Status")
                 {
                     ApplicationArea = all;

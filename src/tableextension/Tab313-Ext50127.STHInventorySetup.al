@@ -96,5 +96,45 @@ tableextension 50127 "STHInventory Setup" extends "Inventory Setup" //313
             Caption = 'Last prod. tools revision warning', comment = 'ESP="Últ. aviso revisión útiles"';
             Editable = false;
         }
+        // PDM SolidWorks (la contraseña SQL se guarda en IsolatedStorage, no en la tabla)
+        field(50140; "PDM SQL Server"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PDM SQL Server', comment = 'ESP="Servidor SQL PDM"';
+        }
+        field(50141; "PDM SQL Database"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PDM SQL Database', comment = 'ESP="Base de datos PDM"';
+        }
+        field(50142; "PDM SQL User"; Text[100])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PDM SQL User', comment = 'ESP="Usuario SQL PDM"';
+        }
+        field(50143; "PDM Vault Path"; Text[250])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PDM Vault Path', comment = 'ESP="Ruta almacén PDM"';
+        }
+        field(50144; "PDM Last Sync"; DateTime)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'PDM Last Sync', comment = 'ESP="Últ. sincronización PDM"';
+            Editable = false;
+        }
+        field(50145; "PDM Sync Mark"; Text[19])
+        {
+            // fecha/hora del servidor SQL del PDM al iniciar la última sincronización (aaaa-mm-dd hh:mi:ss)
+            DataClassification = CustomerContent;
+            Caption = 'PDM Sync Mark', comment = 'ESP="Marca sincronización PDM"';
+            Editable = false;
+        }
+        field(50146; "PDM Pending From Date"; Date)
+        {
+            // bandeja "Aprobados PDM sin producto": planos aprobados desde esta fecha
+            DataClassification = CustomerContent;
+            Caption = 'PDM tray from date', comment = 'ESP="Bandeja PDM desde fecha"';
+        }
     }
 }

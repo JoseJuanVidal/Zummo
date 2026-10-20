@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Integración PDM SolidWorks - Documento técnico</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Integración PDM SolidWorks – BC14</h1>
+<div class="subtitle">Documento técnico · Fases 1 y 2 · Extensión Zummo 1.0.0.1018 · rama feature/pdm-fase2 · octubre 2026</div>
+
+<h2>Resumen</h2>
+<p>Business Central lee el PDM de SolidWorks <b>en solo lectura</b> y guarda en tres tablas propias los documentos aprobados, su histórico y su relación con los productos. Los ficheros no se copian: cuando un usuario abre un plano, el <b>servicio de BC</b> lo lee del almacén del PDM y lo envía al cliente. Los usuarios de BC no necesitan cliente ni licencia del PDM, y el PDM no se modifica.</p>
+<div class="flow">
+  <div class="box"><b>SQL Server PDM</b>BBDD del almacén (PDM-ZUMMO). Usuario de solo lectura o cuenta del servicio BC.</div>
+  <div class="arrow">→</div>
+  <div class="box"><b>Codeunit 17300</b>Sincronización completa o incremental. Cola de proyectos / manual.</div>
+  <div class="arrow">→</div>
+  <div class="box"><b>Tablas 17300–17302</b>Documentos aprobados, histórico, relación producto ↔ documento.</div>
+  <div class="arrow">→</div>
+  <div class="box"><b>Ficha / lista producto</b>FactBox, FlowFields, acciones.</div>
+</div>
+<div class="flow">
+  <div class="box"><b>Almacén de ficheros</b><span class="mono">\\172.21.6.4\pdm-fs\Data\PDM-ZUMMO</span></div>
+  <div class="arrow">→</div>
+  <div class="box"><b>Servicio BC140</b>Lee la versión aprobada (cuenta del servicio).</div>
+  <div class="arrow">→</div>
+  <div class="box"><b>Cliente</b>Windows: se abre con el visor. Web: descarga.</div>
+</div>
+
+<h2>Objetos</h2>
+<p>IDs comprobados con la licencia (<span class="mono">check_license.py --libres</span>).</p>
+<table>
+  <tr><th>Objeto</th><th>Contenido</th></tr>
+  <tr><td class="k">Tabla 17300 "ZM PDM Document"</td><td>Un registro por documento aprobado (PK Document ID del PDM): fichero, extensión, carpeta, código, descripciones ESP/ENG/FRA, revisión, máquina, material, peso, modificación, versión aprobada, fecha y usuario de aprobación, última versión, estado actual, en modificación, obsoleto. OnDelete borra su histórico y relaciones.</td></tr>
+  <tr><td class="k">Tabla 17301 "ZM PDM History"</td><td>PK (Document ID, Entry Type, Entry No.). Tipo Versión (Revisions) o Transición (TransitionHistory): fecha, usuario, transición, estado destino, aprobación, comentario, código y revisión en esa versión. Clave secundaria por fecha.</td></tr>
+  <tr><td class="k">Tabla 17302 "ZM PDM Item Link"</td><td>PK (Item No., Document ID), clave secundaria Document ID. Código PDM, versión y revisión aprobadas, fecha, aprobado por, extensión, Vigente, En modificación, Principal.</td></tr>
+  <tr><td class="k">Codeunit 17300 "ZM PDM Sync"</td><td>OnRun = sincronización incremental (cola). Synchronize(FullReload), TestConnection, SetPassword/HasPassword, apertura de ficheros (OpenDocumentFile, OpenHistoryFile, OpenItemPDF) y navegación (ShowItemDocuments, ShowItemHistory, ShowDocumentItems).</td></tr>
+  <tr><td class="k">Página 17227 "ZM PDM Documents"</td><td>Lista (UsageCategory Lists). Abrir fichero, Histórico, Productos.</td></tr>
+  <tr><td class="k">Página 17228 "ZM PDM History"</td><td>Lista por fecha descendente. Abrir versión aprobada, Solo aprobaciones.</td></tr>
+  <tr><td class="k">Página 17229 "ZM PDM Item FactBox"</td><td>CardPart sobre Item. Calcula "Sustituido por" y el estilo en OnAfterGetRecord.</td></tr>
+  <tr><td class="k">Tableext 50108 (Item)</td><td>FlowFields 50240–50245: PDM Revision, PDM Approval Date, PDM Approved By, PDM In Modification, PDM Current (lookup sobre el enlace con Main = true) y PDM Documents (count).</td></tr>
+  <tr><td class="k">Tableext 50127 (Inventory Setup)</td><td>Campos 50140–50145: PDM SQL Server, PDM SQL Database, PDM SQL User, PDM Vault Path, PDM Last Sync, PDM Sync Mark.</td></tr>
+  <tr><td class="k">Pageext 50102 / 50109 / 50133</td><td>Configuración de inventario (grupo y acciones PDM, contraseña enmascarada). Ficha y lista de producto (FactBox, acciones; en la lista, columnas PDM ocultas).</td></tr>
+  <tr><td class="k"><b>Fase 2</b> · Tablas 17462 / 17427</td><td>Solicitud y solicitud registrada: campos 50970–50974 PDM Document ID, PDM Code, PDM Status (" ", Pending Approval, Approved, In Modification), PDM Revision, PDM Approval Date (mismos números: pasan con TransferFields al registrar). Item No. OnValidate → LinkRequest; LaunchRegisterItemTemporary → aviso y, sin GUI, sin confirmaciones.</td></tr>
+  <tr><td class="k">Página 17230 "ZM PDM Pending Items"</td><td>Bandeja temporal (UsageCategory Lists): aprobados sin producto ni solicitud. Crear solicitud, Ver plano (PDF), Abrir fichero SolidWorks, Histórico, Actualizar.</td></tr>
+  <tr><td class="k">Página 17231 "ZM PDM Search"</td><td>Worksheet temporal: búsqueda directa en el PDM (cualquier estado) por código, descripción o fichero; lookup del campo PDM Document ID.</td></tr>
+  <tr><td class="k">Páginas 17471 / 17458 / 17422</td><td>Ficha (grupo Plano PDM; Acciones › PDM: Ver plano, Rellenar desde PDM; Navegar: Histórico PDM), lista (columna Estado PDM) y ficha registrada de la solicitud.</td></tr>
+  <tr><td class="k">Página 17483 API</td><td>Servicio SolicitudAltaProductos: Request Type (por defecto New), PDM Document ID, PDM Status, Clasificación y Código empleado editables, Lanzado. Documento propio: <i>API Solicitud alta de productos.pdf</i>.</td></tr>
+  <tr><td class="k">Tabla 17300 / Inventory Setup</td><td>FlowField 41 "Has PDF". Cierre en la bandeja: campos 50 Closed, 51 Closed Type (Manual, Request), 52 Closed Request No., 53 Closed By, 54 Closed Date. Campo 50146 "PDM Pending From Date" (fecha de la bandeja).</td></tr>
+  <tr><td class="k">Otros</td><td>Traducciones es-ES de los textos PDM. Permisos en el conjunto ZUMMO (tabledata RIMD de 17300–17302, ejecución de tablas, páginas 17227–17231 y codeunit).</td></tr>
+</table>
+
+<h2>Datos que se leen del PDM</h2>
+<table>
+  <tr><th>Tabla PDM</th><th>Uso</th></tr>
+  <tr><td class="k">Documents, FileExtension</td><td>Documento, nombre, extensión, estado actual, última versión, borrado.</td></tr>
+  <tr><td class="k">DocumentsInProjects, Projects</td><td>Carpeta (primera carpeta no borrada).</td></tr>
+  <tr><td class="k">Revisions, Users</td><td>Versiones (fecha, usuario, comentario).</td></tr>
+  <tr><td class="k">TransitionHistory, Transitions, Status</td><td>Transiciones; una transición es <b>aprobación</b> si su estado destino es uno de: Aprobado, Aprobado Librería, Publicado, Publicado PDF, Publicado PDF_DXF_X_T, Publicado produccion (por nombre).</td></tr>
+  <tr><td class="k">VariableValue, Variable</td><td>Variables de la ficha, por nombre: CodigodeProducto, DescripcionProducto, DescripcionProductoIngles, DescripcionProductoFrances, Revision, Maquina, Material, Weight, Modificacion, AprobadoPor. Valor de la versión ≤ la indicada, preferencia de configuración <span class="mono">@</span> y luego la de documento; ValueText si es texto largo.</td></tr>
+  <tr><td class="k">HistoryDelete, HistoryMove, HistoryRename</td><td>Solo para detectar cambios en la sincronización incremental.</td></tr>
+</table>
+
+<h2>Reglas</h2>
+<h3>Documento aprobado y versión vigente</h3>
+<ul>
+  <li>Entra en BC todo documento no borrado con al menos una transición de aprobación.</li>
+  <li><b>Si su estado actual es aprobado/publicado</b>, la versión vigente es la <b>última versión</b>. El <i>SOLIDWORKS Task Add-in</i> regenera PDF/DXF/X_T creando versiones sin transición (≈1.100 documentos).</li>
+  <li><b>Si no</b> (ha vuelto a diseño): versión de la <b>última transición de aprobación</b> y se marca <i>En modificación</i>. Si el estado empieza por "Obsoleto" se marca <i>Obsoleto</i> en lugar de en modificación.</li>
+  <li>Los datos (código, revisión, descripciones…) son los de la versión vigente.</li>
+</ul>
+<h3>Relación producto ↔ documento</h3>
+<ul>
+  <li>Cada aprobación del histórico aporta el código que tenía el documento en esa versión, y al final se añade el código vigente con la versión actual. Así 260525, 260525A y 260525B quedan relacionados con el mismo plano.</li>
+  <li><b>Casado</b> (en mayúsculas): código exacto = Nº producto. Si el código acaba en <span class="mono">-X</span>, todos los productos <span class="mono">&lt;base&gt;-&lt;solo dígitos&gt;</span> (variantes de color). Códigos de más de 20 caracteres no casan.</li>
+  <li><b>Vigente</b>: el código del enlace es el código actual del documento. Si no, el producto está sustituido y la FactBox muestra el código vigente.</li>
+  <li><b>Principal</b> (lo que muestran la FactBox y los FlowFields): vigente antes que sustituido; luego slddrw &gt; sldasm &gt; sldprt &gt; pdf &gt; resto; a igualdad, aprobación más reciente.</li>
+  <li><b>Ver plano (PDF)</b>: enlace con extensión pdf del producto con el mismo criterio. Si no hay y el producto está sustituido: <i>"El producto %1 no tiene PDF aprobado (sustituido por %2)"</i>.</li>
+</ul>
+<h3>Sincronización</h3>
+<ul>
+  <li><b>Recarga completa</b> (o primera vez): borra las tres tablas y lee todo.</li>
+  <li><b>Incremental</b>: documentos con cambios desde la marca anterior menos 10 minutos en TransitionHistory, Revisions o HistoryDelete/Move/Rename. Cada uno se borra (con su histórico y enlaces) y se vuelve a insertar si sigue aprobado. Después se recalcula Principal de los productos afectados.</li>
+  <li>La marca es <span class="mono">GETDATE()</span> del SQL del PDM al empezar (<i>PDM Sync Mark</i>, formato 120), así no influyen los relojes ni la zona horaria del servicio BC.</li>
+  <li>Todo en una transacción: si falla, no queda nada a medias. Fechas del PDM convertidas sin depender del idioma (formato 120).</li>
+</ul>
+
+<h3>Solicitud de alta (fase 2)</h3>
+<ul>
+  <li><b>LinkRequest</b> (al validar Item No., en la API y en "Rellenar desde PDM"): primero busca en los documentos aprobados sincronizados (código exacto o <span class="mono">-X</span>, sin obsoletos, mejor por tipo y fecha); si no hay, <b>consulta directa al PDM</b> (cualquier estado, &lt; 1 s): documentos cuyo código actual es el buscado, mejor por tipo (plano &gt; ensamblaje &gt; pieza). Sin resultado: estado vacío.</li>
+  <li>Con el ID (API o búsqueda manual): si está aprobado se usa la tabla; si no, se consulta en el PDM ese documento y los de su mismo código (para la pieza).</li>
+  <li><b>Relleno</b> (solo campos vacíos, aprobado o no): Description, traducciones ENG/FRA (tabla 17420, clave producto + variante '' + idioma; requiere nº de solicitud), Reason (Modificación), Material y Net/Gross Weight de la <b>pieza</b> del mismo código (descarta vacíos, fórmulas "SW-…@", "&lt;sin especificar&gt;"; <b>Weight está en gramos</b> → /1000), Replaces Item No. (solo New): código aprobado anterior distinto en el histórico del plano que exista como producto; con colores se conserva el sufijo.</li>
+  <li><b>CheckRequestBeforeLaunch</b>: refresca la relación (consulta directa) y, con GUI, pide confirmación si el plano está pendiente o en modificación. Si el PDM no responde, avisa y continúa. Nunca bloquea.</li>
+  <li><b>UpdateOpenRequests</b> (al final de cada sincronización): solicitudes no finalizadas con Item No.: se vuelven a relacionar contra los aprobados; las pendientes pasan a Aprobado al llegar la aprobación. El mensaje indica cuántas han cambiado.</li>
+</ul>
+<h3>Bandeja (fase 2)</h3>
+<ul>
+  <li>Documentos aprobados desde <i>PDM Pending From Date</i>, no obsoletos, slddrw/sldasm/sldprt; uno por código (mejor por tipo).</li>
+  <li>Fuera: códigos vacíos, de más de 20 caracteres o con espacios, prototipos (<span class="mono">AC#</span>, <span class="mono">PM#</span>) y componentes (<span class="mono">-C#</span>, <span class="mono">C#-</span>).</li>
+  <li>Fuera si ya existe el producto o una solicitud (abierta o registrada) por Item No. o por PDM Code; con <span class="mono">-X</span>, basta con que exista alguna variante <span class="mono">&lt;base&gt;-dígitos</span>.</li>
+  <li><b>Crear solicitud</b>: sin colores, el propio código; con <span class="mono">-X</span>, un producto por cada color de la revisión anterior aprobada del plano; si no la hay, una solicitud sin Nº de producto relacionada por ID. Después cierra el código como <i>Request</i> con el Nº de solicitud (la última, en colores).</li>
+  <li><b>Cierre</b> (acción Cerrar → <i>Manual</i>): por código PDM, en todos sus documentos de la 17300. La bandeja filtra <span class="mono">Closed = false</span>; <span class="mono">SetShowClosed(true)</span> abre el histórico de cerrados (cualquier fecha, sin comprobar producto/solicitud) con la acción Reabrir.</li>
+  <li>La sincronización borra y vuelve a cargar documentos: al empezar guarda los códigos cerrados (tabla temporal de la 17300) y al terminar vuelve a marcar sus documentos, también los nuevos del mismo código. Una revisión nueva es otro código y no hereda el cierre.</li>
+</ul>
+
+<h2>Ficheros del almacén</h2>
+<pre>&lt;Ruta almacén PDM&gt;\&lt;último dígito hex del ID&gt;\&lt;ID en hex, 8 cifras&gt;\&lt;versión en hex, 8 cifras&gt;.&lt;extensión&gt;
+Ej.: 260525B.pdf, ID 93500, versión 2 → \\172.21.6.4\pdm-fs\Data\PDM-ZUMMO\c\00016d3c\00000002.pdf</pre>
+<ul>
+  <li>Ficheros sin comprimir, todas las versiones disponibles (comprobado en el servidor F:\PDM-FS\Data).</li>
+  <li>Las versiones en las que solo cambian variables de la ficha <b>no tienen fichero propio</b>: se usa la versión anterior más cercana que lo tenga (18 de las 100 últimas aprobaciones).</li>
+  <li>Nombre en el cliente: <span class="mono">&lt;nombre sin extensión&gt; rev&lt;revisión&gt;.&lt;ext&gt;</span>, saneado con GetSafeFileName.</li>
+  <li><b>Windows</b>: DownloadToFile a una subcarpeta temporal nueva del cliente (CreateClientTempSubDirectory, por si el anterior sigue abierto) y Hyperlink. <b>Web</b>: DownloadHandler.</li>
+  <li>Siempre se abre la versión aprobada (o la de la aprobación elegida en el histórico), nunca una versión en diseño.</li>
+</ul>
+
+<h2>Configuración (Configuración de inventario → PDM SolidWorks)</h2>
+<table style="break-inside: avoid">
+  <tr><th>Campo</th><th>Valor</th></tr>
+  <tr><td class="k">Servidor SQL PDM</td><td>Instancia SQL del PDM (producción: SQLPdm).</td></tr>
+  <tr><td class="k">Base de datos PDM</td><td>PDM-ZUMMO.</td></tr>
+  <tr><td class="k">Usuario SQL PDM</td><td>Usuario SQL de solo lectura. <b>En blanco</b>: seguridad integrada con la cuenta del servicio BC.</td></tr>
+  <tr><td class="k">Contraseña SQL PDM</td><td>Se guarda en IsolatedStorage (empresa), no en la tabla. Se muestra como ********.</td></tr>
+  <tr><td class="k">Ruta almacén PDM</td><td><span class="mono">\\172.21.6.4\pdm-fs\Data\PDM-ZUMMO</span></td></tr>
+  <tr><td class="k">Últ. sincronización PDM</td><td>Solo lectura.</td></tr>
+  <tr><td class="k">Bandeja PDM desde fecha</td><td>Fase 2: la bandeja "Aprobados PDM sin producto" muestra los planos aprobados desde esta fecha.</td></tr>
+</table>
+<p>Acciones: <b>Probar conexión PDM</b> (nº documentos y si la ruta es accesible para el servicio), <b>Sincronizar PDM ahora</b>, <b>Recarga completa PDM</b> (pide confirmación) y <b>Documentos PDM</b>.</p>
+
+<h2>Puesta en producción</h2>
+<div class="note">Fase 2: rellenar además <i>Bandeja PDM desde fecha</i> en la configuración. La API la publica ya el servicio web <span class="mono">SolicitudAltaProductos</span>; facilitar al integrador del PDM el documento de la API.</div>
+<ol>
+  <li><b>SQL</b>: login de solo lectura en el servidor del PDM con <span class="mono">db_datareader</span> en PDM-ZUMMO, o dar ese rol a la cuenta del servicio BC de producción.</li>
+  <li><b>Almacén</b>: permiso de lectura en el recurso <span class="mono">\\172.21.6.4\pdm-fs\Data</span> para la <b>cuenta del servicio BC</b> (si es Servicio de red, la cuenta de equipo del servidor BC). Los usuarios no necesitan acceso.</li>
+  <li>Instalar la extensión y rellenar la configuración. <i>Probar conexión PDM</i> debe indicar ruta accesible: Sí.</li>
+  <li><b>Recarga completa PDM</b> (unos minutos).</li>
+  <li><b>Cola de proyectos</b>: movimiento con tipo Codeunit, ID <b>17300</b>, sin parámetros, recurrente cada hora (por ejemplo de 7:00 a 20:00).</li>
+  <li>Comprobar con 260525B (rev. 05), 260525A (sustituido por 260525B) y 250502B-18 (plano 250502B-X).</li>
+</ol>
+
+<h2>Volumen y rendimiento</h2>
+<table style="break-inside: avoid">
+  <tr><th>Dato</th><th>Valor (copia de octubre 2026)</th></tr>
+  <tr><td class="k">Documentos aprobados</td><td>14.700 (consulta SQL ≈ 11 s)</td></tr>
+  <tr><td class="k">Líneas de histórico</td><td>103.734 (consulta SQL ≈ 4 s)</td></tr>
+  <tr><td class="k">Relaciones con productos</td><td>6.411; 2.261 productos (1.872 activos, 389 bloqueados)</td></tr>
+  <tr><td class="k">Incremental</td><td>Solo los documentos cambiados: segundos.</td></tr>
+  <tr><td class="k">Producto</td><td>No se guarda nada en Item. Los FlowFields solo se calculan si están visibles (FactBox = 1 registro; columnas de la lista ocultas por defecto) y son lecturas por clave primaria.</td></tr>
+</table>
+
+<h2>Limitaciones y siguientes fases</h2>
+<ul>
+  <li><b>Máquinas</b>: en el PDM son modelos genéricos (Z40 NATURE…). Fase posterior: pantalla para relacionar patrones de código de BC con el modelo del PDM.</li>
+  <li><b>Fase 3</b>: aviso desde el PDM a BC al aprobar (página 17483 / servicio web), comparación de listas de materiales y, opcionalmente, copia de los PDF publicados a una carpeta compartida o SharePoint.</li>
+</ul>
+
+</body>
+</html>

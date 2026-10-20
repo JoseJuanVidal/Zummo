@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>API Solicitud de alta de productos</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  td.f { width: 24%; font-family: Consolas, "Courier New", monospace; font-size: 8.6pt; }
+  td.t { width: 15%; font-size: 8.6pt; }
+  td.e { width: 9%; font-size: 8.6pt; text-align: center; }
+  table.fields td { padding: 1.4mm 2mm; }
+</style>
+</head>
+<body>
+
+<h1>API Solicitud de alta de productos</h1>
+<div class="subtitle">Servicio web de Business Central para crear solicitudes de alta desde el PDM · Extensión Zummo 1.0.0.1018 · octubre 2026</div>
+
+<h2>Qué hace</h2>
+<p>Permite que el PDM (o cualquier otra aplicación) cree en Business Central una <b>solicitud de alta de producto</b>, la misma que se crea a mano en <i>Solicitud Alta de productos</i>, y opcionalmente la <b>lance</b> al departamento de planificación.</p>
+<p>Al recibir el Nº de producto, BC busca su plano en el PDM y <b>rellena los campos que no se hayan enviado</b>: descripción, traducciones, motivo, material, peso y "sustituye a". Lo que se envía en la llamada siempre prevalece.</p>
+
+<h2>Conexión</h2>
+<table>
+  <tr><th>Dato</th><th>Valor</th></tr>
+  <tr><td class="k">Servicio</td><td><span class="mono">SolicitudAltaProductos</span> (página 17483 "ZM PL Items Temporary API", publicada en Servicios web)</td></tr>
+  <tr><td class="k">OData V4 (recomendado)</td><td><span class="mono">http://&lt;servidor&gt;:&lt;puerto OData&gt;/&lt;instancia&gt;/ODataV4/Company('ZUMMO')/SolicitudAltaProductos</span><br>Desarrollo: <span class="mono">http://localhost:7048/BC140/ODataV4/Company('ZUMMO')/SolicitudAltaProductos</span></td></tr>
+  <tr><td class="k">SOAP</td><td><span class="mono">http://&lt;servidor&gt;:&lt;puerto SOAP&gt;/&lt;instancia&gt;/WS/ZUMMO/Page/SolicitudAltaProductos</span></td></tr>
+  <tr><td class="k">Autenticación</td><td>Windows (NTLM/Negotiate) con un usuario de BC. Ese usuario necesita el conjunto de permisos <b>ZUMMO</b> y, para lanzar, tener asociado un empleado.</td></tr>
+  <tr><td class="k">Formato</td><td>JSON UTF-8. Fechas <span class="mono">aaaa-mm-dd</span>, decimales con punto, booleanos <span class="mono">true/false</span>.</td></tr>
+</table>
+<div class="note">El servidor, puerto e instancia de producción se indicarán al pasar a producción. El nombre del servicio y los campos son los mismos.</div>
+
+<h2>Operaciones</h2>
+<table>
+  <tr><th>Operación</th><th>Uso</th></tr>
+  <tr><td class="k"><b>POST</b> …/SolicitudAltaProductos</td><td>Crea una solicitud. BC asigna el número (<span class="mono">SOL26xxxx</span>) y lo devuelve en <span class="mono">No</span>.</td></tr>
+  <tr><td class="k"><b>GET</b> …/SolicitudAltaProductos('SOL260138')</td><td>Lee una solicitud. También se puede filtrar: <span class="mono">?$filter=Item_No eq '260525B'</span>.</td></tr>
+  <tr><td class="k"><b>PATCH</b> …/SolicitudAltaProductos('SOL260138')</td><td>Modifica una solicitud. Cabecera <span class="mono">If-Match</span> con el <span class="mono">@odata.etag</span> leído (o <span class="mono">*</span>). Sirve, por ejemplo, para lanzarla después con <span class="mono">{"Lanzado": true}</span>.</td></tr>
+</table>
+<div class="note">La API solo muestra solicitudes en estado vacío o <b>Solicitado</b>. Cuando planificación la pasa a revisión de departamentos ya no se ve ni se puede modificar desde la API.</div>
+
+<h2>Qué hace BC al crear la solicitud</h2>
+<ol>
+  <li>Asigna el número de solicitud, la fecha de registro (si no se envía), el usuario (<span class="mono">User_ID</span>) y el empleado del usuario de la llamada.</li>
+  <li>Aplica las validaciones del <b>tipo de solicitud</b> (por defecto <i>New</i>): en un alta nueva el producto <b>no debe existir</b>; en un cambio, carga los datos del producto existente.</li>
+  <li>Busca el <b>plano del PDM</b>: por <span class="mono">PDM_Document_ID</span> si se envía; si no, por <span class="mono">Item_No</span> (código exacto, o el código <span class="mono">-X</span> del PDM para variantes de color: <span class="mono">250502B-18</span> → <span class="mono">250502B-X</span>). Informa <span class="mono">PDM_Status</span>.</li>
+  <li>Si encuentra el plano, <b>rellena los campos vacíos</b> con los datos de su última versión (aprobada o no):
+    <ul>
+      <li><span class="mono">Description</span>, <span class="mono">TranslateENG</span>, <span class="mono">TranslateFRA</span> y <span class="mono">Reason</span> (texto "Modificación" del PDM);</li>
+      <li><span class="mono">Material</span>, <span class="mono">Net_Weight</span> y <span class="mono">Gross_Weight</span> de la pieza (SLDPRT) del mismo código; el PDM da la masa en gramos y se guarda en kg;</li>
+      <li><span class="mono">Replaces_Item_No</span> (solo en altas nuevas): el código aprobado anterior del mismo plano, si existe como producto (260525B → 260525A; con colores, 250510B-18 → 250510A-18).</li>
+    </ul></li>
+  <li>Guarda los datos enviados, que <b>prevalecen</b> sobre los del PDM.</li>
+  <li>Si <span class="mono">Lanzado = true</span>, la lanza (ver más abajo).</li>
+</ol>
+
+<h2>Campos</h2>
+<p>Nombre JSON tal como aparece en OData. <b>E</b> = se puede enviar; <b>L</b> = solo lectura (enviarlo da error <i>"Control '…' is read-only"</i>).</p>
+<table class="fields">
+  <tr><th>Campo JSON</th><th>Tipo</th><th>E/L</th><th>Descripción y valores</th></tr>
+  <tr><td class="f">No</td><td class="t">Texto 20</td><td class="e">L</td><td>Nº de solicitud, lo asigna BC. Clave para GET/PATCH.</td></tr>
+  <tr><td class="f">State_Creation</td><td class="t">Opción</td><td class="e">L</td><td>Estado: <span class="mono">" "</span> (borrador, sin lanzar) · <span class="mono">Requested</span> (solicitado / lanzado).</td></tr>
+  <tr><td class="f">Type</td><td class="t">Opción</td><td class="e">L</td><td>Tipo de producto, lo calcula <span class="mono">Clasification_Type</span>: <span class="mono">Inventory</span> · <span class="mono">Service</span> · <span class="mono">Non-Inventory</span>.</td></tr>
+  <tr><td class="f">Request_Type</td><td class="t">Opción</td><td class="e">E</td><td>Tipo de solicitud. <b>Por defecto <span class="mono">New</span></b>. Valores: <span class="mono">New</span> (alta; el producto no debe existir) · <span class="mono">Change</span> (cambio de un producto existente) · <span class="mono">Blocked</span> · <span class="mono">Unlocking</span> · <span class="mono">Delete</span>.</td></tr>
+  <tr><td class="f">Item_No</td><td class="t">Texto 20</td><td class="e">E</td><td><b>Código del producto</b> (el CodigodeProducto del PDM, con la letra de revisión: <span class="mono">260525B</span>; con color: <span class="mono">250502B-18</span>).</td></tr>
+  <tr><td class="f">PDM_Document_ID</td><td class="t">Entero</td><td class="e">E</td><td>ID del documento en el PDM (DocumentID del plano). Opcional pero <b>recomendado</b>: si se envía, prevalece sobre la búsqueda por código. Si no existe en el PDM: error <i>"Document … does not exist in the PDM"</i>.</td></tr>
+  <tr><td class="f">PDM_Status</td><td class="t">Opción</td><td class="e">L</td><td>Estado del plano: <span class="mono">" "</span> (sin plano) · <span class="mono">Pending Approval</span> · <span class="mono">Approved</span> · <span class="mono">In Modification</span>.</td></tr>
+  <tr><td class="f">Description</td><td class="t">Texto 100</td><td class="e">E</td><td>Descripción. Si no se envía, la del PDM.</td></tr>
+  <tr><td class="f">Base_Unit_of_Measure</td><td class="t">Texto 10</td><td class="e">E</td><td>Unidad de medida base (debe existir en BC, p. ej. <span class="mono">UDS</span>).</td></tr>
+  <tr><td class="f">Clasification_Type</td><td class="t">Opción</td><td class="e">E</td><td>Clasificación; rellena <span class="mono">Type</span>: <span class="mono">Raw Material/Item</span> (materia prima / productos → Inventory) · <span class="mono">Service</span> (servicio → Service) · <span class="mono">Item Out of stock</span> (sin stock → Non-Inventory).</td></tr>
+  <tr><td class="f">Sujeto_a_Control_de_Calidad</td><td class="t">Booleano</td><td class="e">E</td><td>Sujeto a control de calidad.</td></tr>
+  <tr><td class="f">Control_Certificado_proveedor</td><td class="t">Booleano</td><td class="e">E</td><td>Requiere certificado del proveedor.</td></tr>
+  <tr><td class="f">User_ID</td><td class="t">Texto 50</td><td class="e">L</td><td>Usuario de BC que hace la llamada.</td></tr>
+  <tr><td class="f">Codigo_Empleado</td><td class="t">Texto 50</td><td class="e">E</td><td>Nº de empleado solicitante (debe existir). Si no se envía, el del usuario de la llamada.</td></tr>
+  <tr><td class="f">Department</td><td class="t">Texto 50</td><td class="e">E</td><td>Departamento (tabla de departamentos de altas: <span class="mono">PLANIFICACION</span>, <span class="mono">COMPRAS</span>…).</td></tr>
+  <tr><td class="f">Product_manager</td><td class="t">Texto 50</td><td class="e">E</td><td>Responsable (texto libre).</td></tr>
+  <tr><td class="f">Activity</td><td class="t">Texto 20</td><td class="e">E</td><td>Actividad de I+D (p. ej. <span class="mono">AC0367</span>, <span class="mono">PM-25-005</span>).</td></tr>
+  <tr><td class="f">Posting_Date</td><td class="t">Fecha</td><td class="e">E</td><td>Fecha de la solicitud. Por defecto, la fecha de trabajo de BC.</td></tr>
+  <tr><td class="f">Prototype</td><td class="t">Texto 20</td><td class="e">E</td><td>Código de prototipo.</td></tr>
+  <tr><td class="f">Tipo_de_Cambio</td><td class="t">Opción</td><td class="e">E</td><td>Cambio en listas de materiales: <span class="mono">" "</span> · <span class="mono">Sustituir a</span> · <span class="mono">Añadir a</span> · <span class="mono">Eliminar de</span>.</td></tr>
+  <tr><td class="f">Replaces_Item_No</td><td class="t">Texto 20</td><td class="e">E</td><td>Producto al que sustituye (debe existir). Si no se envía, en altas nuevas se propone desde el histórico del plano.</td></tr>
+  <tr><td class="f">Tipo_aprovisionamiento</td><td class="t">Opción</td><td class="e">E</td><td><span class="mono">" "</span> · <span class="mono">Inmediato</span> · <span class="mono">Agotar stock</span> · <span class="mono">Cantidad exacta</span>.</td></tr>
+  <tr><td class="f">Replenishment_System</td><td class="t">Opción</td><td class="e">E</td><td>Sistema de reposición: <span class="mono">Purchase</span> (compra, por defecto) · <span class="mono">Prod. Order</span> (fabricación) · <span class="mono">Assembly</span> (ensamblado).</td></tr>
+  <tr><td class="f">Reason</td><td class="t">Texto</td><td class="e">E</td><td><b>Motivo</b> de la solicitud (sin límite, admite saltos de línea <span class="mono">\n</span>). Obligatorio para lanzar. Si no se envía, el texto "Modificación" del PDM.</td></tr>
+  <tr><td class="f">Blocked</td><td class="t">Booleano</td><td class="e">E</td><td>Producto bloqueado.</td></tr>
+  <tr><td class="f">Reason_Blocked</td><td class="t">Texto 100</td><td class="e">E</td><td>Motivo del bloqueo.</td></tr>
+  <tr><td class="f">Purch_Family</td><td class="t">Texto 20</td><td class="e">E</td><td>Familia de compra (p. ej. <span class="mono">01</span>). <b>Obligatorio para lanzar.</b></td></tr>
+  <tr><td class="f">Purch_Category</td><td class="t">Texto 20</td><td class="e">E</td><td>Categoría de compra de esa familia (p. ej. <span class="mono">01.001</span>). <b>Obligatorio para lanzar.</b></td></tr>
+  <tr><td class="f">Purch_SubCategory</td><td class="t">Texto 20</td><td class="e">E</td><td>Subcategoría de esa categoría (p. ej. <span class="mono">01.001.0004</span>). <b>Obligatorio para lanzar.</b></td></tr>
+  <tr><td class="f">Alto / Ancho / Largo</td><td class="t">Decimal</td><td class="e">E</td><td>Dimensiones.</td></tr>
+  <tr><td class="f">Net_Weight / Gross_Weight</td><td class="t">Decimal</td><td class="e">E</td><td>Peso neto y bruto en <b>kg</b>. Si no se envían, la masa de la pieza del PDM convertida a kg.</td></tr>
+  <tr><td class="f">Material</td><td class="t">Texto 100</td><td class="e">E</td><td>Material. Si no se envía, el de la pieza del PDM.</td></tr>
+  <tr><td class="f">Fixed_Assets</td><td class="t">Texto 20</td><td class="e">E</td><td>Activo fijo (molde / utillaje) relacionado; debe existir y estar marcado como molde/utillaje.</td></tr>
+  <tr><td class="f">TranslateENG / TranslateFRA</td><td class="t">Texto 100</td><td class="e">E</td><td>Descripción en inglés / francés. Si no se envían, las del PDM.</td></tr>
+  <tr><td class="f">Packaging</td><td class="t">Booleano</td><td class="e">E</td><td>Es material de embalaje.</td></tr>
+  <tr><td class="f">Lanzado</td><td class="t">Booleano</td><td class="e">E</td><td><span class="mono">true</span>: lanza la solicitud tras crearla (o en un PATCH posterior). Ver siguiente apartado.</td></tr>
+</table>
+<div class="note">Los campos de opción se envían con el <b>texto exacto</b> de la tabla (mayúsculas y espacios incluidos). Otro valor devuelve <i>"'…' is not an option. The existing options are: …"</i>.</div>
+
+<h2>Lanzar la solicitud (<span class="mono">Lanzado</span>)</h2>
+<p>Con <span class="mono">"Lanzado": true</span> BC hace lo mismo que la acción <b>Solicitud Alta/Actualización</b> de la ficha: comprueba los datos, envía el email al departamento de planificación (<span class="mono">altas@zummo.es</span>) y deja la solicitud en estado <b>Solicitado</b>. Desde la API no se piden las confirmaciones que salen en pantalla.</p>
+<p>Para lanzar hace falta:</p>
+<ul>
+  <li><span class="mono">Reason</span> informado (enviado o tomado del PDM);</li>
+  <li><span class="mono">Request_Type</span> distinto de vacío (por defecto <i>New</i>);</li>
+  <li><span class="mono">Purch_Family</span>, <span class="mono">Purch_Category</span> y <span class="mono">Purch_SubCategory</span> (campos obligatorios configurados para el solicitante).</li>
+</ul>
+<p>Si falta algo, la llamada devuelve el error y <b>no se crea nada</b> (todo o nada). Para crear primero y lanzar después, hacer el POST sin <span class="mono">Lanzado</span> y luego un PATCH con <span class="mono">{"Lanzado": true}</span>.</p>
+<p>Si el plano del PDM no está aprobado, en pantalla se avisa al lanzar; desde la API <b>no se bloquea</b>: el estado queda en <span class="mono">PDM_Status</span> y la solicitud se relacionará sola con el plano cuando se apruebe.</p>
+
+<h2>Ejemplos</h2>
+<h3>Alta mínima (el resto lo rellena el PDM)</h3>
+<pre>POST http://localhost:7048/BC140/ODataV4/Company('ZUMMO')/SolicitudAltaProductos
+Content-Type: application/json; charset=utf-8
+
+{ "Item_No": "2102023B-18", "PDM_Document_ID": 66516, "Base_Unit_of_Measure": "UDS" }</pre>
+<h3>Alta completa y lanzada</h3>
+<pre>{
+  "Request_Type": "New",
+  "Item_No": "260525B",
+  "PDM_Document_ID": 29937,
+  "Description": "EMPUJADOR CALIBRE 7-8",
+  "Base_Unit_of_Measure": "UDS",
+  "Clasification_Type": "Raw Material/Item",
+  "Codigo_Empleado": "184",
+  "Activity": "AC0367",
+  "Replaces_Item_No": "260525A",
+  "Tipo_aprovisionamiento": "Agotar stock",
+  "Replenishment_System": "Purchase",
+  "Reason": "Se modifica el alojamiento y topes para el Pasador",
+  "Purch_Family": "01", "Purch_Category": "01.001", "Purch_SubCategory": "01.001.0004",
+  "TranslateENG": "PUSHER 7-8",
+  "Lanzado": true
+}</pre>
+<h3>Respuesta (201 Created, extracto)</h3>
+<pre>{ "@odata.etag": "W/\"JzQ0O0...\"", "No": "SOL260138", "State_Creation": "Requested",
+  "Type": "Inventory", "Request_Type": "New", "Item_No": "260525B",
+  "PDM_Document_ID": 29937, "PDM_Status": "Approved", "Description": "EMPUJADOR CALIBRE 7-8",
+  "Net_Weight": 0.76441, "Gross_Weight": 0.76441, "Material": "ET-0054", ... }</pre>
+<h3>Lanzar una solicitud ya creada</h3>
+<pre>PATCH .../SolicitudAltaProductos('SOL260138')
+If-Match: *
+Content-Type: application/json
+
+{ "Lanzado": true }</pre>
+
+<h2 class="pagebreak">Errores habituales</h2>
+<table>
+  <tr><th>Mensaje (el servicio responde en inglés)</th><th>Causa</th></tr>
+  <tr><td class="k"><i>Product … already exists …</i></td><td>Alta nueva (<span class="mono">New</span>) de un código que ya existe. Usar otro código o <span class="mono">Change</span>.</td></tr>
+  <tr><td class="k"><i>Control '…' is read-only</i></td><td>Se ha enviado un campo de solo lectura (State_Creation, Type, User_ID, PDM_Status, No).</td></tr>
+  <tr><td class="k"><i>'…' is not an option. The existing options are: …</i></td><td>Valor de opción mal escrito.</td></tr>
+  <tr><td class="k"><i>The field … contains a value (…) that cannot be found in the related table</i></td><td>Código inexistente en BC (empleado, unidad, familia de compra, producto sustituido…).</td></tr>
+  <tr><td class="k"><i>Document … does not exist in the PDM</i></td><td><span class="mono">PDM_Document_ID</span> que no existe (o está borrado) en el PDM.</td></tr>
+  <tr><td class="k"><i>You must select a value in Request Type</i></td><td>Lanzado con <span class="mono">Request_Type</span> vacío.</td></tr>
+  <tr><td class="k"><i>Reason must have a value …</i> / <i>Purch. Family must have a value …</i></td><td>Lanzado sin motivo o sin familia / categoría / subcategoría de compra.</td></tr>
+</table>
+
+</body>
+</html>

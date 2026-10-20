@@ -91,6 +91,50 @@ pageextension 50102 "STHInventorySetup" extends "Inventory Setup"
                     ApplicationArea = all;
                 }
             }
+            group(PDM)
+            {
+                Caption = 'PDM SolidWorks', comment = 'ESP="PDM SolidWorks"';
+
+                field("PDM SQL Server"; "PDM SQL Server")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM SQL Database"; "PDM SQL Database")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM SQL User"; "PDM SQL User")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Read-only SQL user. Leave it blank to use the account of the Business Central service.', comment = 'ESP="Usuario SQL de solo lectura. En blanco se usa la cuenta del servicio de Business Central."';
+                }
+                field(PDMPassword; PDMPassword)
+                {
+                    ApplicationArea = all;
+                    Caption = 'PDM SQL Password', comment = 'ESP="Contraseña SQL PDM"';
+                    ExtendedDatatype = Masked;
+
+                    trigger OnValidate()
+                    begin
+                        if PDMPassword <> '********' then
+                            PDMSync.SetPassword(PDMPassword);
+                    end;
+                }
+                field("PDM Vault Path"; "PDM Vault Path")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'Folder of the PDM vault files, accessible by the Business Central service account (e.g. \\server\pdm-fs\Data\PDM-ZUMMO).', comment = 'ESP="Carpeta de ficheros del almacén del PDM, accesible por la cuenta del servicio de Business Central (p. ej. \\servidor\pdm-fs\Data\PDM-ZUMMO)."';
+                }
+                field("PDM Last Sync"; "PDM Last Sync")
+                {
+                    ApplicationArea = all;
+                }
+                field("PDM Pending From Date"; "PDM Pending From Date")
+                {
+                    ApplicationArea = all;
+                    ToolTip = 'The tray ''PDM approved without item'' shows the drawings approved from this date.', comment = 'ESP="La bandeja ''Aprobados PDM sin producto'' muestra los planos aprobados desde esta fecha."';
+                }
+            }
         }
     }
 
@@ -121,9 +165,76 @@ pageextension 50102 "STHInventorySetup" extends "Inventory Setup"
                     Message(lblEnviado);
                 end;
             }
+            group(PDMActions)
+            {
+                Caption = 'PDM', comment = 'ESP="PDM"';
+                Image = Document;
+
+                action(PDMTestConnection)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Test PDM connection', comment = 'ESP="Probar conexión PDM"';
+                    Image = TestDatabase;
+
+                    trigger OnAction()
+                    begin
+                        CurrPage.SaveRecord();
+                        PDMSync.TestConnection();
+                    end;
+                }
+                action(PDMSynchronize)
+                {
+                    ApplicationArea = all;
+                    Caption = 'Synchronize PDM now', comment = 'ESP="Sincronizar PDM ahora"';
+                    ToolTip = 'Reads from the PDM the documents changed since the last synchronization.', comment = 'ESP="Lee del PDM los documentos que han cambiado desde la última sincronización."';
+                    Image = Refresh;
+
+                    trigger OnAction()
+                    begin
+                        CurrPage.SaveRecord();
+                        PDMSync.Synchronize(false);
+                        CurrPage.Update(false);
+                    end;
+                }
+                action(PDMFullReload)
+                {
+                    ApplicationArea = all;
+                    Caption = 'PDM full reload', comment = 'ESP="Recarga completa PDM"';
+                    ToolTip = 'Deletes the PDM data in Business Central and reads again all the approved documents.', comment = 'ESP="Borra los datos del PDM en Business Central y vuelve a leer todos los documentos aprobados."';
+                    Image = RefreshLines;
+
+                    trigger OnAction()
+                    var
+                        lblConfirm: Label 'Delete the PDM data and read again all the approved documents?', comment = 'ESP="¿Borrar los datos del PDM y volver a leer todos los documentos aprobados?"';
+                    begin
+                        if not Confirm(lblConfirm, false) then
+                            exit;
+                        CurrPage.SaveRecord();
+                        PDMSync.Synchronize(true);
+                        CurrPage.Update(false);
+                    end;
+                }
+                action(PDMDocuments)
+                {
+                    ApplicationArea = all;
+                    Caption = 'PDM Documents', comment = 'ESP="Documentos PDM"';
+                    Image = Documents;
+                    RunObject = page "ZM PDM Documents";
+                }
+            }
         }
     }
 
+    trigger OnAfterGetRecord()
+    begin
+        // la contraseña no se muestra: solo se indica si está guardada
+        PDMPassword := '';
+        if PDMSync.HasPassword() then
+            PDMPassword := '********';
+    end;
+
     var
+        PDMSync: Codeunit "ZM PDM Sync";
+        PDMPassword: Text;
         myInt: Integer;
 }
