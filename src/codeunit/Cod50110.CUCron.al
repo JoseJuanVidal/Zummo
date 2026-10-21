@@ -437,7 +437,7 @@ codeunit 50110 "CU_Cron"
         RecCustomer: Record Customer;
     begin
 
-        PostedDocNo := CopyStr(TempEmailItem."Attachment Name", 1, StrPos(TempEmailItem."Attachment Name", '.pdf') - 1);
+        PostedDocNo := copystr(CopyStr(TempEmailItem."Attachment Name", 1, StrPos(TempEmailItem."Attachment Name", '.pdf') - 1), 1, maxstrlen(PostedDocNo));
 
         if not RecHcoFVTA.get(PostedDocNo) and not RecHcoABVTA.get(PostedDocNo) then
             exit;
