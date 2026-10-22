@@ -2026,11 +2026,18 @@ codeunit 50106 "SalesEvents"
         SalesSetup: record "Sales & Receivables Setup";
         Customer: Record Customer;
         SalesPrice: Record "Sales Price";
+        SalesHeader: Record "Sales Header";
+        PriceDate: Date;
     begin
         if not SalesSetup.Get() then
             exit;
         if not SalesSetup."Active Price/Discounts Control" then
             exit;
+        // fecha de registro del documento (modificable por el usuario); si no hay, fecha de trabajo
+        PriceDate := WorkDate();
+        if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
+            if SalesHeader."Posting Date" <> 0D then
+                PriceDate := SalesHeader."Posting Date";
         if Customer.Get(SalesLine."Sell-to Customer No.") then
             if Customer."Allows change Prices/Dates" then
                 exit;
@@ -2039,7 +2046,9 @@ codeunit 50106 "SalesEvents"
         SalesPrice.SetRange("Sales Code", SalesLine."Customer Price Group");
         SalesPrice.SetRange("Item No.", SalesLine."No.");
         SalesPrice.SetFilter("Unit Price", '>0');
-        SalesPrice.SetFilter("Ending Date", '%1..', WorkDate());
+        // solo precios vigentes a esa fecha (fecha final en blanco = sin fin)
+        SalesPrice.SetFilter("Starting Date", '..%1', PriceDate);
+        SalesPrice.SetFilter("Ending Date", '%1|%2..', 0D, PriceDate);
         if SalesPrice.FindFirst() then
             exit(true);
     end;
