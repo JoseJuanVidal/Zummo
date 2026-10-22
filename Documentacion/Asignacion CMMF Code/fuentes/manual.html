@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Asignación de CMMF Code</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Asignación de CMMF Code</h1>
+<div class="subtitle">Manual de usuario · Configuración y asignación · Extensión Zummo 1.0.0.1021 · octubre 2026</div>
+
+<h2>Para qué sirve</h2>
+<p>Los productos que se reportan a SEB llevan dos campos: <b>CMMF Type</b> y <b>CMMF Code</b>. Hasta ahora los dos se escribían a mano.</p>
+<p>Ahora:</p>
+<ul>
+  <li>el <b>CMMF Type</b> se elige de una <b>lista de valores</b>, que se mantiene en Textos Auxiliares;</li>
+  <li>cada CMMF Type tiene su propio <b>numerador</b> (nº de serie);</li>
+  <li>el <b>CMMF Code</b> se genera automáticamente con el numerador de su tipo, desde la ficha del producto o desde la lista, para varios productos a la vez.</li>
+</ul>
+<p>Funciona igual que la asignación de códigos GTIN (EAN13) que ya existía.</p>
+
+<div class="flow">
+  <div class="box"><b>1. Numerador</b>Crear un nº de serie para cada tipo.</div>
+  <div class="arrow">→</div>
+  <div class="box"><b>2. CMMF Type</b>Dar de alta el tipo y ponerle su numerador.</div>
+  <div class="arrow">→</div>
+  <div class="box"><b>3. Producto</b>Informar el CMMF Type del producto.</div>
+  <div class="arrow">→</div>
+  <div class="box"><b>4. Asignar</b>Generar el CMMF Code desde la ficha o la lista.</div>
+</div>
+
+<p>Los pasos 1 y 2 son de <b>configuración</b> y se hacen una sola vez por tipo. Los pasos 3 y 4 son el <b>trabajo diario</b> de alta de productos.</p>
+
+<h2 class="pagebreak">Configuración</h2>
+
+<h3>Paso 1. Crear el numerador</h3>
+<p>Buscar <b>Nos. serie</b> y crear una serie nueva para cada CMMF Type. Por ejemplo:</p>
+<table>
+  <tr><th>Código</th><th>Descripción</th><th>Nº inicial</th><th>Nº final</th></tr>
+  <tr><td class="mono">CMMF-A</td><td>CMMF Code tipo A</td><td class="mono">A000001</td><td class="mono">A999999</td></tr>
+  <tr><td class="mono">CMMF-B</td><td>CMMF Code tipo B</td><td class="mono">B000001</td><td class="mono">B999999</td></tr>
+</table>
+<ul>
+  <li>Marcar <b>Nos. predeterminados</b> en la serie.</li>
+  <li>El CMMF Code admite hasta <b>20 caracteres</b>.</li>
+  <li>El código que se asigna es el <b>siguiente número de la serie</b>. Si un producto ya tiene un CMMF Code de antes, conviene empezar la serie después del último que se haya usado, para no repetir códigos.</li>
+</ul>
+<div class="note">Los valores de la tabla son solo un ejemplo. El formato de los códigos lo marca SEB.</div>
+
+<h3>Paso 2. Dar de alta los CMMF Type</h3>
+<p>La forma más sencilla es entrar desde la <b>ficha de un producto</b>:</p>
+<ol>
+  <li>En la ficha, ir al grupo <b>Códigos SEB</b>.</li>
+  <li>En el campo <b>CMMF Type</b>, abrir el desplegable y pulsar <b>Seleccionar de la lista completa</b>.</li>
+  <li>Se abre la lista de valores ya filtrada para los CMMF Type. Crear una línea por tipo:</li>
+</ol>
+<div class="mock">
+  <div class="bar">Valores · CMMF Type</div>
+  <div class="row"><span><b>Nº</b></span><span><b>Descripcion</b> · <b>Nº Serie CMMF</b></span></div>
+  <div class="row"><span>A</span><span>Tipo A · CMMF-A</span></div>
+  <div class="row"><span>B</span><span>Tipo B · CMMF-B</span></div>
+</div>
+<table>
+  <tr><th>Campo</th><th>Qué poner</th></tr>
+  <tr><td class="k">Nº</td><td>El código del tipo. <b>Solo 1 carácter</b> (A, B, 1…), porque es lo que admite el campo CMMF Type del producto.</td></tr>
+  <tr><td class="k">Descripcion</td><td>Texto que explica el tipo. Se ve en el desplegable al elegirlo.</td></tr>
+  <tr><td class="k">Nº Serie CMMF</td><td>El numerador creado en el paso 1. Sin él, ese tipo no genera códigos.</td></tr>
+</table>
+<div class="note"><b>Varios CMMF Type con el mismo numerador:</b> se puede poner el mismo <i>Nº Serie CMMF</i> en dos o más tipos. En ese caso <b>comparten la numeración</b>: los códigos salen correlativos de la misma serie sea cual sea el tipo del producto, y nunca se repiten entre ellos. Por ejemplo, si los tipos A y B usan <span class="mono">CMMF-A</span>, un producto de tipo A puede recibir <span class="mono">A000001</span> y el siguiente, de tipo B, <span class="mono">A000002</span>. Si cada tipo debe tener sus propios códigos, hay que crear un numerador para cada uno.</div>
+<div class="warn"><b>Importante:</b> hay que dar de alta todos los CMMF Type que ya tienen los productos. Si un producto tiene un tipo que no existe en la lista, BC dará error al volver a editar el campo en la ficha.</div>
+<div class="note">La columna <b>Nº Serie CMMF</b> solo aparece cuando la lista está filtrada por CMMF Type. Por eso es mejor entrar desde el campo del producto y no buscando "Valores" directamente.</div>
+
+<h2 class="pagebreak">Asignación de códigos</h2>
+
+<h3>Paso 3. Informar el CMMF Type del producto</h3>
+<p>En la ficha del producto, grupo <b>Códigos SEB</b>, elegir el <b>CMMF Type</b> en el desplegable. Solo se pueden elegir los tipos dados de alta en el paso 2.</p>
+<p>En la lista de productos, la columna <i>CMMF Type</i> viene <b>oculta</b>. Para verla, usar <b>Elegir columnas</b>, y lo mismo con <i>CMMF Code</i>.</p>
+
+<h3>Paso 4a. Asignar desde la ficha (un producto)</h3>
+<p>En la ficha, pulsar el botón <b>…</b> del campo <b>CMMF Code</b>:</p>
+<table>
+  <tr><th>Situación</th><th>Qué pasa</th></tr>
+  <tr><td class="k">Sin CMMF Code y con CMMF Type</td><td>Pide confirmación: <i>"¿Desea asignar un nuevo CMMF Code a 260525 …?"</i>. Al aceptar, asigna el siguiente número del numerador de su tipo.</td></tr>
+  <tr><td class="k">Ya tiene CMMF Code</td><td>Avisa: <i>"El producto … ya tiene CMMF Code …"</i>. <b>No lo cambia.</b></td></tr>
+  <tr><td class="k"><span class="red">Sin CMMF Type</span></td><td>Da <b>error</b>: hay que informar primero el CMMF Type.</td></tr>
+  <tr><td class="k">Tipo sin numerador</td><td>No asigna nada. El resumen indica <i>CMMF Type sin numerador: 1</i>. Hay que completar el paso 2.</td></tr>
+</table>
+
+<h3>Paso 4b. Asignar desde la lista (varios productos)</h3>
+<ol>
+  <li>En la <b>lista de productos</b>, seleccionar los productos. Se pueden filtrar antes, por ejemplo por <i>CMMF Code</i> vacío.</li>
+  <li>Pulsar la acción <b>Asignar CMMF Code</b>, que está junto a <i>Asignar GTIN</i>.</li>
+  <li>Confirmar: <i>"¿Desea asignar CMMF Code a 25 productos seleccionados?"</i>.</li>
+</ol>
+<p>Para cada producto seleccionado:</p>
+<table>
+  <tr><th>Situación</th><th>Qué pasa</th></tr>
+  <tr><td class="k">Sin CMMF Code y con CMMF Type</td><td>Asigna el siguiente número del numerador de su tipo.</td></tr>
+  <tr><td class="k">Ya tiene CMMF Code</td><td>Lo <b>salta</b>. Nunca se sobrescribe un código.</td></tr>
+  <tr><td class="k">Tipo sin numerador</td><td>Lo <b>salta</b>.</td></tr>
+  <tr><td class="k"><span class="red">Sin CMMF Type</span></td><td>Da <b>error</b> y <b>no se asigna ningún código</b> a ninguno de los seleccionados. Hay que informar el tipo y repetir.</td></tr>
+</table>
+<p>Al terminar aparece un resumen:</p>
+<div class="mock">
+  <div class="bar">Resumen</div>
+  <div class="act">CMMF Code asignados: 22<br>Ya tenían CMMF Code: 2<br>CMMF Type sin numerador: 1</div>
+</div>
+
+<h2>Preguntas frecuentes</h2>
+<table>
+  <tr><th>Pregunta</th><th>Respuesta</th></tr>
+  <tr><td class="k">¿Se puede cambiar un CMMF Code ya asignado?</td><td>Las acciones no lo cambian nunca. Si hay que corregirlo, se escribe a mano en el campo. También se puede <b>borrar el CMMF Code</b> (dejarlo en blanco) y volver a asignarlo desde la ficha o la lista: se le dará un <b>código nuevo</b>, el siguiente del numerador de su tipo. El código anterior no se reutiliza.</td></tr>
+  <tr><td class="k">El error dice que falta CMMF Type, pero lo he seleccionado todo</td><td>Algún producto seleccionado no tiene tipo. Mostrar la columna <i>CMMF Type</i> en la lista y filtrarla por vacío para encontrarlo.</td></tr>
+  <tr><td class="k">"CMMF Type sin numerador" sale mayor que 0</td><td>Ese tipo no está dado de alta en la lista de valores o no tiene <i>Nº Serie CMMF</i>. Completar el paso 2 y repetir. Los que ya se asignaron se saltarán.</td></tr>
+  <tr><td class="k">¿Puedo crear un tipo nuevo?</td><td>Sí: añadir una línea en la lista de valores (paso 2) con su numerador (paso 1).</td></tr>
+</table>
+
+</body>
+</html>
