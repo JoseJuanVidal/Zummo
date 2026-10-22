@@ -1727,27 +1727,31 @@ codeunit 50108 "FuncionesFabricacion"
         Asignados: Integer;
         ConCodigo: Integer;
         SinNumerador: Integer;
-        lblResumen: Label 'CMMF Code asignados: %1\Ya tenían CMMF Code: %2\CMMF Type sin numerador: %3', comment = 'ESP="CMMF Code asignados: %1\Ya tenían CMMF Code: %2\CMMF Type sin numerador: %3"';
+        Bloqueados: Integer;
+        lblResumen: Label 'CMMF Code asignados: %1\Ya tenían CMMF Code: %2\Productos bloqueados: %3\CMMF Type sin numerador: %4', comment = 'ESP="CMMF Code asignados: %1\Ya tenían CMMF Code: %2\Productos bloqueados: %3\CMMF Type sin numerador: %4"';
     begin
         if Item.FindFirst() then
             repeat
                 if Item."CMMF Code" <> '' then
                     ConCodigo += 1
-                else begin
-                    Item.TestField("CMMF Type");
-                    if not TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::CMMFType, TextosAuxiliares.TipoRegistro::Tabla, Item."CMMF Type") then
-                        SinNumerador += 1
-                    else
-                        if TextosAuxiliares."CMMF Nos." = '' then
+                else
+                    if Item.Blocked then
+                        Bloqueados += 1
+                    else begin
+                        Item.TestField("CMMF Type");
+                        if not TextosAuxiliares.Get(TextosAuxiliares.TipoTabla::CMMFType, TextosAuxiliares.TipoRegistro::Tabla, Item."CMMF Type") then
                             SinNumerador += 1
-                        else begin
-                            Item."CMMF Code" := NoSeriesMgt.GetNextNo(TextosAuxiliares."CMMF Nos.", WorkDate(), true);
-                            Item.Modify();
-                            Asignados += 1;
-                        end;
-                end;
+                        else
+                            if TextosAuxiliares."CMMF Nos." = '' then
+                                SinNumerador += 1
+                            else begin
+                                Item."CMMF Code" := NoSeriesMgt.GetNextNo(TextosAuxiliares."CMMF Nos.", WorkDate(), true);
+                                Item.Modify();
+                                Asignados += 1;
+                            end;
+                    end;
             Until Item.next() = 0;
-        Message(lblResumen, Asignados, ConCodigo, SinNumerador);
+        Message(lblResumen, Asignados, ConCodigo, Bloqueados, SinNumerador);
     end;
 
     // =============     Exportar Excel de analisi de variacion existencia salida de fabricacion          ====================

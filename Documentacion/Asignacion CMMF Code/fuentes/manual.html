@@ -8,7 +8,7 @@
 <body>
 
 <h1>Asignación de CMMF Code</h1>
-<div class="subtitle">Manual de usuario · Configuración y asignación · Extensión Zummo 1.0.0.1021 · octubre 2026</div>
+<div class="subtitle">Manual de usuario · Configuración y asignación · Extensión Zummo 1.0.0.1022 · octubre 2026</div>
 
 <h2>Para qué sirve</h2>
 <p>Los productos que se reportan a SEB llevan dos campos: <b>CMMF Type</b> y <b>CMMF Code</b>. Hasta ahora los dos se escribían a mano.</p>
@@ -83,6 +83,7 @@
   <tr><th>Situación</th><th>Qué pasa</th></tr>
   <tr><td class="k">Sin CMMF Code y con CMMF Type</td><td>Pide confirmación: <i>"¿Desea asignar un nuevo CMMF Code a 260525 …?"</i>. Al aceptar, asigna el siguiente número del numerador de su tipo.</td></tr>
   <tr><td class="k">Ya tiene CMMF Code</td><td>Avisa: <i>"El producto … ya tiene CMMF Code …"</i>. <b>No lo cambia.</b></td></tr>
+  <tr><td class="k"><span class="red">Producto bloqueado</span></td><td>Da <b>error</b>: no se asignan códigos a productos bloqueados.</td></tr>
   <tr><td class="k"><span class="red">Sin CMMF Type</span></td><td>Da <b>error</b>: hay que informar primero el CMMF Type.</td></tr>
   <tr><td class="k">Tipo sin numerador</td><td>No asigna nada. El resumen indica <i>CMMF Type sin numerador: 1</i>. Hay que completar el paso 2.</td></tr>
 </table>
@@ -98,13 +99,14 @@
   <tr><th>Situación</th><th>Qué pasa</th></tr>
   <tr><td class="k">Sin CMMF Code y con CMMF Type</td><td>Asigna el siguiente número del numerador de su tipo.</td></tr>
   <tr><td class="k">Ya tiene CMMF Code</td><td>Lo <b>salta</b>. Nunca se sobrescribe un código.</td></tr>
+  <tr><td class="k">Producto bloqueado</td><td>Lo <b>salta</b>, aunque no tenga CMMF Type.</td></tr>
   <tr><td class="k">Tipo sin numerador</td><td>Lo <b>salta</b>.</td></tr>
   <tr><td class="k"><span class="red">Sin CMMF Type</span></td><td>Da <b>error</b> y <b>no se asigna ningún código</b> a ninguno de los seleccionados. Hay que informar el tipo y repetir.</td></tr>
 </table>
 <p>Al terminar aparece un resumen:</p>
 <div class="mock">
   <div class="bar">Resumen</div>
-  <div class="act">CMMF Code asignados: 22<br>Ya tenían CMMF Code: 2<br>CMMF Type sin numerador: 1</div>
+  <div class="act">CMMF Code asignados: 21<br>Ya tenían CMMF Code: 2<br>Productos bloqueados: 1<br>CMMF Type sin numerador: 1</div>
 </div>
 
 <h2>Preguntas frecuentes</h2>

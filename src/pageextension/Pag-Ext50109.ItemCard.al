@@ -869,6 +869,7 @@ pageextension 50109 "ItemCard" extends "Item Card"
             Message(lblYaAsignado, Item."No.", Item."CMMF Code");
             exit;
         end;
+        Item.TestField(Blocked, false);
         Item.TestField("CMMF Type");
         if not confirm(lblConfirmAssing, false, Item."No.", Item.Description) then
             exit;

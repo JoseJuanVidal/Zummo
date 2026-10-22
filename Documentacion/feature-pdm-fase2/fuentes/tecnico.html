@@ -17,7 +17,7 @@
   <div class="arrow">→</div>
   <div class="box"><b>Codeunit 17300</b>Sincronización completa o incremental. Cola de proyectos / manual.</div>
   <div class="arrow">→</div>
-  <div class="box"><b>Tablas 17300–17302</b>Documentos aprobados, histórico, relación producto ↔ documento.</div>
+  <div class="box"><b>Tablas 17300, 17301 y 17303</b>Documentos aprobados, histórico, relación producto ↔ documento.</div>
   <div class="arrow">→</div>
   <div class="box"><b>Ficha / lista producto</b>FactBox, FlowFields, acciones.</div>
 </div>
@@ -35,7 +35,7 @@
   <tr><th>Objeto</th><th>Contenido</th></tr>
   <tr><td class="k">Tabla 17300 "ZM PDM Document"</td><td>Un registro por documento aprobado (PK Document ID del PDM): fichero, extensión, carpeta, código, descripciones ESP/ENG/FRA, revisión, máquina, material, peso, modificación, versión aprobada, fecha y usuario de aprobación, última versión, estado actual, en modificación, obsoleto. OnDelete borra su histórico y relaciones.</td></tr>
   <tr><td class="k">Tabla 17301 "ZM PDM History"</td><td>PK (Document ID, Entry Type, Entry No.). Tipo Versión (Revisions) o Transición (TransitionHistory): fecha, usuario, transición, estado destino, aprobación, comentario, código y revisión en esa versión. Clave secundaria por fecha.</td></tr>
-  <tr><td class="k">Tabla 17302 "ZM PDM Item Link"</td><td>PK (Item No., Document ID), clave secundaria Document ID. Código PDM, versión y revisión aprobadas, fecha, aprobado por, extensión, Vigente, En modificación, Principal.</td></tr>
+  <tr><td class="k">Tabla 17303 "ZM PDM Item Link"</td><td>PK (Item No., Document ID), clave secundaria Document ID. Código PDM, versión y revisión aprobadas, fecha, aprobado por, extensión, Vigente, En modificación, Principal.</td></tr>
   <tr><td class="k">Codeunit 17300 "ZM PDM Sync"</td><td>OnRun = sincronización incremental (cola). Synchronize(FullReload), TestConnection, SetPassword/HasPassword, apertura de ficheros (OpenDocumentFile, OpenHistoryFile, OpenItemPDF) y navegación (ShowItemDocuments, ShowItemHistory, ShowDocumentItems).</td></tr>
   <tr><td class="k">Página 17227 "ZM PDM Documents"</td><td>Lista (UsageCategory Lists). Abrir fichero, Histórico, Productos.</td></tr>
   <tr><td class="k">Página 17228 "ZM PDM History"</td><td>Lista por fecha descendente. Abrir versión aprobada, Solo aprobaciones.</td></tr>
@@ -49,7 +49,7 @@
   <tr><td class="k">Páginas 17471 / 17458 / 17422</td><td>Ficha (grupo Plano PDM; Acciones › PDM: Ver plano, Rellenar desde PDM; Navegar: Histórico PDM), lista (columna Estado PDM) y ficha registrada de la solicitud.</td></tr>
   <tr><td class="k">Página 17483 API</td><td>Servicio SolicitudAltaProductos: Request Type (por defecto New), PDM Document ID, PDM Status, Clasificación y Código empleado editables, Lanzado. Documento propio: <i>API Solicitud alta de productos.pdf</i>.</td></tr>
   <tr><td class="k">Tabla 17300 / Inventory Setup</td><td>FlowField 41 "Has PDF". Cierre en la bandeja: campos 50 Closed, 51 Closed Type (Manual, Request), 52 Closed Request No., 53 Closed By, 54 Closed Date. Campo 50146 "PDM Pending From Date" (fecha de la bandeja).</td></tr>
-  <tr><td class="k">Otros</td><td>Traducciones es-ES de los textos PDM. Permisos en el conjunto ZUMMO (tabledata RIMD de 17300–17302, ejecución de tablas, páginas 17227–17231 y codeunit).</td></tr>
+  <tr><td class="k">Otros</td><td>Traducciones es-ES de los textos PDM. Permisos en el conjunto ZUMMO (tabledata RIMD de 17300, 17301 y 17303, ejecución de tablas, páginas 17227–17231 y codeunit).</td></tr>
 </table>
 
 <h2>Datos que se leen del PDM</h2>

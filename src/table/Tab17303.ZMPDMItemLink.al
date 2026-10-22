@@ -1,4 +1,4 @@
-table 17302 "ZM PDM Item Link"
+table 17303 "ZM PDM Item Link"
 {
     // Relación producto BC <-> documento PDM. Se calcula en la sincronización con los códigos
     // de cada aprobación del documento (código exacto, o base + "-X" para las variantes de color)

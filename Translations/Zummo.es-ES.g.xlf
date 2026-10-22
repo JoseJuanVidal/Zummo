@@ -15161,10 +15161,10 @@
           <target>¿Desea cambiar el estado de las ordenes seleccionadas?</target>
         </trans-unit>
         <trans-unit id="Codeunit 1069980009 - Method 2247186000 - NamedType 2325880559" size-unit="char" translate="yes" xml:space="preserve">
-          <source>CMMF Code asignados: %1\Ya tenían CMMF Code: %2\CMMF Type sin numerador: %3</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code asignados: %1\Ya tenían CMMF Code: %2\CMMF Type sin numerador: %3"</note>
+          <source>CMMF Code asignados: %1\Ya tenían CMMF Code: %2\Productos bloqueados: %3\CMMF Type sin numerador: %4</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code asignados: %1\Ya tenían CMMF Code: %2\Productos bloqueados: %3\CMMF Type sin numerador: %4"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CreateCMMFCode - NamedType lblResumen</note>
-          <target>CMMF Code asignados: %1\Ya tenían CMMF Code: %2\CMMF Type sin numerador: %3</target>
+          <target>CMMF Code asignados: %1\Ya tenían CMMF Code: %2\Productos bloqueados: %3\CMMF Type sin numerador: %4</target>
         </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2223176127 - NamedType 596828306" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se encuentra la Oferta %1 emparejado.</source>
