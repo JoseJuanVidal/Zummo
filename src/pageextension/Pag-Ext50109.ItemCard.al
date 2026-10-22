@@ -25,6 +25,11 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 {
                     ApplicationArea = all;
                     ToolTip = 'Coded Multisource Media Format';
+
+                    trigger OnAssistEdit()
+                    begin
+                        OnAssistEdit_CMMFCode();
+                    end;
                 }
                 field("SEB PI2 Code"; "SEB PI2 Code")
                 {
@@ -52,6 +57,8 @@ pageextension 50109 "ItemCard" extends "Item Card"
                 field("Reporting SEB"; "Reporting SEB")
                 { ApplicationArea = all; }
                 field("Business Unit"; "Business Unit")
+                { ApplicationArea = all; }
+                field("CMMF Code Reporting"; "CMMF Code Reporting")
                 { ApplicationArea = all; }
                 field("Cost Center"; "Cost Center")
                 { ApplicationArea = all; }
@@ -847,6 +854,27 @@ pageextension 50109 "ItemCard" extends "Item Card"
             end;
         end;
 
+    end;
+
+    local procedure OnAssistEdit_CMMFCode()
+    var
+        Item: Record Item;
+        Funciones: Codeunit FuncionesFabricacion;
+        lblConfirmAssing: Label '¿Desea asignar un nuevo CMMF Code a %1 %2?', comment = 'ESP="¿Desea asignar un nuevo CMMF Code a %1 %2?"';
+        lblYaAsignado: Label 'El producto %1 ya tiene CMMF Code %2.', comment = 'ESP="El producto %1 ya tiene CMMF Code %2."';
+    begin
+        Item.SetRange("No.", Rec."No.");
+        Item.FindFirst();
+        if Item."CMMF Code" <> '' then begin
+            Message(lblYaAsignado, Item."No.", Item."CMMF Code");
+            exit;
+        end;
+        Item.TestField("CMMF Type");
+        if not confirm(lblConfirmAssing, false, Item."No.", Item.Description) then
+            exit;
+        Funciones.CreateCMMFCode(Item);
+        Rec.Find();
+        CurrPage.Update(false);
     end;
 
     local procedure ShowNavigateSerialNoInfo()

@@ -198,7 +198,7 @@ table 17378 "ZM Reporting SEB Sales"
                     RepSEBSales."Period End" := PeriodEnd;
                     RepSEBSales."Business Unit" := Item."Business Unit";
                     RepSEBSales.MLA := Customer.MLA;
-                    RepSEBSales."CMMF Code" := Item."CMMF Code";
+                    RepSEBSales."CMMF Code" := Item."CMMF Code Reporting";
                     RepSEBSales.Fl1 := Item.Fl1;
                     RepSEBSales.Fl2 := Item.Fl2;
                     RepSEBSales.Insert();
@@ -212,7 +212,7 @@ table 17378 "ZM Reporting SEB Sales"
                 EntryNoDetail += 1;
                 RepSEBSalesDetail."Entry No." := EntryNoDetail;
                 RepSEBSalesDetail."Business Unit" := Item."Business Unit";
-                RepSEBSalesDetail."CMMF Code" := Item."CMMF Code";
+                RepSEBSalesDetail."CMMF Code" := Item."CMMF Code Reporting";
                 RepSEBSalesDetail.MLA := Customer.MLA;
                 RepSEBSalesDetail.Fl1 := Item.Fl1;
                 RepSEBSalesDetail.Fl2 := Item.Fl2;

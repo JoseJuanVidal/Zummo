@@ -78,6 +78,11 @@ pageextension 50133 "ItemList" extends "Item List"
                 ApplicationArea = all;
                 Visible = false;
             }
+            field("CMMF Code Reporting"; "CMMF Code Reporting")
+            {
+                ApplicationArea = all;
+                Visible = false;
+            }
             field("Cost Center"; "Cost Center")
             {
                 ApplicationArea = all;
@@ -240,6 +245,17 @@ pageextension 50133 "ItemList" extends "Item List"
                 trigger OnAction()
                 begin
                     OnAction_AsignarGTIN();
+                end;
+            }
+            action(AsignarCMMFCode)
+            {
+                ApplicationArea = all;
+                Caption = 'Asignar CMMF Code', comment = 'ESP="Asignar CMMF Code"';
+                Image = NumberSetup;
+
+                trigger OnAction()
+                begin
+                    OnAction_AsignarCMMFCode();
                 end;
             }
             action(AsignarCreationDate)
@@ -565,6 +581,18 @@ pageextension 50133 "ItemList" extends "Item List"
         if not confirm(lblConfirm, false, Item.Count) then
             exit;
         Funciones.CreateGTIN(Item, true, BarCodeType::EAN13);
+    end;
+
+    local procedure OnAction_AsignarCMMFCode()
+    var
+        Item: Record Item;
+        Funciones: Codeunit FuncionesFabricacion;
+        lblConfirm: Label '¿Desea asignar CMMF Code a %1 productos seleccionados?', comment = 'ESP="¿Desea asignar CMMF Code a %1 productos seleccionados?"';
+    begin
+        CurrPage.SetSelectionFilter(Item);
+        if not confirm(lblConfirm, false, Item.Count) then
+            exit;
+        Funciones.CreateCMMFCode(Item);
     end;
 
     local procedure OnAction_AsignarCreationDate()

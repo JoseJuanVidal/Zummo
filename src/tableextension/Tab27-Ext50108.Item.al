@@ -306,7 +306,7 @@ tableextension 50108 "Item" extends Item  //27
         field(50080; "CMMF Code"; code[20])
         {
             DataClassification = CustomerContent;
-            Caption = 'CMMF Code (Reporting)', comment = 'ESP="CMMF Code (Reporting)"';
+            Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
         }
         field(50081; "SEB PI2 Code"; code[15])
         {
@@ -350,6 +350,7 @@ tableextension 50108 "Item" extends Item  //27
         {
             DataClassification = CustomerContent;
             Caption = 'CMMF Type', comment = 'ESP="CMMF Type"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(CMMFType));
         }
         field(50086; "material antiguo code"; code[20])
         {
@@ -384,6 +385,11 @@ tableextension 50108 "Item" extends Item  //27
             Caption = 'Cost Center', comment = 'ESP="Cost Center"';
             DataClassification = CustomerContent;
             TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(CostCenter));
+        }
+        field(50096; "CMMF Code Reporting"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CMMF Code (Reporting)', comment = 'ESP="CMMF Code (Reporting)"';
         }
         field(50100; "STHQuantityWhse"; Decimal)
         {

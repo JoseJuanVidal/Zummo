@@ -58,6 +58,11 @@ page 50117 "Lista Textos Auxiliares"
                     ApplicationArea = all;
                     Visible = mostrarGarantia;
                 }
+                field("CMMF Nos."; "CMMF Nos.")
+                {
+                    ApplicationArea = all;
+                    Visible = mostrarCMMF;
+                }
             }
         }
     }
@@ -72,6 +77,8 @@ page 50117 "Lista Textos Auxiliares"
             mostrarGarantia := true;
         if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::ClasificacionVentas) then
             mostrarGarantia := true;
+        if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::CMMFType) then
+            mostrarCMMF := true;
     end;
 
     trigger OnAfterGetRecord()
@@ -87,4 +94,5 @@ page 50117 "Lista Textos Auxiliares"
         mercadoVisible: Boolean;
         NotRegIVA: Boolean;
         mostrarGarantia: Boolean;
+        mostrarCMMF: Boolean;
 }

@@ -8678,6 +8678,11 @@
           <note from="Developer" annotates="general" priority="2">ESP="Aviso Producto Servicio por cliente"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field AvisoProductoServicio - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 2078232331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CMMF Nos.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº Serie CMMF"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field CMMF Nos. - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2244721376 - Field 624121218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type motive</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo Motivo"</note>
@@ -8754,8 +8759,8 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property Caption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2682491356 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA"</note>
+          <source>Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA,CMMF Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA,CMMF Type"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field TipoTabla - Property OptionCaption</note>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 1397213012 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
@@ -13862,6 +13867,11 @@
           <source>Do you want to change the status of the selected orders?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea cambiar el estado de las ordenes seleccionadas?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CambiaEstadoVariasOrdenesProduccion - NamedType labelConfirmQst</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1069980009 - Method 2247186000 - NamedType 2325880559" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CMMF Code asignados: %1\Ya tenían CMMF Code: %2\CMMF Type sin numerador: %3</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code asignados: %1\Ya tenían CMMF Code: %2\CMMF Type sin numerador: %3"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CreateCMMFCode - NamedType lblResumen</note>
         </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2223176127 - NamedType 596828306" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se encuentra la Oferta %1 emparejado.</source>
@@ -34273,6 +34283,16 @@
           <note from="Developer" annotates="general" priority="2">¿Desea calcular la cantidad del plastico de los niveles superiores del producto %1?</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Method CalculatePlasticFrom - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Method 1563239143 - NamedType 1349650003" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2876958691">
+          <source>¿Desea asignar un nuevo CMMF Code a %1 %2?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea asignar un nuevo CMMF Code a %1 %2?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Method OnAssistEdit_CMMFCode - NamedType lblConfirmAssing</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2876958691 - Method 1563239143 - NamedType 796240230" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2876958691">
+          <source>El producto %1 ya tiene CMMF Code %2.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="El producto %1 ya tiene CMMF Code %2."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemCard - Method OnAssistEdit_CMMFCode - NamedType lblYaAsignado</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2876958691 - Method 2194160043 - NamedType 1349650003" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2876958691">
           <source>¿Desea Asignar un nuevo codigo EAN13 a %1 %2?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar un nuevo codigo EAN13 a %1 %2?"</note>
@@ -34543,6 +34563,11 @@
           <note from="Developer" annotates="general" priority="2">¿Desea calcular SCRAP de la L.M. de %1 producto/s?</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method CalculateSCRAPTipoEnvase - NamedType lblConfirm</note>
         </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Method 2815159683 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
+          <source>¿Desea asignar CMMF Code a %1 productos seleccionados?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea asignar CMMF Code a %1 productos seleccionados?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method OnAction_AsignarCMMFCode - NamedType lblConfirm</note>
+        </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Method 2234610504 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve" al-object-target="PageExtension 2768240657">
           <source>¿Desea Asignar %1 a %2 productos seleccionados?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar %1 a %2 productos seleccionados?"</note>
@@ -34552,6 +34577,11 @@
           <source>¿Desea Asignar numeros EAN13 a %1 productos seleccionados?</source>
           <note from="Developer" annotates="general" priority="2">ESP="¿Desea Asignar numeros EAN13 a %1 productos seleccionados?"</note>
           <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Method OnAction_AsignarGTIN - NamedType lblConfirm</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2768240657 - Action 1614342299 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
+          <source>Asignar CMMF Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Asignar CMMF Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ItemList - Action AsignarCMMFCode - Property Caption</note>
         </trans-unit>
         <trans-unit id="PageExtension 2768240657 - Action 1390176704 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4178721393">
           <source>Asignar Fecha Creacion</source>
@@ -37809,9 +37839,14 @@
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CentroTrabajp_btc - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
+          <source>CMMF Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CMMF Code - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3276313895 - Field 2668832634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>CMMF Code (Reporting)</source>
           <note from="Developer" annotates="general" priority="2">ESP="CMMF Code (Reporting)"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CMMF Code - Property Caption</note>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Item - Field CMMF Code Reporting - Property Caption</note>
         </trans-unit>
         <trans-unit id="TableExtension 3276313895 - Field 3971075999 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 3276313895">
           <source>CMMF Type</source>

@@ -12,9 +12,9 @@ table 50105 "TextosAuxiliares"
         {
             DataClassification = CustomerContent;
             Caption = 'Record Type', comment = 'ESP="Tipo Registro"';
-            OptionMembers = "Motivo Retraso","Central Compras","Cliente Corporativo",AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas,Familia,Gamma,MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,"Job Clasification",Dipositivos,"Motivo Confirmación",BusinessUnit,Fl1,Fl2,CostCenter,MLA;
-            OptionCaption = 'Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA',
-                  Comment = 'ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA"';
+            OptionMembers = "Motivo Retraso","Central Compras","Cliente Corporativo",AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas,Familia,Gamma,MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,"Job Clasification",Dipositivos,"Motivo Confirmación",BusinessUnit,Fl1,Fl2,CostCenter,MLA,CMMFType;
+            OptionCaption = 'Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting,ClasificacionVentas, Familia, Gamma, MotivoBloqueo,LineaEconomica,ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA,CMMF Type',
+                  Comment = 'ESP="Motivo,CentralCompras,ClienteCorporativo,AreaManager,Delegado,GrupoCliente,Perfil,Subcliente,ClienteReporting, ClasificacionVentas, Familia, Gamma, MotivoBloqueo, LineaEconomica, ClienteActividad,Mercados,InsideSales,Aseguradora,Canal,ClasifAseguradora,FalloLocalizado,RegistroIVA,Almacen,ServiceItem,motivoCalibracion,TipoFallo,Calibracion,Fabricante,Task,SalesManager,Zona,Promociones,Job Clasification,Dipositivos,Motivo Confirmación,BusinessUnit,Fl1,Fl2,Cost Center,MLA,CMMF Type"';
         }
 
 
@@ -99,6 +99,12 @@ table 50105 "TextosAuxiliares"
             Caption = 'CRM ID', comment = 'ESP="CRM ID"';
             TableRelation = "CRM Systemuser";
             ValidateTableRelation = false;
+        }
+        field(60; "CMMF Nos."; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CMMF Nos.', comment = 'ESP="Nº Serie CMMF"';
+            TableRelation = "No. Series";
         }
     }
 
