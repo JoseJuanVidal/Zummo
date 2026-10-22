@@ -2037,7 +2037,7 @@ codeunit 50106 "SalesEvents"
         PriceDate := WorkDate();
         if SalesHeader.Get(SalesLine."Document Type", SalesLine."Document No.") then
             if SalesHeader."Posting Date" <> 0D then
-                PriceDate := SalesHeader."Posting Date";
+                PriceDate := SalesHeader."Document Date";
         if Customer.Get(SalesLine."Sell-to Customer No.") then
             if Customer."Allows change Prices/Dates" then
                 exit;
