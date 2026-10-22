@@ -38,7 +38,7 @@
   <tr><td class="k">Tabla 17303 "ZM PDM Item Link"</td><td>PK (Item No., Document ID), clave secundaria Document ID. Código PDM, versión y revisión aprobadas, fecha, aprobado por, extensión, Vigente, En modificación, Principal.</td></tr>
   <tr><td class="k">Codeunit 17300 "ZM PDM Sync"</td><td>OnRun = sincronización incremental (cola). Synchronize(FullReload), TestConnection, SetPassword/HasPassword, apertura de ficheros (OpenDocumentFile, OpenHistoryFile, OpenItemPDF) y navegación (ShowItemDocuments, ShowItemHistory, ShowDocumentItems).</td></tr>
   <tr><td class="k">Página 17227 "ZM PDM Documents"</td><td>Lista (UsageCategory Lists). Abrir fichero, Histórico, Productos.</td></tr>
-  <tr><td class="k">Página 17228 "ZM PDM History"</td><td>Lista por fecha descendente. Abrir versión aprobada, Solo aprobaciones.</td></tr>
+  <tr><td class="k">Página 17228 "ZM PDM History"</td><td>Lista por fecha descendente. Se abre filtrada por Approval = true (FilterGroup 2, no se quita desde el panel de filtros). Acciones: Abrir versión aprobada, Mostrar todo / Solo aprobaciones (alternan según ShowAll; la columna Aprobación solo se ve en Mostrar todo).</td></tr>
   <tr><td class="k">Página 17229 "ZM PDM Item FactBox"</td><td>CardPart sobre Item. Calcula "Sustituido por" y el estilo en OnAfterGetRecord.</td></tr>
   <tr><td class="k">Tableext 50108 (Item)</td><td>FlowFields 50240–50245: PDM Revision, PDM Approval Date, PDM Approved By, PDM In Modification, PDM Current (lookup sobre el enlace con Main = true) y PDM Documents (count).</td></tr>
   <tr><td class="k">Tableext 50127 (Inventory Setup)</td><td>Campos 50140–50145: PDM SQL Server, PDM SQL Database, PDM SQL User, PDM Vault Path, PDM Last Sync, PDM Sync Mark.</td></tr>

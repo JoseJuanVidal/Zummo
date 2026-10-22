@@ -55,7 +55,7 @@ page 17228 "ZM PDM History"
                 field(Approval; Approval)
                 {
                     ApplicationArea = All;
-                    Visible = false;
+                    Visible = ShowAll;
                 }
                 field("File Name"; "File Name")
                 {
@@ -90,25 +90,45 @@ page 17228 "ZM PDM History"
                     PDMSync.OpenHistoryFile(Rec);
                 end;
             }
+            action(ShowAllLines)
+            {
+                ApplicationArea = All;
+                Caption = 'Show all', comment = 'ESP="Mostrar todo"';
+                ToolTip = 'Shows all the history lines: versions, transitions and approvals.', comment = 'ESP="Muestra todas las líneas del histórico: versiones, transiciones y aprobaciones."';
+                Image = ClearFilter;
+                Promoted = true;
+                PromotedCategory = Process;
+                Visible = not ShowAll;
+
+                trigger OnAction()
+                begin
+                    SetApprovalFilter(true);
+                    CurrPage.Update(false);
+                end;
+            }
             action(OnlyApprovals)
             {
                 ApplicationArea = All;
                 Caption = 'Only approvals', comment = 'ESP="Solo aprobaciones"';
+                ToolTip = 'Shows only the approvals.', comment = 'ESP="Muestra solo las aprobaciones."';
                 Image = FilterLines;
                 Promoted = true;
                 PromotedCategory = Process;
+                Visible = ShowAll;
 
                 trigger OnAction()
                 begin
-                    if GetFilter(Approval) = '' then
-                        SetRange(Approval, true)
-                    else
-                        SetRange(Approval);
+                    SetApprovalFilter(false);
                     CurrPage.Update(false);
                 end;
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        SetApprovalFilter(false);
+    end;
 
     trigger OnAfterGetRecord()
     begin
@@ -117,7 +137,20 @@ page 17228 "ZM PDM History"
             StyleTxt := 'Favorable';
     end;
 
+    // Filtro de aprobaciones en el grupo 2 para que no se quite desde el panel de filtros
+    local procedure SetApprovalFilter(NewShowAll: Boolean)
+    begin
+        ShowAll := NewShowAll;
+        FilterGroup(2);
+        if ShowAll then
+            SetRange(Approval)
+        else
+            SetRange(Approval, true);
+        FilterGroup(0);
+    end;
+
     var
         PDMSync: Codeunit "ZM PDM Sync";
         StyleTxt: Text;
+        ShowAll: Boolean;
 }

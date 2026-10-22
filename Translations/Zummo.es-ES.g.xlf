@@ -24462,6 +24462,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM History - Property Caption</note>
           <target>Histórico PDM</target>
         </trans-unit>
+        <trans-unit id="Page 77362640 - Action 1188950548 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shows only the approvals.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Muestra solo las aprobaciones."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM History - Action OnlyApprovals - Property ToolTip</note>
+          <target>Muestra solo las aprobaciones.</target>
+        </trans-unit>
         <trans-unit id="Page 77362640 - Action 1188950548 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Only approvals</source>
           <note from="Developer" annotates="general" priority="2">ESP="Solo aprobaciones"</note>
@@ -24479,6 +24485,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Abrir versión aprobada"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM History - Action OpenFile - Property Caption</note>
           <target>Abrir versión aprobada</target>
+        </trans-unit>
+        <trans-unit id="Page 77362640 - Action 2110709833 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Shows all the history lines: versions, transitions and approvals.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Muestra todas las líneas del histórico: versiones, transiciones y aprobaciones."</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM History - Action ShowAllLines - Property ToolTip</note>
+          <target>Muestra todas las líneas del histórico: versiones, transiciones y aprobaciones.</target>
+        </trans-unit>
+        <trans-unit id="Page 77362640 - Action 2110709833 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show all</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Mostrar todo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM PDM History - Action ShowAllLines - Property Caption</note>
+          <target>Mostrar todo</target>
         </trans-unit>
         <trans-unit id="Page 4028481074 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>PDM</source>
