@@ -9062,6 +9062,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field AvisoProductoServicio - Property Caption</note>
           <target>Aviso Producto Servicio por cliente</target>
         </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 2668832634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>CMMF Code (Reporting)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code (Reporting)"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field CMMF Code Reporting - Property Caption</note>
+          <target>CMMF Code (Reporting)</target>
+        </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2078232331 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CMMF Nos.</source>
           <note from="Developer" annotates="general" priority="2">ESP="Nº Serie CMMF"</note>
@@ -15166,6 +15172,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CreateCMMFCode - NamedType lblResumen</note>
           <target>CMMF Code asignados: %1\Ya tenían CMMF Code: %2\Productos bloqueados: %3\CMMF Type sin numerador: %4</target>
         </trans-unit>
+        <trans-unit id="Codeunit 1069980009 - Method 3749083966 - NamedType 2325880559" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method UpdateCMMFReportingFromFamily - NamedType lblResumen</note>
+          <target>Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2</target>
+        </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2223176127 - NamedType 596828306" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se encuentra la Oferta %1 emparejado.</source>
           <note from="Developer" annotates="general" priority="2">ESP="No se encuentra la Oferta %1 emparejada."</note>
@@ -19469,6 +19481,18 @@
           <note from="Developer" annotates="general" priority="2">ESP="Valores"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Property Caption</note>
           <target>Valores</target>
+        </trans-unit>
+        <trans-unit id="Page 2207170913 - Action 2354637806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizar CMMF Code (Reporting) productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar CMMF Code (Reporting) productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action UpdateCMMFReporting - Property Caption</note>
+          <target>Actualizar CMMF Code (Reporting) productos</target>
+        </trans-unit>
+        <trans-unit id="Page 2207170913 - Action 2354637806 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action UpdateCMMFReporting - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?</target>
         </trans-unit>
         <trans-unit id="Page 4246998658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log Sending client emails</source>
@@ -42404,10 +42428,10 @@
           <target>Cód. Categoria</target>
         </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 643379284 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
-          <source>CMMF Code</source>
-          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code"</note>
+          <source>CMMF Code (Reporting)</source>
+          <note from="Developer" annotates="general" priority="2">ESP="CMMF Code (Reporting)"</note>
           <note from="Xliff Generator" annotates="general" priority="3">TableExtension ItemLedgerEntry - Field CMMF Code - Property Caption</note>
-          <target>CMMF Code</target>
+          <target>CMMF Code (Reporting)</target>
         </trans-unit>
         <trans-unit id="TableExtension 1719057576 - Field 1789265122 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Table 4089294192">
           <source>Customer No.</source>

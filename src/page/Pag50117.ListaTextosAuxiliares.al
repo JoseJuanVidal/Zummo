@@ -58,11 +58,42 @@ page 50117 "Lista Textos Auxiliares"
                     ApplicationArea = all;
                     Visible = mostrarGarantia;
                 }
+                field("CMMF Code Reporting"; "CMMF Code Reporting")
+                {
+                    ApplicationArea = all;
+                    Visible = mostrarFamilia;
+                }
                 field("CMMF Nos."; "CMMF Nos.")
                 {
                     ApplicationArea = all;
                     Visible = mostrarCMMF;
                 }
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(UpdateCMMFReporting)
+            {
+                ApplicationArea = all;
+                Caption = 'Actualizar CMMF Code (Reporting) productos', comment = 'ESP="Actualizar CMMF Code (Reporting) productos"';
+                Image = UpdateDescription;
+                Visible = mostrarFamilia;
+
+                trigger OnAction()
+                var
+                    TextosAuxiliares: Record TextosAuxiliares;
+                    Funciones: Codeunit FuncionesFabricacion;
+                    lblConfirm: Label '¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?', comment = 'ESP="¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?"';
+                begin
+                    CurrPage.SetSelectionFilter(TextosAuxiliares);
+                    if not Confirm(lblConfirm, false, TextosAuxiliares.Count) then
+                        exit;
+                    Funciones.UpdateCMMFReportingFromFamily(TextosAuxiliares);
+                end;
             }
         }
     }
@@ -73,8 +104,10 @@ page 50117 "Lista Textos Auxiliares"
             mercadoVisible := true;
         if UpperCase(GetFilter(TipoTabla)) = 'REGISTROIVA' then
             NotRegIVA := true;
-        if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::Familia) then
+        if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::Familia) then begin
             mostrarGarantia := true;
+            mostrarFamilia := true;
+        end;
         if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::ClasificacionVentas) then
             mostrarGarantia := true;
         if GetFilter(TipoTabla) = FORMAT(Rec.TipoTabla::CMMFType) then
@@ -95,4 +128,5 @@ page 50117 "Lista Textos Auxiliares"
         NotRegIVA: Boolean;
         mostrarGarantia: Boolean;
         mostrarCMMF: Boolean;
+        mostrarFamilia: Boolean;
 }

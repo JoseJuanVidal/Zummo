@@ -151,10 +151,10 @@ tableextension 50177 "ItemLedgerEntry" extends "Item Ledger Entry"  //32
         }
         field(50203; "CMMF Code"; code[20])
         {
-            Caption = 'CMMF Code', comment = 'ESP="CMMF Code"';
+            Caption = 'CMMF Code (Reporting)', comment = 'ESP="CMMF Code (Reporting)"';
             Editable = false;
             FieldClass = FlowField;
-            CalcFormula = lookup(Item."CMMF Code" where("No." = field("Item No.")));
+            CalcFormula = lookup(Item."CMMF Code Reporting" where("No." = field("Item No.")));
         }
         field(50205; "No. 2"; code[20])
         {

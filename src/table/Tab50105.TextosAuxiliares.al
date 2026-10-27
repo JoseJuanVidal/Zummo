@@ -106,6 +106,11 @@ table 50105 "TextosAuxiliares"
             Caption = 'CMMF Nos.', comment = 'ESP="Nº Serie CMMF"';
             TableRelation = "No. Series";
         }
+        field(61; "CMMF Code Reporting"; Code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'CMMF Code (Reporting)', comment = 'ESP="CMMF Code (Reporting)"';
+        }
     }
 
     keys

@@ -1754,6 +1754,33 @@ codeunit 50108 "FuncionesFabricacion"
         Message(lblResumen, Asignados, ConCodigo, Bloqueados, SinNumerador);
     end;
 
+    // Rellena el CMMF Code (Reporting) vacío de los productos con el de su familia (incluidos bloqueados)
+    procedure UpdateCMMFReportingFromFamily(var TextosAuxiliares: Record TextosAuxiliares)
+    var
+        Item: Record Item;
+        Actualizados: Integer;
+        SinCMMF: Integer;
+        lblResumen: Label 'Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2', comment = 'ESP="Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2"';
+    begin
+        if TextosAuxiliares.FindSet() then
+            repeat
+                if TextosAuxiliares."CMMF Code Reporting" = '' then
+                    SinCMMF += 1
+                else begin
+                    Item.Reset();
+                    Item.SetRange(selFamilia_btc, TextosAuxiliares.NumReg);
+                    Item.SetRange("CMMF Code Reporting", '');
+                    if Item.FindSet(true, true) then
+                        repeat
+                            Item."CMMF Code Reporting" := TextosAuxiliares."CMMF Code Reporting";
+                            Item.Modify();
+                            Actualizados += 1;
+                        until Item.Next() = 0;
+                end;
+            until TextosAuxiliares.Next() = 0;
+        Message(lblResumen, Actualizados, SinCMMF);
+    end;
+
     // =============     Exportar Excel de analisi de variacion existencia salida de fabricacion          ====================
     // ==  
     // ==  comment 

@@ -5,7 +5,7 @@ page 50052 "ZM Items PI2 details"
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = Item;
-    // SourceTableView = where("CMMF Code" = filter(<> ''));
+    // SourceTableView = where("CMMF Code Reporting" = filter(<> ''));
     CardPageId = "Item Card";
     Editable = false;
 
@@ -18,7 +18,7 @@ page 50052 "ZM Items PI2 details"
                 field("No."; "No.") { ApplicationArea = all; }
                 field(Description; Description) { ApplicationArea = all; }
                 field("CMMF Type"; "CMMF Type") { ApplicationArea = all; }
-                field("CMMF Code"; "CMMF Code") { ApplicationArea = all; }
+                field("CMMF Code Reporting"; "CMMF Code Reporting") { ApplicationArea = all; }
                 field("SEB PI2 Code"; "SEB PI2 Code") { ApplicationArea = all; }
                 field("SEB PI2 Description"; "SEB PI2 Description") { ApplicationArea = all; }
                 field("SEB PI2 English Description"; "SEB PI2 English Description") { ApplicationArea = all; }
@@ -107,7 +107,7 @@ page 50052 "ZM Items PI2 details"
     }
     trigger OnOpenPage()
     begin
-        SetFilter("CMMF Code", '<>%1', '');
+        SetFilter("CMMF Code Reporting", '<>%1', '');
     end;
 
     trigger OnAfterGetRecord()

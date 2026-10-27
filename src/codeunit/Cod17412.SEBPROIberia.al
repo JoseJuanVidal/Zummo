@@ -1879,7 +1879,7 @@ codeunit 17412 "SEB PRO Iberia"
             Item.GTIN := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item.GTIN));
         ExcelBuffer.SetRange("Column No.", 3);  //  CMMF Code
         if ExcelBuffer.FindSet() then
-            Item."CMMF Code" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."CMMF Code"));
+            Item."CMMF Code Reporting" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."CMMF Code Reporting"));
         Item."Safety Stock Quantity" := 0;
         // ExcelBuffer.SetRange("Column No.", 24);  //  Nª Codigo
         // if ExcelBuffer.FindSet() then
@@ -1963,7 +1963,7 @@ codeunit 17412 "SEB PRO Iberia"
             Item.GTIN := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item.GTIN));
         ExcelBuffer.SetRange("Column No.", 3);  //  CMMF Code
         if ExcelBuffer.FindSet() then
-            Item."CMMF Code" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."CMMF Code"));
+            Item."CMMF Code Reporting" := CopyStr(ExcelBuffer."Cell Value as Text", 1, MaxStrLen(Item."CMMF Code Reporting"));
         Item."Safety Stock Quantity" := 0;
         // ExcelBuffer.SetRange("Column No.", 24);  //  Nª Codigo
         // if ExcelBuffer.FindSet() then
