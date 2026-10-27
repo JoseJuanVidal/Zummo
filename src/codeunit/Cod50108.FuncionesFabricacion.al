@@ -1754,31 +1754,52 @@ codeunit 50108 "FuncionesFabricacion"
         Message(lblResumen, Asignados, ConCodigo, Bloqueados, SinNumerador);
     end;
 
-    // Rellena el CMMF Code (Reporting) vacío de los productos con el de su familia (incluidos bloqueados)
-    procedure UpdateCMMFReportingFromFamily(var TextosAuxiliares: Record TextosAuxiliares)
+    // Rellena los datos SEB vacíos de los productos (CMMF Code (Reporting), Business Unit, Fl1, Fl2)
+    // con los de su familia, campo a campo y sin sobrescribir (incluidos bloqueados)
+    procedure UpdateSEBDataFromFamily(var TextosAuxiliares: Record TextosAuxiliares)
     var
         Item: Record Item;
+        Modificado: Boolean;
         Actualizados: Integer;
-        SinCMMF: Integer;
-        lblResumen: Label 'Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2', comment = 'ESP="Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2"';
+        SinDatos: Integer;
+        lblResumen: Label 'Productos actualizados: %1\Familias sin datos SEB: %2', comment = 'ESP="Productos actualizados: %1\Familias sin datos SEB: %2"';
     begin
         if TextosAuxiliares.FindSet() then
             repeat
-                if TextosAuxiliares."CMMF Code Reporting" = '' then
-                    SinCMMF += 1
+                if (TextosAuxiliares."CMMF Code Reporting" = '') and (TextosAuxiliares."Business Unit" = '') and
+                   (TextosAuxiliares.Fl1 = '') and (TextosAuxiliares.Fl2 = '')
+                then
+                    SinDatos += 1
                 else begin
                     Item.Reset();
                     Item.SetRange(selFamilia_btc, TextosAuxiliares.NumReg);
-                    Item.SetRange("CMMF Code Reporting", '');
-                    if Item.FindSet(true, true) then
+                    if Item.FindSet(true) then
                         repeat
-                            Item."CMMF Code Reporting" := TextosAuxiliares."CMMF Code Reporting";
-                            Item.Modify();
-                            Actualizados += 1;
+                            Modificado := false;
+                            if (Item."CMMF Code Reporting" = '') and (TextosAuxiliares."CMMF Code Reporting" <> '') then begin
+                                Item."CMMF Code Reporting" := TextosAuxiliares."CMMF Code Reporting";
+                                Modificado := true;
+                            end;
+                            if (Item."Business Unit" = '') and (TextosAuxiliares."Business Unit" <> '') then begin
+                                Item."Business Unit" := TextosAuxiliares."Business Unit";
+                                Modificado := true;
+                            end;
+                            if (Item.Fl1 = '') and (TextosAuxiliares.Fl1 <> '') then begin
+                                Item.Fl1 := TextosAuxiliares.Fl1;
+                                Modificado := true;
+                            end;
+                            if (Item.Fl2 = '') and (TextosAuxiliares.Fl2 <> '') then begin
+                                Item.Fl2 := TextosAuxiliares.Fl2;
+                                Modificado := true;
+                            end;
+                            if Modificado then begin
+                                Item.Modify();
+                                Actualizados += 1;
+                            end;
                         until Item.Next() = 0;
                 end;
             until TextosAuxiliares.Next() = 0;
-        Message(lblResumen, Actualizados, SinCMMF);
+        Message(lblResumen, Actualizados, SinDatos);
     end;
 
     // =============     Exportar Excel de analisi de variacion existencia salida de fabricacion          ====================

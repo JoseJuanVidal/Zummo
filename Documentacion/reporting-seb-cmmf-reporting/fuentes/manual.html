@@ -8,7 +8,7 @@
 <body>
 
 <h1>Reporting SEB</h1>
-<div class="subtitle">Manual de usuario · CMMF Code (Reporting) y familias · Extensión Zummo 1.0.0.1023 · octubre 2026</div>
+<div class="subtitle">Manual de usuario · CMMF Code (Reporting) y datos SEB por familia · Extensión Zummo 1.0.0.1023 · octubre 2026</div>
 
 <h2>Para qué sirve</h2>
 <p>La pantalla <b>Reporting SEB</b> resume las <b>ventas facturadas</b> de cada mes agrupadas como las pide SEB: por <b>Mes</b>, <b>Business Unit</b>, <b>MLA</b> y <b>CMMF Code</b>. Para cada grupo da la <b>cantidad</b>, el <b>importe</b> y el <b>coste</b>, y permite ver el detalle de los movimientos que lo forman.</p>
@@ -16,15 +16,15 @@
 <h3>Qué cambia en esta versión</h3>
 <ul>
   <li>El reporting agrupa por el campo <b>CMMF Code (Reporting)</b> del producto, y no por el <i>CMMF Code</i> anterior. El <i>CMMF Code</i> sigue existiendo, pero se usa para la asignación por numerador, no para el reporting.</li>
-  <li>Cada <b>Familia</b> puede tener su propio <b>CMMF Code (Reporting)</b>. Si un producto no tiene el suyo, la carga del reporting usa el de su familia.</li>
-  <li>Hay una acción nueva en la lista de familias que <b>rellena el CMMF Code (Reporting)</b> de los productos que lo tienen vacío con el de su familia.</li>
+  <li>Cada <b>Familia</b> puede tener sus propios <b>datos SEB</b>: <b>CMMF Code (Reporting)</b>, <b>Business Unit</b>, <b>Fl1</b> y <b>Fl2</b>. Si un producto no tiene alguno de ellos, la carga del reporting usa el de su familia.</li>
+  <li>Hay una acción nueva en la lista de familias que <b>rellena los datos SEB</b> que los productos tienen vacíos con los de su familia.</li>
   <li>Otras pantallas también muestran ya el CMMF Code (Reporting): los movimientos de producto y la lista de productos PI2. La importación de productos desde Excel de SEB también lo rellena.</li>
 </ul>
 
 <div class="flow">
-  <div class="box"><b>1. Familia</b>Informar el CMMF Code (Reporting) de cada familia.</div>
+  <div class="box"><b>1. Familia</b>Informar los datos SEB de cada familia.</div>
   <div class="arrow">→</div>
-  <div class="box"><b>2. Productos</b>Opcional: copiar el de la familia a los productos sin código.</div>
+  <div class="box"><b>2. Productos</b>Opcional: copiarlos a los productos que no los tienen.</div>
   <div class="arrow">→</div>
   <div class="box"><b>3. Cargar</b>Calcular los meses en la pantalla Reporting SEB.</div>
   <div class="arrow">→</div>
@@ -35,57 +35,60 @@
 <table>
   <tr><th>Columna</th><th>Origen</th></tr>
   <tr><td class="k">Mes</td><td>El mes de la <b>fecha de registro</b> del movimiento de venta.</td></tr>
-  <tr><td class="k">Business Unit, Fl1, Fl2</td><td>Ficha del producto, grupo <b>Códigos SEB</b>.</td></tr>
+  <tr><td class="k">Business Unit, Fl1, Fl2</td><td>Ficha del producto, grupo <b>Códigos SEB</b> o, si está vacío, el de su <b>Familia</b>.</td></tr>
   <tr><td class="k">MLA</td><td>Ficha del cliente, campo <b>MLA</b>.</td></tr>
-  <tr><td class="k">CMMF Code</td><td>El <b>CMMF Code (Reporting)</b> del producto (grupo <b>Códigos SEB</b>) o, si está vacío, el <b>CMMF Code (Reporting)</b> de su <b>Familia</b>. Ver la página siguiente.</td></tr>
+  <tr><td class="k">CMMF Code</td><td>El <b>CMMF Code (Reporting)</b> del producto (grupo <b>Códigos SEB</b>) o, si está vacío, el de su <b>Familia</b>. Ver la página siguiente.</td></tr>
   <tr><td class="k">Quantity</td><td>Cantidad facturada (en positivo para las ventas y en negativo para los abonos).</td></tr>
   <tr><td class="k">Amount</td><td>Importe de venta real de los movimientos de valor.</td></tr>
   <tr><td class="k">Costs</td><td>Coste unitario real del movimiento de producto × cantidad facturada.</td></tr>
 </table>
 
-<h2 class="pagebreak">CMMF Code (Reporting): producto y familia</h2>
+<h2 class="pagebreak">Datos SEB: producto y familia</h2>
+<p>Los <b>datos SEB</b> son cuatro campos que están en la ficha del producto (grupo <b>Códigos SEB</b>) y también en la familia: <b>CMMF Code (Reporting)</b>, <b>Business Unit</b>, <b>Fl1</b> y <b>Fl2</b>.</p>
 
-<h3>Qué código se usa</h3>
+<h3>Qué valor se usa</h3>
+<p>Cada uno de los cuatro campos se decide <b>por separado</b>:</p>
 <table>
-  <tr><th>Situación del producto</th><th>CMMF Code en el reporting</th></tr>
-  <tr><td class="k">Tiene CMMF Code (Reporting)</td><td>El <b>del producto</b>. Manda siempre sobre el de la familia.</td></tr>
-  <tr><td class="k">No lo tiene, y su familia sí</td><td>El <b>de la familia</b>. El producto no se modifica: el código solo se usa en el reporting.</td></tr>
-  <tr><td class="k"><span class="amber">No lo tiene, ni su familia</span></td><td>Queda <b>en blanco</b>. Sus ventas se agrupan en una línea con CMMF Code vacío.</td></tr>
+  <tr><th>Situación del producto</th><th>Valor en el reporting</th></tr>
+  <tr><td class="k">Tiene el campo informado</td><td>El <b>del producto</b>. Manda siempre sobre el de la familia.</td></tr>
+  <tr><td class="k">No lo tiene, y su familia sí</td><td>El <b>de la familia</b>. El producto no se modifica: el valor solo se usa en el reporting.</td></tr>
+  <tr><td class="k"><span class="amber">No lo tiene, ni su familia</span></td><td>Queda <b>en blanco</b>. Si es el CMMF Code o la Business Unit, sus ventas se agrupan en una línea con ese campo vacío.</td></tr>
 </table>
-<div class="note">Esta regla se aplica cuando se pulsa <b>Cargar</b>. Si se cambia el código de un producto o de una familia, los meses ya cargados no cambian hasta que se vuelven a cargar.</div>
+<p>Por ejemplo, un producto con su propio CMMF Code (Reporting) pero sin Business Unit va al reporting con <b>su CMMF Code</b> y con la <b>Business Unit de su familia</b>.</p>
+<div class="note">Esta regla se aplica cuando se pulsa <b>Cargar</b>. Si se cambia un dato de un producto o de una familia, los meses ya cargados no cambian hasta que se vuelven a cargar.</div>
 
-<h3>Informar el CMMF Code (Reporting) de la familia</h3>
+<h3>Informar los datos SEB de la familia</h3>
 <ol>
   <li>En la ficha de un producto, ir al grupo <b>Clasificación</b>.</li>
   <li>En el campo <b>Familia</b>, abrir el desplegable y pulsar <b>Seleccionar de la lista completa</b>.</li>
-  <li>Se abre la lista de valores de las familias. Rellenar la columna <b>CMMF Code (Reporting)</b> en cada familia.</li>
+  <li>Se abre la lista de valores de las familias. Rellenar en cada familia las columnas <b>CMMF Code (Reporting)</b>, <b>Business Unit</b>, <b>Fl1</b> y <b>Fl2</b>. Business Unit, Fl1 y Fl2 se eligen de sus listas de valores, igual que en el producto.</li>
 </ol>
 <div class="mock">
   <div class="bar">Valores · Familia</div>
-  <div class="row"><span><b>Nº</b> · <b>Descripcion</b></span><span><b>Años de Garantía</b> · <b>Tipo Dto</b> · <b>CMMF Code (Reporting)</b></span></div>
-  <div class="row"><span>EXPRIM · Exprimidores</span><span>2A · Dto. Exprimidores · 1520000001</span></div>
-  <div class="row"><span>REPUESTOS · Repuestos</span><span>1A · Dto. Repuestos · 1520000099</span></div>
+  <div class="row"><span><b>Nº</b> · <b>Descripcion</b></span><span><b>CMMF Code (Reporting)</b> · <b>Business Unit</b> · <b>Fl1</b> · <b>Fl2</b></span></div>
+  <div class="row"><span>EXPRIM · Exprimidores</span><span>1520000001 · BU01 · JUICER · PRO</span></div>
+  <div class="row"><span>REPUESTOS · Repuestos</span><span>1520000099 · BU01 · SPARE · PARTS</span></div>
 </div>
-<div class="note">Los códigos de la maqueta son solo un ejemplo. La columna <b>CMMF Code (Reporting)</b> y la acción del apartado siguiente solo aparecen cuando la lista está filtrada por <b>Familia</b>. Por eso es mejor entrar desde el campo Familia del producto.</div>
+<div class="note">Los valores de la maqueta son solo un ejemplo. Estas columnas y la acción del apartado siguiente solo aparecen cuando la lista está filtrada por <b>Familia</b>. Por eso es mejor entrar desde el campo Familia del producto.</div>
 
-<h3>Copiar el código de la familia a los productos</h3>
-<p>No es obligatorio para el reporting, porque la carga ya usa el código de la familia. Sirve para dejar el código guardado en el producto, por ejemplo para verlo en la ficha, en los movimientos o en otros informes.</p>
+<h3>Copiar los datos de la familia a los productos</h3>
+<p>No es obligatorio para el reporting, porque la carga ya usa los datos de la familia. Sirve para dejarlos guardados en el producto, por ejemplo para verlos en la ficha, en los movimientos o en otros informes.</p>
 <ol>
   <li>En la lista de valores de las familias, seleccionar una o varias familias.</li>
-  <li>Pulsar la acción <b>Actualizar CMMF Code (Reporting) productos</b>.</li>
-  <li>Confirmar: <i>"¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de 3 familias seleccionadas?"</i>.</li>
+  <li>Pulsar la acción <b>Actualizar datos SEB productos</b>.</li>
+  <li>Confirmar: <i>"¿Desea actualizar los datos SEB sin informar de los productos de 3 familias seleccionadas?"</i>.</li>
 </ol>
 <table>
   <tr><th>Situación</th><th>Qué pasa</th></tr>
-  <tr><td class="k">Producto sin CMMF Code (Reporting)</td><td>Recibe el CMMF Code (Reporting) de su familia.</td></tr>
-  <tr><td class="k">Producto que ya tiene CMMF Code (Reporting)</td><td>Se <b>salta</b>. Nunca se sobrescribe un código.</td></tr>
+  <tr><td class="k">Campo vacío en el producto</td><td>Recibe el valor de su familia, si la familia lo tiene.</td></tr>
+  <tr><td class="k">Campo ya informado en el producto</td><td>No se toca. Nunca se sobrescribe un valor. Cada campo se rellena por separado: un producto con Business Unit pero sin Fl1 recibe solo el Fl1.</td></tr>
   <tr><td class="k">Producto bloqueado</td><td>Se actualiza también, porque puede tener ventas de meses anteriores que salen en el reporting.</td></tr>
-  <tr><td class="k">Familia sin CMMF Code (Reporting)</td><td>Se <b>salta</b> la familia entera.</td></tr>
+  <tr><td class="k">Familia sin ningún dato SEB</td><td>Se <b>salta</b> la familia entera.</td></tr>
 </table>
-<p>Al terminar aparece un resumen:</p>
+<p>Al terminar aparece un resumen. <i>Productos actualizados</i> cuenta los productos que han recibido al menos un campo:</p>
 <div class="mock">
   <div class="bar">Resumen</div>
-  <div class="act">Productos actualizados: 148<br>Familias sin CMMF Code (Reporting): 1</div>
+  <div class="act">Productos actualizados: 148<br>Familias sin datos SEB: 1</div>
 </div>
 
 <h2>Cargar y consultar el reporting</h2>
@@ -107,7 +110,7 @@
 <div class="note">El <b>Filtro Fecha</b> solo se usa para la acción Cargar: no filtra las líneas de la pantalla. Para ver un mes, filtrar la columna <b>Mes</b> o usar el panel de filtros.</div>
 
 <h3>Consultar y ver el detalle</h3>
-<p>Cada línea es un grupo <b>Mes + Business Unit + MLA + CMMF Code</b>, con sus totales y las columnas Fl1 y Fl2.</p>
+<p>Cada línea es un grupo <b>Mes + Business Unit + MLA + CMMF Code</b>, con sus totales y las columnas Fl1 y Fl2. Fl1 y Fl2 <b>no forman parte del grupo</b>: si en una misma línea entran productos con distinto Fl1 o Fl2, la línea muestra los del primer producto que la crea.</p>
 <div class="mock">
   <div class="bar">Reporting SEB</div>
   <div class="row"><span><b>Mes</b> · <b>Business Unit</b> · <b>MLA</b> · <b>CMMF Code</b></span><span><b>Quantity</b> · <b>Amount</b> · <b>Costs</b></span></div>
@@ -115,7 +118,7 @@
   <div class="row"><span>01/09/26 · BU01 · MLA002 · 1520000001</span><span>7 · 3.010,00 · 1.520,07</span></div>
 </div>
 <p>Al pulsar sobre <b>Quantity</b>, <b>Amount</b> o <b>Costs</b> se abre <b>Reporting SEB Details</b>, con los movimientos que forman esa línea: fecha, nº documento, producto y descripción, familia y clasificación de ventas, cliente y su CIF, y los mismos códigos SEB.</p>
-<div class="note">En el detalle, la columna <b>Familia</b> ayuda a ver de qué familia viene un CMMF Code que no está en el producto.</div>
+<div class="note">En el detalle, la columna <b>Familia</b> ayuda a ver de qué familia viene un dato SEB que no está en el producto.</div>
 
 <h2>Otras pantallas con CMMF Code (Reporting)</h2>
 <table>
@@ -131,18 +134,18 @@
 <p>Pasos para dejarlo funcionando después de instalar la versión:</p>
 <ol>
   <li><b>Copia de los códigos anteriores</b> (la hace Sistemas una sola vez): el CMMF Code de los productos se copia a CMMF Code (Reporting) cuando este está vacío.</li>
-  <li>Informar el <b>CMMF Code (Reporting)</b> en las <b>familias</b>.</li>
-  <li>Opcional: lanzar <b>Actualizar CMMF Code (Reporting) productos</b> en las familias.</li>
+  <li>Informar los <b>datos SEB</b> en las <b>familias</b>.</li>
+  <li>Opcional: lanzar <b>Actualizar datos SEB productos</b> en las familias.</li>
   <li>Volver a <b>Cargar</b> en Reporting SEB los meses que ya estaban cargados, para que se agrupen con el código nuevo.</li>
 </ol>
 
 <h2>Preguntas frecuentes</h2>
 <table>
   <tr><th>Pregunta</th><th>Respuesta</th></tr>
-  <tr><td class="k">Sale una línea con CMMF Code en blanco</td><td>Hay productos sin CMMF Code (Reporting) cuya familia tampoco lo tiene (o que no tienen familia). Pulsar sobre la cantidad para ver el detalle e informar el código en el producto o en su familia. Después, volver a cargar el mes.</td></tr>
-  <tr><td class="k">He cambiado el código de una familia y el reporting no cambia</td><td>El reporting se calcula al pulsar <b>Cargar</b>. Hay que volver a cargar los meses afectados.</td></tr>
-  <tr><td class="k">Un producto debe ir con un código distinto del de su familia</td><td>Informar el <b>CMMF Code (Reporting)</b> en la ficha del producto. El del producto siempre manda sobre el de la familia.</td></tr>
-  <tr><td class="k">¿La acción de la familia cambia códigos ya puestos?</td><td>No. Solo rellena los productos que tienen el campo vacío.</td></tr>
+  <tr><td class="k">Sale una línea con CMMF Code o Business Unit en blanco</td><td>Hay productos sin ese dato cuya familia tampoco lo tiene (o que no tienen familia). Pulsar sobre la cantidad para ver el detalle e informar el dato en el producto o en su familia. Después, volver a cargar el mes.</td></tr>
+  <tr><td class="k">He cambiado un dato de una familia y el reporting no cambia</td><td>El reporting se calcula al pulsar <b>Cargar</b>. Hay que volver a cargar los meses afectados.</td></tr>
+  <tr><td class="k">Un producto debe ir con un dato distinto del de su familia</td><td>Informar ese campo en la ficha del producto. El del producto siempre manda sobre el de la familia.</td></tr>
+  <tr><td class="k">¿La acción de la familia cambia datos ya puestos?</td><td>No. Solo rellena los campos que el producto tiene vacíos.</td></tr>
   <tr><td class="k">¿Y el CMMF Code anterior?</td><td>Sigue en la ficha y se asigna con el numerador de su CMMF Type (ver el manual <i>Asignación de CMMF Code</i>), pero ya no se usa en el reporting.</td></tr>
 </table>
 

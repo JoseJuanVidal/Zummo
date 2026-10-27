@@ -63,6 +63,21 @@ page 50117 "Lista Textos Auxiliares"
                     ApplicationArea = all;
                     Visible = mostrarFamilia;
                 }
+                field("Business Unit"; "Business Unit")
+                {
+                    ApplicationArea = all;
+                    Visible = mostrarFamilia;
+                }
+                field(Fl1; Fl1)
+                {
+                    ApplicationArea = all;
+                    Visible = mostrarFamilia;
+                }
+                field(Fl2; Fl2)
+                {
+                    ApplicationArea = all;
+                    Visible = mostrarFamilia;
+                }
                 field("CMMF Nos."; "CMMF Nos.")
                 {
                     ApplicationArea = all;
@@ -76,10 +91,10 @@ page 50117 "Lista Textos Auxiliares"
     {
         area(Processing)
         {
-            action(UpdateCMMFReporting)
+            action(UpdateSEBData)
             {
                 ApplicationArea = all;
-                Caption = 'Actualizar CMMF Code (Reporting) productos', comment = 'ESP="Actualizar CMMF Code (Reporting) productos"';
+                Caption = 'Actualizar datos SEB productos', comment = 'ESP="Actualizar datos SEB productos"';
                 Image = UpdateDescription;
                 Visible = mostrarFamilia;
 
@@ -87,12 +102,12 @@ page 50117 "Lista Textos Auxiliares"
                 var
                     TextosAuxiliares: Record TextosAuxiliares;
                     Funciones: Codeunit FuncionesFabricacion;
-                    lblConfirm: Label '¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?', comment = 'ESP="¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?"';
+                    lblConfirm: Label '¿Desea actualizar los datos SEB sin informar de los productos de %1 familias seleccionadas?', comment = 'ESP="¿Desea actualizar los datos SEB sin informar de los productos de %1 familias seleccionadas?"';
                 begin
                     CurrPage.SetSelectionFilter(TextosAuxiliares);
                     if not Confirm(lblConfirm, false, TextosAuxiliares.Count) then
                         exit;
-                    Funciones.UpdateCMMFReportingFromFamily(TextosAuxiliares);
+                    Funciones.UpdateSEBDataFromFamily(TextosAuxiliares);
                 end;
             }
         }

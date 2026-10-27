@@ -124,6 +124,9 @@ table 17378 "ZM Reporting SEB Sales"
     var
         Familia: Record TextosAuxiliares;
         CMMFReporting: Code[20];
+        BusinessUnit: Code[20];
+        Fl1Reporting: Code[20];
+        Fl2Reporting: Code[20];
         FromDate: Date;
         ToDate: Date;
         PeriodStart: date;
@@ -170,11 +173,22 @@ table 17378 "ZM Reporting SEB Sales"
                 if Item."No." <> ValueEntry."Item No." then begin
                     Clear(Item);
                     if Item.Get(ValueEntry."Item No.") then;
-                    // sin CMMF Code (Reporting) en el producto se toma el de su familia
+                    // los datos SEB vacíos en el producto se toman de su familia
                     CMMFReporting := Item."CMMF Code Reporting";
-                    if (CMMFReporting = '') and (Item.selFamilia_btc <> '') then
-                        if Familia.Get(Familia.TipoTabla::Familia, Familia.TipoRegistro::Tabla, Item.selFamilia_btc) then
-                            CMMFReporting := Familia."CMMF Code Reporting";
+                    BusinessUnit := Item."Business Unit";
+                    Fl1Reporting := Item.Fl1;
+                    Fl2Reporting := Item.Fl2;
+                    if Item.selFamilia_btc <> '' then
+                        if Familia.Get(Familia.TipoTabla::Familia, Familia.TipoRegistro::Tabla, Item.selFamilia_btc) then begin
+                            if CMMFReporting = '' then
+                                CMMFReporting := Familia."CMMF Code Reporting";
+                            if BusinessUnit = '' then
+                                BusinessUnit := Familia."Business Unit";
+                            if Fl1Reporting = '' then
+                                Fl1Reporting := Familia.Fl1;
+                            if Fl2Reporting = '' then
+                                Fl2Reporting := Familia.Fl2;
+                        end;
                 end;
                 if (Customer."No." <> ValueEntry."Source No.") or (ValueEntry."Source Type" <> ValueEntry."Source Type"::Customer) then begin
                     Clear(Customer);
@@ -194,7 +208,7 @@ table 17378 "ZM Reporting SEB Sales"
                 PeriodEnd := CalcDate('<CM>', ValueEntry."Posting Date");
 
                 RepSEBSales.SetRange("Period Start", PeriodStart);
-                RepSEBSales.SetRange("Business Unit", Item."Business Unit");
+                RepSEBSales.SetRange("Business Unit", BusinessUnit);
                 RepSEBSales.SetRange(MLA, Customer.MLA);
                 RepSEBSales.SetRange("CMMF Code", CMMFReporting);
                 if not RepSEBSales.FindFirst() then begin
@@ -203,11 +217,11 @@ table 17378 "ZM Reporting SEB Sales"
                     RepSEBSales."Entry No." := EntryNo;
                     RepSEBSales."Period Start" := PeriodStart;
                     RepSEBSales."Period End" := PeriodEnd;
-                    RepSEBSales."Business Unit" := Item."Business Unit";
+                    RepSEBSales."Business Unit" := BusinessUnit;
                     RepSEBSales.MLA := Customer.MLA;
                     RepSEBSales."CMMF Code" := CMMFReporting;
-                    RepSEBSales.Fl1 := Item.Fl1;
-                    RepSEBSales.Fl2 := Item.Fl2;
+                    RepSEBSales.Fl1 := Fl1Reporting;
+                    RepSEBSales.Fl2 := Fl2Reporting;
                     RepSEBSales.Insert();
                 end;
                 RepSEBSales.Quantity -= ValueEntry."Invoiced Quantity";
@@ -218,11 +232,11 @@ table 17378 "ZM Reporting SEB Sales"
                 RepSEBSalesDetail.Init();
                 EntryNoDetail += 1;
                 RepSEBSalesDetail."Entry No." := EntryNoDetail;
-                RepSEBSalesDetail."Business Unit" := Item."Business Unit";
+                RepSEBSalesDetail."Business Unit" := BusinessUnit;
                 RepSEBSalesDetail."CMMF Code" := CMMFReporting;
                 RepSEBSalesDetail.MLA := Customer.MLA;
-                RepSEBSalesDetail.Fl1 := Item.Fl1;
-                RepSEBSalesDetail.Fl2 := Item.Fl2;
+                RepSEBSalesDetail.Fl1 := Fl1Reporting;
+                RepSEBSalesDetail.Fl2 := Fl2Reporting;
                 RepSEBSalesDetail."Item No." := ValueEntry."Item No.";
                 RepSEBSalesDetail.Description := Item.Description;
                 RepSEBSalesDetail."Document No." := ValueEntry."Document No.";

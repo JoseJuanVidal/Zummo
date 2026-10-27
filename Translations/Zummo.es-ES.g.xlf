@@ -9062,6 +9062,12 @@
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field AvisoProductoServicio - Property Caption</note>
           <target>Aviso Producto Servicio por cliente</target>
         </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 871113228 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Business Unit</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Business Unit"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Business Unit - Property Caption</note>
+          <target>Business Unit</target>
+        </trans-unit>
         <trans-unit id="Table 2244721376 - Field 2668832634 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>CMMF Code (Reporting)</source>
           <note from="Developer" annotates="general" priority="2">ESP="CMMF Code (Reporting)"</note>
@@ -9109,6 +9115,18 @@
           <note from="Developer" annotates="general" priority="2">ESP=" ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Discount Type - Property OptionCaption</note>
           <target> ,Dto. Exprimidores,Dto. Isla,Dto. Viva,Dto. Repuestos</target>
+        </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 804937293 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fl1</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl1"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Fl1 - Property Caption</note>
+          <target>Fl1</target>
+        </trans-unit>
+        <trans-unit id="Table 2244721376 - Field 167240676 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fl2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fl2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table TextosAuxiliares - Field Fl2 - Property Caption</note>
+          <target>Fl2</target>
         </trans-unit>
         <trans-unit id="Table 2244721376 - Field 680012757 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Market</source>
@@ -15172,11 +15190,11 @@
           <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method CreateCMMFCode - NamedType lblResumen</note>
           <target>CMMF Code asignados: %1\Ya tenían CMMF Code: %2\Productos bloqueados: %3\CMMF Type sin numerador: %4</target>
         </trans-unit>
-        <trans-unit id="Codeunit 1069980009 - Method 3749083966 - NamedType 2325880559" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method UpdateCMMFReportingFromFamily - NamedType lblResumen</note>
-          <target>Productos actualizados: %1\Familias sin CMMF Code (Reporting): %2</target>
+        <trans-unit id="Codeunit 1069980009 - Method 2854348423 - NamedType 2325880559" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Productos actualizados: %1\Familias sin datos SEB: %2</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Productos actualizados: %1\Familias sin datos SEB: %2"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit FuncionesFabricacion - Method UpdateSEBDataFromFamily - NamedType lblResumen</note>
+          <target>Productos actualizados: %1\Familias sin datos SEB: %2</target>
         </trans-unit>
         <trans-unit id="Codeunit 2573646532 - Method 2223176127 - NamedType 596828306" size-unit="char" translate="yes" xml:space="preserve">
           <source>No se encuentra la Oferta %1 emparejado.</source>
@@ -19482,17 +19500,17 @@
           <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Property Caption</note>
           <target>Valores</target>
         </trans-unit>
-        <trans-unit id="Page 2207170913 - Action 2354637806 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
-          <source>Actualizar CMMF Code (Reporting) productos</source>
-          <note from="Developer" annotates="general" priority="2">ESP="Actualizar CMMF Code (Reporting) productos"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action UpdateCMMFReporting - Property Caption</note>
-          <target>Actualizar CMMF Code (Reporting) productos</target>
+        <trans-unit id="Page 2207170913 - Action 1426626583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Actualizar datos SEB productos</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Actualizar datos SEB productos"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action UpdateSEBData - Property Caption</note>
+          <target>Actualizar datos SEB productos</target>
         </trans-unit>
-        <trans-unit id="Page 2207170913 - Action 2354637806 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
-          <source>¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?</source>
-          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?"</note>
-          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action UpdateCMMFReporting - Method OnAction - NamedType lblConfirm</note>
-          <target>¿Desea actualizar el CMMF Code (Reporting) de los productos sin informar de %1 familias seleccionadas?</target>
+        <trans-unit id="Page 2207170913 - Action 1426626583 - Method 1377591017 - NamedType 2981352172" size-unit="char" translate="yes" xml:space="preserve">
+          <source>¿Desea actualizar los datos SEB sin informar de los productos de %1 familias seleccionadas?</source>
+          <note from="Developer" annotates="general" priority="2">ESP="¿Desea actualizar los datos SEB sin informar de los productos de %1 familias seleccionadas?"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Lista Textos Auxiliares - Action UpdateSEBData - Method OnAction - NamedType lblConfirm</note>
+          <target>¿Desea actualizar los datos SEB sin informar de los productos de %1 familias seleccionadas?</target>
         </trans-unit>
         <trans-unit id="Page 4246998658 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Log Sending client emails</source>

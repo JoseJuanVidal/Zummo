@@ -111,6 +111,24 @@ table 50105 "TextosAuxiliares"
             DataClassification = CustomerContent;
             Caption = 'CMMF Code (Reporting)', comment = 'ESP="CMMF Code (Reporting)"';
         }
+        field(62; "Business Unit"; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Business Unit', comment = 'ESP="Business Unit"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(BusinessUnit));
+        }
+        field(63; Fl1; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fl1', comment = 'ESP="Fl1"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Fl1));
+        }
+        field(64; Fl2; code[20])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Fl2', comment = 'ESP="Fl2"';
+            TableRelation = TextosAuxiliares.NumReg where(TipoRegistro = const(Tabla), TipoTabla = const(Fl2));
+        }
     }
 
     keys
