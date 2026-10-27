@@ -26,6 +26,22 @@ page 50121 "Clasificación pedido servicio"
                 {
                     ApplicationArea = All;
                 }
+                field("JotForm Service Type"; "JotForm Service Type")
+                {
+                    ApplicationArea = All;
+                }
+                field("Show Installation Group"; "Show Installation Group")
+                {
+                    ApplicationArea = All;
+                }
+                field("Show Corrective Group"; "Show Corrective Group")
+                {
+                    ApplicationArea = All;
+                }
+                field("Show Counters Group"; "Show Counters Group")
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

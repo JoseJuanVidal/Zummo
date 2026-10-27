@@ -1578,6 +1578,26 @@
           <note from="Developer" annotates="general" priority="2">ESP="Descripción pedido servicio nivel 2"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicio - Field DescTipoPedidoNivel2_btc - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 2794684195 - Field 1604157230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>JotForm Service Type</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Tipo Servicio JotForm"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicio - Field JotForm Service Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2794684195 - Field 2831419540 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Corrective Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver grupo Correctivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicio - Field Show Corrective Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2794684195 - Field 1315952397 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Counters Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver grupo Contadores"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicio - Field Show Counters Group - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 2794684195 - Field 406078636 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Show Installation/Training Group</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Ver grupo Instalación/Formación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ClassPedServicio - Field Show Installation Group - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Table 2794684195 - Field 4002540526 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Type order service level 1</source>
           <note from="Developer" annotates="general" priority="2">ESP="Tipo pedido servicio nivel 1"</note>

@@ -27,6 +27,28 @@ table 50106 "ClassPedServicio"
             DataClassification = CustomerContent;
             Caption = 'Description order service level 2', comment = 'ESP="Descripción pedido servicio nivel 2"';
         }
+        // partes JotForm (AddonSGA los lee por RecordRef con estos nº de campo): valor del qid 13
+        // y grupos de la ficha del parte que se ven (ninguno marcado = se ven todos)
+        field(4; "JotForm Service Type"; Text[30])
+        {
+            DataClassification = CustomerContent;
+            Caption = 'JotForm Service Type', comment = 'ESP="Tipo Servicio JotForm"';
+        }
+        field(5; "Show Installation Group"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Show Installation/Training Group', comment = 'ESP="Ver grupo Instalación/Formación"';
+        }
+        field(6; "Show Corrective Group"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Show Corrective Group', comment = 'ESP="Ver grupo Correctivo"';
+        }
+        field(7; "Show Counters Group"; Boolean)
+        {
+            DataClassification = CustomerContent;
+            Caption = 'Show Counters Group', comment = 'ESP="Ver grupo Contadores"';
+        }
     }
 
     keys
