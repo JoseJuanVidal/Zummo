@@ -10404,6 +10404,534 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Table ZM Daily User Session - Field User ID - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Table 3229250000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Action Plan</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard plan de acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Property Caption</note>
+          <target>Dashboard plan de acción</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 2279323338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Action</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Action - Property Caption</note>
+          <target>Acción</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 1543758883 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Action No.</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Nº acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Action No. - Property Caption</note>
+          <target>Nº acción</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 3455783358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha cierre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Close Date - Property Caption</note>
+          <target>Fecha cierre</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 4085727052 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha objetivo"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Due Date - Property Caption</note>
+          <target>Fecha objetivo</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 918791365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GAP Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. GAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field GAP Code - Property Caption</note>
+          <target>Cód. GAP</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Id - Property Caption</note>
+          <target>Id</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 1214298328 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Responsible</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Responsable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Responsible - Property Caption</note>
+          <target>Responsable</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Status - Property Caption</note>
+          <target>Estado</target>
+        </trans-unit>
+        <trans-unit id="Table 3229250000 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open,In Progress,Closed</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abierto,En curso,Cerrado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Action Plan - Field Status - Property OptionCaption</note>
+          <target>Abierto,En curso,Cerrado</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Day</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard día"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Property Caption</note>
+          <target>Dashboard día</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field Date - Property Caption</note>
+          <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 918791365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GAP Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. GAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field GAP Code - Property Caption</note>
+          <target>Cód. GAP</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 2666052267 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Remarks</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Observaciones"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field Remarks - Property Caption</note>
+          <target>Observaciones</target>
+        </trans-unit>
+        <trans-unit id="Table 2136699511 - Field 3592479855 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Working Day</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Día laborable"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Day - Field Working Day - Property Caption</note>
+          <target>Día laborable</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard IDM Card</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard tarjeta IDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Property Caption</note>
+          <target>Dashboard tarjeta IDM</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 3449964019 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Card Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación tarjeta"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Card Created At - Property Caption</note>
+          <target>Fecha creación tarjeta</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 2285793605 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Column Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id columna"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Column Id - Property Caption</note>
+          <target>Id columna</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Id - Property Caption</note>
+          <target>Id</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 3915705456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sort Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Orden"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Sort Order - Property Caption</note>
+          <target>Orden</target>
+        </trans-unit>
+        <trans-unit id="Table 1739219967 - Field 329424276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Título"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Card - Field Title - Property Caption</note>
+          <target>Título</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard IDM Column</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard columna IDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Property Caption</note>
+          <target>Dashboard columna IDM</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Field Id - Property Caption</note>
+          <target>Id</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Field 3915705456 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Sort Order</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Orden"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Field Sort Order - Property Caption</note>
+          <target>Orden</target>
+        </trans-unit>
+        <trans-unit id="Table 3039888201 - Field 329424276 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Title</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Título"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash IDM Column - Field Title - Property Caption</note>
+          <target>Título</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard KPI Value</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard valor KPI"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Property Caption</note>
+          <target>Dashboard valor KPI</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field Date - Property Caption</note>
+          <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 918791365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GAP Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. GAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field GAP Code - Property Caption</note>
+          <target>Cód. GAP</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 867325179 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Has Value</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Informado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field Has Value - Property Caption</note>
+          <target>Informado</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 3241607241 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>KPI Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. KPI"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field KPI Code - Property Caption</note>
+          <target>Cód. KPI</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 1454137404 - Field 1131619133 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Valor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash KPI Value - Field Value - Property Caption</note>
+          <target>Valor</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Routine Check</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard check rutina"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Property Caption</note>
+          <target>Dashboard check rutina</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 871812227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check Key</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clave check"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Check Key - Property Caption</note>
+          <target>Clave check</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Date - Property Caption</note>
+          <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 918791365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GAP Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. GAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field GAP Code - Property Caption</note>
+          <target>Cód. GAP</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 222620933 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Notes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Notas"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Notes - Property Caption</note>
+          <target>Notas</target>
+        </trans-unit>
+        <trans-unit id="Table 776846963 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Check - Field Status - Property Caption</note>
+          <target>Estado</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Routine Finding</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard hallazgo rutina"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Property Caption</note>
+          <target>Dashboard hallazgo rutina</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 2279323338 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Action</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Action - Property Caption</note>
+          <target>Acción</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 871812227 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Check Key</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Clave check"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Check Key - Property Caption</note>
+          <target>Clave check</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 3455783358 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Close Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha cierre"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Close Date - Property Caption</note>
+          <target>Fecha cierre</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Date - Property Caption</note>
+          <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 3461834954 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Description</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Descripción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Description - Property Caption</note>
+          <target>Descripción</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 918791365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GAP Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. GAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field GAP Code - Property Caption</note>
+          <target>Cód. GAP</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Id - Property Caption</note>
+          <target>Id</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 3061433763 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Opened Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha apertura"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Opened Date - Property Caption</note>
+          <target>Fecha apertura</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 513339096 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Estado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Status - Property Caption</note>
+          <target>Estado</target>
+        </trans-unit>
+        <trans-unit id="Table 767835006 - Field 513339096 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Open,Closed</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Abierto,Cerrado"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Routine Finding - Field Status - Property OptionCaption</note>
+          <target>Abierto,Cerrado</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard TOP 5 Minutes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard acta TOP 5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Property Caption</note>
+          <target>Dashboard acta TOP 5</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 2570673311 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha creación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Created At - Property Caption</note>
+          <target>Fecha creación</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 2369664869 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Created By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Creado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Created By - Property Caption</note>
+          <target>Creado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 3192175264 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Date - Property Caption</note>
+          <target>Fecha</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 918791365 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>GAP Code</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Cód. GAP"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field GAP Code - Property Caption</note>
+          <target>Cód. GAP</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 415504711 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Id</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Id"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Id - Property Caption</note>
+          <target>Id</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 1140639888 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Improvement Point</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Punto de mejora"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Improvement Point - Property Caption</note>
+          <target>Punto de mejora</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 3301121544 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified At</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Fecha modificación"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Modified At - Property Caption</note>
+          <target>Fecha modificación</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 596019230 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Modified By</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Modificado por"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Modified By - Property Caption</note>
+          <target>Modificado por</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 3562270911 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDA</source>
+          <note from="Developer" annotates="general" priority="2">ESP="PDA"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field PDA - Property Caption</note>
+          <target>PDA</target>
+        </trans-unit>
+        <trans-unit id="Table 3806999873 - Field 1364862673 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Supervisor Approval</source>
+          <note from="Developer" annotates="general" priority="2">ESP="V.ºB.º supervisor"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table ZM Dash Top5 - Field Supervisor Approval - Property Caption</note>
+          <target>V.ºB.º supervisor</target>
+        </trans-unit>
         <trans-unit id="Table 2247182463 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Document Registration Platforms</source>
           <note from="Developer" annotates="general" priority="2">ESP="Registro Documentos Plataformas"</note>
@@ -23548,6 +24076,54 @@
           <note from="Developer" annotates="general" priority="2">ESP="Inicio"</note>
           <note from="Xliff Generator" annotates="general" priority="3">Page ZM Daily Time Sheet List - Action StartTime - Property Caption</note>
           <target>Inicio</target>
+        </trans-unit>
+        <trans-unit id="Page 3918223796 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Action Plan</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard plan de acción"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash Action Plan WS - Property Caption</note>
+          <target>Dashboard plan de acción</target>
+        </trans-unit>
+        <trans-unit id="Page 1501579603 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Day</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard día"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash Day WS - Property Caption</note>
+          <target>Dashboard día</target>
+        </trans-unit>
+        <trans-unit id="Page 2793492219 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard IDM Card</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard tarjeta IDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash IDM Card WS - Property Caption</note>
+          <target>Dashboard tarjeta IDM</target>
+        </trans-unit>
+        <trans-unit id="Page 689363349 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard IDM Column</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard columna IDM"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash IDM Column WS - Property Caption</note>
+          <target>Dashboard columna IDM</target>
+        </trans-unit>
+        <trans-unit id="Page 3589909816 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard KPI Value</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard valor KPI"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash KPI Value WS - Property Caption</note>
+          <target>Dashboard valor KPI</target>
+        </trans-unit>
+        <trans-unit id="Page 1029146439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Routine Check</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard check rutina"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash Routine Check WS - Property Caption</note>
+          <target>Dashboard check rutina</target>
+        </trans-unit>
+        <trans-unit id="Page 662022570 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard Routine Finding</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard hallazgo rutina"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash Routine Finding WS - Property Caption</note>
+          <target>Dashboard hallazgo rutina</target>
+        </trans-unit>
+        <trans-unit id="Page 3744829805 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Dashboard TOP 5 Minutes</source>
+          <note from="Developer" annotates="general" priority="2">ESP="Dashboard acta TOP 5"</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ZM Dash Top5 WS - Property Caption</note>
+          <target>Dashboard acta TOP 5</target>
         </trans-unit>
         <trans-unit id="Page 489504416 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Documents Attached</source>

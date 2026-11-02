@@ -1,0 +1,3756 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Zummo · Cuadro de Mando</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="safety_bootstrap.js" onerror="console.info('safety_bootstrap.js no encontrado (opcional)')"></script>
+<style>
+  :root{
+    --zummo-beige:#D0CAC2;
+    --zummo-beige-soft:#E8E4DE;
+    --zummo-dark:#2B2B2B;
+    --zummo-bg:#F5F3EF;
+    --zummo-card:#FFFFFF;
+    --zummo-border:#E5DED5;
+    --zummo-muted:#8B847B;
+    --accent:#8A6FB3;
+    --good:#2E9E5B;
+    --good-soft:#DCF0E3;
+    --bad:#D9534F;
+    --bad-soft:#FADBD9;
+    --warn:#E78A2C;
+    --info:#1E73BE;
+    --col-base:#F4D08C;
+    --col-base-bg:#FBE7C3;
+    --col-obj:#C6E0F5;
+    --col-obj-bg:#E3EFF9;
+    --col-acum:#D5E8CE;
+    --col-acum-bg:#E8F3E3;
+    --week-ok-bg:#E8F2FC;
+    --week-bad-bg:#F8CBCB;
+    --week-na-bg:#F0ECE4;
+    --shadow-sm:0 1px 2px rgba(43,43,43,.06), 0 1px 1px rgba(43,43,43,.04);
+    --shadow-md:0 6px 18px rgba(43,43,43,.08), 0 2px 6px rgba(43,43,43,.05);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--zummo-bg);color:var(--zummo-dark);
+    font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:14px;}
+
+  /* Pantalla selección de perfil */
+  .profile-screen{position:fixed; inset:0; z-index:50;
+    background:linear-gradient(135deg, var(--zummo-bg) 0%, var(--zummo-beige) 100%);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:40px 20px; gap:28px;}
+  .profile-screen .brand{font-size:34px; font-weight:300; letter-spacing:2px; color:var(--zummo-dark);
+    display:flex; align-items:center; gap:14px;}
+  .profile-screen .brand .bar{width:40px; height:3px; background:var(--zummo-dark);}
+  .profile-screen h1{font-weight:400; font-size:22px; margin:0 0 4px;}
+  .profile-screen p{margin:0; color:var(--zummo-muted); font-size:14px;}
+  .profile-cards{display:flex; gap:22px; flex-wrap:wrap; justify-content:center; max-width:900px;}
+  .profile-card{width:280px; min-height:230px; background:#fff; border-radius:14px;
+    padding:26px; box-shadow:var(--shadow-md); border:1px solid var(--zummo-border);
+    cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    display:flex; flex-direction:column; gap:14px;}
+  .profile-card:hover{transform:translateY(-3px); box-shadow:0 14px 28px rgba(43,43,43,.14); border-color:var(--zummo-dark);}
+  .profile-card .ico{width:56px; height:56px; border-radius:14px; background:var(--zummo-beige-soft);
+    display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:700; color:var(--zummo-dark);}
+  .profile-card.repuestos .ico{background:#EBE3F5; color:var(--accent);}
+  .profile-card.exprimidoras .ico{background:#FEE7D5; color:var(--warn);}
+  .profile-card.docs .ico{background:#DCF0E3; color:var(--good);}
+  .profile-card.idms .ico{background:#FFF2CF; color:#8A6421;}
+  .profile-card h2{margin:0; font-size:19px; font-weight:600;}
+  .profile-card .desc{color:var(--zummo-muted); font-size:13px; line-height:1.5; flex:1;}
+  .profile-card .enter{align-self:flex-start; font-size:12px; font-weight:600; letter-spacing:.4px;
+    text-transform:uppercase; color:var(--zummo-dark); border-top:1px solid var(--zummo-border);
+    padding-top:10px; width:100%; display:flex; justify-content:space-between; align-items:center;}
+  .profile-card .enter::after{content:"→"; font-size:18px;}
+  .profile-footer{color:var(--zummo-muted); font-size:12px; margin-top:4px;}
+
+  /* Shell dashboard */
+  .app{display:none;} .app.active{display:block;}
+  header.topbar{background:#fff; border-bottom:1px solid var(--zummo-border);
+    padding:12px 24px 0; position:sticky; top:0; z-index:10;}
+  .topbar .top-row{display:flex; align-items:center; gap:18px; padding-bottom:10px;}
+  .brand-mini{display:flex; align-items:center; gap:10px; font-weight:300; font-size:19px; letter-spacing:1.5px;}
+  .brand-mini .bar{width:22px; height:2px; background:var(--zummo-dark);}
+  .topbar .tag{display:inline-flex; align-items:center; gap:6px; padding:4px 11px; border-radius:999px;
+    background:#EBE3F5; color:var(--accent); font-size:12px; font-weight:600;}
+  .topbar .today{margin-left:auto; display:flex; gap:14px; align-items:center;
+    font-size:12.5px; color:var(--zummo-muted);}
+  .topbar .today b{color:var(--zummo-dark); font-weight:600;}
+  .btn{background:transparent; border:1px solid var(--zummo-border); color:var(--zummo-dark);
+    padding:7px 13px; border-radius:8px; font-size:13px; cursor:pointer; font-family:inherit;
+    display:inline-flex; align-items:center; gap:6px;}
+  .btn:hover{background:var(--zummo-beige-soft); border-color:var(--zummo-dark);}
+  .btn.primary{background:var(--zummo-dark); color:#fff; border-color:var(--zummo-dark);}
+
+  .tabs{display:flex; gap:4px;}
+  .tab{background:transparent; border:none; color:var(--zummo-muted); font-family:inherit;
+    font-size:13.5px; font-weight:600; padding:9px 16px; cursor:pointer; letter-spacing:.3px;
+    border-bottom:3px solid transparent; margin-bottom:-1px;}
+  .tab:hover{color:var(--zummo-dark);}
+  .tab.active{color:var(--zummo-dark); border-bottom-color:var(--accent);}
+
+  main{padding:22px 24px 40px; max-width:1600px; margin:0 auto;}
+  .tab-panel{display:none;} .tab-panel.active{display:block;}
+
+  /* Cuadro de mando semanal */
+  .scorecard-wrap{background:#fff; border:1px solid var(--zummo-border); border-radius:12px;
+    box-shadow:var(--shadow-sm); overflow:hidden;}
+  .scorecard-head{padding:12px 18px; border-bottom:1px solid var(--zummo-border);
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .scorecard-head h2{margin:0; font-size:15px; font-weight:600;}
+  .scorecard-head .hint{color:var(--zummo-muted); font-size:12.5px;}
+  .scorecard-head .controls{margin-left:auto; display:flex; gap:10px; align-items:center;}
+  /* Scroll solo horizontal: todas las filas KPI quedan visibles sin tener que bajar con el ratón. */
+  .scorecard-scroll{overflow-x:auto; overflow-y:visible;}
+  table.scorecard{border-collapse:separate; border-spacing:0; font-size:12.5px; width:max-content;}
+  table.scorecard th, table.scorecard td{padding:7px 8px; text-align:center; border-right:1px solid #EEE8DD;
+    border-bottom:1px solid #EEE8DD; white-space:nowrap;}
+  table.scorecard thead th{background:#fff; position:sticky; top:0; z-index:4; font-weight:600; font-size:11.5px;
+    color:var(--zummo-muted); text-transform:uppercase; letter-spacing:.3px;
+    border-bottom:2px solid var(--zummo-dark);}
+  table.scorecard th.col-obj, table.scorecard td.col-obj{background:var(--col-obj-bg); color:#1A4D7A;}
+  table.scorecard th.col-obj{background:var(--col-obj); color:#0E3758; font-weight:700;}
+  table.scorecard th.col-prev, table.scorecard td.col-prev{background:var(--col-acum-bg); color:#2E6D1F;}
+  table.scorecard th.col-prev{background:var(--col-acum); color:#1E4A14; font-weight:700;}
+  tr.section-row td{background:var(--zummo-dark); color:#fff; font-weight:700; letter-spacing:1.2px;
+    text-align:center; padding:2px 10px; font-size:10px; line-height:1.1;}
+  /* Columnas fijas sticky-left: código (0..56) · nombre (56..316) · objetivo (316..392) · semana anterior (392..472)
+     Importante: en el <thead> estas celdas deben tener z-index MAYOR que los th de días/semanas
+     para que no las tape la fila superior al hacer scroll horizontal. */
+  td.col-code, th.col-code{position:sticky; left:0; z-index:3; background:var(--zummo-beige-soft);
+    font-weight:700; color:var(--zummo-dark); min-width:56px; width:56px;
+    border-right:1px solid var(--zummo-border);}
+  td.col-name, th.col-name{position:sticky; left:56px; z-index:3; background:#fff; text-align:left;
+    min-width:260px; width:260px; font-weight:600; font-size:12px;
+    border-right:1px solid var(--zummo-border);}
+  td.col-obj, th.col-obj{position:sticky; left:316px; z-index:3; min-width:76px; width:76px;
+    border-right:1px solid var(--zummo-border); font-weight:700;}
+  td.col-prev, th.col-prev{position:sticky; left:392px; z-index:3; min-width:80px; width:80px;
+    border-right:2px solid var(--zummo-dark); font-weight:700;
+    box-shadow:4px 0 6px -3px rgba(43,43,43,.18);}
+  /* Columnas fijas DEL HEADER: por encima de la fila de días/semanas y por encima de la segunda fila (dd/mm) */
+  table.scorecard thead th.col-code,
+  table.scorecard thead th.col-name,
+  table.scorecard thead th.col-obj,
+  table.scorecard thead th.col-prev{ z-index:6; }
+  /* Celdas sticky-left del tbody: por encima de las celdas diarias (td.dy) pero por debajo del thead */
+  table.scorecard tbody td.col-code,
+  table.scorecard tbody td.col-name,
+  table.scorecard tbody td.col-obj,
+  table.scorecard tbody td.col-prev{ z-index:3; }
+  /* Cabeceras de días/semanas del thead quedan en z-index 4 (debajo de las columnas fijas) */
+  table.scorecard thead th.dy-head,
+  table.scorecard thead th.wk-group{ z-index:4; }
+  tr.kpi-row{cursor:pointer;}
+  tr.kpi-row:hover td{background:#FAF8F3;}
+  tr.kpi-row:hover td.col-code{background:#DBD4C7;}
+  tr.kpi-row:hover td.col-obj{background:#D1E3F2;}
+  tr.kpi-row:hover td.col-prev{background:#D5E6CC;}
+  tr.kpi-row.selected td{background:#FFF4D6;}
+  tr.kpi-row.selected td.col-code{background:#D5BC6A; color:#fff;}
+  tr.kpi-row.selected td.col-name{background:#FFF4D6;}
+  tr.kpi-row.selected td.col-obj{background:#C7DEF0;}
+  tr.kpi-row.selected td.col-prev{background:#CFE2C5;}
+  /* Celda diaria */
+  td.dy{min-width:34px; width:34px; font-weight:600; padding:5px 2px; font-size:11px;}
+  td.dy.ok{background:var(--week-ok-bg); color:#0E3758;}
+  td.dy.bad{background:var(--week-bad-bg); color:#8A1F1C;}
+  td.dy.na{background:var(--week-na-bg); color:#B6AF9E;}
+  td.dy.today{outline:2px solid var(--zummo-dark); outline-offset:-2px; position:relative; z-index:1;}
+  td.dy.weekend{filter:brightness(.96);}
+  td.dy.week-start, th.dy-head.week-start{border-left:2px solid var(--zummo-dark);}
+  th.dy-head{min-width:34px; width:34px; background:var(--zummo-beige-soft) !important;
+    color:var(--zummo-dark) !important; font-weight:700; padding:4px 2px; font-size:10px;}
+  th.dy-head.today{background:var(--zummo-dark) !important; color:#fff !important;}
+  th.wk-group{background:#fff; color:var(--zummo-muted); font-weight:600; font-size:10.5px;
+    letter-spacing:.3px; padding:4px 2px; border-bottom:1px solid var(--zummo-border);
+    text-transform:uppercase;}
+  th.wk-group.current{background:var(--zummo-dark); color:#fff;}
+
+  /* Panel calendarios */
+  .cal-panel{background:#fff; border:1px solid var(--zummo-border); border-radius:12px;
+    box-shadow:var(--shadow-sm); margin-top:16px; padding:14px 18px; display:none;}
+  .cal-panel.active{display:block;}
+  .cal-head{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:12px;}
+  .cal-head h3{margin:0; font-size:14px; font-weight:600;}
+  .cal-head .kpi-chip{display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:999px;
+    background:var(--zummo-beige-soft); color:var(--zummo-dark); font-size:11px; font-weight:700; letter-spacing:.5px;}
+  .cal-head .controls{margin-left:auto; display:flex; gap:8px; align-items:center;}
+  .cal-head select{padding:5px 9px; border:1px solid var(--zummo-border); border-radius:6px;
+    font-family:inherit; font-size:12.5px; background:#fff;}
+  .cal-grid-wrap{display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:12px;}
+  .mini-cal{border:1px solid var(--zummo-border); border-radius:10px; padding:10px 12px; background:#fff;}
+  .mini-cal .cap{font-size:11px; font-weight:700; color:var(--zummo-dark); margin-bottom:5px;}
+  .mini-cal .hdrs{display:grid; grid-template-columns:repeat(7,1fr); gap:3px; margin-bottom:3px;}
+  .mini-cal .hdrs span{font-size:9.5px; color:var(--zummo-muted); text-align:center; font-weight:700;}
+  .mini-cal .grid{display:grid; grid-template-columns:repeat(7,1fr); gap:3px;}
+  .mini-cal .cell{font-size:10.5px; font-weight:700; text-align:center; padding:5px 0; border-radius:4px;
+    background:#F0ECE4; color:var(--zummo-muted); min-height:24px; cursor:help;
+    display:flex; align-items:center; justify-content:center;}
+  .mini-cal .cell.empty{background:transparent; cursor:default;}
+  .mini-cal .cell.ok{background:var(--good); color:#fff;}
+  .mini-cal .cell.bad{background:var(--bad); color:#fff;}
+  .mini-cal .cell.na{background:#F0ECE4; color:#B6AF9E;}
+  .mini-cal .cell.today{outline:2px solid var(--zummo-dark); outline-offset:1px;}
+
+  /* Gráficas */
+  .charts-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
+  @media (max-width:1100px){ .charts-grid{grid-template-columns:1fr;} }
+  .chart-card{background:#fff; border:1px solid var(--zummo-border); border-radius:12px;
+    box-shadow:var(--shadow-sm); padding:14px 18px;}
+  .chart-card h3{margin:0 0 4px; font-size:13px; font-weight:600; color:var(--zummo-dark);
+    display:flex; align-items:center; gap:8px;}
+  .chart-card h3 .code{font-size:11px; font-weight:700; letter-spacing:.5px; color:var(--accent);
+    background:#EBE3F5; padding:2px 7px; border-radius:999px;}
+  .chart-card .sub{font-size:11.5px; color:var(--zummo-muted); margin-bottom:6px;}
+  .chart-card .ch-body{height:200px; position:relative;}
+
+  /* Panel edición */
+  .panel{background:#fff; border:1px solid var(--zummo-border); border-radius:14px;
+    box-shadow:var(--shadow-sm); overflow:hidden;}
+  .panel .panel-head{padding:14px 20px; border-bottom:1px solid var(--zummo-border);
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
+  .panel h2{margin:0; font-size:16px; font-weight:600;}
+  .panel .panel-head .hint{color:var(--zummo-muted); font-size:12.5px;}
+  .panel .panel-head .controls{margin-left:auto; display:flex; gap:8px; align-items:center;}
+  .panel select{padding:6px 10px; border:1px solid var(--zummo-border); border-radius:7px;
+    font-family:inherit; font-size:13px; background:#fff;}
+  .panel .legend-row{padding:10px 20px; background:var(--zummo-beige-soft); border-bottom:1px solid var(--zummo-border);
+    display:flex; gap:18px; align-items:center; flex-wrap:wrap; font-size:12px;}
+  .panel .legend-row b{color:var(--zummo-dark); font-weight:600;}
+  .panel .legend-row .dot{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:4px; vertical-align:middle;}
+  .data-table-wrap{overflow:auto; max-height:65vh;}
+  table.data{width:100%; border-collapse:separate; border-spacing:0; font-size:13px;}
+  table.data thead th{background:#fff; position:sticky; top:0; z-index:3; padding:9px 10px; text-align:left;
+    font-weight:600; font-size:11.5px; color:var(--zummo-muted); text-transform:uppercase; letter-spacing:.4px;
+    border-bottom:2px solid var(--zummo-border);}
+  table.data tbody td{padding:7px 10px; border-bottom:1px solid #F2EEE7; vertical-align:middle;}
+  table.data tbody tr:hover td{background:#FAF8F3;}
+  table.data tbody tr.weekend td{background:#FAF8F2;}
+  table.data tbody tr.today td{background:#FFF8E6;}
+  table.data tbody tr.future td{color:#B6AF9E;}
+  table.data td.date{font-weight:600; white-space:nowrap;}
+  table.data td.week{color:var(--zummo-muted);}
+  table.data td.weekday{color:var(--zummo-muted); font-size:11.5px; text-transform:capitalize;}
+  table.data td.obs{min-width:200px;}
+  table.data .cell-input{width:100%; padding:4px 7px; border:1px solid transparent; background:transparent;
+    border-radius:5px; font-family:inherit; font-size:13px; color:inherit; text-align:center;}
+  table.data .cell-input.obs-input{text-align:left;}
+  table.data .cell-input:hover{border-color:var(--zummo-border); background:#fff;}
+  table.data .cell-input:focus{outline:none; border-color:var(--zummo-dark); background:#fff; box-shadow:0 0 0 2px rgba(43,43,43,.08);}
+  table.data td.q.off .cell-input{color:var(--bad); font-weight:600;}
+  table.data td.q.ok .cell-input{color:var(--good);}
+  table.data td.p.off .cell-input{color:var(--bad); font-weight:600;}
+  table.data td.p.ok .cell-input{color:var(--good);}
+  table.data td.work .work-pill{padding:3px 10px; border-radius:999px; font-size:11px; font-weight:600;
+    cursor:pointer; user-select:none; display:inline-block;}
+  table.data td.work .work-pill.si{background:var(--good-soft); color:var(--good);}
+  table.data td.work .work-pill.no{background:#F2EEE7; color:var(--zummo-muted);}
+
+  /* ================= Plan de acción ================= */
+  table.plan-table{min-width:1050px;}
+  table.plan-table tbody td{vertical-align:top; padding:6px 8px;}
+  table.plan-table td.num{font-weight:700; color:var(--zummo-muted); text-align:center;}
+  table.plan-table td textarea.cell-input,
+  table.plan-table td input.cell-input,
+  table.plan-table td select.cell-input{
+    width:100%; padding:5px 8px; border:1px solid transparent; background:transparent;
+    border-radius:5px; font-family:inherit; font-size:13px; color:inherit;
+    text-align:left; resize:vertical; min-height:28px;
+  }
+  table.plan-table td textarea.cell-input{min-height:28px; max-height:140px; line-height:1.35;}
+  table.plan-table td input.cell-input:hover,
+  table.plan-table td textarea.cell-input:hover,
+  table.plan-table td select.cell-input:hover{border-color:var(--zummo-border); background:#fff;}
+  table.plan-table td input.cell-input:focus,
+  table.plan-table td textarea.cell-input:focus,
+  table.plan-table td select.cell-input:focus{outline:none; border-color:var(--zummo-dark); background:#fff;
+    box-shadow:0 0 0 2px rgba(43,43,43,.08);}
+  table.plan-table td.actions{text-align:center;}
+  .btn-del{
+    background:transparent; border:1px solid transparent; color:var(--zummo-muted);
+    font-size:16px; width:26px; height:26px; border-radius:5px; cursor:pointer; line-height:1;
+  }
+  .btn-del:hover{background:var(--bad-soft); color:var(--bad); border-color:#F2C5C3;}
+  .status-pill{display:inline-block; padding:2px 10px; border-radius:999px; font-size:11px;
+    font-weight:700; letter-spacing:.3px; text-transform:uppercase;}
+  .status-pill.Abierto{background:#FADBD9; color:#8A1F1C;}
+  .status-pill.En-curso{background:#FFF2CF; color:#8A6421;}
+  .status-pill.Cerrado{background:var(--good-soft); color:var(--good);}
+  table.plan-table tr.row-cerrado td{opacity:.68;}
+  .plan-empty{padding:30px 20px; text-align:center; color:var(--zummo-muted); font-size:13px;}
+
+  /* ================= Acta TOP 5 ================= */
+  table.top5-table{min-width:900px;}
+  table.top5-table tbody td{vertical-align:top; padding:6px 8px;}
+  table.top5-table td textarea.cell-input,
+  table.top5-table td input.cell-input{
+    width:100%; padding:5px 8px; border:1px solid transparent; background:transparent;
+    border-radius:5px; font-family:inherit; font-size:13px; color:inherit;
+    text-align:left; resize:vertical; min-height:28px;
+  }
+  table.top5-table td textarea.cell-input{min-height:28px; max-height:160px; line-height:1.35;}
+  table.top5-table td input.cell-input:hover,
+  table.top5-table td textarea.cell-input:hover{border-color:var(--zummo-border); background:#fff;}
+  table.top5-table td input.cell-input:focus,
+  table.top5-table td textarea.cell-input:focus{outline:none; border-color:var(--zummo-dark); background:#fff;
+    box-shadow:0 0 0 2px rgba(43,43,43,.08);}
+  table.top5-table td.vb-cell{text-align:center;}
+  .vb-check{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:30px; height:30px; border:2px solid var(--zummo-border); border-radius:7px;
+    background:#fff; cursor:pointer; font-size:18px; color:transparent;
+    transition:all .12s ease; user-select:none;
+  }
+  .vb-check:hover{border-color:var(--zummo-dark);}
+  .vb-check.checked{background:var(--good); border-color:var(--good); color:#fff;}
+  .vb-check.checked::before{content:"✓"; font-weight:700;}
+  table.top5-table tr.row-vb td{background:#F7FBF4;}
+  table.top5-table td.actions{text-align:center;}
+
+  /* ================= Rutina del supervisor ================= */
+  table.rutina-table thead th{
+    position:sticky; top:0; background:var(--zummo-beige-soft) !important; color:var(--zummo-dark) !important;
+    text-transform:none; letter-spacing:0; font-size:12px; padding:8px 10px; z-index:3;
+    border-bottom:2px solid var(--zummo-dark);
+  }
+  table.rutina-table tbody td{font-size:12.5px; padding:7px 10px; vertical-align:top;}
+  table.rutina-table tbody tr:nth-child(even) td{background:#FBF9F4;}
+  table.rutina-table tbody tr:hover td{background:#F0ECE4;}
+  table.rutina-table .cell-date{white-space:nowrap; font-weight:600;}
+  table.rutina-table .cell-num{text-align:right; font-variant-numeric:tabular-nums;}
+  label.btn.primary[for]{cursor:pointer;}
+  .rut-mark{display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px;
+    border-radius:50%; font-weight:700; font-size:14px;}
+  .rut-mark.ok{background:var(--good-soft); color:var(--good);}
+  .rut-mark.bad{background:var(--bad-soft); color:var(--bad);}
+  .rut-mark.na{background:#F0ECE4; color:var(--zummo-muted);}
+  /* --- Rutina del supervisor (checklist diario) --- */
+  .rutina-dayhead{
+    background:#fff; border:1px solid var(--zummo-border); border-radius:14px;
+    box-shadow:var(--shadow-sm); padding:14px 18px; margin-bottom:14px;
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  }
+  .rut-nav{min-width:40px; font-weight:700;}
+  .rut-datebox{display:flex; flex-direction:column; gap:2px; min-width:220px;}
+  .rut-weekday{font-size:12px; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+    color:var(--zummo-muted);}
+  .rut-dateinput{padding:7px 10px; border:1px solid var(--zummo-border); border-radius:7px;
+    font-family:inherit; font-size:17px; font-weight:600; background:#fff;}
+  .rut-weekinfo{font-size:12px; color:var(--zummo-muted);}
+  .rut-status{margin-left:auto; padding:7px 14px; border-radius:999px; font-size:12px;
+    font-weight:700; letter-spacing:.4px; text-transform:uppercase;}
+  .rut-status.todo-ok{background:var(--good-soft); color:var(--good);}
+  .rut-status.incompleta{background:#FFF2CF; color:#8A6421;}
+  .rut-status.con-hallazgos{background:var(--bad-soft); color:var(--bad);}
+  .rut-status.weekend{background:#F0ECE4; color:var(--zummo-muted);}
+  .rut-status.futuro{background:#F0ECE4; color:var(--zummo-muted);}
+
+  /* Checklist */
+  .checklist-item{
+    display:grid; grid-template-columns:48px 1fr auto; gap:14px; align-items:center;
+    padding:14px 16px; border-bottom:1px solid var(--zummo-border);
+  }
+  .checklist-item:last-child{border-bottom:none;}
+  .checklist-item .ck-ico{
+    width:40px; height:40px; border-radius:10px; background:var(--zummo-beige-soft);
+    display:flex; align-items:center; justify-content:center; font-size:20px;
+  }
+  .checklist-item .ck-text .ck-title{font-size:14px; font-weight:600; line-height:1.3;}
+  .checklist-item .ck-text .ck-sub{font-size:12px; color:var(--zummo-muted); margin-top:3px;}
+  .checklist-item .ck-actions{display:flex; gap:6px;}
+  .ck-btn{
+    padding:7px 14px; border-radius:8px; border:1.5px solid var(--zummo-border);
+    background:#fff; color:var(--zummo-dark); font-family:inherit; font-size:12.5px;
+    font-weight:600; cursor:pointer; letter-spacing:.3px; transition:all .12s ease;
+    display:inline-flex; align-items:center; gap:5px;
+  }
+  .ck-btn:hover{border-color:var(--zummo-dark);}
+  .ck-btn.ok.active{background:var(--good); border-color:var(--good); color:#fff;}
+  .ck-btn.bad.active{background:var(--bad); border-color:var(--bad); color:#fff;}
+  .checklist-item.state-ok{background:#F7FBF4;}
+  .checklist-item.state-bad{background:#FEF7F6;}
+  .checklist-item.state-bad .ck-ico{background:var(--bad-soft); color:var(--bad);}
+  .checklist-item.state-ok .ck-ico{background:var(--good-soft); color:var(--good);}
+  .checklist-item .ck-count{
+    display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px;
+    background:var(--bad); color:#fff; font-size:10.5px; font-weight:700;
+  }
+
+  /* Hallazgos */
+  .finding-card{
+    background:#fff; border:1px solid var(--zummo-border); border-radius:10px;
+    padding:14px 16px; margin:12px 16px; display:grid; gap:10px;
+    grid-template-columns:1fr 160px;
+  }
+  @media (max-width:700px){ .finding-card{grid-template-columns:1fr;} }
+  .finding-card.estado-cerrado{opacity:.75; background:#FBFBF8;}
+  .finding-card .f-main{display:grid; gap:8px;}
+  .finding-card .f-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .finding-card .f-tag{
+    display:inline-block; padding:3px 10px; border-radius:999px;
+    background:var(--zummo-beige-soft); color:var(--zummo-dark);
+    font-size:10.5px; font-weight:700; letter-spacing:.4px; text-transform:uppercase;
+  }
+  .finding-card .f-tag.indicadores{background:#DEEDF9; color:#1A4D7A;}
+  .finding-card .f-tag.actas     {background:#EBE3F5; color:#5C3F85;}
+  .finding-card .f-tag.planes    {background:#FFF2CF; color:#8A6421;}
+  .finding-card .f-tag.limpieza  {background:#DCF0E3; color:#1E6B3A;}
+  .finding-card .f-tag.otros     {background:#F0ECE4; color:var(--zummo-dark);}
+  .finding-card .f-num{font-size:12px; font-weight:700; color:var(--zummo-muted);}
+  .finding-card label{font-size:11px; font-weight:700; letter-spacing:.3px;
+    text-transform:uppercase; color:var(--zummo-muted); display:block; margin-bottom:3px;}
+  .finding-card textarea, .finding-card input, .finding-card select{
+    width:100%; padding:7px 9px; border:1px solid var(--zummo-border); border-radius:7px;
+    font-family:inherit; font-size:13px; background:#fff; resize:vertical; min-height:34px;
+  }
+  .finding-card textarea{line-height:1.4;}
+  .finding-card textarea:focus, .finding-card input:focus, .finding-card select:focus{
+    outline:none; border-color:var(--zummo-dark); box-shadow:0 0 0 2px rgba(43,43,43,.08);
+  }
+  .finding-card .f-side{display:flex; flex-direction:column; gap:8px; justify-content:space-between;}
+  .finding-card .f-side .status-pill-sel{display:flex; flex-direction:column; gap:4px;}
+  .finding-card .btn-del{align-self:flex-end;}
+  .findings-empty{padding:20px 16px; text-align:center; color:var(--zummo-muted); font-size:13px;}
+
+  /* Histórico calendario */
+  .rut-hist-cal{padding:14px 18px;}
+  .rut-hist-cal .cal-grid{display:grid; grid-template-columns:repeat(7, 1fr); gap:4px;}
+  .rut-hist-cal .cal-hdrs{display:grid; grid-template-columns:repeat(7, 1fr); gap:4px;
+    margin-bottom:4px;}
+  .rut-hist-cal .cal-hdrs span{font-size:10.5px; color:var(--zummo-muted);
+    text-align:center; font-weight:700;}
+  .rut-hist-cal .d-cell{
+    font-size:11px; font-weight:700; text-align:center; border-radius:5px;
+    min-height:36px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    cursor:pointer; padding:4px 0; position:relative;
+  }
+  .rut-hist-cal .d-cell.empty{background:transparent; cursor:default;}
+  .rut-hist-cal .d-cell.ok{background:var(--good); color:#fff;}
+  .rut-hist-cal .d-cell.bad{background:var(--bad); color:#fff;}
+  .rut-hist-cal .d-cell.incompleta{background:#FFEBB0; color:#8A6421;}
+  .rut-hist-cal .d-cell.weekend{background:#F0ECE4; color:#8B847B;}
+  .rut-hist-cal .d-cell.futuro{background:#F7F4EE; color:#B6AF9E;}
+  .rut-hist-cal .d-cell.selected{outline:3px solid var(--zummo-dark); outline-offset:1px; z-index:2;}
+  .rut-hist-cal .d-cell .d-count{font-size:9px; font-weight:600; opacity:.9;}
+
+  .cal-tip{position:fixed; z-index:1000; pointer-events:none;
+    background:var(--zummo-dark); color:#fff; padding:8px 11px; border-radius:7px;
+    font-size:11.5px; line-height:1.45; white-space:pre-line; max-width:260px;
+    box-shadow:0 6px 20px rgba(0,0,0,.22);
+    opacity:0; transform:translate(-50%,-4px); transition:opacity .12s ease, transform .12s ease;}
+  .cal-tip.show{opacity:1; transform:translate(-50%,0);}
+
+  /* ================= Documentación planta ================= */
+  .docs-wrap{display:flex; flex-direction:column; gap:14px;}
+  .docs-toolbar{
+    background:#fff; border:1px solid var(--zummo-border); border-radius:12px;
+    box-shadow:var(--shadow-sm); padding:12px 16px;
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .docs-breadcrumb{display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+    font-size:14px; font-weight:600; color:var(--zummo-dark);}
+  .docs-breadcrumb .crumb{cursor:pointer; padding:4px 10px; border-radius:7px;
+    background:transparent; transition:background .12s ease;}
+  .docs-breadcrumb .crumb:hover{background:var(--zummo-beige-soft);}
+  .docs-breadcrumb .crumb.root{display:inline-flex; align-items:center; gap:5px;}
+  .docs-breadcrumb .sep{color:var(--zummo-muted); font-weight:400;}
+  .docs-actions{margin-left:auto; display:flex; gap:8px;}
+  .docs-dropzone{
+    background:#fff; border:1px solid var(--zummo-border); border-radius:12px;
+    box-shadow:var(--shadow-sm); overflow:hidden; min-height:300px;
+    transition:all .15s ease;
+  }
+  .docs-dropzone.drag-over{
+    border-color:var(--good); border-style:dashed; background:#F2FBF4;
+    box-shadow:0 0 0 3px var(--good-soft);
+  }
+  .docs-list-wrap{position:relative;}
+  .docs-empty{padding:60px 20px; text-align:center; color:var(--zummo-muted);}
+  .docs-empty .e-ico{font-size:46px; margin-bottom:12px;}
+  .docs-empty .e-txt{font-size:14px; line-height:1.5;}
+  table.docs-table{width:100%; border-collapse:separate; border-spacing:0; font-size:13.5px;}
+  table.docs-table thead th{
+    background:#FBF9F4; padding:9px 12px; text-align:left; font-weight:600;
+    font-size:11px; color:var(--zummo-muted); text-transform:uppercase; letter-spacing:.4px;
+    border-bottom:1px solid var(--zummo-border);
+  }
+  table.docs-table .th-ico{width:40px;}
+  table.docs-table .th-size, table.docs-table .th-date{width:140px;}
+  table.docs-table .th-act{width:40px;}
+  table.docs-table tbody td{padding:10px 12px; border-bottom:1px solid #F2EEE7; vertical-align:middle;}
+  table.docs-table tbody tr{cursor:pointer; transition:background .1s ease;}
+  table.docs-table tbody tr:hover td{background:#FAF8F3;}
+  table.docs-table .d-ico{font-size:22px; display:inline-flex;}
+  table.docs-table .d-name{font-weight:600; color:var(--zummo-dark);}
+  table.docs-table .d-name small{display:block; color:var(--zummo-muted); font-weight:400; font-size:11.5px; margin-top:2px;}
+  table.docs-table .d-size, table.docs-table .d-date{color:var(--zummo-muted); font-size:12.5px;}
+  table.docs-table .d-act{text-align:right; position:relative;}
+  table.docs-table tr.folder .d-ico{color:#D9A24A;}
+  table.docs-table tr.file   .d-ico{color:var(--info);}
+  table.docs-table tr.file.word .d-ico{color:#2B5CA5;}
+  table.docs-table tr.file.pdf  .d-ico{color:#B6341B;}
+  .docs-menu-btn{
+    background:transparent; border:none; width:30px; height:30px; border-radius:50%;
+    cursor:pointer; font-size:16px; color:var(--zummo-muted); line-height:1;
+  }
+  .docs-menu-btn:hover{background:var(--zummo-beige-soft); color:var(--zummo-dark);}
+  .docs-menu{
+    position:absolute; right:12px; top:40px; z-index:20;
+    background:#fff; border:1px solid var(--zummo-border); border-radius:8px;
+    box-shadow:var(--shadow-md); min-width:180px; padding:4px 0;
+  }
+  .docs-menu button{
+    display:block; width:100%; text-align:left; background:transparent; border:none;
+    padding:8px 14px; font-family:inherit; font-size:13px; color:var(--zummo-dark);
+    cursor:pointer;
+  }
+  .docs-menu button:hover{background:var(--zummo-beige-soft);}
+  .docs-menu button.danger{color:var(--bad);}
+  .docs-menu button.danger:hover{background:var(--bad-soft);}
+  .docs-note{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    padding:10px 16px; background:var(--zummo-beige-soft); border-radius:10px;
+    font-size:12px; color:var(--zummo-dark);
+  }
+
+  /* ================= Pestaña Safety ================= */
+  /* Split horizontal: columna izquierda GW, derecha SP (ambas en vertical) */
+  .safety-split{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:900px){ .safety-split{grid-template-columns:1fr;} }
+  .safety-scroll{max-height:60vh; overflow-y:auto; overflow-x:hidden;}
+  .safety-grid{display:grid; gap:8px; padding:12px 16px;}
+  /* 1 columna → listado vertical */
+  .safety-grid-weeks, .safety-grid-months{grid-template-columns:1fr;}
+  .s-cell{
+    background:#fff; border:1.5px dashed var(--zummo-border); border-radius:10px;
+    padding:10px 14px; display:flex; flex-direction:row; align-items:center;
+    gap:12px; cursor:pointer; min-height:52px; justify-content:flex-start;
+    transition:all .12s ease; position:relative; overflow:hidden;
+  }
+  .s-cell:hover{border-color:var(--zummo-dark); background:#FAF8F3;}
+  .s-cell .s-label{font-size:13px; font-weight:700; color:var(--zummo-muted);
+    text-transform:uppercase; letter-spacing:.5px; min-width:62px;}
+  .s-cell .s-sub{font-size:12px; color:var(--zummo-muted); flex:1;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .s-cell .s-ico{font-size:20px; opacity:.5;}
+  .s-cell .s-plus{font-size:24px; color:var(--zummo-muted); font-weight:300; line-height:1;
+    margin-left:auto;}
+  /* Semana/mes con documento */
+  .s-cell.has-doc{border-style:solid; border-color:var(--good);
+    background:linear-gradient(90deg, #F2FBF4 0%, #fff 60%);}
+  .s-cell.has-doc .s-label{color:var(--good);}
+  .s-cell.has-doc .s-sub{color:var(--zummo-dark); font-weight:600;}
+  .s-cell.has-doc .s-ico{opacity:1;}
+  .s-cell.current{outline:3px solid var(--zummo-dark); outline-offset:1px;}
+  /* Visor */
+  .safety-viewer-body{padding:14px 18px;}
+  .safety-viewer-body iframe{
+    width:100%; height:70vh; border:1px solid var(--zummo-border); border-radius:8px;
+    background:#F7F4EE;
+  }
+  /* Menú contextual para celdas con documento */
+  .s-cell .s-menu{
+    position:absolute; top:4px; right:4px; z-index:2;
+    width:22px; height:22px; border-radius:50%; display:flex;
+    align-items:center; justify-content:center; font-size:14px;
+    color:var(--zummo-muted); background:transparent; border:none; cursor:pointer;
+  }
+  .s-cell .s-menu:hover{background:var(--zummo-beige-soft); color:var(--zummo-dark);}
+  .s-pop{
+    position:absolute; top:28px; right:4px; z-index:5;
+    background:#fff; border:1px solid var(--zummo-border); border-radius:8px;
+    box-shadow:var(--shadow-md); min-width:160px; padding:4px 0;
+  }
+  .s-pop button{
+    display:block; width:100%; text-align:left; background:transparent; border:none;
+    padding:7px 12px; font-family:inherit; font-size:12.5px; color:var(--zummo-dark);
+    cursor:pointer;
+  }
+  .s-pop button:hover{background:var(--zummo-beige-soft);}
+  .s-pop button.danger{color:var(--bad);}
+  .s-pop button.danger:hover{background:var(--bad-soft);}
+
+  /* ================= Planner IDMs (Kanban) ================= */
+  .idms-toolbar{display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    background:#fff; border:1px solid var(--zummo-border); border-radius:12px;
+    box-shadow:var(--shadow-sm); padding:12px 18px; margin-bottom:14px;}
+  .kanban{display:flex; gap:14px; align-items:flex-start; overflow-x:auto; padding-bottom:14px;}
+  .kcol{
+    flex:0 0 280px; max-width:280px; background:#F0ECE4; border-radius:12px;
+    padding:10px 10px 6px; display:flex; flex-direction:column; gap:8px;
+    min-height:200px; transition:background .12s ease;
+  }
+  .kcol.drag-over{background:#E3DBC9; outline:2px dashed var(--zummo-dark); outline-offset:-6px;}
+  .kcol-head{display:flex; align-items:center; gap:8px; padding:4px 6px 6px;}
+  .kcol-title{font-size:12px; font-weight:700; letter-spacing:.6px; text-transform:uppercase;
+    color:var(--zummo-dark); flex:1;}
+  .kcol-count{font-size:11px; font-weight:700; background:rgba(43,43,43,.1);
+    padding:2px 8px; border-radius:999px; color:var(--zummo-dark);}
+  .kcol-add{
+    background:transparent; border:none; cursor:pointer; color:var(--zummo-muted);
+    font-size:12.5px; font-family:inherit; padding:6px 8px; border-radius:6px;
+    text-align:left; display:flex; align-items:center; gap:5px;
+  }
+  .kcol-add:hover{background:rgba(43,43,43,.08); color:var(--zummo-dark);}
+  .klist{display:flex; flex-direction:column; gap:8px; min-height:30px;}
+  .kcard{
+    background:#fff; border:1px solid var(--zummo-border); border-radius:9px;
+    padding:10px 12px; box-shadow:var(--shadow-sm); cursor:grab; position:relative;
+    transition:all .12s ease;
+  }
+  .kcard:hover{box-shadow:var(--shadow-md); transform:translateY(-1px);}
+  .kcard:active{cursor:grabbing;}
+  .kcard.dragging{opacity:.4;}
+  .kcard .k-tags{display:flex; gap:4px; flex-wrap:wrap; margin-bottom:6px;}
+  .kcard .k-tag{
+    font-size:9.5px; font-weight:700; letter-spacing:.4px; text-transform:uppercase;
+    padding:2px 7px; border-radius:4px; background:var(--zummo-beige-soft);
+    color:var(--zummo-dark);
+  }
+  .kcard .k-tag.proc{background:#FFF2CF; color:#8A6421;}
+  .kcard .k-tag.cal {background:#FADBD9; color:#8A1F1C;}
+  .kcard .k-tag.inf {background:#F3E6D3; color:#8A6421;}
+  .kcard .k-tag.hs  {background:#D9534F; color:#fff;}
+  .kcard .k-title{font-size:12.5px; font-weight:600; line-height:1.35; color:var(--zummo-dark); white-space:pre-wrap;}
+  .kcard .k-del{
+    position:absolute; top:4px; right:4px; width:22px; height:22px; border-radius:50%;
+    background:transparent; border:none; color:var(--zummo-muted); cursor:pointer;
+    font-size:14px; line-height:1; opacity:0; transition:opacity .12s ease;
+  }
+  .kcard:hover .k-del{opacity:1;}
+  .kcard .k-del:hover{background:var(--bad-soft); color:var(--bad);}
+  /* Columna: título clicable, menú ⋮ y arrastre */
+  .kcol{position:relative; cursor:default;}
+  .kcol.col-dragging{opacity:.4;}
+  .kcol.col-drag-over{outline:3px solid var(--zummo-dark); outline-offset:-6px;}
+  .kcol-head{cursor:move;}
+  .kcol-title{cursor:pointer; padding:3px 4px; border-radius:5px; transition:background .1s ease;}
+  .kcol-title:hover{background:rgba(43,43,43,.06);}
+  .kcol-menu{
+    background:transparent; border:none; width:26px; height:26px; border-radius:50%;
+    cursor:pointer; font-size:15px; color:var(--zummo-muted);
+  }
+  .kcol-menu:hover{background:rgba(43,43,43,.08); color:var(--zummo-dark);}
+  .kcol-pop{
+    position:absolute; top:38px; right:6px; z-index:10;
+    background:#fff; border:1px solid var(--zummo-border); border-radius:8px;
+    box-shadow:var(--shadow-md); min-width:170px; padding:4px 0;
+  }
+  .kcol-pop button{
+    display:block; width:100%; text-align:left; background:transparent; border:none;
+    padding:7px 12px; font-family:inherit; font-size:12.5px; color:var(--zummo-dark);
+    cursor:pointer;
+  }
+  .kcol-pop button:hover{background:var(--zummo-beige-soft);}
+  .kcol-pop button.danger{color:var(--bad);}
+  .kcol-pop button.danger:hover{background:var(--bad-soft);}
+  /* Botón "Añadir columna" al final del tablero */
+  .kcol-new{
+    flex:0 0 220px; min-height:120px; background:transparent;
+    border:2px dashed var(--zummo-border); border-radius:12px;
+    color:var(--zummo-muted); font-family:inherit; font-size:13px; font-weight:600;
+    cursor:pointer; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:4px; transition:all .12s ease;
+  }
+  .kcol-new:hover{border-color:var(--zummo-dark); color:var(--zummo-dark); background:rgba(255,255,255,.5);}
+
+  .placeholder{display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:60px 30px; text-align:center; gap:16px; min-height:50vh;}
+  .placeholder .ico{width:72px; height:72px; border-radius:18px; background:#DEEDF9; color:var(--info);
+    display:flex; align-items:center; justify-content:center; font-size:34px; font-weight:700;}
+  .placeholder h2{margin:0; font-weight:500;}
+  .placeholder p{color:var(--zummo-muted); max-width:420px; margin:0;}
+</style>
+</head>
+<body>
+
+<!-- Pantalla de selección de perfil -->
+<div class="profile-screen" id="profileScreen">
+  <div class="brand"><span>ZUMMO</span><span class="bar"></span><span>LEAN DASHBOARD</span></div>
+  <div style="text-align:center;">
+    <h1>Elige tu perfil</h1>
+    <p>Al cambiar de perfil cambia el cuadro de mando mostrado</p>
+  </div>
+  <div class="profile-cards">
+    <div class="profile-card repuestos" data-profile="repuestos">
+      <div class="ico">R</div>
+      <h2>GAP REPUESTOS</h2>
+      <div class="desc">Seguimiento diario de los 4 indicadores operativos: reclamaciones, NOKs de auditoría, errores Kanban y días sin accidentes.</div>
+      <div class="enter">Entrar</div>
+    </div>
+    <div class="profile-card exprimidoras" data-profile="exprimidoras">
+      <div class="ico">E</div>
+      <h2>GAP EXPRIMIDORAS</h2>
+      <div class="desc">Seguimiento diario de 7 indicadores: calidad (Q3·Q5·Q13·Q14·Q16), tablero de marcha (D5) y seguridad (P7).</div>
+      <div class="enter">Entrar</div>
+    </div>
+    <div class="profile-card docs" data-profile="docs">
+      <div class="ico">D</div>
+      <h2>DOCUMENTACIÓN PLANTA</h2>
+      <div class="desc">Organiza los documentos de planta en carpetas. Carga archivos PDF y Word para tenerlos a mano desde el dashboard.</div>
+      <div class="enter">Entrar</div>
+    </div>
+    <div class="profile-card idms" data-profile="idms">
+      <div class="ico">I</div>
+      <h2>IDMs</h2>
+      <div class="desc">Planner tipo tablero para las Ideas de Mejora: Backlog · TOP 30 · I+D · Abiertas · Cerradas. Arrastra las tarjetas entre columnas.</div>
+      <div class="enter">Entrar</div>
+    </div>
+  </div>
+  <div class="profile-footer">v2 · Datos locales (navegador) · 2026</div>
+</div>
+
+<!-- Dashboard GAP REPUESTOS -->
+<div class="app" id="appGap">
+  <header class="topbar">
+    <div class="top-row">
+      <div class="brand-mini"><span>ZUMMO</span><span class="bar"></span><span>LEAN DASHBOARD</span></div>
+      <span class="tag" id="gapTag">GAP Repuestos</span>
+      <div class="today">
+        <span>Hoy: <b id="todayLabel">—</b></span>
+        <span>Semana <b id="weekLabel">—</b> / 2026</span>
+      </div>
+      <button class="btn" id="btnChangeProfile">Cambiar perfil</button>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="dashboard">Cuadro de mando</button>
+      <button class="tab" data-tab="registro">Registro diario</button>
+      <button class="tab" data-tab="plan">Plan de acción</button>
+      <button class="tab" data-tab="top5">Acta TOP 5</button>
+      <button class="tab" data-tab="rutina">Rutina del supervisor</button>
+      <button class="tab" data-tab="safety">Safety</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="tab-panel active" id="panel-dashboard">
+      <div class="scorecard-wrap">
+        <div class="scorecard-head">
+          <h2>Indicadores diarios · GAP Repuestos</h2>
+          <span class="hint">Haz clic en un indicador para desplegar sus calendarios.</span>
+          <div class="controls">
+            <span class="hint">Semana en curso: <b id="currentWeekLabel">—</b></span>
+          </div>
+        </div>
+        <div class="scorecard-scroll" id="scorecardScroll">
+          <table class="scorecard" id="scorecardTable"></table>
+        </div>
+      </div>
+
+      <div class="cal-panel" id="calPanel">
+        <div class="cal-head">
+          <h3 id="calTitle">Calendario</h3>
+          <span class="kpi-chip" id="calKpiChip">—</span>
+          <div class="controls">
+            <label style="font-size:12px;color:var(--zummo-muted);">Vista:</label>
+            <select id="calView">
+              <option value="all">Año completo</option>
+              <option value="month" selected>Mes seleccionado</option>
+            </select>
+            <select id="calMonth"></select>
+            <button class="btn" id="btnCalClose">Ocultar</button>
+          </div>
+        </div>
+        <div class="cal-grid-wrap" id="calGridWrap"></div>
+      </div>
+
+      <div class="charts-grid" id="chartsGrid"></div>
+    </div>
+
+    <div class="tab-panel" id="panel-registro">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Registro diario</h2>
+          <span class="hint">Haz clic en cualquier celda para editarla. Los cambios se guardan automáticamente.</span>
+          <div class="controls">
+            <select id="selMonth"></select>
+            <button class="btn" id="btnGotoToday">Ir a hoy</button>
+            <button class="btn" id="btnResetData" title="Vuelve a leer los datos de Business Central">Recargar</button>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span><span class="dot" style="background:var(--good);"></span>Cumple objetivo</span>
+          <span><span class="dot" style="background:var(--bad);"></span>Fuera de objetivo</span>
+          <span><span class="dot" style="background:#F0ECE4;"></span>Sin dato</span>
+          <span style="margin-left:auto;" id="dataObjetivos">Objetivos: —</span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data" id="dataTable">
+            <thead id="dataHead"></thead>
+            <tbody id="dataBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña: PLAN DE ACCIÓN -->
+    <div class="tab-panel" id="panel-plan">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Plan de acción</h2>
+          <span class="hint">Registra problemas detectados y las acciones correctoras. Haz clic en cualquier celda para editarla.</span>
+          <div class="controls">
+            <label style="font-size:12px; color:var(--zummo-muted);">Año:</label>
+            <select id="planYearFilter"><option value="all">Todos</option></select>
+            <label style="font-size:12px; color:var(--zummo-muted); margin-left:6px;">Estado:</label>
+            <select id="planStatusFilter">
+              <option value="all">Todos</option>
+              <option value="Abierto">Abierto</option>
+              <option value="En curso">En curso</option>
+              <option value="Cerrado">Cerrado</option>
+            </select>
+            <button class="btn primary" id="btnPlanAdd">+ Añadir acción</button>
+            <button class="btn" id="btnPlanExport">Exportar a Excel</button>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span><span class="status-pill Abierto">Abierto</span> acción pendiente de empezar</span>
+          <span><span class="status-pill En-curso">En curso</span> en proceso</span>
+          <span><span class="status-pill Cerrado">Cerrado</span> finalizada</span>
+          <span style="margin-left:auto;" id="planCountInfo">—</span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data plan-table" id="planTable">
+            <thead>
+              <tr>
+                <th style="width:48px;">Nº</th>
+                <th>Descripción del problema</th>
+                <th>Acción</th>
+                <th style="width:140px;">Responsable</th>
+                <th style="width:130px;">Fecha objetivo</th>
+                <th style="width:130px;">Fecha de cierre</th>
+                <th style="width:120px;">Estado</th>
+                <th style="width:40px;"></th>
+              </tr>
+            </thead>
+            <tbody id="planBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña: ACTA TOP 5 -->
+    <div class="tab-panel" id="panel-top5">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Acta TOP 5</h2>
+          <span class="hint">Registra los puntos de mejora, denuncias o motivos de incumplimiento y su PDA. El supervisor marca el visto bueno.</span>
+          <div class="controls">
+            <label style="font-size:12px; color:var(--zummo-muted);">Año:</label>
+            <select id="top5YearFilter"><option value="all">Todos</option></select>
+            <label style="font-size:12px; color:var(--zummo-muted); margin-left:6px;">V.ºB.º:</label>
+            <select id="top5VbFilter">
+              <option value="all">Todos</option>
+              <option value="pending">Pendientes</option>
+              <option value="done">Validados</option>
+            </select>
+            <button class="btn primary" id="btnTop5Add">+ Añadir fila</button>
+            <button class="btn" id="btnTop5Export">Exportar a Excel</button>
+          </div>
+        </div>
+        <div class="legend-row">
+          <span>Marca el <b>V.ºB.º del supervisor</b> clicando el cuadrito; aparece el tick ✓.</span>
+          <span style="margin-left:auto;" id="top5CountInfo">—</span>
+        </div>
+        <div class="data-table-wrap">
+          <table class="data top5-table" id="top5Table">
+            <thead>
+              <tr>
+                <th style="width:130px;">Fecha</th>
+                <th>Punto de Mejora, Denuncia, motivo de incumplimiento</th>
+                <th>PDA</th>
+                <th style="width:160px; text-align:center;">V.ºB.º del supervisor</th>
+                <th style="width:40px;"></th>
+              </tr>
+            </thead>
+            <tbody id="top5Body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña: RUTINA DEL SUPERVISOR -->
+    <div class="tab-panel" id="panel-rutina">
+      <!-- Bloque día activo: navegación + resumen -->
+      <div class="rutina-dayhead">
+        <button class="btn rut-nav" id="rutPrev" title="Día anterior">◀</button>
+        <div class="rut-datebox">
+          <div class="rut-weekday" id="rutWeekday">—</div>
+          <input type="date" id="rutDate" class="rut-dateinput">
+          <div class="rut-weekinfo" id="rutWeekInfo">—</div>
+        </div>
+        <button class="btn rut-nav" id="rutNext" title="Día siguiente">▶</button>
+        <button class="btn" id="rutToday">Hoy</button>
+        <div class="rut-status" id="rutStatusChip">—</div>
+      </div>
+
+      <!-- Checklist del día -->
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Checklist diario</h2>
+          <span class="hint">Marca cada punto como <b>OK</b> o abre un <b>hallazgo</b>. Lunes a viernes.</span>
+          <div class="controls">
+            <button class="btn" id="rutMarkAllOk" title="Marcar los 4 puntos como OK">Marcar todo OK</button>
+          </div>
+        </div>
+        <div id="checklistWrap"></div>
+      </div>
+
+      <!-- Hallazgos del día -->
+      <div class="panel" style="margin-top:14px;">
+        <div class="panel-head">
+          <h2>Hallazgos del día</h2>
+          <span class="hint">Cada hallazgo tiene una acción correctiva.</span>
+          <div class="controls">
+            <button class="btn primary" id="rutAddFinding">+ Añadir hallazgo</button>
+          </div>
+        </div>
+        <div id="findingsWrap"></div>
+      </div>
+
+      <!-- Histórico -->
+      <div class="panel" style="margin-top:14px;">
+        <div class="panel-head">
+          <h2>Histórico mensual</h2>
+          <span class="hint">Verde = rutina completa sin hallazgos abiertos · Rojo = con hallazgos abiertos · Ámbar = incompleta (laborable sin rellenar).</span>
+          <div class="controls">
+            <select id="rutHistMonth"></select>
+            <button class="btn" id="rutExport">Exportar histórico a Excel</button>
+          </div>
+        </div>
+        <div id="rutHistCalendar" class="rut-hist-cal"></div>
+        <div id="rutHistSummary" class="legend-row" style="border-top:1px solid var(--zummo-border); border-bottom:none;"></div>
+      </div>
+    </div>
+
+    <!-- Pestaña: SAFETY -->
+    <div class="tab-panel" id="panel-safety">
+      <div class="safety-split">
+        <!-- Columna izquierda: Gemba Walks semanal -->
+        <div class="panel">
+          <div class="panel-head">
+            <h2>🚶 Gemba Walks · semanal</h2>
+            <span class="hint">Clica una semana para abrir o subir.</span>
+            <div class="controls">
+              <select id="safetyGwYear"></select>
+            </div>
+          </div>
+          <div class="legend-row" style="font-size:11.5px;"><span id="safetyGwInfo">—</span></div>
+          <div class="safety-scroll">
+            <div id="gwGrid" class="safety-grid safety-grid-weeks"></div>
+          </div>
+        </div>
+
+        <!-- Columna derecha: Safety Pyramid mensual -->
+        <div class="panel">
+          <div class="panel-head">
+            <h2>🔺 Safety Pyramid · mensual</h2>
+            <span class="hint">Clica un mes para abrir o subir.</span>
+            <div class="controls">
+              <select id="safetySpYear"></select>
+            </div>
+          </div>
+          <div class="legend-row" style="font-size:11.5px;"><span id="safetySpInfo">—</span></div>
+          <div class="safety-scroll">
+            <div id="spGrid" class="safety-grid safety-grid-months"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visor PDF embebido -->
+      <div class="panel" id="safetyViewerPanel" style="margin-top:14px; display:none;">
+        <div class="panel-head">
+          <h2 id="safetyViewerTitle">Vista previa</h2>
+          <div class="controls">
+            <a class="btn" id="safetyViewerDownload">Descargar</a>
+            <button class="btn" id="safetyViewerClose">Cerrar</button>
+          </div>
+        </div>
+        <div class="safety-viewer-body">
+          <iframe id="safetyViewerFrame" title="Vista previa del documento"></iframe>
+        </div>
+      </div>
+
+      <!-- Oculto: input para subir archivo -->
+      <input id="safetyFileInput" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none;">
+
+      <div class="docs-note" style="margin-top:14px;">
+        Formatos admitidos: <b>PDF</b> (se visualiza inline) y <b>Word</b> (.doc/.docx, se descarga para abrir en Word).
+        Los documentos son independientes por perfil GAP (los que subas aquí no aparecen en el otro perfil).
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Perfil Documentación Planta -->
+<div class="app" id="appDocs">
+  <header class="topbar">
+    <div class="top-row">
+      <div class="brand-mini"><span>ZUMMO</span><span class="bar"></span><span>LEAN DASHBOARD</span></div>
+      <span class="tag" style="background:#DCF0E3; color:var(--good);">Documentación planta</span>
+      <div class="today"><span>Hoy: <b id="todayLabel3">—</b></span></div>
+      <button class="btn" id="btnChangeProfileDocs">Cambiar perfil</button>
+    </div>
+  </header>
+  <main>
+    <div class="docs-wrap">
+      <!-- Toolbar -->
+      <div class="docs-toolbar">
+        <div class="docs-breadcrumb" id="docsBreadcrumb"></div>
+        <div class="docs-actions">
+          <button class="btn" id="docsNewFolder">+ Nueva carpeta</button>
+          <label class="btn primary" for="docsFileInput" style="margin:0;">⬆ Subir archivos</label>
+          <input id="docsFileInput" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple style="display:none;">
+        </div>
+      </div>
+
+      <!-- Zona drop + listado -->
+      <div class="docs-dropzone" id="docsDropzone">
+        <div id="docsListWrap" class="docs-list-wrap">
+          <div class="docs-empty" id="docsEmpty" style="display:none;">
+            <div class="e-ico">📂</div>
+            <div class="e-txt">Esta carpeta está vacía.<br>Crea una subcarpeta o arrastra archivos PDF / Word para empezar.</div>
+          </div>
+          <table class="docs-table">
+            <thead>
+              <tr>
+                <th class="th-ico"></th>
+                <th class="th-name">Nombre</th>
+                <th class="th-size">Tamaño</th>
+                <th class="th-date">Modificado</th>
+                <th class="th-act"></th>
+              </tr>
+            </thead>
+            <tbody id="docsBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Nota de pie -->
+      <div class="docs-note">
+        Los archivos se guardan localmente en este navegador (IndexedDB). No son la fuente oficial — mantenlos también en SharePoint o el repositorio de planta.
+        <span id="docsStorageInfo" style="margin-left:auto; color:var(--zummo-muted);"></span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Perfil IDMs (Ideas de Mejora - Planner Kanban) -->
+<div class="app" id="appIdms">
+  <header class="topbar">
+    <div class="top-row">
+      <div class="brand-mini"><span>ZUMMO</span><span class="bar"></span><span>LEAN DASHBOARD</span></div>
+      <span class="tag" style="background:#FFF2CF; color:#8A6421;">IDMs</span>
+      <div class="today"><span>Hoy: <b id="todayLabelIdms">—</b></span></div>
+      <button class="btn" id="btnChangeProfileIdms">Cambiar perfil</button>
+    </div>
+  </header>
+  <main>
+    <div class="idms-toolbar">
+      <h2 style="margin:0; font-size:18px; font-weight:600;">Planner · Ideas de Mejora</h2>
+      <span style="color:var(--zummo-muted); font-size:12.5px;">Arrastra tarjetas entre columnas. Clic sobre una tarjeta para editar.</span>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <button class="btn" id="btnIdmsReset" title="Vuelve a leer los IDMs de Business Central">Recargar</button>
+      </div>
+    </div>
+    <div class="kanban" id="kanbanBoard"></div>
+  </main>
+</div>
+
+<div class="cal-tip" id="calTip"></div>
+
+<script src="dashboard.config.js"></script>
+<script>
+const YEAR = 2026;
+const TODAY = new Date();
+const TODAY_ISO = (() => {
+  const d = new Date(Date.UTC(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate()));
+  return d.toISOString().slice(0,10);
+})();
+const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const WEEKDAY_SHORT = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+
+/* ====================================================================
+   CONFIGURACIÓN (dashboard.config.js) Y REPOSITORIO EN BUSINESS CENTRAL
+   - GAPs, KPIs y checklist vienen de dashboard.config.js.
+   - Los datos se leen y guardan en BC a través del servicio DashboardProduccion
+     (/api/{entidad}). Cada save* compara con lo último leído/guardado y solo
+     envía los registros que han cambiado (PUT) o desaparecido (DELETE).
+   ==================================================================== */
+const CFG = window.DASHBOARD_CONFIG;
+if (!CFG) alert('Falta dashboard.config.js junto a este HTML: el dashboard no puede funcionar sin él.');
+// Abierto desde el servicio (http://servidor:5090) se usa ese mismo servidor; abierto como fichero, apiUrl
+const API_URL = location.protocol === 'file:' ? String(CFG.apiUrl || '').replace(/\/+$/, '') : '';
+
+const Repo = (() => {
+  const copias = {};            // "entidad@gap" -> Map(clave -> JSON de lo que hay en BC)
+  const ultimos = {};           // "entidad@gap" -> último sincronizar(), para reintentar
+  let cola = Promise.resolve(); // los envíos van de uno en uno y en orden
+  let reintento = null;
+  let usuario = '';
+
+  // Aviso arriba (cargando / error) y estado de la conexión abajo a la derecha
+  const aviso = document.createElement('div');
+  aviso.style.cssText = 'position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:9999;padding:8px 16px;' +
+    'border-radius:0 0 8px 8px;font:13px system-ui,sans-serif;color:#fff;display:none;max-width:90vw;box-shadow:0 4px 12px rgba(0,0,0,.15)';
+  const chip = document.createElement('div');
+  chip.style.cssText = 'position:fixed;bottom:8px;right:10px;z-index:9999;padding:3px 10px;border-radius:10px;' +
+    'font:11px system-ui,sans-serif;background:#EFEBE5;color:#6B6157';
+  chip.textContent = 'BC: conectando…';
+  document.body.append(aviso, chip);
+
+  function mostrarAviso(texto, tipo){
+    if (!texto){ aviso.style.display = 'none'; return; }
+    aviso.textContent = texto;
+    aviso.style.background = tipo === 'error' ? '#B0473D' : '#2B2B2B';
+    aviso.style.display = 'block';
+  }
+  function estado(ok){
+    chip.textContent = (ok ? '● Business Central' : '● Sin conexión con Business Central') + (usuario ? ' · ' + usuario : '');
+    chip.style.color = ok ? '#198754' : '#B0473D';
+  }
+
+  async function api(metodo, entidad, consulta, cuerpo){
+    const r = await fetch(`${API_URL}/api/${entidad}${consulta || ''}`, {
+      method: metodo,
+      credentials: 'include',   // el servicio sabe así qué usuario Windows hace el cambio
+      headers: cuerpo ? { 'Content-Type': 'application/json' } : {},
+      body: cuerpo ? JSON.stringify(cuerpo) : undefined
+    });
+    if (!r.ok){
+      let msg = 'HTTP ' + r.status;
+      try { const j = await r.json(); if (j && j.error) msg = j.error; } catch(e){}
+      throw new Error(msg);
+    }
+    return r.status === 204 ? null : r.json();
+  }
+
+  const clave = (reg, claves) => claves.map(c => reg[c]).join('|');
+
+  // Todos los registros de una entidad (del GAP indicado; '' = sin GAP)
+  async function leer(entidad, gap){
+    try{
+      const regs = await api('GET', entidad, gap ? '?gap=' + encodeURIComponent(gap) : '');
+      estado(true);
+      return regs;
+    }catch(e){ estado(false); throw e; }
+  }
+
+  // Tras leer de BC: lo que hay guardado, para comparar en los siguientes save*
+  function fijar(entidad, gap, registros, claves){
+    copias[entidad + '@' + gap] = new Map(registros.map(r => [clave(r, claves), JSON.stringify(r)]));
+  }
+
+  // Envía a BC las diferencias entre "registros" (lo que hay ahora en pantalla) y lo último guardado
+  function sincronizar(entidad, gap, registros, claves){
+    const id = entidad + '@' + gap;
+    ultimos[id] = { entidad, gap, registros, claves };
+    const copia = copias[id] || (copias[id] = new Map());
+    const nuevos = new Map(registros.map(r => [clave(r, claves), r]));
+    const guardar = [], borrar = [];
+    nuevos.forEach((r, k) => { if (copia.get(k) !== JSON.stringify(r)) guardar.push(r); });
+    copia.forEach((json, k) => { if (!nuevos.has(k)) borrar.push(JSON.parse(json)); });
+    if (!guardar.length && !borrar.length) return;
+
+    guardar.forEach(r => copia.set(clave(r, claves), JSON.stringify(r)));
+    borrar.forEach(r => copia.delete(clave(r, claves)));
+    cola = cola.then(async () => {
+      try{
+        if (guardar.length) await api('PUT', entidad, '', guardar);
+        if (borrar.length)  await api('DELETE', entidad, '', borrar);
+        estado(true);
+        if (!reintento) mostrarAviso(null);
+      }catch(e){
+        // Quedan como pendientes: el siguiente intento los vuelve a enviar
+        guardar.forEach(r => copia.set(clave(r, claves), '(pendiente)'));
+        borrar.forEach(r => copia.set(clave(r, claves), JSON.stringify(r)));
+        estado(false);
+        mostrarAviso('No se han podido guardar los cambios en Business Central (' + e.message +
+          '). Se reintentará en 30 segundos: no cierres la página.', 'error');
+        programarReintento();
+      }
+    });
+  }
+
+  function programarReintento(){
+    if (reintento) return;
+    reintento = setTimeout(() => {
+      reintento = null;
+      Object.values(ultimos).forEach(u => sincronizar(u.entidad, u.gap, u.registros, u.claves));
+    }, 30000);
+  }
+
+  // Usuario con el que el servicio guarda los cambios ("Modificado por" en BC)
+  api('GET', 'yo').then(r => { usuario = r.usuario; estado(true); }).catch(() => estado(false));
+
+  return { leer, fijar, sincronizar, aviso: mostrarAviso };
+})();
+
+// Conversión de valores entre el HTML y BC
+function txt(s, max){ return String(s == null ? '' : s).slice(0, max); }
+function fechaBc(s){ return /^\d{4}-\d{2}-\d{2}$/.test(s || '') ? s : '0001-01-01'; }   // fecha vacía en BC
+function fechaHtml(s){ return (!s || s.startsWith('0001-')) ? '' : s; }
+function gapActual(){ return PROFILES[CURRENT_PROFILE].gap; }
+
+let CURRENT_PROFILE = "repuestos";
+let KPIS = CFG.perfiles.repuestos.kpis;
+let KPI_BY_CODE = Object.fromEntries(KPIS.map(k => [k.code, k]));
+let SECTIONS = CFG.perfiles.repuestos.sections;
+
+/* --- Registro diario: días (laborable + observaciones) y valores de KPI ---
+   BC: DashDay (GAP, fecha) y DashKpiValue (GAP, fecha, KPI). Un KPI sin valor no se guarda. */
+const CLAVES_DIAS = ['GAP_Code','Date'];
+const CLAVES_KPIS = ['GAP_Code','Date','KPI_Code'];
+
+// Un registro vacío por cada día del año, con los KPIs del perfil activo
+function cloneHist(){
+  const map = {};
+  for (let m=0;m<12;m++){
+    const dn = new Date(Date.UTC(YEAR,m+1,0)).getUTCDate();
+    for (let d=1;d<=dn;d++){
+      const iso = `${YEAR}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      map[iso] = emptyRec(iso);
+    }
+  }
+  return map;
+}
+function emptyRec(iso){
+  const r = {date:iso, work:false, obs:''};
+  KPIS.forEach(k => r[k.code] = null);
+  return r;
+}
+function registrosDias(){
+  const gap = gapActual();
+  return Object.values(DATA)
+    .filter(r => r.work || (r.obs || '') !== '')
+    .map(r => ({ GAP_Code: gap, Date: r.date, Working_Day: !!r.work, Remarks: txt(r.obs, 250) }));
+}
+function registrosKpis(){
+  const gap = gapActual();
+  const out = [];
+  Object.values(DATA).forEach(r => KPIS.forEach(k => {
+    const v = r[k.code];
+    if (typeof v === 'number' && Number.isFinite(v))
+      out.push({ GAP_Code: gap, Date: r.date, KPI_Code: k.code, Value: v, Has_Value: true });
+  }));
+  return out;
+}
+async function cargarDatos(){
+  const gap = gapActual();
+  const [dias, kpis] = await Promise.all([Repo.leer('dias', gap), Repo.leer('kpis', gap)]);
+  if (gap !== gapActual()) return;   // se ha cambiado de GAP mientras se leía
+  const base = cloneHist();
+  dias.forEach(d => {
+    const r = base[d.Date] || (base[d.Date] = emptyRec(d.Date));
+    r.work = d.Working_Day;
+    r.obs = d.Remarks || '';
+  });
+  kpis.forEach(k => {
+    const r = base[k.Date] || (base[k.Date] = emptyRec(k.Date));
+    r[k.KPI_Code] = k.Has_Value ? k.Value : null;
+  });
+  DATA = base;
+  Repo.fijar('dias', gap, registrosDias(), CLAVES_DIAS);
+  Repo.fijar('kpis', gap, registrosKpis(), CLAVES_KPIS);
+}
+function saveData(){
+  const gap = gapActual();
+  Repo.sincronizar('dias', gap, registrosDias(), CLAVES_DIAS);
+  Repo.sincronizar('kpis', gap, registrosKpis(), CLAVES_KPIS);
+}
+let DATA = cloneHist();
+
+function parseIso(iso){ return new Date(iso + 'T00:00:00Z'); }
+function fmtDateES(iso){
+  return parseIso(iso).toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'});
+}
+function weekOfIso(iso){
+  const d = parseIso(iso);
+  const target = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  const dayNum = (target.getUTCDay()+6) % 7;
+  target.setUTCDate(target.getUTCDate() - dayNum + 3);
+  const firstThu = new Date(Date.UTC(target.getUTCFullYear(), 0, 4));
+  return 1 + Math.round((target - firstThu) / 604800000);
+}
+function weekdayShort(iso){ const idx=(parseIso(iso).getUTCDay()+6)%7; return WEEKDAY_SHORT[idx]; }
+function isWeekend(iso){ const w=parseIso(iso).getUTCDay(); return w===0||w===6; }
+
+function datesOfYear(){
+  const out=[];
+  for (let m=0;m<12;m++){
+    const dn=new Date(Date.UTC(YEAR,m+1,0)).getUTCDate();
+    for (let d=1;d<=dn;d++) out.push(`${YEAR}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
+  }
+  return out;
+}
+const ALL_DATES = datesOfYear();
+
+function kpiWeekValue(kpi, w){
+  const vals = [];
+  ALL_DATES.forEach(iso=>{
+    if (weekOfIso(iso) !== w) return;
+    if (iso > TODAY_ISO) return;
+    const v = DATA[iso] && DATA[iso][kpi.code];
+    if (typeof v === 'number') vals.push(v);
+  });
+  if (!vals.length) return null;
+  if (kpi.aggWeek==='sum')  return vals.reduce((a,b)=>a+b,0);
+  if (kpi.aggWeek==='last') return vals[vals.length-1];
+  if (kpi.aggWeek==='avg')  return vals.reduce((a,b)=>a+b,0)/vals.length;
+  return vals[vals.length-1];
+}
+function kpiYearValue(kpi){
+  const vals=[];
+  ALL_DATES.forEach(iso=>{
+    if (iso > TODAY_ISO) return;
+    const v = DATA[iso] && DATA[iso][kpi.code];
+    if (typeof v === 'number') vals.push(v);
+  });
+  if (!vals.length) return null;
+  if (kpi.aggYear==='sum')  return vals.reduce((a,b)=>a+b,0);
+  if (kpi.aggYear==='last') return vals[vals.length-1];
+  if (kpi.aggYear==='avg')  return vals.reduce((a,b)=>a+b,0)/vals.length;
+  return vals[vals.length-1];
+}
+function kpiMeets(kpi,v){
+  if (v===null || typeof v !== 'number') return null;
+  if (kpi.obj === null || typeof kpi.obj !== 'number') return null;
+  return kpi.higherIsBetter ? (v >= kpi.obj) : (v <= kpi.obj);
+}
+function fmtNum(v, kpi){
+  if (v===null || typeof v !== 'number') return '—';
+  if (kpi && kpi.unit === '%') return (v*100).toFixed(1).replace('.',',') + '%';
+  if (Number.isInteger(v)) return String(v);
+  return v.toFixed(2).replace('.',',');
+}
+
+const WEEKS_ALL = Array.from({length:53},(_,i)=>i+1);
+const CURRENT_WEEK = weekOfIso(TODAY_ISO);
+const PREV_WEEK = CURRENT_WEEK - 1;
+
+/* ---- Cuadro de mando DIARIO ----
+   Columnas fijas (sticky-left): Cód · Indicador · OBJETIVO · S{N-1} (semana anterior)
+   Columnas scroll: una por cada día del año (365).
+   Cabecera doble: fila 1 = agrupación por semana, fila 2 = dd/mm. */
+function renderScorecard(){
+  const t = document.getElementById('scorecardTable');
+  const prevWeekLabel = PREV_WEEK >= 1 ? ('S' + PREV_WEEK) : '—';
+
+  // Agrupar días por semana ISO (en orden del año)
+  const groups = [];
+  ALL_DATES.forEach(iso => {
+    const w = weekOfIso(iso);
+    if (!groups.length || groups[groups.length-1].week !== w){
+      groups.push({ week:w, dates:[iso] });
+    } else {
+      groups[groups.length-1].dates.push(iso);
+    }
+  });
+
+  // THEAD con dos filas
+  let thead = '<thead>';
+  thead += '<tr>';
+  thead += '<th class="col-code" rowspan="2">Cód.</th>';
+  thead += '<th class="col-name" rowspan="2">Indicador</th>';
+  thead += '<th class="col-obj"  rowspan="2">OBJ.</th>';
+  thead += `<th class="col-prev" rowspan="2">${prevWeekLabel}</th>`;
+  groups.forEach(g => {
+    const cls = g.week === CURRENT_WEEK ? ' current' : '';
+    thead += `<th class="wk-group${cls}" colspan="${g.dates.length}">S${g.week}</th>`;
+  });
+  thead += '</tr>';
+  thead += '<tr>';
+  groups.forEach(g => {
+    g.dates.forEach((iso, idx) => {
+      const d = parseIso(iso);
+      const dd = String(d.getUTCDate()).padStart(2,'0');
+      const mm = String(d.getUTCMonth()+1).padStart(2,'0');
+      const todayCls = iso === TODAY_ISO ? ' today' : '';
+      const wsCls = idx === 0 ? ' week-start' : '';
+      thead += `<th class="dy-head${todayCls}${wsCls}">${dd}/${mm}</th>`;
+    });
+  });
+  thead += '</tr>';
+  thead += '</thead>';
+
+  const totalDataCols = ALL_DATES.length; // 365
+  let tbody = '<tbody>';
+  SECTIONS.forEach(sec => {
+    const kk = KPIS.filter(k => k.section === sec.code);
+    if (!kk.length) return;
+    tbody += `<tr class="section-row"><td colspan="${4 + totalDataCols}">${sec.name}</td></tr>`;
+    kk.forEach(kpi => {
+      const prevWeekVal = (PREV_WEEK >= 1) ? kpiWeekValue(kpi, PREV_WEEK) : null;
+      let row = `<tr class="kpi-row" data-code="${kpi.code}">`;
+      row += `<td class="col-code">${kpi.code}</td>`;
+      row += `<td class="col-name">${kpi.name}</td>`;
+      row += `<td class="col-obj">${kpi.obj === null ? '—' : (kpi.unit==='%' ? (kpi.obj*100).toFixed(0)+'%' : kpi.obj)}</td>`;
+      row += `<td class="col-prev">${fmtNum(prevWeekVal, kpi)}</td>`;
+      groups.forEach(g => {
+        g.dates.forEach((iso, idx) => {
+          const rec = DATA[iso] || {};
+          const v = rec[kpi.code];
+          let cls = 'na', txt = '';
+          if (typeof v === 'number'){
+            const ok = kpiMeets(kpi, v);
+            cls = ok ? 'ok' : 'bad';
+            txt = fmtNum(v, kpi);
+          }
+          if (iso === TODAY_ISO) cls += ' today';
+          if (isWeekend(iso)) cls += ' weekend';
+          if (idx === 0) cls += ' week-start';
+          row += `<td class="dy ${cls}">${txt}</td>`;
+        });
+      });
+      row += '</tr>';
+      tbody += row;
+    });
+  });
+  tbody += '</tbody>';
+  t.innerHTML = thead + tbody;
+
+  t.querySelectorAll('tr.kpi-row').forEach(tr => {
+    tr.addEventListener('click', () => selectKpi(tr.dataset.code));
+  });
+  document.getElementById('currentWeekLabel').textContent = 'S' + CURRENT_WEEK;
+
+  // Scroll a HOY
+  setTimeout(() => {
+    const scroller = document.getElementById('scorecardScroll');
+    const header = t.querySelector('th.dy-head.today');
+    if (scroller && header){
+      scroller.scrollLeft = Math.max(0, header.offsetLeft - 500);
+    }
+  }, 50);
+}
+
+let selectedKpi = null;
+let calView = 'month';
+let calMonth = Math.min(TODAY.getMonth(), 11);
+
+function selectKpi(code){
+  const panel = document.getElementById('calPanel');
+  if (selectedKpi === code && panel.classList.contains('active')){ closeCalendar(); return; }
+  selectedKpi = code;
+  const kpi = KPI_BY_CODE[code];
+  document.querySelectorAll('tr.kpi-row').forEach(r => r.classList.toggle('selected', r.dataset.code===code));
+  document.getElementById('calTitle').textContent = 'Calendarios · ' + kpi.name;
+  document.getElementById('calKpiChip').textContent = kpi.code;
+  panel.classList.add('active');
+  renderCalendars();
+  panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+function closeCalendar(){
+  document.getElementById('calPanel').classList.remove('active');
+  selectedKpi = null;
+  document.querySelectorAll('tr.kpi-row').forEach(r=>r.classList.remove('selected'));
+}
+function renderCalendars(){
+  if (!selectedKpi) return;
+  const kpi = KPI_BY_CODE[selectedKpi];
+  const wrap = document.getElementById('calGridWrap');
+  const months = (calView==='all') ? Array.from({length:12},(_,i)=>i) : [calMonth];
+  wrap.innerHTML = months.map(m => buildMiniCalendar(kpi,m)).join('');
+}
+function buildMiniCalendar(kpi, mi){
+  const monthStart = new Date(Date.UTC(YEAR, mi, 1));
+  const daysIn = new Date(Date.UTC(YEAR, mi+1, 0)).getUTCDate();
+  const firstDoW = (monthStart.getUTCDay()+6) % 7;
+  const hdrs = ['L','M','X','J','V','S','D'].map(x=>`<span>${x}</span>`).join('');
+  let cells = '';
+  for (let i=0;i<firstDoW;i++) cells += `<div class="cell empty"></div>`;
+  for (let d=1;d<=daysIn;d++){
+    const iso = `${YEAR}-${String(mi+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const rec = DATA[iso] || {};
+    const v = rec[kpi.code];
+    let cls = 'na';
+    if (typeof v === 'number') cls = kpiMeets(kpi,v) ? 'ok' : 'bad';
+    if (iso === TODAY_ISO) cls += ' today';
+    const w = weekOfIso(iso);
+    const tip = `Semana ${w}\nValor: ${(typeof v==='number') ? (kpi.unit==='%' ? fmtNum(v, kpi) : fmtNum(v) + ' ' + kpi.unit) : '—'}`;
+    cells += `<div class="cell ${cls}" data-tip="${tip.replace(/"/g,'&quot;')}">${d}</div>`;
+  }
+  return `<div class="mini-cal">
+    <div class="cap">${MONTH_NAMES[mi]} ${YEAR}</div>
+    <div class="hdrs">${hdrs}</div>
+    <div class="grid">${cells}</div>
+  </div>`;
+}
+
+const CHARTS = {};
+function renderChartsGrid(){
+  const grid = document.getElementById('chartsGrid');
+  grid.innerHTML = KPIS.map(k=>`
+    <div class="chart-card">
+      <h3><span class="code">${k.code}</span>${k.name}</h3>
+      <div class="sub">Objetivo: ${k.higherIsBetter?'≥':'≤'} ${k.obj} ${k.unit} · Agregación semanal: ${k.aggWeek==='sum'?'suma':(k.aggWeek==='last'?'último valor':'media')}</div>
+      <div class="ch-body"><canvas id="ch_${k.code}"></canvas></div>
+    </div>`).join('');
+  KPIS.forEach(drawKpiChart);
+}
+function drawKpiChart(kpi){
+  const canvas = document.getElementById('ch_' + kpi.code);
+  if (!canvas) return;
+  if (CHARTS[kpi.code]) CHARTS[kpi.code].destroy();
+  if (typeof Chart === 'undefined'){
+    canvas.parentElement.innerHTML = '<div style="color:var(--zummo-muted);font-size:12px;padding:40px 0;text-align:center;">Chart.js no se ha cargado (sin conexión).</div>';
+    return;
+  }
+  const labels = WEEKS_ALL.map(w=>'S'+w);
+  const data = WEEKS_ALL.map(w=>kpiWeekValue(kpi,w));
+  const soft = kpi.color + '20';
+  CHARTS[kpi.code] = new Chart(canvas.getContext('2d'), {
+    type:'line',
+    data:{ labels, datasets:[
+      { label:kpi.code, data, borderColor:kpi.color, backgroundColor:soft,
+        tension:.25, fill:true, pointRadius:2, borderWidth:1.8, spanGaps:true },
+      { label:`Objetivo (${kpi.obj})`, data:labels.map(()=>kpi.obj),
+        borderColor:'#2B2B2B', borderDash:[6,4], pointRadius:0, borderWidth:1.2, fill:false }
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index', intersect:false},
+      plugins:{
+        legend:{ position:'bottom', labels:{ usePointStyle:true, boxWidth:7, font:{size:10} } },
+        tooltip:{ backgroundColor:'#2B2B2B', titleFont:{size:11}, bodyFont:{size:11} }
+      },
+      scales:{
+        x:{ grid:{display:false}, ticks:{maxTicksLimit:14, autoSkip:true, font:{size:9}} },
+        y:{ grid:{color:'#F0ECE4'}, beginAtZero: !kpi.higherIsBetter, ticks:{font:{size:10}} }
+      }
+    }
+  });
+}
+
+let selectedMonth = Math.min(TODAY.getMonth(), 11);
+function renderDataTable(){
+  const tbody = document.getElementById('dataBody');
+  // Cabecera dinámica según KPIs del perfil activo
+  const head = document.getElementById('dataHead');
+  if (head){
+    head.innerHTML = '<tr>'
+      + '<th>Fecha</th><th>Día</th><th>Sem</th><th>Trab.</th>'
+      + KPIS.map(k => `<th style="text-align:center;" title="${esc(k.name)}">${k.code}${k.unit==='%'?' (%)':''}</th>`).join('')
+      + '<th>Observaciones</th></tr>';
+  }
+  // Leyenda dinámica de objetivos
+  const legend = document.getElementById('dataObjetivos');
+  if (legend){
+    legend.innerHTML = 'Objetivos: ' + KPIS.map(k => {
+      if (k.obj === null) return `<b>${k.code}: s/o</b>`;
+      const sign = k.higherIsBetter ? '≥' : '≤';
+      return `<b>${k.code} ${sign} ${k.unit==='%' ? (k.obj*100).toFixed(0)+'%' : k.obj}</b>`;
+    }).join(' · ');
+  }
+  const dn = new Date(Date.UTC(YEAR, selectedMonth+1, 0)).getUTCDate();
+  let rows = '';
+  for (let d=1; d<=dn; d++){
+    const iso = `${YEAR}-${String(selectedMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const rec = DATA[iso];
+    const wk = weekOfIso(iso), wkd = weekdayShort(iso), we = isWeekend(iso);
+    const isToday = iso === TODAY_ISO, isFuture = iso > TODAY_ISO;
+    const trCls = [we?'weekend':'', isToday?'today':'', isFuture?'future':''].filter(Boolean).join(' ');
+    const kpiCells = KPIS.map(k=>{
+      const v = rec[k.code];
+      const meets = kpiMeets(k,v);
+      const colCls = meets===null ? '' : (meets?'ok':'off');
+      const tdCls = (k.code==='P7'?'p':'q') + ' ' + colCls;
+      // Para % se muestra el valor humano (0.94 -> 94). step=any admite decimales.
+      let shown = '';
+      if (v !== null && v !== undefined){
+        shown = (k.unit === '%') ? (v * 100).toFixed(1).replace(/\.0$/,'').replace('.',',') : v;
+      }
+      const step = k.unit === '%' ? 'any' : '1';
+      const max  = k.unit === '%' ? '' : '';
+      return `<td class="${tdCls}" style="text-align:center;"><input class="cell-input" type="text" inputmode="decimal" data-iso="${iso}" data-field="${k.code}" data-pct="${k.unit==='%' ? '1' : '0'}" value="${shown}"></td>`;
+    }).join('');
+    const workCls = rec.work ? 'si' : 'no';
+    const workTxt = rec.work ? 'SÍ' : 'NO';
+    rows += `<tr class="${trCls}">
+      <td class="date">${fmtDateES(iso)}</td>
+      <td class="weekday">${wkd}</td>
+      <td class="week">${wk}</td>
+      <td class="work"><span class="work-pill ${workCls}" data-iso="${iso}" data-field="work">${workTxt}</span></td>
+      ${kpiCells}
+      <td class="obs"><input class="cell-input obs-input" type="text" data-iso="${iso}" data-field="obs" value="${(rec.obs||'').replace(/"/g,'&quot;')}"></td>
+    </tr>`;
+  }
+  tbody.innerHTML = rows;
+  attachTableListeners();
+  if (selectedMonth === TODAY.getMonth()){
+    const tr = tbody.querySelector('tr.today');
+    if (tr) tr.scrollIntoView({block:'center', behavior:'instant'});
+  }
+}
+function attachTableListeners(){
+  const tbody = document.getElementById('dataBody');
+  tbody.querySelectorAll('input.cell-input').forEach(inp=>{
+    inp.addEventListener('change', onCellChange);
+    inp.addEventListener('blur',   onCellChange);
+  });
+  tbody.querySelectorAll('.work-pill').forEach(p=>p.addEventListener('click', onWorkToggle));
+}
+function onCellChange(e){
+  const inp = e.currentTarget;
+  const iso = inp.dataset.iso, field = inp.dataset.field;
+  const raw = inp.value.trim();
+  let val;
+  if (field==='obs') val = raw;
+  else {
+    if (raw === '') val = null;
+    else {
+      const n = Number(raw.replace(',','.'));
+      if (!Number.isFinite(n)) val = null;
+      else val = (inp.dataset.pct === '1') ? n/100 : n;
+    }
+  }
+  if (!DATA[iso]) DATA[iso] = {date:iso};
+  DATA[iso][field] = val;
+  saveData(DATA);
+  if (field !== 'obs'){
+    const kpi = KPI_BY_CODE[field];
+    const td = inp.closest('td');
+    td.classList.remove('ok','off');
+    const meets = kpiMeets(kpi,val);
+    if (meets !== null) td.classList.add(meets?'ok':'off');
+    renderScorecard();
+    drawKpiChart(kpi);
+  }
+}
+function onWorkToggle(e){
+  const p = e.currentTarget, iso = p.dataset.iso;
+  if (!DATA[iso]) DATA[iso] = {date:iso, work:false, obs:''};
+  DATA[iso].work = !DATA[iso].work;
+  saveData(DATA);
+  p.classList.toggle('si', DATA[iso].work);
+  p.classList.toggle('no', !DATA[iso].work);
+  p.textContent = DATA[iso].work ? 'SÍ' : 'NO';
+}
+
+function activateTab(name){
+  document.querySelectorAll('#appGap .tab').forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+  document.querySelectorAll('#appGap .tab-panel').forEach(p=>p.classList.toggle('active', p.id==='panel-'+name));
+  if (name==='registro') renderDataTable();
+  if (name==='dashboard'){ renderScorecard(); renderChartsGrid(); }
+  if (name==='plan'){ renderPlanYearFilter(); renderPlanTable(); }
+  if (name==='top5'){ renderTop5YearFilter(); renderTop5Table(); }
+  if (name==='rutina'){
+    // El selector de mes del histórico se recalcula tras activar la pestaña
+    rutinaHistMonth = parseIso(rutinaSelectedDate).getUTCMonth();
+    const sel = document.getElementById('rutHistMonth');
+    if (sel) sel.innerHTML = '';
+    renderRutinaAll();
+  }
+  if (name==='safety'){ openSafetyTab(); }
+}
+
+/* ====================================================================
+   PLAN DE ACCIÓN
+   - Se guarda en BC (DashActionPlan)
+   - Filtro por año (fecha objetivo) y por estado
+   - Exportar a Excel (.xls en formato HTML, abierto directamente por Excel)
+   ==================================================================== */
+const STATUS_OPTIONS = ['Abierto','En curso','Cerrado'];
+const ESTADO_PLAN_BC   = { 'Abierto':'Open', 'En curso':'In Progress', 'Cerrado':'Closed' };
+const ESTADO_PLAN_HTML = { 'Open':'Abierto', 'In Progress':'En curso', 'Closed':'Cerrado' };
+const CLAVES_PLAN = ['GAP_Code','Id'];
+let PLAN = [];
+let planFilterYear = 'all';
+let planFilterStatus = 'all';
+
+function registrosPlan(){
+  const gap = gapActual();
+  return PLAN.map(a => ({ GAP_Code: gap, Id: a.id, Action_No: a.num || 0,
+    Description: txt(a.desc, 250), Action: txt(a.action, 250), Responsible: txt(a.responsible, 100),
+    Due_Date: fechaBc(a.dueDate), Close_Date: fechaBc(a.closeDate), Status: ESTADO_PLAN_BC[a.status] || 'Open' }));
+}
+async function cargarPlan(){
+  const gap = gapActual();
+  const regs = await Repo.leer('plan', gap);
+  if (gap !== gapActual()) return;
+  PLAN = regs.map(r => ({ id: r.Id, num: r.Action_No, desc: r.Description, action: r.Action,
+    responsible: r.Responsible, dueDate: fechaHtml(r.Due_Date), closeDate: fechaHtml(r.Close_Date),
+    status: ESTADO_PLAN_HTML[r.Status] || 'Abierto' }));
+  Repo.fijar('plan', gap, registrosPlan(), CLAVES_PLAN);
+}
+function savePlan(){
+  Repo.sincronizar('plan', gapActual(), registrosPlan(), CLAVES_PLAN);
+}
+function nextPlanNumber(){
+  return PLAN.length ? Math.max(...PLAN.map(a => a.num || 0)) + 1 : 1;
+}
+function newAction(){
+  return {
+    id: 'a_' + Date.now() + '_' + Math.random().toString(36).slice(2,7),
+    num: nextPlanNumber(),
+    desc: '', action: '', responsible: '',
+    dueDate: '', closeDate: '',
+    status: 'Abierto'
+  };
+}
+
+function planYears(){
+  const set = new Set();
+  PLAN.forEach(a => {
+    [a.dueDate, a.closeDate].forEach(d => {
+      if (d && /^\d{4}-\d{2}-\d{2}$/.test(d)) set.add(d.slice(0,4));
+    });
+  });
+  // Siempre ofrece el año en curso
+  set.add(String(YEAR));
+  return Array.from(set).sort((a,b)=>b.localeCompare(a));
+}
+function renderPlanYearFilter(){
+  const sel = document.getElementById('planYearFilter');
+  const prev = sel.value || 'all';
+  const years = planYears();
+  sel.innerHTML = '<option value="all">Todos</option>' + years.map(y=>`<option value="${y}">${y}</option>`).join('');
+  // Mantén la selección si sigue existiendo
+  sel.value = Array.from(sel.options).some(o => o.value === prev) ? prev : 'all';
+  planFilterYear = sel.value;
+}
+function filteredPlan(){
+  return PLAN.filter(a => {
+    if (planFilterStatus !== 'all' && a.status !== planFilterStatus) return false;
+    if (planFilterYear !== 'all'){
+      const years = [a.dueDate, a.closeDate].filter(d => /^\d{4}-\d{2}-\d{2}$/.test(d)).map(d => d.slice(0,4));
+      if (!years.includes(planFilterYear)) return false;
+    }
+    return true;
+  });
+}
+
+function renderPlanTable(){
+  const tbody = document.getElementById('planBody');
+  const list = filteredPlan();
+  if (!list.length){
+    tbody.innerHTML = `<tr><td colspan="8"><div class="plan-empty">Sin acciones registradas con los filtros actuales. Usa <b>+ Añadir acción</b> para empezar.</div></td></tr>`;
+  } else {
+    const sorted = [...list].sort((a,b)=>{
+      // Pendientes primero, luego por fecha objetivo (más antigua antes)
+      const sa = a.status === 'Cerrado' ? 1 : 0;
+      const sb = b.status === 'Cerrado' ? 1 : 0;
+      if (sa !== sb) return sa - sb;
+      if (a.dueDate && b.dueDate) return a.dueDate.localeCompare(b.dueDate);
+      if (a.dueDate) return -1;
+      if (b.dueDate) return 1;
+      return (a.num||0) - (b.num||0);
+    });
+    tbody.innerHTML = sorted.map(a => renderPlanRow(a)).join('');
+    attachPlanListeners();
+  }
+  // Contador
+  const total = PLAN.length;
+  const shown = list.length;
+  const abiertos = PLAN.filter(a=>a.status==='Abierto').length;
+  const curso    = PLAN.filter(a=>a.status==='En curso').length;
+  const cerrados = PLAN.filter(a=>a.status==='Cerrado').length;
+  document.getElementById('planCountInfo').innerHTML =
+    `Mostrando <b>${shown}</b> de <b>${total}</b> · Abiertos: <b>${abiertos}</b> · En curso: <b>${curso}</b> · Cerrados: <b>${cerrados}</b>`;
+}
+function esc(s){
+  return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function renderPlanRow(a){
+  const rowCls = a.status === 'Cerrado' ? 'row-cerrado' : '';
+  const statusOpts = STATUS_OPTIONS.map(s =>
+    `<option value="${s}"${s===a.status?' selected':''}>${s}</option>`).join('');
+  return `
+    <tr class="${rowCls}" data-id="${a.id}">
+      <td class="num">${a.num}</td>
+      <td><textarea class="cell-input" data-field="desc" rows="1" placeholder="Describe el problema…">${esc(a.desc)}</textarea></td>
+      <td><textarea class="cell-input" data-field="action" rows="1" placeholder="Acción correctora…">${esc(a.action)}</textarea></td>
+      <td><input class="cell-input" type="text" data-field="responsible" placeholder="Nombre" value="${esc(a.responsible)}"></td>
+      <td><input class="cell-input" type="date" data-field="dueDate" value="${esc(a.dueDate)}"></td>
+      <td><input class="cell-input" type="date" data-field="closeDate" value="${esc(a.closeDate)}"></td>
+      <td><select class="cell-input" data-field="status">${statusOpts}</select></td>
+      <td class="actions"><button class="btn-del" title="Eliminar acción" data-action="del">×</button></td>
+    </tr>`;
+}
+function attachPlanListeners(){
+  const tbody = document.getElementById('planBody');
+  tbody.querySelectorAll('[data-field]').forEach(el => {
+    el.addEventListener('change', onPlanChange);
+    if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type === 'text')){
+      el.addEventListener('blur', onPlanChange);
+    }
+  });
+  tbody.querySelectorAll('button[data-action="del"]').forEach(b => {
+    b.addEventListener('click', e => {
+      const tr = e.currentTarget.closest('tr');
+      const id = tr.dataset.id;
+      const a = PLAN.find(x => x.id === id);
+      const label = a && a.desc ? `"${a.desc.slice(0,40)}…"` : 'esta acción';
+      if (!confirm('¿Eliminar ' + label + '?')) return;
+      PLAN = PLAN.filter(x => x.id !== id);
+      savePlan();
+      renderPlanYearFilter();
+      renderPlanTable();
+    });
+  });
+}
+function onPlanChange(e){
+  const el = e.currentTarget;
+  const tr = el.closest('tr');
+  const id = tr.dataset.id;
+  const field = el.dataset.field;
+  const a = PLAN.find(x => x.id === id);
+  if (!a) return;
+  const prev = a[field];
+  const val = (el.tagName === 'SELECT') ? el.value : el.value;
+  if (prev === val) return;
+  a[field] = val;
+  savePlan();
+  // Si cambia estado o fechas puede afectar al orden / filtro de año
+  if (field === 'status' || field === 'dueDate' || field === 'closeDate'){
+    renderPlanYearFilter();
+    renderPlanTable();
+  }
+}
+
+function addPlanAction(){
+  const a = newAction();
+  // Si estamos filtrando por un año, poner fecha objetivo al 1-ene de ese año
+  if (planFilterYear !== 'all' && /^\d{4}$/.test(planFilterYear)){
+    a.dueDate = planFilterYear + '-01-01';
+  }
+  PLAN.unshift(a);
+  savePlan();
+  renderPlanYearFilter();
+  renderPlanTable();
+}
+
+/* --- Exportación a Excel ---
+   Genera un .xls en formato HTML (Excel lo abre nativamente). Mantiene las
+   columnas y datos filtrados actualmente a la vista. */
+function exportPlanToExcel(){
+  const rows = filteredPlan();
+  const headers = ['Nº','Descripción del problema','Acción','Responsable','Fecha objetivo','Fecha de cierre','Estado'];
+  const trs = rows.map(a => {
+    const cells = [
+      a.num,
+      a.desc || '',
+      a.action || '',
+      a.responsible || '',
+      a.dueDate || '',
+      a.closeDate || '',
+      a.status || ''
+    ].map(c => `<td>${esc(c)}</td>`).join('');
+    return `<tr>${cells}</tr>`;
+  }).join('');
+  const titleBits = ['Plan de acción · GAP Repuestos'];
+  if (planFilterYear !== 'all') titleBits.push('Año ' + planFilterYear);
+  if (planFilterStatus !== 'all') titleBits.push('Estado: ' + planFilterStatus);
+  const title = titleBits.join(' · ');
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8">
+<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+<x:Name>Plan de acción</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml>
+<style>
+  table{border-collapse:collapse; font-family:Calibri, Arial, sans-serif; font-size:11pt;}
+  th{background:#2B2B2B; color:#fff; padding:6px 8px; text-align:left; border:1px solid #999;}
+  td{padding:5px 8px; border:1px solid #CCC; vertical-align:top;}
+  tr.title td{background:#F4D08C; color:#5C4210; font-weight:bold; font-size:13pt; padding:8px;}
+</style></head>
+<body><table>
+<tr class="title"><td colspan="${headers.length}">${esc(title)}</td></tr>
+<tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>
+${trs}
+</table></body></html>`;
+  const blob = new Blob(['﻿' + html], { type:'application/vnd.ms-excel;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const yearLbl = planFilterYear === 'all' ? 'todos' : planFilterYear;
+  a.download = `Plan_accion_GAP_Repuestos_${yearLbl}.xls`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 500);
+}
+
+/* ====================================================================
+   ACTA TOP 5
+   - 4 columnas: Fecha · Punto de mejora/denuncia/motivo · PDA · V.ºB.º supervisor
+   - Persistencia independiente
+   - Filtro por año y por estado de V.ºB.º
+   - Exportar a Excel
+   ==================================================================== */
+const CLAVES_TOP5 = ['GAP_Code','Id'];
+let TOP5 = [];
+let top5FilterYear = 'all';
+let top5FilterVb   = 'all';
+
+function registrosTop5(){
+  const gap = gapActual();
+  return TOP5.map(r => ({ GAP_Code: gap, Id: r.id, Date: fechaBc(r.date),
+    Improvement_Point: txt(r.punto, 250), PDA: txt(r.pda, 250), Supervisor_Approval: !!r.vb }));
+}
+async function cargarTop5(){
+  const gap = gapActual();
+  const regs = await Repo.leer('top5', gap);
+  if (gap !== gapActual()) return;
+  TOP5 = regs.map(r => ({ id: r.Id, date: fechaHtml(r.Date), punto: r.Improvement_Point, pda: r.PDA, vb: r.Supervisor_Approval }));
+  Repo.fijar('top5', gap, registrosTop5(), CLAVES_TOP5);
+}
+function saveTop5(){
+  Repo.sincronizar('top5', gapActual(), registrosTop5(), CLAVES_TOP5);
+}
+function newTop5Row(){
+  return {
+    id: 't_' + Date.now() + '_' + Math.random().toString(36).slice(2,7),
+    date: '', punto: '', pda: '', vb: false
+  };
+}
+
+function top5Years(){
+  const set = new Set();
+  TOP5.forEach(r => {
+    if (r.date && /^\d{4}-\d{2}-\d{2}$/.test(r.date)) set.add(r.date.slice(0,4));
+  });
+  set.add(String(YEAR));
+  return Array.from(set).sort((a,b)=>b.localeCompare(a));
+}
+function renderTop5YearFilter(){
+  const sel = document.getElementById('top5YearFilter');
+  const prev = sel.value || 'all';
+  const years = top5Years();
+  sel.innerHTML = '<option value="all">Todos</option>' + years.map(y=>`<option value="${y}">${y}</option>`).join('');
+  sel.value = Array.from(sel.options).some(o => o.value === prev) ? prev : 'all';
+  top5FilterYear = sel.value;
+}
+function filteredTop5(){
+  return TOP5.filter(r => {
+    if (top5FilterYear !== 'all'){
+      if (!r.date || !/^\d{4}-\d{2}-\d{2}$/.test(r.date) || r.date.slice(0,4) !== top5FilterYear) return false;
+    }
+    if (top5FilterVb === 'done'    && !r.vb) return false;
+    if (top5FilterVb === 'pending' &&  r.vb) return false;
+    return true;
+  });
+}
+
+function renderTop5Table(){
+  const tbody = document.getElementById('top5Body');
+  const list = filteredTop5();
+  if (!list.length){
+    tbody.innerHTML = `<tr><td colspan="5"><div class="plan-empty">Sin filas registradas con los filtros actuales. Usa <b>+ Añadir fila</b> para empezar.</div></td></tr>`;
+  } else {
+    // Pendientes primero, dentro por fecha descendente (más recientes arriba)
+    const sorted = [...list].sort((a,b)=>{
+      if (a.vb !== b.vb) return a.vb ? 1 : -1;
+      if (a.date && b.date) return b.date.localeCompare(a.date);
+      if (a.date) return -1;
+      if (b.date) return 1;
+      return 0;
+    });
+    tbody.innerHTML = sorted.map(renderTop5Row).join('');
+    attachTop5Listeners();
+  }
+  const total = TOP5.length;
+  const shown = list.length;
+  const done  = TOP5.filter(r=>r.vb).length;
+  const pend  = total - done;
+  document.getElementById('top5CountInfo').innerHTML =
+    `Mostrando <b>${shown}</b> de <b>${total}</b> · Validados: <b>${done}</b> · Pendientes: <b>${pend}</b>`;
+}
+function renderTop5Row(r){
+  const rowCls = r.vb ? 'row-vb' : '';
+  const vbCls  = r.vb ? 'vb-check checked' : 'vb-check';
+  return `
+    <tr class="${rowCls}" data-id="${r.id}">
+      <td><input class="cell-input" type="date" data-field="date" value="${esc(r.date)}"></td>
+      <td><textarea class="cell-input" data-field="punto" rows="1" placeholder="Punto de mejora, denuncia o motivo…">${esc(r.punto)}</textarea></td>
+      <td><textarea class="cell-input" data-field="pda" rows="1" placeholder="PDA…">${esc(r.pda)}</textarea></td>
+      <td class="vb-cell"><span class="${vbCls}" data-field="vb" role="checkbox" aria-checked="${r.vb}" title="V.ºB.º del supervisor"></span></td>
+      <td class="actions"><button class="btn-del" title="Eliminar fila" data-action="del">×</button></td>
+    </tr>`;
+}
+function attachTop5Listeners(){
+  const tbody = document.getElementById('top5Body');
+  tbody.querySelectorAll('[data-field]:not(.vb-check)').forEach(el => {
+    el.addEventListener('change', onTop5Change);
+    if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type === 'text')){
+      el.addEventListener('blur', onTop5Change);
+    }
+  });
+  tbody.querySelectorAll('.vb-check').forEach(el => {
+    el.addEventListener('click', e => {
+      const tr = e.currentTarget.closest('tr');
+      const r = TOP5.find(x => x.id === tr.dataset.id);
+      if (!r) return;
+      r.vb = !r.vb;
+      saveTop5();
+      renderTop5Table();
+    });
+  });
+  tbody.querySelectorAll('button[data-action="del"]').forEach(b => {
+    b.addEventListener('click', e => {
+      const tr = e.currentTarget.closest('tr');
+      const id = tr.dataset.id;
+      const r = TOP5.find(x => x.id === id);
+      const label = r && r.punto ? `"${r.punto.slice(0,40)}…"` : 'esta fila';
+      if (!confirm('¿Eliminar ' + label + '?')) return;
+      TOP5 = TOP5.filter(x => x.id !== id);
+      saveTop5();
+      renderTop5YearFilter();
+      renderTop5Table();
+    });
+  });
+}
+function onTop5Change(e){
+  const el = e.currentTarget;
+  const tr = el.closest('tr');
+  const r = TOP5.find(x => x.id === tr.dataset.id);
+  if (!r) return;
+  const field = el.dataset.field;
+  const val = el.value;
+  if (r[field] === val) return;
+  r[field] = val;
+  saveTop5();
+  if (field === 'date'){
+    renderTop5YearFilter();
+    renderTop5Table();
+  }
+}
+function addTop5Row(){
+  const r = newTop5Row();
+  // Si estamos filtrando por un año concreto, precargar fecha de hoy si cae ese año; si no, el 1 de enero
+  if (top5FilterYear !== 'all' && /^\d{4}$/.test(top5FilterYear)){
+    const y = top5FilterYear;
+    r.date = (TODAY_ISO.slice(0,4) === y) ? TODAY_ISO : (y + '-01-01');
+  } else {
+    r.date = TODAY_ISO;
+  }
+  TOP5.unshift(r);
+  saveTop5();
+  renderTop5YearFilter();
+  renderTop5Table();
+}
+function exportTop5ToExcel(){
+  const rows = filteredTop5();
+  const headers = ['Fecha','Punto de Mejora, Denuncia, motivo de incumplimiento','PDA','V.ºB.º del supervisor'];
+  const trs = rows.map(r => {
+    const fecha = r.date ? r.date.split('-').reverse().join('/') : '';
+    const cells = [ fecha, r.punto || '', r.pda || '', r.vb ? '✓' : '' ]
+      .map(c => `<td>${esc(c)}</td>`).join('');
+    return `<tr>${cells}</tr>`;
+  }).join('');
+  const titleBits = ['Acta TOP 5 · GAP Repuestos'];
+  if (top5FilterYear !== 'all') titleBits.push('Año ' + top5FilterYear);
+  if (top5FilterVb === 'done')    titleBits.push('V.ºB.º validados');
+  if (top5FilterVb === 'pending') titleBits.push('V.ºB.º pendientes');
+  const title = titleBits.join(' · ');
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8">
+<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+<x:Name>Acta TOP 5</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml>
+<style>
+  table{border-collapse:collapse; font-family:Calibri, Arial, sans-serif; font-size:11pt;}
+  th{background:#2B2B2B; color:#fff; padding:6px 8px; text-align:left; border:1px solid #999;}
+  td{padding:5px 8px; border:1px solid #CCC; vertical-align:top;}
+  tr.title td{background:#F4D08C; color:#5C4210; font-weight:bold; font-size:13pt; padding:8px;}
+  td.vb{text-align:center; font-weight:bold; color:#2E9E5B; font-size:14pt;}
+</style></head>
+<body><table>
+<tr class="title"><td colspan="${headers.length}">${esc(title)}</td></tr>
+<tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>
+${trs}
+</table></body></html>`;
+  const blob = new Blob(['﻿' + html], { type:'application/vnd.ms-excel;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const yearLbl = top5FilterYear === 'all' ? 'todos' : top5FilterYear;
+  a.download = `Acta_TOP5_GAP_Repuestos_${yearLbl}.xls`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 500);
+}
+
+/* ====================================================================
+   RUTINA DEL SUPERVISOR (checklist diario + hallazgos)
+   - Datos: RUTINA[iso] = { checks:{key:{status:'ok|bad', notes}}, findings:[...] }
+   - L–V. Hallazgos con acción correctiva y estado abierto/cerrado.
+   ==================================================================== */
+// Puntos del checklist: en dashboard.config.js
+const CHECKLIST_ITEMS = CFG.checklist;
+const CHECKLIST_BY_KEY = Object.fromEntries(CHECKLIST_ITEMS.map(c => [c.key, c]));
+
+let RUTINA = {};
+let rutinaSelectedDate = TODAY_ISO; // "YYYY-MM-DD"
+let rutinaHistMonth = Math.min(TODAY.getMonth(), 11);
+
+/* BC: DashRoutineCheck (GAP, fecha, punto) y DashRoutineFinding (GAP, id).
+   Un punto sin marcar y sin notas no se guarda. */
+const CLAVES_CHECKS = ['GAP_Code','Date','Check_Key'];
+const CLAVES_HALLAZGOS = ['GAP_Code','Id'];
+
+function registrosChecks(){
+  const gap = gapActual();
+  const out = [];
+  Object.entries(RUTINA).forEach(([iso, day]) => Object.entries(day.checks || {}).forEach(([key, c]) => {
+    if (c && (c.status || c.notes))
+      out.push({ GAP_Code: gap, Date: iso, Check_Key: key, Status: c.status || '', Notes: txt(c.notes, 250) });
+  }));
+  return out;
+}
+function registrosHallazgos(){
+  const gap = gapActual();
+  const out = [];
+  Object.entries(RUTINA).forEach(([iso, day]) => (day.findings || []).forEach(f => {
+    out.push({ GAP_Code: gap, Id: f.id, Date: iso, Check_Key: f.checkKey || 'otros',
+      Description: txt(f.desc, 250), Action: txt(f.action, 250), Status: f.status === 'cerrado' ? 'Closed' : 'Open',
+      Opened_Date: fechaBc(f.openedDate), Close_Date: fechaBc(f.closeDate) });
+  }));
+  return out;
+}
+async function cargarRutina(){
+  const gap = gapActual();
+  const [checks, hallazgos] = await Promise.all([Repo.leer('checks', gap), Repo.leer('hallazgos', gap)]);
+  if (gap !== gapActual()) return;
+  const r = {};
+  const dia = iso => r[iso] || (r[iso] = { checks:{}, findings:[] });
+  checks.forEach(c => { dia(c.Date).checks[c.Check_Key] = { status: c.Status || null, notes: c.Notes || '' }; });
+  // Los más recientes primero, como al añadirlos
+  hallazgos.sort((a, b) => String(b.Created_At).localeCompare(String(a.Created_At))).forEach(h => {
+    dia(h.Date).findings.push({ id: h.Id, checkKey: h.Check_Key, desc: h.Description, action: h.Action,
+      status: h.Status === 'Closed' ? 'cerrado' : 'abierto',
+      openedDate: fechaHtml(h.Opened_Date), closeDate: fechaHtml(h.Close_Date) });
+  });
+  RUTINA = r;
+  Repo.fijar('checks', gap, registrosChecks(), CLAVES_CHECKS);
+  Repo.fijar('hallazgos', gap, registrosHallazgos(), CLAVES_HALLAZGOS);
+}
+function saveRutina(){
+  const gap = gapActual();
+  Repo.sincronizar('checks', gap, registrosChecks(), CLAVES_CHECKS);
+  Repo.sincronizar('hallazgos', gap, registrosHallazgos(), CLAVES_HALLAZGOS);
+}
+function ensureDay(iso){
+  if (!RUTINA[iso]){
+    RUTINA[iso] = { checks:{}, findings:[] };
+  }
+  CHECKLIST_ITEMS.forEach(c => {
+    if (!RUTINA[iso].checks[c.key]) RUTINA[iso].checks[c.key] = { status:null, notes:'' };
+  });
+  if (!Array.isArray(RUTINA[iso].findings)) RUTINA[iso].findings = [];
+  return RUTINA[iso];
+}
+
+function isWeekdayIso(iso){
+  const d = parseIso(iso);
+  const w = d.getUTCDay();
+  return w !== 0 && w !== 6; // 1..5 = L..V
+}
+function dayStatusIso(iso){
+  // Devuelve: 'futuro' | 'weekend' | 'ok' | 'bad' | 'incompleta' | 'empty'
+  if (iso > TODAY_ISO) return 'futuro';
+  if (!isWeekdayIso(iso)) return 'weekend';
+  const d = RUTINA[iso];
+  if (!d) return 'incompleta';
+  const findings = Array.isArray(d.findings) ? d.findings : [];
+  const anyOpen = findings.some(f => f.status === 'abierto');
+  const anyBadCheck = CHECKLIST_ITEMS.some(c => (d.checks && d.checks[c.key] && d.checks[c.key].status === 'bad'));
+  if (anyOpen || anyBadCheck) return 'bad';
+  const allMarked = CHECKLIST_ITEMS.every(c => d.checks && d.checks[c.key] && d.checks[c.key].status);
+  return allMarked ? 'ok' : 'incompleta';
+}
+
+function fmtRutinaWeekdayLong(iso){
+  const s = parseIso(iso).toLocaleDateString('es-ES', { weekday:'long', timeZone:'UTC' });
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+function fmtRutinaDateLong(iso){
+  return parseIso(iso).toLocaleDateString('es-ES', { day:'2-digit', month:'long', year:'numeric', timeZone:'UTC' });
+}
+
+function renderRutinaHeader(){
+  document.getElementById('rutDate').value = rutinaSelectedDate;
+  document.getElementById('rutWeekday').textContent = fmtRutinaWeekdayLong(rutinaSelectedDate);
+  document.getElementById('rutWeekInfo').textContent = fmtRutinaDateLong(rutinaSelectedDate) + ' · Semana ' + weekOfIso(rutinaSelectedDate);
+  const status = dayStatusIso(rutinaSelectedDate);
+  const chip = document.getElementById('rutStatusChip');
+  chip.className = 'rut-status';
+  if (status === 'ok')          { chip.classList.add('todo-ok');       chip.textContent = '✓ Rutina completa'; }
+  else if (status === 'bad')    { chip.classList.add('con-hallazgos'); chip.textContent = '⚠ Con hallazgos abiertos'; }
+  else if (status === 'weekend'){ chip.classList.add('weekend');       chip.textContent = 'Fin de semana'; }
+  else if (status === 'futuro') { chip.classList.add('futuro');        chip.textContent = 'Fecha futura'; }
+  else                          { chip.classList.add('incompleta');    chip.textContent = 'Rutina pendiente'; }
+}
+
+function renderChecklist(){
+  const wrap = document.getElementById('checklistWrap');
+  const day = ensureDay(rutinaSelectedDate);
+  wrap.innerHTML = CHECKLIST_ITEMS.map(c => {
+    const st = day.checks[c.key].status; // 'ok' | 'bad' | null
+    const cardCls = st === 'ok' ? 'state-ok' : (st === 'bad' ? 'state-bad' : '');
+    const nFind = day.findings.filter(f => f.checkKey === c.key).length;
+    const countBadge = nFind ? `<span class="ck-count">${nFind} hallazgo${nFind>1?'s':''}</span>` : '';
+    return `
+      <div class="checklist-item ${cardCls}" data-key="${c.key}">
+        <div class="ck-ico">${c.icon}</div>
+        <div class="ck-text">
+          <div class="ck-title">${esc(c.title)} ${countBadge}</div>
+          <div class="ck-sub">${esc(c.sub)}</div>
+        </div>
+        <div class="ck-actions">
+          <button class="ck-btn ok ${st==='ok'?'active':''}" data-key="${c.key}" data-set="ok">✓ OK</button>
+          <button class="ck-btn bad ${st==='bad'?'active':''}" data-key="${c.key}" data-set="bad">⚠ Hallazgo</button>
+        </div>
+      </div>`;
+  }).join('');
+  wrap.querySelectorAll('.ck-btn').forEach(b => b.addEventListener('click', onChecklistClick));
+}
+function onChecklistClick(e){
+  const b = e.currentTarget;
+  const key = b.dataset.key;
+  const set = b.dataset.set;
+  const day = ensureDay(rutinaSelectedDate);
+  const prev = day.checks[key].status;
+  const next = (prev === set) ? null : set; // toggle
+  day.checks[key].status = next;
+  // Si pasa a "bad" y no hay hallazgo asociado, abrir uno vacío
+  if (next === 'bad'){
+    const anyLinked = day.findings.some(f => f.checkKey === key);
+    if (!anyLinked) addFinding(key);
+    else { saveRutina(); renderChecklist(); renderRutinaHeader(); renderHistCalendar(); return; }
+  }
+  saveRutina();
+  renderChecklist();
+  renderFindings();
+  renderRutinaHeader();
+  renderHistCalendar();
+}
+
+function renderFindings(){
+  const wrap = document.getElementById('findingsWrap');
+  const day = ensureDay(rutinaSelectedDate);
+  if (!day.findings.length){
+    wrap.innerHTML = `<div class="findings-empty">Sin hallazgos registrados para este día. Marca un punto del checklist como <b>⚠ Hallazgo</b> o usa <b>+ Añadir hallazgo</b>.</div>`;
+    return;
+  }
+  // Orden: abiertos primero
+  const sorted = [...day.findings].sort((a,b) => {
+    if ((a.status==='cerrado') !== (b.status==='cerrado')) return a.status==='cerrado' ? 1 : -1;
+    return 0;
+  });
+  wrap.innerHTML = sorted.map((f, idx) => renderFindingCard(f, idx+1)).join('');
+  wrap.querySelectorAll('.finding-card [data-field]').forEach(el => {
+    el.addEventListener('change', onFindingChange);
+    if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && el.type === 'text')){
+      el.addEventListener('blur', onFindingChange);
+    }
+  });
+  wrap.querySelectorAll('.btn-del[data-action="del-finding"]').forEach(b => {
+    b.addEventListener('click', e => {
+      const id = e.currentTarget.closest('.finding-card').dataset.id;
+      if (!confirm('¿Eliminar este hallazgo?')) return;
+      const day = ensureDay(rutinaSelectedDate);
+      day.findings = day.findings.filter(x => x.id !== id);
+      saveRutina();
+      renderChecklist();
+      renderFindings();
+      renderRutinaHeader();
+      renderHistCalendar();
+    });
+  });
+}
+function renderFindingCard(f, num){
+  const closed = f.status === 'cerrado';
+  const tagCls = CHECKLIST_BY_KEY[f.checkKey] ? f.checkKey : 'otros';
+  const tagLabel = CHECKLIST_BY_KEY[f.checkKey] ? CHECKLIST_BY_KEY[f.checkKey].title.replace(/^Revisar (que )?/i,'').replace(/^./, c=>c.toUpperCase()) : 'Otros';
+  const statusOpts = ['abierto','cerrado'].map(s => `<option value="${s}"${f.status===s?' selected':''}>${s==='abierto'?'Abierto':'Cerrado'}</option>`).join('');
+  const catOpts = [
+    ['indicadores','Indicadores'],
+    ['actas','Actas TOP 5'],
+    ['planes','Planes de acción'],
+    ['limpieza','Limpieza / orden'],
+    ['otros','Otros']
+  ].map(([v,l]) => `<option value="${v}"${f.checkKey===v?' selected':''}>${l}</option>`).join('');
+  return `
+    <div class="finding-card ${closed?'estado-cerrado':''}" data-id="${f.id}">
+      <div class="f-main">
+        <div class="f-head">
+          <span class="f-num">#${num}</span>
+          <span class="f-tag ${tagCls}">${esc(tagLabel)}</span>
+          <select data-field="checkKey" style="margin-left:auto; max-width:180px;">${catOpts}</select>
+        </div>
+        <div>
+          <label>Descripción del hallazgo</label>
+          <textarea data-field="desc" rows="2" placeholder="Qué se ha detectado…">${esc(f.desc || '')}</textarea>
+        </div>
+        <div>
+          <label>Acción correctiva</label>
+          <textarea data-field="action" rows="2" placeholder="Qué va a hacer el supervisor…">${esc(f.action || '')}</textarea>
+        </div>
+      </div>
+      <div class="f-side">
+        <div>
+          <label>Estado</label>
+          <select data-field="status">${statusOpts}</select>
+        </div>
+        <div>
+          <label>Fecha de cierre</label>
+          <input type="date" data-field="closeDate" value="${esc(f.closeDate || '')}">
+        </div>
+        <button class="btn-del" data-action="del-finding" title="Eliminar">Eliminar</button>
+      </div>
+    </div>`;
+}
+function onFindingChange(e){
+  const el = e.currentTarget;
+  const id = el.closest('.finding-card').dataset.id;
+  const field = el.dataset.field;
+  const day = ensureDay(rutinaSelectedDate);
+  const f = day.findings.find(x => x.id === id);
+  if (!f) return;
+  const prev = f[field];
+  const val = el.value;
+  if (prev === val) return;
+  f[field] = val;
+  // Si pasa a cerrado y no hay fecha de cierre, poner hoy
+  if (field === 'status' && val === 'cerrado' && !f.closeDate) f.closeDate = TODAY_ISO;
+  // Si pasa a abierto, limpiar la fecha de cierre (opcional)
+  if (field === 'status' && val === 'abierto') f.closeDate = '';
+  saveRutina();
+  renderChecklist();   // puede cambiar el badge de recuento
+  renderFindings();
+  renderRutinaHeader();
+  renderHistCalendar();
+}
+
+function addFinding(checkKey){
+  const day = ensureDay(rutinaSelectedDate);
+  const f = {
+    id: 'f_' + Date.now() + '_' + Math.random().toString(36).slice(2,7),
+    checkKey: checkKey || 'otros',
+    desc:'', action:'',
+    status:'abierto',
+    openedDate: rutinaSelectedDate,
+    closeDate:''
+  };
+  day.findings.unshift(f);
+  saveRutina();
+  renderChecklist();
+  renderFindings();
+  renderRutinaHeader();
+  renderHistCalendar();
+}
+
+function markAllOk(){
+  const day = ensureDay(rutinaSelectedDate);
+  CHECKLIST_ITEMS.forEach(c => {
+    if (day.checks[c.key].status !== 'bad') day.checks[c.key].status = 'ok';
+  });
+  saveRutina();
+  renderChecklist();
+  renderRutinaHeader();
+  renderHistCalendar();
+}
+
+function renderHistCalendar(){
+  const sel = document.getElementById('rutHistMonth');
+  if (sel && !sel.options.length){
+    sel.innerHTML = MONTH_NAMES.map((m,i)=>`<option value="${i}"${i===rutinaHistMonth?' selected':''}>${m} ${YEAR}</option>`).join('');
+  }
+  const wrap = document.getElementById('rutHistCalendar');
+  const monthStart = new Date(Date.UTC(YEAR, rutinaHistMonth, 1));
+  const daysIn = new Date(Date.UTC(YEAR, rutinaHistMonth+1, 0)).getUTCDate();
+  const firstDoW = (monthStart.getUTCDay()+6) % 7;
+  const hdrs = ['L','M','X','J','V','S','D'].map(x=>`<span>${x}</span>`).join('');
+  let cells = '';
+  for (let i=0;i<firstDoW;i++) cells += `<div class="d-cell empty"></div>`;
+  let countOk=0, countBad=0, countInc=0, countOpenFindings=0;
+  for (let d=1;d<=daysIn;d++){
+    const iso = `${YEAR}-${String(rutinaHistMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const status = dayStatusIso(iso);
+    const dayRec = RUTINA[iso];
+    const openN = dayRec ? (dayRec.findings||[]).filter(f=>f.status==='abierto').length : 0;
+    const totalN = dayRec ? (dayRec.findings||[]).length : 0;
+    if (status === 'ok') countOk++;
+    if (status === 'bad') { countBad++; countOpenFindings += openN; }
+    if (status === 'incompleta') countInc++;
+    const selCls = iso === rutinaSelectedDate ? ' selected' : '';
+    const countTag = totalN ? `<span class="d-count">${totalN}</span>` : '';
+    cells += `<div class="d-cell ${status}${selCls}" data-iso="${iso}" title="${fmtRutinaDateLong(iso)}">${d}${countTag}</div>`;
+  }
+  wrap.innerHTML = `<div class="cal-hdrs">${hdrs}</div><div class="cal-grid">${cells}</div>`;
+  wrap.querySelectorAll('.d-cell[data-iso]').forEach(c => c.addEventListener('click', () => {
+    rutinaSelectedDate = c.dataset.iso;
+    renderRutinaHeader();
+    renderChecklist();
+    renderFindings();
+    renderHistCalendar();
+  }));
+  // Resumen
+  const summary = document.getElementById('rutHistSummary');
+  summary.innerHTML =
+    `<span><b>${countOk}</b> días OK</span>` +
+    `<span><b>${countBad}</b> días con hallazgos (${countOpenFindings} abiertos)</span>` +
+    `<span><b>${countInc}</b> laborables sin completar</span>`;
+}
+
+function changeRutinaDate(delta){
+  const d = parseIso(rutinaSelectedDate);
+  d.setUTCDate(d.getUTCDate() + delta);
+  rutinaSelectedDate = d.toISOString().slice(0,10);
+  // Si cambia el mes del día visible, alinear el calendario
+  const m = parseIso(rutinaSelectedDate).getUTCMonth();
+  if (m !== rutinaHistMonth){
+    rutinaHistMonth = m;
+    const sel = document.getElementById('rutHistMonth');
+    if (sel) sel.innerHTML = ''; // forzará re-pintar en renderHistCalendar
+  }
+  renderRutinaHeader();
+  renderChecklist();
+  renderFindings();
+  renderHistCalendar();
+}
+
+function exportRutinaHistToExcel(){
+  const rows = [];
+  Object.keys(RUTINA).sort().forEach(iso => {
+    const day = RUTINA[iso];
+    if (!day) return;
+    const checks = day.checks || {};
+    const findings = day.findings || [];
+    const checkCols = CHECKLIST_ITEMS.map(c => {
+      const st = (checks[c.key] && checks[c.key].status) || '';
+      return st === 'ok' ? 'OK' : (st === 'bad' ? 'HALLAZGO' : '');
+    });
+    if (!findings.length){
+      rows.push([iso, fmtRutinaWeekdayLong(iso), ...checkCols, '', '', '', '', '', '']);
+    } else {
+      findings.forEach((f,idx) => {
+        const label = CHECKLIST_BY_KEY[f.checkKey] ? CHECKLIST_BY_KEY[f.checkKey].title : 'Otros';
+        rows.push([iso, fmtRutinaWeekdayLong(iso), ...checkCols,
+          idx+1, label, f.desc || '', f.action || '', f.status || '', f.closeDate || '']);
+      });
+    }
+  });
+  const headers = ['Fecha','Día',
+    ...CHECKLIST_ITEMS.map(c => c.title),
+    '# Hallazgo','Categoría','Descripción','Acción correctiva','Estado','Fecha cierre'];
+  const trs = rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('');
+  const title = 'Rutina del supervisor · ' + (PROFILES[CURRENT_PROFILE] ? PROFILES[CURRENT_PROFILE].tag : '');
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8">
+<xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+<x:Name>Rutina</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+</x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml>
+<style>
+  table{border-collapse:collapse; font-family:Calibri, Arial, sans-serif; font-size:11pt;}
+  th{background:#2B2B2B; color:#fff; padding:6px 8px; text-align:left; border:1px solid #999;}
+  td{padding:5px 8px; border:1px solid #CCC; vertical-align:top;}
+  tr.title td{background:#F4D08C; color:#5C4210; font-weight:bold; font-size:13pt; padding:8px;}
+</style></head>
+<body><table>
+<tr class="title"><td colspan="${headers.length}">${esc(title)}</td></tr>
+<tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>
+${trs}
+</table></body></html>`;
+  const blob = new Blob(['﻿' + html], { type:'application/vnd.ms-excel;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Rutina_supervisor_${CURRENT_PROFILE}.xls`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(()=> URL.revokeObjectURL(url), 500);
+}
+
+function renderRutinaAll(){
+  renderRutinaHeader();
+  renderChecklist();
+  renderFindings();
+  renderHistCalendar();
+}
+
+(function setupCalTooltip(){
+  const tip = document.getElementById('calTip');
+  function show(cell){
+    const txt = cell.getAttribute('data-tip');
+    if (!txt) return;
+    tip.textContent = txt;
+    const r = cell.getBoundingClientRect();
+    tip.style.left = (r.left + r.width/2) + 'px';
+    tip.style.top  = (r.bottom + 8) + 'px';
+    tip.classList.add('show');
+  }
+  function hide(){ tip.classList.remove('show'); }
+  document.addEventListener('mouseover', e=>{
+    const c = e.target.closest('.mini-cal .cell[data-tip]');
+    if (c) show(c);
+  });
+  document.addEventListener('mouseout', e=>{
+    const c = e.target.closest('.mini-cal .cell');
+    if (c) hide();
+  });
+  document.addEventListener('scroll', hide, true);
+})();
+
+
+/* ====================================================================
+   PERFILES GAP (REPUESTOS / EXPRIMIDORAS)
+   ==================================================================== */
+// Perfiles de dashboard.config.js: GAP en BC, KPIs, secciones y colores
+const PROFILES = CFG.perfiles;
+
+/* Formato de valor adaptado al tipo de KPI (porcentaje vs entero vs decimal) */
+function fmtNumKpi(v, kpi){
+  if (v === null || typeof v !== 'number') return '—';
+  if (kpi && kpi.unit === '%') return (v*100).toFixed(1).replace('.',',') + '%';
+  if (Number.isInteger(v)) return String(v);
+  return v.toFixed(2).replace('.',',');
+}
+
+async function applyProfile(name){
+  const p = PROFILES[name];
+  if (!p) return;
+  CURRENT_PROFILE = name;
+  KPIS = p.kpis;
+  KPI_BY_CODE = Object.fromEntries(KPIS.map(k => [k.code, k]));
+  SECTIONS = p.sections;
+  // Se vacía todo hasta leer de BC los datos del GAP elegido
+  DATA = cloneHist(); PLAN = []; TOP5 = []; RUTINA = {};
+  // Actualiza header
+  const tag = document.getElementById('gapTag');
+  if (tag){
+    tag.textContent = p.tag;
+    tag.style.background = p.tagBg;
+    tag.style.color = p.tagFg;
+  }
+  await cargarGap();
+}
+
+// Lee de BC todos los datos del GAP activo
+async function cargarGap(){
+  Repo.aviso('Cargando datos de Business Central…');
+  try{
+    await Promise.all([cargarDatos(), cargarPlan(), cargarTop5(), cargarRutina()]);
+    Repo.aviso(null);
+  }catch(e){
+    Repo.aviso('No se han podido leer los datos de Business Central: ' + e.message, 'error');
+  }
+}
+
+/* ====================================================================
+   SAFETY (Gemba Walks semanal + Safety Pyramid mensual)
+   - IndexedDB store 'safety': { id, kind:'gw'|'sp', year, period, name, type, size, blob, uploadedAt }
+   - id = `${kind}:${year}:${period}` → sobreescribe al reemplazar
+   ==================================================================== */
+let safetyGwYear = YEAR, safetySpYear = YEAR;
+let safetyPendingUpload = null; // { kind, year, period, currentId? }
+
+const SAFETY_WEEKS = Array.from({length:53}, (_,i) => i+1);
+const SAFETY_MONTHS = Array.from({length:12}, (_,i) => i); // 0..11
+
+async function safetyAll(kind, year){
+  const os = await docsTx('safety', 'readonly');
+  const all = await docsPromisify(os.getAll());
+  // Filtramos por perfil activo, kind y año
+  return all.filter(r => r.kind === kind && r.year === year && (r.profile || 'repuestos') === CURRENT_PROFILE);
+}
+async function safetyGet(id){
+  const os = await docsTx('safety', 'readonly');
+  return docsPromisify(os.get(id));
+}
+async function safetyPut(rec){
+  const os = await docsTx('safety', 'readwrite');
+  return docsPromisify(os.put(rec));
+}
+async function safetyDel(id){
+  const os = await docsTx('safety', 'readwrite');
+  return docsPromisify(os.delete(id));
+}
+function safetyId(kind, year, period){ return (CURRENT_PROFILE || 'repuestos') + ':' + kind + ':' + year + ':' + period; }
+function safetyIsPdf(f){
+  return (f.type && f.type.includes('pdf')) || (f.name || '').toLowerCase().endsWith('.pdf');
+}
+
+function weekDateRange(year, w){
+  // Lunes de la semana ISO w: Jueves de la semana 1 cae en 4 de enero
+  const jan4 = new Date(Date.UTC(year, 0, 4));
+  const jan4Dow = (jan4.getUTCDay()+6) % 7; // 0=lunes
+  const week1Mon = new Date(jan4);
+  week1Mon.setUTCDate(jan4.getUTCDate() - jan4Dow);
+  const start = new Date(week1Mon);
+  start.setUTCDate(week1Mon.getUTCDate() + (w-1)*7);
+  const end = new Date(start);
+  end.setUTCDate(start.getUTCDate() + 4); // viernes
+  const fmt = d => String(d.getUTCDate()).padStart(2,'0') + '/' + String(d.getUTCMonth()+1).padStart(2,'0');
+  return fmt(start) + '–' + fmt(end);
+}
+
+async function openSafetyTab(){
+  await docsOpenDB();
+  // Rellenar selectores de año si están vacíos
+  const years = [YEAR-1, YEAR, YEAR+1];
+  const selGw = document.getElementById('safetyGwYear');
+  const selSp = document.getElementById('safetySpYear');
+  if (selGw && !selGw.options.length){
+    selGw.innerHTML = years.map(y => `<option value="${y}"${y===YEAR?' selected':''}>${y}</option>`).join('');
+  }
+  if (selSp && !selSp.options.length){
+    selSp.innerHTML = years.map(y => `<option value="${y}"${y===YEAR?' selected':''}>${y}</option>`).join('');
+  }
+  // Autoimportar el histórico embebido si lo hay (una sola vez por perfil)
+  await safetyAutoImportBootstrap();
+  await renderSafetyGw();
+  await renderSafetySp();
+}
+
+/* --- Auto-importación de SAFETY_BOOTSTRAP (si el fichero externo está disponible) --- */
+async function safetyAutoImportBootstrap(){
+  try{
+    if (typeof window.SAFETY_BOOTSTRAP === 'undefined') return;
+    const data = window.SAFETY_BOOTSTRAP;
+    if (!data || data.profile !== CURRENT_PROFILE) return;
+    const flagKey = 'safety-bootstrap-done:' + data.profile + ':' + (data.version || 'v1');
+    if (localStorage.getItem(flagKey)) return;
+    const year = data.year || YEAR;
+    let added = 0;
+    async function importOne(kind, period, item){
+      const id = safetyId(kind, year, period);
+      // No sobreescribas si ya hay algo
+      const existing = await safetyGet(id);
+      if (existing) return;
+      const bin = base64ToBlob(item.base64, item.type || 'application/octet-stream');
+      const rec = {
+        id, kind, year, period,
+        profile: CURRENT_PROFILE,
+        name: item.name,
+        type: bin.type,
+        size: bin.size,
+        blob: bin,
+        uploadedAt: Date.now()
+      };
+      await safetyPut(rec);
+      added++;
+    }
+    for (const g of (data.gw || [])) await importOne('gw', g.period, g);
+    for (const s of (data.sp || [])) await importOne('sp', s.period, s);
+    localStorage.setItem(flagKey, '1');
+    if (added > 0) console.log('Safety bootstrap: importados', added, 'documentos (' + CURRENT_PROFILE + ')');
+  } catch(e){ console.warn('Safety bootstrap error:', e); }
+}
+function base64ToBlob(b64, mime){
+  const byteString = atob(b64);
+  const len = byteString.length;
+  const buf = new Uint8Array(len);
+  for (let i=0; i<len; i++) buf[i] = byteString.charCodeAt(i);
+  return new Blob([buf], { type: mime });
+}
+async function renderSafetyGw(){
+  const grid = document.getElementById('gwGrid');
+  const list = await safetyAll('gw', safetyGwYear);
+  const byPeriod = Object.fromEntries(list.map(r => [r.period, r]));
+  const currentWeek = (safetyGwYear === YEAR) ? weekOfIso(TODAY_ISO) : -1;
+  let html = '';
+  SAFETY_WEEKS.forEach(w => {
+    const rec = byPeriod[w];
+    const curCls = w === currentWeek ? ' current' : '';
+    if (rec){
+      html += `
+        <div class="s-cell has-doc${curCls}" data-kind="gw" data-year="${safetyGwYear}" data-period="${w}" data-id="${esc(rec.id)}">
+          <button class="s-menu" data-act="menu" title="Opciones">⋮</button>
+          <div class="s-label">S${w}</div>
+          <div class="s-ico">${safetyIsPdf(rec) ? '📕' : '📘'}</div>
+          <div class="s-sub">${weekDateRange(safetyGwYear, w)}</div>
+        </div>`;
+    } else {
+      html += `
+        <div class="s-cell${curCls}" data-kind="gw" data-year="${safetyGwYear}" data-period="${w}">
+          <div class="s-label">S${w}</div>
+          <div class="s-plus">+</div>
+          <div class="s-sub">${weekDateRange(safetyGwYear, w)}</div>
+        </div>`;
+    }
+  });
+  grid.innerHTML = html;
+  const count = Object.keys(byPeriod).length;
+  document.getElementById('safetyGwInfo').textContent = `${count} de 53 semanas con documento`;
+  attachSafetyCellEvents(grid);
+}
+async function renderSafetySp(){
+  const grid = document.getElementById('spGrid');
+  const list = await safetyAll('sp', safetySpYear);
+  const byPeriod = Object.fromEntries(list.map(r => [r.period, r]));
+  const currentMonth = (safetySpYear === YEAR) ? TODAY.getMonth()+1 : -1;
+  let html = '';
+  SAFETY_MONTHS.forEach(mi => {
+    const m = mi+1;
+    const rec = byPeriod[m];
+    const curCls = m === currentMonth ? ' current' : '';
+    if (rec){
+      html += `
+        <div class="s-cell has-doc${curCls}" data-kind="sp" data-year="${safetySpYear}" data-period="${m}" data-id="${esc(rec.id)}">
+          <button class="s-menu" data-act="menu" title="Opciones">⋮</button>
+          <div class="s-label">${MONTH_NAMES[mi]}</div>
+          <div class="s-ico">${safetyIsPdf(rec) ? '📕' : '📘'}</div>
+          <div class="s-sub">${esc(rec.name)}</div>
+        </div>`;
+    } else {
+      html += `
+        <div class="s-cell${curCls}" data-kind="sp" data-year="${safetySpYear}" data-period="${m}">
+          <div class="s-label">${MONTH_NAMES[mi]}</div>
+          <div class="s-plus">+</div>
+          <div class="s-sub">Sin documento</div>
+        </div>`;
+    }
+  });
+  grid.innerHTML = html;
+  const count = Object.keys(byPeriod).length;
+  document.getElementById('safetySpInfo').textContent = `${count} de 12 meses con documento`;
+  attachSafetyCellEvents(grid);
+}
+function attachSafetyCellEvents(grid){
+  grid.querySelectorAll('.s-cell').forEach(cell => {
+    cell.addEventListener('click', e => {
+      // Cerrar cualquier popup antes
+      const openPop = document.querySelector('.s-pop');
+      if (openPop) openPop.remove();
+      if (e.target.closest('.s-menu')){
+        e.stopPropagation();
+        openSafetyMenu(cell);
+        return;
+      }
+      if (e.target.closest('.s-pop')) return;
+      const kind = cell.dataset.kind;
+      const year = parseInt(cell.dataset.year);
+      const period = parseInt(cell.dataset.period);
+      if (cell.classList.contains('has-doc')) safetyOpenDoc(cell.dataset.id);
+      else safetyRequestUpload(kind, year, period, null);
+    });
+  });
+}
+function openSafetyMenu(cell){
+  const pop = document.createElement('div');
+  pop.className = 's-pop';
+  pop.innerHTML = `
+    <button data-act="open">Abrir</button>
+    <button data-act="replace">Reemplazar</button>
+    <button data-act="delete" class="danger">Eliminar</button>`;
+  cell.appendChild(pop);
+  const onDoc = e => {
+    if (!pop.contains(e.target)){
+      pop.remove();
+      document.removeEventListener('click', onDoc, true);
+    }
+  };
+  setTimeout(() => document.addEventListener('click', onDoc, true), 0);
+  pop.querySelectorAll('button').forEach(b => b.addEventListener('click', async e => {
+    e.stopPropagation();
+    const act = b.dataset.act;
+    pop.remove();
+    document.removeEventListener('click', onDoc, true);
+    const id = cell.dataset.id;
+    const kind = cell.dataset.kind, year = parseInt(cell.dataset.year), period = parseInt(cell.dataset.period);
+    if (act === 'open') safetyOpenDoc(id);
+    else if (act === 'replace') safetyRequestUpload(kind, year, period, id);
+    else if (act === 'delete'){
+      if (!confirm('¿Eliminar el documento?')) return;
+      await safetyDel(id);
+      if (kind === 'gw') renderSafetyGw(); else renderSafetySp();
+      // Si estaba abierto, cerrar
+      const panel = document.getElementById('safetyViewerPanel');
+      if (panel && panel.dataset.docId === id) safetyCloseViewer();
+    }
+  }));
+}
+function safetyRequestUpload(kind, year, period, currentId){
+  safetyPendingUpload = { kind, year, period, currentId };
+  document.getElementById('safetyFileInput').click();
+}
+async function safetyOnFileSelected(ev){
+  const file = ev.target.files && ev.target.files[0];
+  ev.target.value = '';
+  if (!file || !safetyPendingUpload) return;
+  const { kind, year, period, currentId } = safetyPendingUpload;
+  // Reemplazo: borramos el anterior si tenía otro id (en nuestro esquema el id es el mismo, pero por si acaso)
+  const id = safetyId(kind, year, period);
+  const rec = {
+    id, kind, year, period,
+    profile: CURRENT_PROFILE || 'repuestos',
+    name: file.name,
+    type: file.type || '',
+    size: file.size,
+    blob: file,
+    uploadedAt: Date.now()
+  };
+  await safetyPut(rec);
+  safetyPendingUpload = null;
+  if (kind === 'gw') await renderSafetyGw();
+  else await renderSafetySp();
+  // Si acababa de reemplazar y había un visor abierto con ese id, refrescar
+  const panel = document.getElementById('safetyViewerPanel');
+  if (panel && panel.dataset.docId === id){
+    safetyOpenDoc(id);
+  }
+}
+async function safetyOpenDoc(id){
+  const rec = await safetyGet(id);
+  if (!rec || !rec.blob){ alert('No se encuentra el documento.'); return; }
+  const panel = document.getElementById('safetyViewerPanel');
+  const title = document.getElementById('safetyViewerTitle');
+  const frame = document.getElementById('safetyViewerFrame');
+  const dl = document.getElementById('safetyViewerDownload');
+  panel.dataset.docId = id;
+  const label = rec.kind === 'gw'
+    ? `Gemba Walk · S${rec.period} / ${rec.year} · ${rec.name}`
+    : `Safety Pyramid · ${MONTH_NAMES[rec.period-1]} ${rec.year} · ${rec.name}`;
+  title.textContent = label;
+  const url = URL.createObjectURL(rec.blob);
+  // Limpia URL anterior
+  if (panel.dataset.lastUrl) { try { URL.revokeObjectURL(panel.dataset.lastUrl); } catch(e){} }
+  panel.dataset.lastUrl = url;
+  dl.href = url;
+  dl.download = rec.name;
+  if (safetyIsPdf(rec)){
+    frame.src = url;
+    frame.style.display = 'block';
+  } else {
+    // Word: el navegador no lo renderiza; mostramos aviso + descarga
+    frame.removeAttribute('src');
+    frame.style.display = 'none';
+    const old = panel.querySelector('.safety-word-note');
+    if (old) old.remove();
+    const note = document.createElement('div');
+    note.className = 'safety-word-note';
+    note.style.cssText = 'padding:40px 20px; text-align:center; color:var(--zummo-muted); font-size:14px;';
+    note.innerHTML = `
+      <div style="font-size:48px; margin-bottom:12px;">📘</div>
+      <p>Los archivos <b>Word (.doc / .docx)</b> no se pueden previsualizar en el navegador.<br>
+      Pulsa <b>Descargar</b> para abrirlo con Microsoft Word.</p>`;
+    panel.querySelector('.safety-viewer-body').appendChild(note);
+  }
+  panel.style.display = '';
+  panel.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+function safetyCloseViewer(){
+  const panel = document.getElementById('safetyViewerPanel');
+  if (!panel) return;
+  const frame = document.getElementById('safetyViewerFrame');
+  if (frame) frame.removeAttribute('src');
+  if (panel.dataset.lastUrl){ try { URL.revokeObjectURL(panel.dataset.lastUrl); } catch(e){} delete panel.dataset.lastUrl; }
+  delete panel.dataset.docId;
+  const note = panel.querySelector('.safety-word-note');
+  if (note) note.remove();
+  panel.style.display = 'none';
+}
+
+/* ====================================================================
+   IDMs · Planner Kanban
+   ==================================================================== */
+const IDMS_DEFAULT_COLUMNS = [
+  { id:'backlog',  title:'Backlog' },
+  { id:'top30',    title:'Pendiente de TOP 30' },
+  { id:'ipd',      title:'Pendiente de I+D' },
+  { id:'abiertas', title:'Acciones abiertas' },
+  { id:'cerradas', title:'Cerradas' }
+];
+const IDMS_INITIAL_BACKLOG = [
+  'RM-24-028 DESCUELGUE CABLEADO TOLVA Z40 1244',
+  'RM-25-006 BANDEJA ADAPT Z14. MONTAJE LEVA 1260',
+  'RM-25-016 CONTROL VERSIONES CHECK LIST CALIDAD 1277',
+  'RM-25-019 INFORMES ACCIDENTES. ACCIONES COMUNICACIÓN REGISTRADAS 1280',
+  'RM-25-021 Z14. SENSOR LATERAL DEL FRENTE 1282',
+  'RM-25-024 PROCESOS MENSUALES CONTABILIDAD. OPTIMIZAR 1297',
+  'RM-25-025 IMPUESTO DEL PLÁSTICO, TAREAS CONTABILIDAD 1300',
+  'RM-25-026 MUEBLES. UNIFICAR TRAVIESAS 1301',
+  'RM-25-027 IMPRESORA EN CALIDAD 1302',
+  'RM-25-028 MUEBLES-ISLA. DIFICULTAD DE PEGADO EN ADHESIVOS 1303',
+  'RM-25-032 ISLA. CUCHILLAS SUELTAS 1309',
+  'RM-25-033 MUEBLES. TAPAS LEVANTADAS 1310',
+  'RM-25-036 PROY. MEJORA PRODUCTO. CRITERIOS CRITICIDAD 1313',
+  'RM-25-037 PROY. MEJORA PRODUCTO. PROTOCOLO FIELD TEST 1314',
+  'RM-25-038 PROY. MEJORA PRODUCTO. COMUNICACIONES 1315',
+  'RM-25-039 SISTEMA FICHAJES PROYECTOS TIC. SIMPLIFICAR 1317',
+  'RM-25-040 PROYECTOS TIC. VALIDACIÓN FIRMADA 1318',
+  'RM-25-041 FORMACIÓN IT. ACTUALIZAR EN PLAN DE ACOGIDA 1319',
+  'RM-26-002 MONTAJE. PAUTAS LIMPIEZA PRODUCTO 1324',
+  'RM-26-004 Z26. TUERCAS EMPUJADOR CORONA 1327',
+  'RM-26-006 NAVE3. BARRERA DE SEGURIDAD 1330',
+  'RM-26-007 Z26. CAMBIO DE TORNILLOS 1331',
+  'RM-26-008 POSTVENTA. ARCHIVOS NAVISION 1332',
+  'RM-26-009 HERRAMIENTAS LIMPIEZA. AYUDA CRISTINA 1333',
+  'RM-26-010 Z40. TUERCA EN BANDEJA DE EXPRIMIDO 1334',
+  'RM-26-011 MUEBLES Y CHASIS. PALETIZAR 1335',
+  'RM-26-013 Z26. ROTURA TAPA DEL PISTON 1342',
+  'RM-26-014 Z40. HUECO REJILLA METALICA 1343',
+  'RM-26-015 GARANTÍAS. INDICADOR DE RESOLUCIÓN Y REGISTRO EN PS 1345',
+  'RM-26-016 Z25. CABLEADO CERCA DE UNIDAD MAGNÉTICA 1348',
+  'RM-26-017 Z06. TORNILLO SE PASA DE ROSCA 1349',
+  'RM-26-018 PROYECTO AUTOCLEAN. ADELANTAR PDCA 1351',
+  'RM-26-019 PROCESO DESARROLLO PRODUCTO. RAMP-UP DE PRODUCCIÓN 1352'
+];
+
+let IDMS = { cards:{}, columnOrder:[], columnTitles:{}, columns:{} };
+
+/* Nuevo formato del estado:
+   { cards:{}, columnOrder:['id1','id2',...], columnTitles:{id:title}, columns:{id:[cardId,...]} }
+   Compatibilidad: el formato antiguo (columns como objeto con las 5 ids fijas) se migra. */
+function defaultIdmsState(){
+  const state = { cards:{}, columnOrder:[], columnTitles:{}, columns:{} };
+  IDMS_DEFAULT_COLUMNS.forEach(c => {
+    state.columnOrder.push(c.id);
+    state.columnTitles[c.id] = c.title;
+    state.columns[c.id] = [];
+  });
+  IDMS_INITIAL_BACKLOG.forEach((title, i) => {
+    const id = 'idm_init_' + (i+1);
+    state.cards[id] = { id, title, createdAt: Date.now() };
+    state.columns.backlog.push(id);
+  });
+  return state;
+}
+/* BC: DashIdmColumn (id, título, orden) y DashIdmCard (id, título, columna, orden).
+   No van por GAP: el tablero es el mismo para todos. */
+const CLAVES_IDM = ['Id'];
+
+function registrosIdmColumnas(){
+  return IDMS.columnOrder.map((id, i) => ({ Id: id, Title: txt(IDMS.columnTitles[id] || id, 100), Sort_Order: i }));
+}
+function registrosIdmTarjetas(){
+  const out = [];
+  IDMS.columnOrder.forEach(col => (IDMS.columns[col] || []).forEach((cid, i) => {
+    const c = IDMS.cards[cid];
+    if (c) out.push({ Id: cid, Title: txt(c.title, 250), Column_Id: col, Sort_Order: i,
+      Card_Created_At: new Date(c.createdAt || 0).toISOString() });
+  }));
+  return out;
+}
+async function cargarIdms(){
+  const [cols, cards] = await Promise.all([Repo.leer('idmcolumnas', ''), Repo.leer('idmtarjetas', '')]);
+  if (!cols.length){
+    // Primera vez: tablero inicial (columnas por defecto + backlog) y se guarda en BC
+    IDMS = defaultIdmsState();
+    Repo.fijar('idmcolumnas', '', [], CLAVES_IDM);
+    Repo.fijar('idmtarjetas', '', [], CLAVES_IDM);
+    saveIdms();
+    return;
+  }
+  const st = { cards:{}, columnOrder:[], columnTitles:{}, columns:{} };
+  cols.sort((a, b) => a.Sort_Order - b.Sort_Order).forEach(c => {
+    st.columnOrder.push(c.Id);
+    st.columnTitles[c.Id] = c.Title;
+    st.columns[c.Id] = [];
+  });
+  cards.sort((a, b) => a.Sort_Order - b.Sort_Order).forEach(t => {
+    st.cards[t.Id] = { id: t.Id, title: t.Title, createdAt: Date.parse(t.Card_Created_At) || Date.now() };
+    // Si su columna ya no existe, a la primera
+    (st.columns[t.Column_Id] || st.columns[st.columnOrder[0]]).push(t.Id);
+  });
+  IDMS = st;
+  Repo.fijar('idmcolumnas', '', registrosIdmColumnas(), CLAVES_IDM);
+  Repo.fijar('idmtarjetas', '', registrosIdmTarjetas(), CLAVES_IDM);
+}
+// Columnas antes que tarjetas: una tarjeta nueva necesita que su columna ya exista en BC
+function saveIdms(){
+  Repo.sincronizar('idmcolumnas', '', registrosIdmColumnas(), CLAVES_IDM);
+  Repo.sincronizar('idmtarjetas', '', registrosIdmTarjetas(), CLAVES_IDM);
+}
+// Botón "Recargar": vuelve a leer el tablero de BC
+async function resetIdms(){
+  Repo.aviso('Cargando IDMs de Business Central…');
+  try{
+    await cargarIdms();
+    Repo.aviso(null);
+  }catch(e){
+    Repo.aviso('No se han podido leer los IDMs de Business Central: ' + e.message, 'error');
+  }
+  renderKanban();
+}
+
+function renderKanban(){
+  const board = document.getElementById('kanbanBoard');
+  if (!board) return;
+  const colsHtml = IDMS.columnOrder.map(cid => {
+    const ids = IDMS.columns[cid] || [];
+    const title = IDMS.columnTitles[cid] || cid;
+    const cards = ids.map(id => renderKcard(IDMS.cards[id])).filter(Boolean).join('');
+    return `
+      <div class="kcol" data-col="${esc(cid)}" draggable="true">
+        <div class="kcol-head">
+          <div class="kcol-title" data-col="${esc(cid)}" title="Clic para renombrar">${esc(title)}</div>
+          <span class="kcol-count">${ids.length}</span>
+          <button class="kcol-menu" data-col="${esc(cid)}" title="Opciones de columna">⋮</button>
+        </div>
+        <div class="klist" data-col="${esc(cid)}">${cards}</div>
+        <button class="kcol-add" data-col="${esc(cid)}">+ Agregar tarea</button>
+      </div>`;
+  }).join('');
+  // Botón para añadir nueva columna al final
+  const addColHtml = `
+    <button class="kcol-new" id="kcolNew" title="Añadir nueva columna">
+      <span style="font-size:22px;">+</span>
+      <span>Añadir columna</span>
+    </button>`;
+  board.innerHTML = colsHtml + addColHtml;
+  attachKanbanEvents();
+}
+function renderKcard(c){
+  if (!c) return '';
+  return `
+    <div class="kcard" draggable="true" data-id="${c.id}">
+      <button class="k-del" data-id="${c.id}" title="Eliminar">×</button>
+      <div class="k-title">${esc(c.title)}</div>
+    </div>`;
+}
+function attachKanbanEvents(){
+  const board = document.getElementById('kanbanBoard');
+
+  // Drag & drop sobre cada tarjeta
+  board.querySelectorAll('.kcard').forEach(card => {
+    card.addEventListener('dragstart', e => {
+      card.classList.add('dragging');
+      e.dataTransfer.setData('application/x-idms-card', card.dataset.id);
+      e.dataTransfer.effectAllowed = 'move';
+      e.stopPropagation(); // no arrastrar la columna
+    });
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+      board.querySelectorAll('.kcol').forEach(c => c.classList.remove('drag-over'));
+    });
+    card.addEventListener('click', e => {
+      if (e.target.closest('.k-del')) return;
+      editIdmCard(card.dataset.id);
+    });
+  });
+
+  // Columnas: drag para reordenar + drop para recibir tarjetas
+  board.querySelectorAll('.kcol').forEach(col => {
+    col.addEventListener('dragstart', e => {
+      // Solo arrastrar la columna si no se inició desde una tarjeta
+      if (e.target.closest('.kcard')) return;
+      col.classList.add('col-dragging');
+      e.dataTransfer.setData('application/x-idms-col', col.dataset.col);
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    col.addEventListener('dragend', () => {
+      col.classList.remove('col-dragging');
+      board.querySelectorAll('.kcol').forEach(c => c.classList.remove('drag-over', 'col-drag-over'));
+    });
+    col.addEventListener('dragover', e => {
+      e.preventDefault();
+      const isCol = e.dataTransfer.types.includes('application/x-idms-col');
+      e.dataTransfer.dropEffect = 'move';
+      if (isCol){
+        col.classList.add('col-drag-over');
+      } else {
+        col.classList.add('drag-over');
+      }
+    });
+    col.addEventListener('dragleave', e => {
+      if (!col.contains(e.relatedTarget)){
+        col.classList.remove('drag-over', 'col-drag-over');
+      }
+    });
+    col.addEventListener('drop', e => {
+      e.preventDefault();
+      col.classList.remove('drag-over', 'col-drag-over');
+      const colId = e.dataTransfer.getData('application/x-idms-col');
+      const cardId = e.dataTransfer.getData('application/x-idms-card');
+      if (colId){
+        // Reordenar columna
+        if (colId === col.dataset.col) return;
+        reorderIdmColumn(colId, col.dataset.col, e.clientX);
+      } else if (cardId && IDMS.cards[cardId]){
+        const list = col.querySelector('.klist');
+        const afterEl = getDragAfterElement(list, e.clientY);
+        moveIdmCard(cardId, col.dataset.col, afterEl ? afterEl.dataset.id : null);
+      }
+    });
+  });
+
+  // Botón añadir tarjeta
+  board.querySelectorAll('.kcol-add').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const title = prompt('Título de la nueva tarea:');
+      if (!title || !title.trim()) return;
+      addIdmCard(btn.dataset.col, title.trim());
+    });
+  });
+
+  // Botón eliminar tarjeta
+  board.querySelectorAll('.k-del').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      const id = b.dataset.id;
+      const c = IDMS.cards[id];
+      if (!c) return;
+      if (!confirm('¿Eliminar "' + c.title.slice(0, 60) + (c.title.length>60?'…':'') + '"?')) return;
+      deleteIdmCard(id);
+    });
+  });
+
+  // Clic en el título de la columna = renombrar
+  board.querySelectorAll('.kcol-title').forEach(t => {
+    t.addEventListener('click', e => {
+      e.stopPropagation();
+      renameIdmColumn(t.dataset.col);
+    });
+  });
+
+  // Menú ⋮ de columna
+  board.querySelectorAll('.kcol-menu').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openIdmColumnMenu(btn);
+    });
+  });
+
+  // Nueva columna
+  const newBtn = document.getElementById('kcolNew');
+  if (newBtn) newBtn.addEventListener('click', addIdmColumn);
+}
+function getDragAfterElement(container, y){
+  const els = [...container.querySelectorAll('.kcard:not(.dragging)')];
+  return els.reduce((closest, el) => {
+    const box = el.getBoundingClientRect();
+    const offset = y - box.top - box.height/2;
+    if (offset < 0 && offset > closest.offset) return { offset, el };
+    return closest;
+  }, { offset: -Infinity, el: null }).el;
+}
+
+/* ---- Columnas: añadir / renombrar / eliminar / reordenar ---- */
+function newColumnId(){
+  let n = 1, id;
+  do { id = 'col_' + Date.now().toString(36) + '_' + n; n++; } while (IDMS.columns[id]);
+  return id;
+}
+function addIdmColumn(){
+  const name = prompt('Nombre de la nueva columna:');
+  if (!name || !name.trim()) return;
+  const id = newColumnId();
+  IDMS.columnOrder.push(id);
+  IDMS.columnTitles[id] = name.trim();
+  IDMS.columns[id] = [];
+  saveIdms();
+  renderKanban();
+}
+function renameIdmColumn(colId){
+  const current = IDMS.columnTitles[colId] || '';
+  const name = prompt('Renombrar columna:', current);
+  if (name === null) return;
+  if (!name.trim()) return;
+  IDMS.columnTitles[colId] = name.trim();
+  saveIdms();
+  renderKanban();
+}
+function deleteIdmColumn(colId){
+  const n = (IDMS.columns[colId] || []).length;
+  const title = IDMS.columnTitles[colId] || colId;
+  let msg = `¿Eliminar la columna "${title}"?`;
+  if (n > 0) msg += `\n\nContiene ${n} tarjeta(s). ¿Qué hago con ellas?\n\nAceptar → Moverlas a la primera columna\nCancelar → No eliminar nada`;
+  if (!confirm(msg)) return;
+  if (n > 0){
+    // Mover tarjetas a la primera columna que no sea la que se elimina
+    const target = IDMS.columnOrder.find(c => c !== colId);
+    if (target){
+      IDMS.columns[target] = IDMS.columns[target].concat(IDMS.columns[colId]);
+    } else {
+      // Si no queda ninguna, borrar también las tarjetas
+      IDMS.columns[colId].forEach(cid => delete IDMS.cards[cid]);
+    }
+  }
+  delete IDMS.columns[colId];
+  delete IDMS.columnTitles[colId];
+  IDMS.columnOrder = IDMS.columnOrder.filter(c => c !== colId);
+  saveIdms();
+  renderKanban();
+}
+function reorderIdmColumn(fromId, toId, dropX){
+  const fromIdx = IDMS.columnOrder.indexOf(fromId);
+  if (fromIdx < 0) return;
+  IDMS.columnOrder.splice(fromIdx, 1);
+  // Decidir si insertar antes o después del "toId" según el centro
+  const board = document.getElementById('kanbanBoard');
+  const targetEl = board.querySelector(`.kcol[data-col="${toId}"]`);
+  const toIdx = IDMS.columnOrder.indexOf(toId);
+  if (toIdx < 0){ IDMS.columnOrder.push(fromId); }
+  else {
+    let insertAt = toIdx;
+    if (targetEl){
+      const box = targetEl.getBoundingClientRect();
+      if (dropX > box.left + box.width/2) insertAt = toIdx + 1;
+    }
+    IDMS.columnOrder.splice(insertAt, 0, fromId);
+  }
+  saveIdms();
+  renderKanban();
+}
+function openIdmColumnMenu(btn){
+  // Cierra uno previo
+  const prev = document.querySelector('.kcol-pop');
+  if (prev) prev.remove();
+  const colId = btn.dataset.col;
+  const pop = document.createElement('div');
+  pop.className = 'kcol-pop';
+  pop.innerHTML = `
+    <button data-act="rename">Renombrar</button>
+    <button data-act="add">+ Añadir tarea</button>
+    <button data-act="delete" class="danger">Eliminar columna</button>`;
+  btn.parentElement.appendChild(pop);
+  const onDoc = e => {
+    if (!pop.contains(e.target) && e.target !== btn){
+      pop.remove();
+      document.removeEventListener('click', onDoc, true);
+    }
+  };
+  setTimeout(() => document.addEventListener('click', onDoc, true), 0);
+  pop.querySelectorAll('button').forEach(b => b.addEventListener('click', e => {
+    e.stopPropagation();
+    const act = b.dataset.act;
+    pop.remove();
+    document.removeEventListener('click', onDoc, true);
+    if (act === 'rename') renameIdmColumn(colId);
+    else if (act === 'add'){
+      const title = prompt('Título de la nueva tarea:');
+      if (title && title.trim()) addIdmCard(colId, title.trim());
+    }
+    else if (act === 'delete') deleteIdmColumn(colId);
+  }));
+}
+function moveIdmCard(id, newColId, beforeId){
+  // Quitar de donde estaba
+  IDMS.columnOrder.forEach(cid => {
+    IDMS.columns[cid] = (IDMS.columns[cid] || []).filter(x => x !== id);
+  });
+  // Insertar en la nueva columna en la posición correcta
+  const list = IDMS.columns[newColId] || (IDMS.columns[newColId] = []);
+  if (beforeId){
+    const idx = list.indexOf(beforeId);
+    if (idx >= 0) list.splice(idx, 0, id);
+    else list.push(id);
+  } else {
+    list.push(id);
+  }
+  saveIdms();
+  renderKanban();
+}
+function addIdmCard(colId, title){
+  const id = 'idm_' + Date.now() + '_' + Math.random().toString(36).slice(2,6);
+  IDMS.cards[id] = { id, title, createdAt: Date.now() };
+  IDMS.columns[colId].unshift(id);
+  saveIdms();
+  renderKanban();
+}
+function editIdmCard(id){
+  const c = IDMS.cards[id];
+  if (!c) return;
+  const title = prompt('Editar título:', c.title);
+  if (title === null) return;
+  if (!title.trim()) return;
+  c.title = title.trim();
+  saveIdms();
+  renderKanban();
+}
+function deleteIdmCard(id){
+  delete IDMS.cards[id];
+  IDMS.columnOrder.forEach(cid => {
+    IDMS.columns[cid] = (IDMS.columns[cid] || []).filter(x => x !== id);
+  });
+  saveIdms();
+  renderKanban();
+}
+function openIdmsApp(){
+  renderKanban();
+  resetIdms();
+}
+
+async function showProfile(prof){
+  document.getElementById('profileScreen').style.display = (prof==='none') ? 'flex' : 'none';
+  const isGap = (prof==='repuestos' || prof==='exprimidoras');
+  document.getElementById('appGap').classList.toggle('active', isGap);
+  const appDocs = document.getElementById('appDocs');
+  if (appDocs) appDocs.classList.toggle('active', prof==='docs');
+  const appIdms = document.getElementById('appIdms');
+  if (appIdms) appIdms.classList.toggle('active', prof==='idms');
+  if (isGap){
+    // applyProfile cambia KPIs y vacía los datos al momento; luego espera a BC y se pinta otra vez
+    const carga = applyProfile(prof);
+    activateTab('dashboard');
+    await carga;
+    activateTab('dashboard');
+  }
+  if (prof === 'docs') openDocsApp();
+  if (prof === 'idms') openIdmsApp();
+}
+
+/* ====================================================================
+   DOCUMENTACIÓN PLANTA
+   - IndexedDB con 2 stores: folders / files
+   - Modelo: folder {id, parentId, name, createdAt}
+             file   {id, parentId, name, size, type, blob, createdAt, updatedAt}
+   - Vista explorador con breadcrumbs.
+   ==================================================================== */
+const DOCS_DB_NAME = 'zummo-docs-planta';
+const DOCS_DB_VERSION = 2;
+let docsDB = null;
+let docsCurrentFolder = null;   // null = raíz
+let docsFolderPath = [];        // [{id, name}, ...] breadcrumbs
+
+function docsOpenDB(){
+  return new Promise((resolve, reject) => {
+    if (docsDB) return resolve(docsDB);
+    const req = indexedDB.open(DOCS_DB_NAME, DOCS_DB_VERSION);
+    req.onupgradeneeded = e => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains('folders')){
+        const s = db.createObjectStore('folders', { keyPath:'id' });
+        s.createIndex('parentId', 'parentId', { unique:false });
+      }
+      if (!db.objectStoreNames.contains('files')){
+        const s = db.createObjectStore('files', { keyPath:'id' });
+        s.createIndex('parentId', 'parentId', { unique:false });
+      }
+      if (!db.objectStoreNames.contains('safety')){
+        const s = db.createObjectStore('safety', { keyPath:'id' });
+        s.createIndex('kind', 'kind', { unique:false });
+        s.createIndex('year', 'year', { unique:false });
+      }
+    };
+    req.onsuccess = e => { docsDB = e.target.result; resolve(docsDB); };
+    req.onerror = () => reject(req.error);
+  });
+}
+function docsTx(store, mode){
+  return docsOpenDB().then(db => db.transaction(store, mode).objectStore(store));
+}
+function docsPromisify(req){
+  return new Promise((resolve, reject) => {
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+async function docsAllByParent(store, parentId){
+  const os = await docsTx(store, 'readonly');
+  const idx = os.index('parentId');
+  // IDBKeyRange no soporta null como clave; usamos 'root' como sentinel para raíz
+  const key = parentId === null ? 'root' : parentId;
+  return docsPromisify(idx.getAll(key));
+}
+async function docsGet(store, id){
+  const os = await docsTx(store, 'readonly');
+  return docsPromisify(os.get(id));
+}
+async function docsPut(store, obj){
+  const os = await docsTx(store, 'readwrite');
+  return docsPromisify(os.put(obj));
+}
+async function docsDel(store, id){
+  const os = await docsTx(store, 'readwrite');
+  return docsPromisify(os.delete(id));
+}
+function docsUid(prefix){
+  return prefix + '_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,8);
+}
+function docsFmtSize(bytes){
+  if (bytes == null) return '';
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1).replace('.0','') + ' KB';
+  return (bytes/(1024*1024)).toFixed(1).replace('.0','') + ' MB';
+}
+function docsFmtDate(d){
+  if (!d) return '';
+  const t = new Date(d);
+  return t.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'}) + ' ' +
+         t.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+}
+function docsIconFor(file){
+  const t = (file.type || '').toLowerCase();
+  const n = (file.name || '').toLowerCase();
+  if (t.includes('pdf') || n.endsWith('.pdf')) return '📕';
+  if (t.includes('word') || n.endsWith('.docx') || n.endsWith('.doc')) return '📘';
+  return '📄';
+}
+function docsFileCls(file){
+  const n = (file.name || '').toLowerCase();
+  if (n.endsWith('.pdf')) return 'pdf';
+  if (n.endsWith('.doc') || n.endsWith('.docx')) return 'word';
+  return '';
+}
+
+async function openDocsApp(){
+  await docsOpenDB();
+  // Si venimos de una navegación anterior, mantener la carpeta; si no, raíz
+  if (docsFolderPath.length === 0) docsCurrentFolder = null;
+  await docsRenderList();
+  docsUpdateStorageInfo();
+}
+async function docsRenderList(){
+  const body = document.getElementById('docsBody');
+  const empty = document.getElementById('docsEmpty');
+  const bc = document.getElementById('docsBreadcrumb');
+  // Breadcrumb
+  let crumbs = `<span class="crumb root" data-folder="root">📁 Raíz</span>`;
+  docsFolderPath.forEach((f, i) => {
+    crumbs += `<span class="sep">/</span><span class="crumb" data-folder="${esc(f.id)}">${esc(f.name)}</span>`;
+  });
+  bc.innerHTML = crumbs;
+  bc.querySelectorAll('.crumb').forEach(c => c.addEventListener('click', () => {
+    const target = c.dataset.folder;
+    if (target === 'root'){ docsFolderPath = []; docsCurrentFolder = null; }
+    else {
+      const idx = docsFolderPath.findIndex(f => f.id === target);
+      if (idx >= 0) docsFolderPath = docsFolderPath.slice(0, idx+1);
+      docsCurrentFolder = target;
+    }
+    docsRenderList();
+  }));
+
+  // Datos
+  const folders = await docsAllByParent('folders', docsCurrentFolder);
+  const files   = await docsAllByParent('files',   docsCurrentFolder);
+  folders.sort((a,b) => (a.name||'').localeCompare(b.name||'',{sensitivity:'base'}));
+  files.sort((a,b) => (b.updatedAt||b.createdAt||0) - (a.updatedAt||a.createdAt||0));
+
+  if (!folders.length && !files.length){
+    empty.style.display = 'block';
+    body.innerHTML = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  let html = '';
+  folders.forEach(f => {
+    html += `
+      <tr class="folder" data-kind="folder" data-id="${esc(f.id)}">
+        <td class="d-ico-cell"><span class="d-ico">📁</span></td>
+        <td class="d-name">${esc(f.name)}</td>
+        <td class="d-size">—</td>
+        <td class="d-date">${docsFmtDate(f.createdAt)}</td>
+        <td class="d-act"><button class="docs-menu-btn" data-id="${esc(f.id)}" data-kind="folder">⋮</button></td>
+      </tr>`;
+  });
+  files.forEach(f => {
+    html += `
+      <tr class="file ${docsFileCls(f)}" data-kind="file" data-id="${esc(f.id)}">
+        <td class="d-ico-cell"><span class="d-ico">${docsIconFor(f)}</span></td>
+        <td class="d-name">${esc(f.name)}<small>${esc(f.type || '')}</small></td>
+        <td class="d-size">${docsFmtSize(f.size)}</td>
+        <td class="d-date">${docsFmtDate(f.updatedAt || f.createdAt)}</td>
+        <td class="d-act"><button class="docs-menu-btn" data-id="${esc(f.id)}" data-kind="file">⋮</button></td>
+      </tr>`;
+  });
+  body.innerHTML = html;
+  // Eventos
+  body.querySelectorAll('tr').forEach(tr => {
+    tr.addEventListener('click', e => {
+      if (e.target.closest('.docs-menu-btn')) return; // los botones ⋮ manejan su cosa
+      const kind = tr.dataset.kind;
+      const id = tr.dataset.id;
+      if (kind === 'folder') docsEnterFolder(id);
+      else if (kind === 'file') docsOpenFile(id);
+    });
+  });
+  body.querySelectorAll('.docs-menu-btn').forEach(b => {
+    b.addEventListener('click', e => {
+      e.stopPropagation();
+      docsShowMenu(b, b.dataset.kind, b.dataset.id);
+    });
+  });
+}
+async function docsEnterFolder(id){
+  const f = await docsGet('folders', id);
+  if (!f) return;
+  docsFolderPath.push({ id:f.id, name:f.name });
+  docsCurrentFolder = f.id;
+  await docsRenderList();
+}
+async function docsOpenFile(id){
+  const f = await docsGet('files', id);
+  if (!f || !f.blob) { alert('No se encuentra el archivo.'); return; }
+  const url = URL.createObjectURL(f.blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  // Para PDFs se abre inline en el navegador; Word fuerza descarga porque los navegadores no renderizan .docx.
+  const n = (f.name || '').toLowerCase();
+  if (n.endsWith('.docx') || n.endsWith('.doc')) a.download = f.name;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+}
+async function docsCreateFolder(){
+  const name = prompt('Nombre de la nueva carpeta:');
+  if (!name || !name.trim()) return;
+  const folder = {
+    id: docsUid('fol'),
+    parentId: docsCurrentFolder === null ? 'root' : docsCurrentFolder,
+    name: name.trim(),
+    createdAt: Date.now()
+  };
+  await docsPut('folders', folder);
+  await docsRenderList();
+}
+async function docsRenameItem(kind, id){
+  const store = kind === 'folder' ? 'folders' : 'files';
+  const it = await docsGet(store, id);
+  if (!it) return;
+  const name = prompt('Nuevo nombre:', it.name);
+  if (!name || !name.trim() || name.trim() === it.name) return;
+  it.name = name.trim();
+  if (kind === 'file') it.updatedAt = Date.now();
+  await docsPut(store, it);
+  await docsRenderList();
+}
+async function docsDeleteItem(kind, id){
+  const store = kind === 'folder' ? 'folders' : 'files';
+  const it = await docsGet(store, id);
+  if (!it) return;
+  if (kind === 'folder'){
+    // Comprobar si está vacía
+    const subf = await docsAllByParent('folders', id);
+    const subfi = await docsAllByParent('files', id);
+    if (subf.length || subfi.length){
+      if (!confirm(`La carpeta "${it.name}" contiene ${subf.length + subfi.length} elementos.\n\n¿Eliminar carpeta Y todo su contenido?`)) return;
+      await docsDeleteFolderRecursive(id);
+    } else {
+      if (!confirm(`¿Eliminar la carpeta "${it.name}"?`)) return;
+      await docsDel('folders', id);
+    }
+  } else {
+    if (!confirm(`¿Eliminar el archivo "${it.name}"?`)) return;
+    await docsDel('files', id);
+  }
+  await docsRenderList();
+  docsUpdateStorageInfo();
+}
+async function docsDeleteFolderRecursive(folderId){
+  const subFolders = await docsAllByParent('folders', folderId);
+  for (const sf of subFolders) await docsDeleteFolderRecursive(sf.id);
+  const subFiles = await docsAllByParent('files', folderId);
+  for (const sf of subFiles) await docsDel('files', sf.id);
+  await docsDel('folders', folderId);
+}
+async function docsUploadFiles(fileList){
+  if (!fileList || !fileList.length) return;
+  let added = 0, skipped = 0;
+  for (const file of fileList){
+    const n = file.name.toLowerCase();
+    const okType = n.endsWith('.pdf') || n.endsWith('.doc') || n.endsWith('.docx');
+    if (!okType) { skipped++; continue; }
+    const rec = {
+      id: docsUid('fil'),
+      parentId: docsCurrentFolder === null ? 'root' : docsCurrentFolder,
+      name: file.name,
+      size: file.size,
+      type: file.type || '',
+      blob: file,
+      createdAt: Date.now(),
+      updatedAt: Date.now()
+    };
+    await docsPut('files', rec);
+    added++;
+  }
+  if (skipped > 0) alert(`${skipped} archivo(s) ignorados (solo se admiten PDF, DOC y DOCX).`);
+  await docsRenderList();
+  docsUpdateStorageInfo();
+}
+
+/* Menú contextual (uno sólo visible a la vez) */
+function docsShowMenu(btn, kind, id){
+  // Cerrar menú previo
+  const prev = document.querySelector('.docs-menu');
+  if (prev) prev.remove();
+  const menu = document.createElement('div');
+  menu.className = 'docs-menu';
+  if (kind === 'folder'){
+    menu.innerHTML = `
+      <button data-act="open">Abrir</button>
+      <button data-act="rename">Renombrar</button>
+      <button data-act="delete" class="danger">Eliminar</button>`;
+  } else {
+    menu.innerHTML = `
+      <button data-act="open">Abrir / descargar</button>
+      <button data-act="rename">Renombrar</button>
+      <button data-act="delete" class="danger">Eliminar</button>`;
+  }
+  const td = btn.closest('td');
+  td.appendChild(menu);
+  // Cerrar al clicar fuera
+  const onDoc = ev => {
+    if (!menu.contains(ev.target) && ev.target !== btn){
+      menu.remove();
+      document.removeEventListener('click', onDoc, true);
+    }
+  };
+  setTimeout(() => document.addEventListener('click', onDoc, true), 0);
+  menu.querySelectorAll('button').forEach(b => b.addEventListener('click', async ev => {
+    ev.stopPropagation();
+    const act = b.dataset.act;
+    menu.remove();
+    document.removeEventListener('click', onDoc, true);
+    if (act === 'open'){
+      if (kind === 'folder') await docsEnterFolder(id);
+      else await docsOpenFile(id);
+    } else if (act === 'rename') await docsRenameItem(kind, id);
+    else if (act === 'delete') await docsDeleteItem(kind, id);
+  }));
+}
+
+async function docsUpdateStorageInfo(){
+  const el = document.getElementById('docsStorageInfo');
+  if (!el) return;
+  try{
+    if (navigator.storage && navigator.storage.estimate){
+      const est = await navigator.storage.estimate();
+      const used = est.usage || 0;
+      const quota = est.quota || 0;
+      el.textContent = `Espacio usado: ${docsFmtSize(used)}${quota ? ' / ' + docsFmtSize(quota) : ''}`;
+    }
+  }catch(e){ /* ignore */ }
+}
+
+
+
+(function init(){
+  const t = TODAY.toLocaleDateString('es-ES', {weekday:'long', day:'2-digit', month:'long', year:'numeric'});
+  const tCap = t.charAt(0).toUpperCase() + t.slice(1);
+  document.getElementById('todayLabel').textContent = tCap;
+  document.getElementById('weekLabel').textContent = weekOfIso(TODAY_ISO);
+
+  const selM = document.getElementById('selMonth');
+  selM.innerHTML = MONTH_NAMES.map((m,i)=>`<option value="${i}"${i===selectedMonth?' selected':''}>${m} ${YEAR}</option>`).join('');
+  selM.addEventListener('change', e=>{ selectedMonth = parseInt(e.target.value); renderDataTable(); });
+
+  const calM = document.getElementById('calMonth');
+  calM.innerHTML = MONTH_NAMES.map((m,i)=>`<option value="${i}"${i===calMonth?' selected':''}>${m} ${YEAR}</option>`).join('');
+  calM.addEventListener('change', e=>{ calMonth = parseInt(e.target.value); renderCalendars(); });
+  document.getElementById('calView').addEventListener('change', e=>{
+    calView = e.target.value;
+    document.getElementById('calMonth').style.display = calView==='month' ? '' : 'none';
+    renderCalendars();
+  });
+  document.getElementById('btnCalClose').addEventListener('click', closeCalendar);
+
+  document.getElementById('btnGotoToday').addEventListener('click', ()=>{
+    selectedMonth = TODAY.getMonth();
+    selM.value = String(selectedMonth);
+    renderDataTable();
+  });
+  document.getElementById('btnResetData').addEventListener('click', async ()=>{
+    await cargarGap();
+    const tab = document.querySelector('#appGap .tab.active');
+    activateTab(tab ? tab.dataset.tab : 'dashboard');
+  });
+  document.getElementById('btnChangeProfile').addEventListener('click', ()=>showProfile('none'));
+
+  document.querySelectorAll('#appGap .tab').forEach(b=>b.addEventListener('click', ()=>activateTab(b.dataset.tab)));
+  document.querySelectorAll('.profile-card').forEach(c=>c.addEventListener('click', ()=>showProfile(c.dataset.profile)));
+
+  // Plan de acción: botones y filtros
+  document.getElementById('btnPlanAdd').addEventListener('click', addPlanAction);
+  document.getElementById('btnPlanExport').addEventListener('click', exportPlanToExcel);
+  document.getElementById('planYearFilter').addEventListener('change', e => {
+    planFilterYear = e.target.value;
+    renderPlanTable();
+  });
+  document.getElementById('planStatusFilter').addEventListener('change', e => {
+    planFilterStatus = e.target.value;
+    renderPlanTable();
+  });
+
+  // Acta TOP 5: botones y filtros
+  document.getElementById('btnTop5Add').addEventListener('click', addTop5Row);
+  document.getElementById('btnTop5Export').addEventListener('click', exportTop5ToExcel);
+  document.getElementById('top5YearFilter').addEventListener('change', e => {
+    top5FilterYear = e.target.value;
+    renderTop5Table();
+  });
+  document.getElementById('top5VbFilter').addEventListener('change', e => {
+    top5FilterVb = e.target.value;
+    renderTop5Table();
+  });
+
+  // Rutina del supervisor: navegación + checklist + hallazgos + histórico
+  document.getElementById('rutDate').addEventListener('change', e => {
+    rutinaSelectedDate = e.target.value || TODAY_ISO;
+    rutinaHistMonth = parseIso(rutinaSelectedDate).getUTCMonth();
+    const sel = document.getElementById('rutHistMonth');
+    if (sel) sel.innerHTML = '';
+    renderRutinaAll();
+  });
+  document.getElementById('rutPrev').addEventListener('click', () => changeRutinaDate(-1));
+  document.getElementById('rutNext').addEventListener('click', () => changeRutinaDate(+1));
+  document.getElementById('rutToday').addEventListener('click', () => {
+    rutinaSelectedDate = TODAY_ISO;
+    rutinaHistMonth = parseIso(rutinaSelectedDate).getUTCMonth();
+    const sel = document.getElementById('rutHistMonth');
+    if (sel) sel.innerHTML = '';
+    renderRutinaAll();
+  });
+  document.getElementById('rutMarkAllOk').addEventListener('click', markAllOk);
+  document.getElementById('rutAddFinding').addEventListener('click', () => addFinding('otros'));
+  document.getElementById('rutHistMonth').addEventListener('change', e => {
+    rutinaHistMonth = parseInt(e.target.value);
+    renderHistCalendar();
+  });
+  document.getElementById('rutExport').addEventListener('click', exportRutinaHistToExcel);
+
+  // Documentación planta
+  const btnNewFolder = document.getElementById('docsNewFolder');
+  const docsInput    = document.getElementById('docsFileInput');
+  const dropzone     = document.getElementById('docsDropzone');
+  const btnDocsBack  = document.getElementById('btnChangeProfileDocs');
+  if (btnNewFolder) btnNewFolder.addEventListener('click', docsCreateFolder);
+  if (docsInput)    docsInput.addEventListener('change', e => {
+    docsUploadFiles(e.target.files);
+    e.target.value = '';
+  });
+  if (btnDocsBack)  btnDocsBack.addEventListener('click', () => showProfile('none'));
+  if (dropzone){
+    ['dragenter','dragover'].forEach(ev => dropzone.addEventListener(ev, e => {
+      e.preventDefault(); e.stopPropagation();
+      dropzone.classList.add('drag-over');
+    }));
+    ['dragleave','drop'].forEach(ev => dropzone.addEventListener(ev, e => {
+      e.preventDefault(); e.stopPropagation();
+      if (ev === 'drop' || !dropzone.contains(e.relatedTarget)) dropzone.classList.remove('drag-over');
+    }));
+    dropzone.addEventListener('drop', e => {
+      const files = e.dataTransfer && e.dataTransfer.files;
+      if (files && files.length) docsUploadFiles(files);
+    });
+  }
+
+  // Rellenar también la fecha en la cabecera del nuevo perfil Docs
+  const tCapHeader = document.getElementById('todayLabel') && document.getElementById('todayLabel').textContent;
+  const tL3 = document.getElementById('todayLabel3');
+  if (tL3 && tCapHeader) tL3.textContent = tCapHeader;
+
+  // Safety: selectores, input, botones del visor
+  const gwSel = document.getElementById('safetyGwYear');
+  const spSel = document.getElementById('safetySpYear');
+  if (gwSel) gwSel.addEventListener('change', e => { safetyGwYear = parseInt(e.target.value); renderSafetyGw(); });
+  if (spSel) spSel.addEventListener('change', e => { safetySpYear = parseInt(e.target.value); renderSafetySp(); });
+  const sfIn = document.getElementById('safetyFileInput');
+  if (sfIn) sfIn.addEventListener('change', safetyOnFileSelected);
+  const sfClose = document.getElementById('safetyViewerClose');
+  if (sfClose) sfClose.addEventListener('click', safetyCloseViewer);
+
+  // IDMs
+  const btnIdmsBack = document.getElementById('btnChangeProfileIdms');
+  if (btnIdmsBack) btnIdmsBack.addEventListener('click', () => showProfile('none'));
+  const btnIdmsReset = document.getElementById('btnIdmsReset');
+  if (btnIdmsReset) btnIdmsReset.addEventListener('click', resetIdms);
+  const tLIdms = document.getElementById('todayLabelIdms');
+  if (tLIdms && tCapHeader) tLIdms.textContent = tCapHeader;
+
+  showProfile('none');
+})();
+</script>
+</body>
+</html>

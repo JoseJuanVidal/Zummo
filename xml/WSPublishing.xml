@@ -295,6 +295,54 @@
             <ServiceName>WSMovsContabilidad</ServiceName>
             <Published>true</Published>
         </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashDay</ServiceName>
+            <ObjectID>17233</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashKpiValue</ServiceName>
+            <ObjectID>17234</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashActionPlan</ServiceName>
+            <ObjectID>17235</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashTop5</ServiceName>
+            <ObjectID>17236</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashRoutineCheck</ServiceName>
+            <ObjectID>17237</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashRoutineFinding</ServiceName>
+            <ObjectID>17238</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashIdmColumn</ServiceName>
+            <ObjectID>17239</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
+        <TenantWebService>
+            <ObjectType>Page</ObjectType>
+            <ServiceName>DashIdmCard</ServiceName>
+            <ObjectID>17240</ObjectID>
+            <Published>true</Published>
+        </TenantWebService>
     </TenantWebServiceCollection>
 </ExportedData>
 
