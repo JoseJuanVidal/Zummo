@@ -418,6 +418,7 @@ codeunit 50110 "CU_Cron"
         end;
         with TmpEmail do begin
             "Send to" := RecCustomer.CorreoFactElec_btc;
+            "From Address" := CopyStr(GetRemitenteFacturas(), 1, MaxStrLen("From Address"));
             GenerarCuerpoCorreo(TmpBlob);
             Body := TmpBlob.Blob;
             "Attachment File Path" := CopyStr(ObtenerRutaFichAdjuntoPersonalizado(FechaReg, PostedDocNo, TablaNo), 1, 250);
@@ -779,6 +780,26 @@ codeunit 50110 "CU_Cron"
         cduSmtp.Send();
     end;
 
+    // Remitente de los emails de facturas/abonos: primera dirección de "Recipient Mail Invoice Summary"
+    // (la cuenta SMTP necesita permiso "Enviar como" sobre ella). Si está vacío, el usuario SMTP
+    local procedure GetRemitenteFacturas(): Text
+    var
+        recSMTPSetup: Record "SMTP Mail Setup";
+        SalesSetup: Record "Sales & Receivables Setup";
+        Remitente: Text;
+    begin
+        SalesSetup.Get();
+        Remitente := SalesSetup."Recipient Mail Invoice Summary";
+        if StrPos(Remitente, ';') > 0 then
+            Remitente := CopyStr(Remitente, 1, StrPos(Remitente, ';') - 1);
+        Remitente := DelChr(Remitente, '<>', ' ');
+        if Remitente = '' then begin
+            recSMTPSetup.Get();
+            Remitente := recSMTPSetup."User ID";
+        end;
+        exit(Remitente);
+    end;
+
     local procedure GetHTLMResumen(var tmpLogEnvio: Record LogEnvioEmailsClientes) textoHtml: Text;
     var
         myInt: Integer;
@@ -945,7 +966,7 @@ codeunit 50110 "CU_Cron"
                 txtCuerpo += 'Aprovechamos para agradecerle su confianza,<br><br> ';
                 txtCuerpo += 'Reciban un cordial saludo.<br><br>';
                 Clear(cduSmtp);
-                cduSmtp.CreateMessage(recCompanyInfo.Name, recSMTPSetup."User ID", recLogEnvio.DireccionEmail_btc, txtAsunto, txtCuerpo, TRUE);
+                cduSmtp.CreateMessage(recCompanyInfo.Name, GetRemitenteFacturas(), recLogEnvio.DireccionEmail_btc, txtAsunto, txtCuerpo, TRUE);
                 cduSmtp.AddAttachment(ObtenerRutaFichAdjunto(recLogEnvio.FechaDocumento_btc, recLogEnvio.CodCliente_btc), recLogEnvio.NoDoc_btc + '.pdf');
                 cduSmtp.Send();
 
