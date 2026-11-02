@@ -18,7 +18,8 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
             begin
                 if format(Periodicidad_btc) = '' then
                     exit;
-                if ProximaFechaFactura_btc = 0D then
+                // si la periodicidad fija un día (D5, -1M+D5, CM...) se recalcula siempre; si es un periodo, solo si no hay próxima fecha
+                if (ProximaFechaFactura_btc = 0D) or PeriodicidadFijaDia() then
                     CalculaProximaFechaFactura();
             end;
         }
@@ -100,7 +101,8 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
                 FechaBase := CalcDate(Periodicidad_btc, WorkDate());
 
         // Ajuste al día de la fecha inicio validez, para que aunque se facture en otra fecha sea un desplazamiento exacto
-        if "Valid From Date" <> 0D then begin
+        // (no si la periodicidad ya fija el día, p. ej. D5)
+        if ("Valid From Date" <> 0D) and not PeriodicidadFijaDia() then begin
             Day := DATE2DMY("Valid From Date", 1);
             if Day <> DATE2DMY(FechaBase, 1) then begin
                 case day of
@@ -115,6 +117,24 @@ tableextension 50111 "StandardCustomerSalesCode" extends "Standard Customer Sale
         end;
 
         Validate(ProximaFechaFactura_btc, FechaBase);
+    end;
+
+    // La periodicidad fija un día si tiene D seguida de número (D5, WD1) o C (CM, CS...); 15D o 1M son periodos.
+    // Se mira el formato invariante para que no dependa del idioma en que se escribió la fórmula
+    local procedure PeriodicidadFijaDia(): Boolean
+    var
+        Formula: Text;
+        i: Integer;
+    begin
+        Formula := UpperCase(Format(Periodicidad_btc, 0, 9));
+        for i := 1 to StrLen(Formula) do begin
+            if Formula[i] = 'C' then
+                exit(true);
+            if (Formula[i] = 'D') and (i < StrLen(Formula)) then
+                if Formula[i + 1] in ['0' .. '9'] then
+                    exit(true);
+        end;
+        exit(false);
     end;
 
     procedure SetLlamadaDesdeReport(pBool: Boolean)
